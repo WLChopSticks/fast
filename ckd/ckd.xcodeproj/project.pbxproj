@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		9BB5BDC1209447200076DDB7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.m */; };
-		9BB5BDC4209447200076DDB7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC3209447200076DDB7 /* ViewController.m */; };
 		9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC5209447200076DDB7 /* Main.storyboard */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
 		9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDCA209447200076DDB7 /* LaunchScreen.storyboard */; };
 		9BB5BDCF209447200076DDB7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDCE209447200076DDB7 /* main.m */; };
 		9BB5BDD9209447200076DDB7 /* ckdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDD8209447200076DDB7 /* ckdTests.m */; };
 		9BB5BDE4209447200076DDB7 /* ckdUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDE3209447200076DDB7 /* ckdUITests.m */; };
+		9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDF5209453850076DDB7 /* WLBaseNavigationViewController.m */; };
+		9BB5BDF9209453C90076DDB7 /* WLBaseUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDF8209453C90076DDB7 /* WLBaseUIViewController.m */; };
+		9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDFB209453DF0076DDB7 /* WLHomeViewController.m */; };
 		FE98CF3A172DEAD6991E9E7A /* libPods-ckd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C55BFB4F50FBC05650FEF77 /* libPods-ckd.a */; };
 /* End PBXBuildFile section */
 
@@ -41,8 +43,6 @@
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9BB5BDC2209447200076DDB7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9BB5BDC3209447200076DDB7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9BB5BDC6209447200076DDB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9BB5BDC8209447200076DDB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BB5BDCB209447200076DDB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +54,12 @@
 		9BB5BDDF209447200076DDB7 /* ckdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ckdUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDE3209447200076DDB7 /* ckdUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ckdUITests.m; sourceTree = "<group>"; };
 		9BB5BDE5209447200076DDB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BB5BDF4209453850076DDB7 /* WLBaseNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLBaseNavigationViewController.h; sourceTree = "<group>"; };
+		9BB5BDF5209453850076DDB7 /* WLBaseNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLBaseNavigationViewController.m; sourceTree = "<group>"; };
+		9BB5BDF7209453C90076DDB7 /* WLBaseUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLBaseUIViewController.h; sourceTree = "<group>"; };
+		9BB5BDF8209453C90076DDB7 /* WLBaseUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLBaseUIViewController.m; sourceTree = "<group>"; };
+		9BB5BDFA209453DF0076DDB7 /* WLHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLHomeViewController.h; sourceTree = "<group>"; };
+		9BB5BDFB209453DF0076DDB7 /* WLHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLHomeViewController.m; sourceTree = "<group>"; };
 		CEE767F063C76A7AE601455B /* Pods-ckd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ckd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ckd/Pods-ckd.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,10 +114,11 @@
 		9BB5BDBE209447200076DDB7 /* ckd */ = {
 			isa = PBXGroup;
 			children = (
+				9BB5BDF3209453430076DDB7 /* Platform */,
+				9BB5BDF2209453390076DDB7 /* 我的 */,
+				9BB5BDF1209453240076DDB7 /* 首页 */,
 				9BB5BDBF209447200076DDB7 /* AppDelegate.h */,
 				9BB5BDC0209447200076DDB7 /* AppDelegate.m */,
-				9BB5BDC2209447200076DDB7 /* ViewController.h */,
-				9BB5BDC3209447200076DDB7 /* ViewController.m */,
 				9BB5BDC5209447200076DDB7 /* Main.storyboard */,
 				9BB5BDC8209447200076DDB7 /* Assets.xcassets */,
 				9BB5BDCA209447200076DDB7 /* LaunchScreen.storyboard */,
@@ -137,6 +144,33 @@
 				9BB5BDE5209447200076DDB7 /* Info.plist */,
 			);
 			path = ckdUITests;
+			sourceTree = "<group>";
+		};
+		9BB5BDF1209453240076DDB7 /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				9BB5BDFA209453DF0076DDB7 /* WLHomeViewController.h */,
+				9BB5BDFB209453DF0076DDB7 /* WLHomeViewController.m */,
+			);
+			path = "首页";
+			sourceTree = "<group>";
+		};
+		9BB5BDF2209453390076DDB7 /* 我的 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "我的";
+			sourceTree = "<group>";
+		};
+		9BB5BDF3209453430076DDB7 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				9BB5BDF4209453850076DDB7 /* WLBaseNavigationViewController.h */,
+				9BB5BDF5209453850076DDB7 /* WLBaseNavigationViewController.m */,
+				9BB5BDF7209453C90076DDB7 /* WLBaseUIViewController.h */,
+				9BB5BDF8209453C90076DDB7 /* WLBaseUIViewController.m */,
+			);
+			path = Platform;
 			sourceTree = "<group>";
 		};
 		AE31A021958DE2D6A16B0E9A /* Frameworks */ = {
@@ -219,6 +253,7 @@
 		9BB5BDB4209447200076DDB7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = WL;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = wanglei;
 				TargetAttributes = {
@@ -311,8 +346,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BB5BDC4209447200076DDB7 /* ViewController.m in Sources */,
+				9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */,
+				9BB5BDF9209453C90076DDB7 /* WLBaseUIViewController.m in Sources */,
 				9BB5BDCF209447200076DDB7 /* main.m in Sources */,
+				9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */,
 				9BB5BDC1209447200076DDB7 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
