@@ -20,6 +20,8 @@
 #define debugMethod()
 #endif
 
+#import <Masonry.h>
+
 //屏幕尺寸
 #define Screen_Bounds [UIScreen mainScreen].bounds
 #define Screen_Size [UIScreen mainScreen].bounds.size

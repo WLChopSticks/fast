@@ -10,6 +10,7 @@
 #import "WLPlatform.h"
 #import <Masonry.h>
 #import "WLProfileViewController.h"
+#import "WLLoginViewController.h"
 
 @interface WLHomeViewController ()
 
@@ -21,6 +22,12 @@
 {
     [super viewWillAppear:animated];
     NSLog(@"%@",self.description);
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
+    [self presentViewController:loginVC animated:YES completion:nil];
 }
 
 - (void)viewDidLoad {
