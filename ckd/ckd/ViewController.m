@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+    imageview.image = [UIImage imageNamed:@"bg_me"];
+    [self.view addSubview:imageview];
 }
 
 
