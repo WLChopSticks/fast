@@ -9,12 +9,19 @@
 #import "WLHomeViewController.h"
 #import "WLPlatform.h"
 #import <Masonry.h>
+#import "WLProfileViewController.h"
 
 @interface WLHomeViewController ()
 
 @end
 
 @implementation WLHomeViewController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"%@",self.description);
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,7 +38,7 @@
     self.title = @"HEHEHE";
     
     UIImage *profileImage = [[UIImage imageNamed:@"nav_defaultavatar"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIBarButtonItem *profileBtn = [[UIBarButtonItem alloc]initWithImage:profileImage style:UIBarButtonItemStylePlain target:self action:@selector(hehe)];
+    UIBarButtonItem *profileBtn = [[UIBarButtonItem alloc]initWithImage:profileImage style:UIBarButtonItemStylePlain target:self action:@selector(profileBtnDidClicking)];
     self.navigationItem.leftBarButtonItem = profileBtn;
     
     UIImage *newsImage = [[UIImage imageNamed:@"nav_message"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -106,6 +113,12 @@
 - (void)hehe
 {
     NSLog(@"123");
+}
+
+- (void)profileBtnDidClicking
+{
+    WLProfileViewController *profileVC = [[WLProfileViewController alloc]init];
+    [self.navigationController pushViewController:profileVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

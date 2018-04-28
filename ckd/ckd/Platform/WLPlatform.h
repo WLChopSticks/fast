@@ -12,6 +12,14 @@
 
 #endif /* WLPlatform_h */
 
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#define debugMethod() NSLog(@"%s", __func__)
+#else
+#define NSLog(...)
+#define debugMethod()
+#endif
+
 //屏幕尺寸
 #define Screen_Bounds [UIScreen mainScreen].bounds
 #define Screen_Size [UIScreen mainScreen].bounds.size

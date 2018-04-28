@@ -17,6 +17,7 @@
 		9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDF5209453850076DDB7 /* WLBaseNavigationViewController.m */; };
 		9BB5BDF9209453C90076DDB7 /* WLBaseUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDF8209453C90076DDB7 /* WLBaseUIViewController.m */; };
 		9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDFB209453DF0076DDB7 /* WLHomeViewController.m */; };
+		9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */; };
 		FE98CF3A172DEAD6991E9E7A /* libPods-ckd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C55BFB4F50FBC05650FEF77 /* libPods-ckd.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,8 @@
 		9BB5BDFA209453DF0076DDB7 /* WLHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLHomeViewController.h; sourceTree = "<group>"; };
 		9BB5BDFB209453DF0076DDB7 /* WLHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLHomeViewController.m; sourceTree = "<group>"; };
 		9BB5BDFD209469130076DDB7 /* WLPlatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLPlatform.h; sourceTree = "<group>"; };
+		9BB5BDFE20946AE90076DDB7 /* WLProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLProfileViewController.h; sourceTree = "<group>"; };
+		9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLProfileViewController.m; sourceTree = "<group>"; };
 		CEE767F063C76A7AE601455B /* Pods-ckd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ckd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ckd/Pods-ckd.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +162,8 @@
 		9BB5BDF2209453390076DDB7 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				9BB5BDFE20946AE90076DDB7 /* WLProfileViewController.h */,
+				9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */,
 			);
 			path = "我的";
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */,
+				9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */,
 				9BB5BDF9209453C90076DDB7 /* WLBaseUIViewController.m in Sources */,
 				9BB5BDCF209447200076DDB7 /* main.m in Sources */,
 				9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */,
