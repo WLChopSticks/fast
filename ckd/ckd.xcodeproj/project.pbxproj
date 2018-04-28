@@ -60,6 +60,7 @@
 		9BB5BDF8209453C90076DDB7 /* WLBaseUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLBaseUIViewController.m; sourceTree = "<group>"; };
 		9BB5BDFA209453DF0076DDB7 /* WLHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLHomeViewController.h; sourceTree = "<group>"; };
 		9BB5BDFB209453DF0076DDB7 /* WLHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLHomeViewController.m; sourceTree = "<group>"; };
+		9BB5BDFD209469130076DDB7 /* WLPlatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLPlatform.h; sourceTree = "<group>"; };
 		CEE767F063C76A7AE601455B /* Pods-ckd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ckd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ckd/Pods-ckd.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +170,7 @@
 				9BB5BDF5209453850076DDB7 /* WLBaseNavigationViewController.m */,
 				9BB5BDF7209453C90076DDB7 /* WLBaseUIViewController.h */,
 				9BB5BDF8209453C90076DDB7 /* WLBaseUIViewController.m */,
+				9BB5BDFD209469130076DDB7 /* WLPlatform.h */,
 			);
 			path = Platform;
 			sourceTree = "<group>";

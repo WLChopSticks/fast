@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "WLPlatform.h"
 #import "WLBaseNavigationViewController.h"
 #import "WLHomeViewController.h"
 
@@ -19,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    self.window = [[UIWindow alloc]initWithFrame:Screen_Bounds];
     WLHomeViewController *vc = [[WLHomeViewController alloc]init];
     WLBaseNavigationViewController *nav = [[WLBaseNavigationViewController alloc]initWithRootViewController:vc];
     self.window.rootViewController = nav;
