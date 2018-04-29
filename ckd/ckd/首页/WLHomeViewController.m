@@ -20,8 +20,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [super viewWillAppear:animated];
-    NSLog(@"%@",self.description);
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -38,6 +38,7 @@
     [self decorateNavigationBar];
     //功能按钮布局
     [self decorateFunctionsButtons];
+    
 }
 
 - (void)decorateNavigationBar
@@ -127,6 +128,7 @@
     WLProfileViewController *profileVC = [[WLProfileViewController alloc]init];
     [self.navigationController pushViewController:profileVC animated:YES];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
