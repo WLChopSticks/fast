@@ -11,9 +11,9 @@
 @class WLLoginView;
 @protocol LoginviewDelegate<NSObject>
 
+//- (void)LoginView: (WLLoginView *)view checkboxBtnDidclicking: (UIButton *)sender;
 - (void)LoginView: (WLLoginView *)view aquireCheckNumBtnDidclicking: (UIButton *)sender;
 - (void)LoginView: (WLLoginView *)view loginBtnDidclicking: (UIButton *)sender;
-- (void)LoginView: (WLLoginView *)view checkboxBtnDidclicking: (UIButton *)sender;
 - (void)LoginView: (WLLoginView *)view userAgreementBtnDidclicking: (UIButton *)sender;
 
 @end

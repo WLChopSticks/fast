@@ -9,6 +9,13 @@
 #import "WLLoginView.h"
 #import "WLPlatform.h"
 
+@interface WLLoginView()
+
+@property (nonatomic, weak) UIButton *loginBtn;
+@property (nonatomic, weak) UIButton *checkboxBtn;
+
+@end
+
 @implementation WLLoginView
 
 
@@ -62,28 +69,33 @@
     [self addSubview:aquireCheckNumBtn];
     
     UIButton *loginBtn = [[UIButton alloc]init];
+    self.loginBtn = loginBtn;
     [loginBtn setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
+    [loginBtn setBackgroundImage:[UIImage imageNamed:@"btn_gray"] forState:UIControlStateDisabled];
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [loginBtn addTarget:self action:@selector(hehe) forControlEvents:UIControlEventTouchUpInside];
+    [loginBtn addTarget:self action:@selector(loginBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:loginBtn];
     
     UIButton *checkBoxBtn = [[UIButton alloc]init];
+    self.checkboxBtn = checkBoxBtn;
     [checkBoxBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateSelected];
     [checkBoxBtn setImage:[UIImage imageNamed:@"btn_normal"] forState:UIControlStateNormal];
     checkBoxBtn.selected = YES;
-    [checkBoxBtn addTarget:self action:@selector(hehe) forControlEvents:UIControlEventTouchUpInside];
+    [checkBoxBtn addTarget:self action:@selector(checkboxBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:checkBoxBtn];
     
     UILabel *templateLabel = [[UILabel alloc]init];
     [templateLabel setTextColor:LightGrayStyle];
+    templateLabel.font = [UIFont systemFontOfSize:14];
     templateLabel.text = @"我已仔细查阅并同意";
     [self addSubview:templateLabel];
     
     UIButton *userAgreementBtn = [[UIButton alloc]init];
     [userAgreementBtn setTitle:@"<诚快达用户协议>" forState:UIControlStateNormal];
+    userAgreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [userAgreementBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    [userAgreementBtn addTarget:self action:@selector(hehe) forControlEvents:UIControlEventTouchUpInside];
+    [userAgreementBtn addTarget:self action:@selector(userAgreementBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:userAgreementBtn];
     
     [logoView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -176,6 +188,40 @@
     if ([self.delegate respondsToSelector:@selector(LoginView:aquireCheckNumBtnDidclicking:)])
     {
         [self.delegate LoginView:self aquireCheckNumBtnDidclicking:sender];
+    }
+}
+
+- (void)loginBtnDidClicking: (UIButton *)sender
+{
+    if ([self.delegate respondsToSelector:@selector(LoginView:loginBtnDidclicking:)])
+    {
+        [self.delegate LoginView:self loginBtnDidclicking:sender];
+    }
+}
+
+- (void)checkboxBtnDidClicking: (UIButton *)sender
+{
+    self.checkboxBtn.selected = !self.checkboxBtn.selected;
+    if (sender.isSelected)
+    {
+        
+        self.loginBtn.enabled = YES;
+    }
+    else
+    {
+        self.loginBtn.enabled = NO;
+    }
+//    if ([self.delegate respondsToSelector:@selector(LoginView:checkboxBtnDidclicking:)])
+//    {
+//        [self.delegate LoginView:self checkboxBtnDidclicking:sender];
+//    }
+}
+
+- (void)userAgreementBtnDidClicking: (UIButton *)sender
+{
+    if ([self.delegate respondsToSelector:@selector(LoginView:userAgreementBtnDidclicking:)])
+    {
+        [self.delegate LoginView:self userAgreementBtnDidclicking:sender];
     }
 }
 

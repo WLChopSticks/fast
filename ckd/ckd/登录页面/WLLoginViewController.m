@@ -31,6 +31,16 @@
     NSLog(@"请求验证码");
 }
 
+-(void)LoginView:(WLLoginView *)view userAgreementBtnDidclicking:(UIButton *)sender
+{
+    NSLog(@"请求用户协议");
+}
+
+-(void)LoginView:(WLLoginView *)view loginBtnDidclicking:(UIButton *)sender
+{
+    NSLog(@"登录按钮点击");
+}
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -39,13 +49,15 @@
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end
