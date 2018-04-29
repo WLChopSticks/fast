@@ -131,6 +131,17 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *items = self.itemsArr[indexPath.section];
+    NSDictionary *itemDict = items[indexPath.row];
+    
+    if ([self.delegate respondsToSelector:@selector(ProfileView:itemTableView:didSelectItem:)])
+    {
+        [self.delegate ProfileView:self itemTableView:tableView didSelectItem:itemDict];
+    }
+}
+
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     if (section == 0)

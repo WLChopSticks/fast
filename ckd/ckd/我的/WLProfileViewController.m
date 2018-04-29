@@ -9,6 +9,7 @@
 #import "WLProfileViewController.h"
 #import "WLPlatform.h"
 #import "WLProfileView.h"
+#import "WLSettingsViewController.h"
 
 @interface WLProfileViewController ()<ProfileviewDelegate>
 
@@ -35,6 +36,16 @@
 -(void)ProfileView:(WLProfileView *)view backBtnDidClicking:(UIButton *)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)ProfileView:(WLProfileView *)view itemTableView:(UITableView *)tableView didSelectItem:(NSDictionary *)item
+{
+    //如果配置的有跳转的目的控制器, 在此处创建控制器跳转
+    if ([item objectForKey:@"destination"])
+    {
+        id destinatinVC = [[NSClassFromString([item objectForKey:@"destination"])alloc]init];
+        [self.navigationController pushViewController:destinatinVC animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,7 +78,8 @@
                               @"me_ic_04", @"itemIcon",
                               @"设置", @"itemName",
                               @"", @"itemRemark",
-                              @"ic_more", @"itemArrow",nil];
+                              @"ic_more", @"itemArrow",
+                              @"WLSettingsViewController", @"destination",nil];
     
     NSDictionary *helpCenter = [NSDictionary dictionaryWithObjectsAndKeys:
                                 @"me_ic_05", @"itemIcon",

@@ -11,6 +11,9 @@
 		9B01A0242095F57C00365BB8 /* WLProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A0232095F57C00365BB8 /* WLProfileView.m */; };
 		9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A0262095FCBA00365BB8 /* WLProfileItemsCell.m */; };
 		9B01A0292095FCBA00365BB8 /* WLProfileItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B01A0272095FCBA00365BB8 /* WLProfileItemsCell.xib */; };
+		9B01A03420960D5A00365BB8 /* WLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A03320960D5A00365BB8 /* WLSettingsViewController.m */; };
+		9B01A03620960D6800365BB8 /* WLSettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B01A03520960D6800365BB8 /* WLSettingsViewController.storyboard */; };
+		9B01A03B209617AF00365BB8 /* WLSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A03A209617AF00365BB8 /* WLSettings.m */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.m */; };
 		9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC5209447200076DDB7 /* Main.storyboard */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
@@ -53,6 +56,11 @@
 		9B01A0252095FCBA00365BB8 /* WLProfileItemsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLProfileItemsCell.h; sourceTree = "<group>"; };
 		9B01A0262095FCBA00365BB8 /* WLProfileItemsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLProfileItemsCell.m; sourceTree = "<group>"; };
 		9B01A0272095FCBA00365BB8 /* WLProfileItemsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLProfileItemsCell.xib; sourceTree = "<group>"; };
+		9B01A03220960D5A00365BB8 /* WLSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLSettingsViewController.h; sourceTree = "<group>"; };
+		9B01A03320960D5A00365BB8 /* WLSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLSettingsViewController.m; sourceTree = "<group>"; };
+		9B01A03520960D6800365BB8 /* WLSettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WLSettingsViewController.storyboard; sourceTree = "<group>"; };
+		9B01A039209617AF00365BB8 /* WLSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLSettings.h; sourceTree = "<group>"; };
+		9B01A03A209617AF00365BB8 /* WLSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLSettings.m; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -107,6 +115,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B01A02A20960B0600365BB8 /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				9B01A03220960D5A00365BB8 /* WLSettingsViewController.h */,
+				9B01A03320960D5A00365BB8 /* WLSettingsViewController.m */,
+				9B01A039209617AF00365BB8 /* WLSettings.h */,
+				9B01A03A209617AF00365BB8 /* WLSettings.m */,
+				9B01A03520960D6800365BB8 /* WLSettingsViewController.storyboard */,
+			);
+			path = "设置";
+			sourceTree = "<group>";
+		};
 		9BB5BDB3209447200076DDB7 = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +197,7 @@
 		9BB5BDF2209453390076DDB7 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				9B01A02A20960B0600365BB8 /* 设置 */,
 				9BB5BDFE20946AE90076DDB7 /* WLProfileViewController.h */,
 				9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */,
 				9B01A0222095F57C00365BB8 /* WLProfileView.h */,
@@ -339,6 +360,7 @@
 				9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */,
 				9B01A0292095FCBA00365BB8 /* WLProfileItemsCell.xib in Resources */,
 				9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */,
+				9B01A03620960D6800365BB8 /* WLSettingsViewController.storyboard in Resources */,
 				9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,12 +410,14 @@
 				9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */,
 				9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */,
 				9BB5BE0420946E270076DDB7 /* WLLoginViewController.m in Sources */,
+				9B01A03B209617AF00365BB8 /* WLSettings.m in Sources */,
 				9B01A0242095F57C00365BB8 /* WLProfileView.m in Sources */,
 				9BB5BDF9209453C90076DDB7 /* WLBaseUIViewController.m in Sources */,
 				9BB5BDCF209447200076DDB7 /* main.m in Sources */,
 				9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */,
 				9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */,
 				9BB5BDC1209447200076DDB7 /* AppDelegate.m in Sources */,
+				9B01A03420960D5A00365BB8 /* WLSettingsViewController.m in Sources */,
 				9B01A0212095DB9400365BB8 /* WLLoginView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
