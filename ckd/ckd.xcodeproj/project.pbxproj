@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B01A0212095DB9400365BB8 /* WLLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A0202095DB9400365BB8 /* WLLoginView.m */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.m */; };
 		9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC5209447200076DDB7 /* Main.storyboard */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		1C55BFB4F50FBC05650FEF77 /* libPods-ckd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ckd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70750EA903547B5CF0F8D141 /* Pods-ckd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ckd.release.xcconfig"; path = "Pods/Target Support Files/Pods-ckd/Pods-ckd.release.xcconfig"; sourceTree = "<group>"; };
+		9B01A01F2095DB9400365BB8 /* WLLoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLLoginView.h; sourceTree = "<group>"; };
+		9B01A0202095DB9400365BB8 /* WLLoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLLoginView.m; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -175,11 +178,11 @@
 		9BB5BDF3209453430076DDB7 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				9BB5BDFD209469130076DDB7 /* WLPlatform.h */,
 				9BB5BDF4209453850076DDB7 /* WLBaseNavigationViewController.h */,
 				9BB5BDF5209453850076DDB7 /* WLBaseNavigationViewController.m */,
 				9BB5BDF7209453C90076DDB7 /* WLBaseUIViewController.h */,
 				9BB5BDF8209453C90076DDB7 /* WLBaseUIViewController.m */,
-				9BB5BDFD209469130076DDB7 /* WLPlatform.h */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -189,6 +192,8 @@
 			children = (
 				9BB5BE0220946E270076DDB7 /* WLLoginViewController.h */,
 				9BB5BE0320946E270076DDB7 /* WLLoginViewController.m */,
+				9B01A01F2095DB9400365BB8 /* WLLoginView.h */,
+				9B01A0202095DB9400365BB8 /* WLLoginView.m */,
 			);
 			path = "登录页面";
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 				9BB5BDCF209447200076DDB7 /* main.m in Sources */,
 				9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */,
 				9BB5BDC1209447200076DDB7 /* AppDelegate.m in Sources */,
+				9B01A0212095DB9400365BB8 /* WLLoginView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

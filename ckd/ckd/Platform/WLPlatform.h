@@ -34,8 +34,8 @@
 
 #define Margin 10
 
-
-
+//字体颜色风格
+#define LightGrayStyle [UIColor lightGrayColor]
 
 
 
