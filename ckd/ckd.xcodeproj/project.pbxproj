@@ -14,6 +14,7 @@
 		9B01A03420960D5A00365BB8 /* WLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A03320960D5A00365BB8 /* WLSettingsViewController.m */; };
 		9B01A03620960D6800365BB8 /* WLSettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B01A03520960D6800365BB8 /* WLSettingsViewController.storyboard */; };
 		9B01A03B209617AF00365BB8 /* WLSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A03A209617AF00365BB8 /* WLSettings.m */; };
+		9B4552FD2096DB3400C6C447 /* WLProfileDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.m */; };
 		9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC5209447200076DDB7 /* Main.storyboard */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
@@ -61,6 +62,8 @@
 		9B01A03520960D6800365BB8 /* WLSettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WLSettingsViewController.storyboard; sourceTree = "<group>"; };
 		9B01A039209617AF00365BB8 /* WLSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLSettings.h; sourceTree = "<group>"; };
 		9B01A03A209617AF00365BB8 /* WLSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLSettings.m; sourceTree = "<group>"; };
+		9B4552FB2096DB3400C6C447 /* WLProfileDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLProfileDetailsViewController.h; sourceTree = "<group>"; };
+		9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLProfileDetailsViewController.m; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				9B01A03320960D5A00365BB8 /* WLSettingsViewController.m */,
 				9B01A039209617AF00365BB8 /* WLSettings.h */,
 				9B01A03A209617AF00365BB8 /* WLSettings.m */,
+				9B4552FB2096DB3400C6C447 /* WLProfileDetailsViewController.h */,
+				9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */,
 				9B01A03520960D6800365BB8 /* WLSettingsViewController.storyboard */,
 			);
 			path = "设置";
@@ -410,6 +415,7 @@
 				9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */,
 				9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */,
 				9BB5BE0420946E270076DDB7 /* WLLoginViewController.m in Sources */,
+				9B4552FD2096DB3400C6C447 /* WLProfileDetailsViewController.m in Sources */,
 				9B01A03B209617AF00365BB8 /* WLSettings.m in Sources */,
 				9B01A0242095F57C00365BB8 /* WLProfileView.m in Sources */,
 				9BB5BDF9209453C90076DDB7 /* WLBaseUIViewController.m in Sources */,
@@ -587,7 +593,7 @@
 				INFOPLIST_FILE = ckd/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wanglei.ckd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qbkj.ckdhd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -603,7 +609,7 @@
 				INFOPLIST_FILE = ckd/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wanglei.ckd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qbkj.ckdhd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

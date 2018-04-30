@@ -10,6 +10,7 @@
 #import "WLPlatform.h"
 #import "WLProfileView.h"
 #import "WLSettingsViewController.h"
+#import "WLProfileDetailsViewController.h"
 
 @interface WLProfileViewController ()<ProfileviewDelegate>
 
@@ -36,6 +37,15 @@
 -(void)ProfileView:(WLProfileView *)view backBtnDidClicking:(UIButton *)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)ProfileView:(WLProfileView *)view userImageBtnDidClicking:(UIButton *)sender
+{
+    //取出stroryboard里面的控制器：
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"WLSettingsViewController" bundle:nil];
+    //将取出的storyboard里面的控制器被所需的控制器指着。
+    WLProfileDetailsViewController *profileDetailsVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"profileDetail"];
+    [self.navigationController pushViewController:profileDetailsVC animated:YES];
 }
 
 -(void)ProfileView:(WLProfileView *)view itemTableView:(UITableView *)tableView didSelectItem:(NSDictionary *)item

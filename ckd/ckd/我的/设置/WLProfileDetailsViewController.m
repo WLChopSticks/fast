@@ -1,19 +1,24 @@
 //
-//  WLSettings.m
+//  WLProfileDetailsViewController.m
 //  ckd
 //
-//  Created by 王磊 on 2018/4/29.
+//  Created by 王磊 on 2018/4/30.
 //  Copyright © 2018年 wanglei. All rights reserved.
 //
 
-#import "WLSettings.h"
+#import "WLProfileDetailsViewController.h"
 
-@interface WLSettings ()
-
+@interface WLProfileDetailsViewController ()
 
 @end
 
-@implementation WLSettings
+@implementation WLProfileDetailsViewController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [super viewWillAppear:animated];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,6 +28,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.title = @"个人资料";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,10 +36,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)quitBtnDidClicking:(id)sender
-{
-    NSLog(@"点击了退出登录");
-}
 #pragma mark - Table view data source
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -41,31 +43,51 @@
     
     if (indexPath.row == 0)
     {
-        NSLog(@"点击了关于我们");
+        NSLog(@"点击了头像");
     }
     if (indexPath.row == 1)
     {
-        NSLog(@"点击了处罚说明");
+        NSLog(@"点击了昵称");
     }
     if (indexPath.row == 2)
     {
-        NSLog(@"点击了购买说明");
+        NSLog(@"点击了手机号");
     }
     if (indexPath.row == 3)
     {
-        NSLog(@"点击了押金说明");
+        NSLog(@"点击了职业");
     }
     if (indexPath.row == 4)
     {
-        NSLog(@"点击了地图服务");
+        NSLog(@"点击了公司");
     }
     if (indexPath.row == 5)
     {
-        NSLog(@"点击了清除缓存");
+        NSLog(@"点击了所在地");
+    }
+    if (indexPath.row == 6)
+    {
+        NSLog(@"点击了QQ");
+    }
+    if (indexPath.row == 7)
+    {
+        NSLog(@"点击了微信");
+    }
+    //indexPath.row == 8 为空cell
+    if (indexPath.row == 9)
+    {
+        NSLog(@"点击了实名认证");
     }
 }
-
-
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//#warning Incomplete implementation, return the number of sections
+//    return 0;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//#warning Incomplete implementation, return the number of rows
+//    return 0;
+//}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

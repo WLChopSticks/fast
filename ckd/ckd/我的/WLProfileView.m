@@ -50,9 +50,10 @@
     [self addSubview:userNameLabel];
     
     //用户头像
-    UIImageView *userImageView = [[UIImageView alloc]init];
-    userImageView.image = [UIImage imageNamed:@"me_defaultavatar"];
-    [self addSubview:userImageView];
+    UIButton *userImageBtn = [[UIButton alloc]init];
+    [userImageBtn setImage:[UIImage imageNamed:@"me_defaultavatar"] forState:UIControlStateNormal];
+    [userImageBtn addTarget:self action:@selector(userImageBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:userImageBtn];
     
     //选项列表
     UITableView *itemsView = [[UITableView alloc]init];
@@ -79,7 +80,7 @@
         make.top.equalTo(backBtn.mas_bottom);
     }];
     
-    [userImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [userImageBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.mas_centerX);
         make.top.equalTo(userNameLabel.mas_bottom).offset(Margin * 2);
         make.width.height.mas_equalTo(80);
@@ -99,6 +100,14 @@
         [self.delegate ProfileView:self backBtnDidClicking:sender];
     }
     NSLog(@"back按了");
+}
+
+- (void)userImageBtnDidClicking: (UIButton *)sender
+{
+    if ([self.delegate respondsToSelector:@selector(ProfileView:userImageBtnDidClicking:)])
+    {
+        [self.delegate ProfileView:self userImageBtnDidClicking:sender];
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

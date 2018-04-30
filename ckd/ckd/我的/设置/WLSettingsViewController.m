@@ -9,6 +9,7 @@
 #import "WLSettingsViewController.h"
 #import "WLPlatform.h"
 #import "WLSettings.h"
+#import "WLProfileDetailsViewController.h"
 
 @interface WLSettingsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -38,9 +39,10 @@
     //取出stroryboard里面的控制器：
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"WLSettingsViewController" bundle:nil];
     //将取出的storyboard里面的控制器被所需的控制器指着。
-    WLSettings *jVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"settings"];
-    [self.view addSubview:jVC.view];
-    [self addChildViewController:jVC];
+    WLSettings *settingsVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"settings"];
+    [self.view addSubview:settingsVC.view];
+    [self addChildViewController:settingsVC];
+    
     
     //列表
 //    UITableView *tableView = [[UITableView alloc]init];
