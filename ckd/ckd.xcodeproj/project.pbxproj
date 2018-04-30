@@ -20,6 +20,7 @@
 		9B4CEDB820974A3700F20FB5 /* MapViewBaseDemoViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CEDB720974A3700F20FB5 /* MapViewBaseDemoViewController.mm */; };
 		9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */; };
 		9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DB8209759E400D88704 /* WLMapAnnotationView.m */; };
+		9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DBC209765D400D88704 /* WLScanBitCodeViewController.m */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.mm */; };
 		9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC5209447200076DDB7 /* Main.storyboard */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
@@ -79,6 +80,8 @@
 		9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMapViewController.m; sourceTree = "<group>"; };
 		9B720DB7209759E400D88704 /* WLMapAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMapAnnotationView.h; sourceTree = "<group>"; };
 		9B720DB8209759E400D88704 /* WLMapAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMapAnnotationView.m; sourceTree = "<group>"; };
+		9B720DBB209765D400D88704 /* WLScanBitCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLScanBitCodeViewController.h; sourceTree = "<group>"; };
+		9B720DBC209765D400D88704 /* WLScanBitCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLScanBitCodeViewController.m; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -147,6 +150,15 @@
 			path = "设置";
 			sourceTree = "<group>";
 		};
+		9B720DBA209765AC00D88704 /* 扫一扫 */ = {
+			isa = PBXGroup;
+			children = (
+				9B720DBB209765D400D88704 /* WLScanBitCodeViewController.h */,
+				9B720DBC209765D400D88704 /* WLScanBitCodeViewController.m */,
+			);
+			path = "扫一扫";
+			sourceTree = "<group>";
+		};
 		9BB5BDB3209447200076DDB7 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +187,7 @@
 				9BB5BDF3209453430076DDB7 /* Platform */,
 				9BB5BDF2209453390076DDB7 /* 我的 */,
 				9BB5BE0120946E0A0076DDB7 /* 登录页面 */,
+				9B720DBA209765AC00D88704 /* 扫一扫 */,
 				9BB5BDF1209453240076DDB7 /* 首页 */,
 				9BB5BDBF209447200076DDB7 /* AppDelegate.h */,
 				9BB5BDC0209447200076DDB7 /* AppDelegate.mm */,
@@ -439,10 +452,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ckd/Pods-ckd-resources.sh",
 				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
+				"${PODS_ROOT}/SGQRCode/SGQRCode/SGQRCode.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SGQRCode.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -462,6 +477,7 @@
 				9BB5BE0420946E270076DDB7 /* WLLoginViewController.m in Sources */,
 				9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */,
 				9B4552FD2096DB3400C6C447 /* WLProfileDetailsViewController.m in Sources */,
+				9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */,
 				9B01A03B209617AF00365BB8 /* WLSettings.m in Sources */,
 				9B01A0242095F57C00365BB8 /* WLProfileView.m in Sources */,
 				9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */,

@@ -12,6 +12,7 @@
 #import "WLLoginViewController.h"
 #import "MapViewBaseDemoViewController.h"
 #import "WLMapViewController.h"
+#import "WLScanBitCodeViewController.h"
 
 
 
@@ -95,7 +96,7 @@
 //    [iconBtn setImage:[UIImage imageNamed:@"icon_code"] forState:UIControlStateNormal];
     [iconBtn setBackgroundImage:[UIImage imageNamed:@"icon_code"] forState:UIControlStateNormal];
     iconBtn.backgroundColor = [UIColor blueColor];
-    [iconBtn addTarget:self action:@selector(hehe) forControlEvents:UIControlEventTouchUpInside];
+    [iconBtn addTarget:self action:@selector(iconBtnDidClicking) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:iconBtn];
     
     [iconBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -147,6 +148,12 @@
 {
     WLProfileViewController *profileVC = [[WLProfileViewController alloc]init];
     [self.navigationController pushViewController:profileVC animated:YES];
+}
+
+- (void)iconBtnDidClicking
+{
+    WLScanBitCodeViewController *scanBitCodeVC = [[WLScanBitCodeViewController alloc]init];
+    [self.navigationController pushViewController:scanBitCodeVC animated:YES];
 }
 
 

@@ -16,23 +16,27 @@ PODS:
     - AFNetworking/NSURLSession
   - BaiduMapKit (4.0.0)
   - Masonry (1.1.0)
+  - SGQRCode (2.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - BaiduMapKit
   - Masonry
+  - SGQRCode
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - BaiduMapKit
     - Masonry
+    - SGQRCode
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
   BaiduMapKit: 8fa2eb2ca81b92b740b19d9ff3b59d751d3e92e1
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SGQRCode: 6cd7f03ea6b74d1267820d427b07d1451b387c79
 
-PODFILE CHECKSUM: 4641906a9b7e616a4d2071584258ab7c683b22a0
+PODFILE CHECKSUM: 3e37d9fb90c3ea889d9f26c6b0a1b8dbec4cc824
 
 COCOAPODS: 1.5.0
