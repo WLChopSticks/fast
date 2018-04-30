@@ -10,6 +10,7 @@
 #import "WLPlatform.h"
 #import "WLBaseNavigationViewController.h"
 #import "WLHomeViewController.h"
+#import "WLLoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,10 +22,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:Screen_Bounds];
-    WLHomeViewController *vc = [[WLHomeViewController alloc]init];
-    WLBaseNavigationViewController *nav = [[WLBaseNavigationViewController alloc]initWithRootViewController:vc];
-    self.window.rootViewController = nav;
-    [self.window makeKeyAndVisible];
+    //判断是否处于登录状态, 如果不, 则显示手机号码登录页面, 否则呈现首页
+    if ([WLUtilities isUserLogin])
+    {
+        WLHomeViewController *vc = [[WLHomeViewController alloc]init];
+        WLBaseNavigationViewController *nav = [[WLBaseNavigationViewController alloc]initWithRootViewController:vc];
+        self.window.rootViewController = nav;
+        [self.window makeKeyAndVisible];
+    }
+    else
+    {
+        WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
+        self.window.rootViewController = loginVC;
+        [self.window makeKeyAndVisible];
+    }
     
     
     return YES;

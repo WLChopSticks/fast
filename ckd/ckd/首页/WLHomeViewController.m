@@ -8,7 +8,6 @@
 
 #import "WLHomeViewController.h"
 #import "WLPlatform.h"
-#import <Masonry.h>
 #import "WLProfileViewController.h"
 #import "WLLoginViewController.h"
 
@@ -22,12 +21,6 @@
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [super viewWillAppear:animated];
-}
-
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
-    [self presentViewController:loginVC animated:YES completion:nil];
 }
 
 - (void)viewDidLoad {

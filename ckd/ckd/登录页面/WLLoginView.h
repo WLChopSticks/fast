@@ -20,6 +20,8 @@
 
 @interface WLLoginView : UIView
 
+@property (nonatomic, weak) UITextField *telephoneField;
+@property (nonatomic, weak) UITextField *checkNumberField;
 @property (nonatomic, weak) id<LoginviewDelegate> delegate;
 
 @end

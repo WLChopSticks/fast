@@ -15,6 +15,8 @@
 		9B01A03620960D6800365BB8 /* WLSettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B01A03520960D6800365BB8 /* WLSettingsViewController.storyboard */; };
 		9B01A03B209617AF00365BB8 /* WLSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A03A209617AF00365BB8 /* WLSettings.m */; };
 		9B4552FD2096DB3400C6C447 /* WLProfileDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */; };
+		9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */; };
+		9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4553022096F3B000C6C447 /* WLUtilities.m */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.m */; };
 		9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC5209447200076DDB7 /* Main.storyboard */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
@@ -64,6 +66,10 @@
 		9B01A03A209617AF00365BB8 /* WLSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLSettings.m; sourceTree = "<group>"; };
 		9B4552FB2096DB3400C6C447 /* WLProfileDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLProfileDetailsViewController.h; sourceTree = "<group>"; };
 		9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLProfileDetailsViewController.m; sourceTree = "<group>"; };
+		9B4552FE2096F31F00C6C447 /* WLNetworkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLNetworkTool.h; sourceTree = "<group>"; };
+		9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLNetworkTool.m; sourceTree = "<group>"; };
+		9B4553012096F3B000C6C447 /* WLUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLUtilities.h; sourceTree = "<group>"; };
+		9B4553022096F3B000C6C447 /* WLUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLUtilities.m; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -222,6 +228,10 @@
 				9BB5BDF5209453850076DDB7 /* WLBaseNavigationViewController.m */,
 				9BB5BDF7209453C90076DDB7 /* WLBaseUIViewController.h */,
 				9BB5BDF8209453C90076DDB7 /* WLBaseUIViewController.m */,
+				9B4552FE2096F31F00C6C447 /* WLNetworkTool.h */,
+				9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */,
+				9B4553012096F3B000C6C447 /* WLUtilities.h */,
+				9B4553022096F3B000C6C447 /* WLUtilities.m */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -415,12 +425,14 @@
 				9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */,
 				9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */,
 				9BB5BE0420946E270076DDB7 /* WLLoginViewController.m in Sources */,
+				9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */,
 				9B4552FD2096DB3400C6C447 /* WLProfileDetailsViewController.m in Sources */,
 				9B01A03B209617AF00365BB8 /* WLSettings.m in Sources */,
 				9B01A0242095F57C00365BB8 /* WLProfileView.m in Sources */,
 				9BB5BDF9209453C90076DDB7 /* WLBaseUIViewController.m in Sources */,
 				9BB5BDCF209447200076DDB7 /* main.m in Sources */,
 				9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */,
+				9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */,
 				9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */,
 				9BB5BDC1209447200076DDB7 /* AppDelegate.m in Sources */,
 				9B01A03420960D5A00365BB8 /* WLSettingsViewController.m in Sources */,

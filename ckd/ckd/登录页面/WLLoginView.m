@@ -42,6 +42,7 @@
     [self addSubview:telephoneLabel];
     
     UITextField *telephoneField = [[UITextField alloc]init];
+    self.telephoneField = telephoneField;
     [self addSubview:telephoneField];
     
     UIView *seperateView = [[UIView alloc]init];
@@ -54,6 +55,7 @@
     [self addSubview:checkNumberLabel];
     
     UITextField *checkNumberField = [[UITextField alloc]init];
+    self.checkNumberField = checkNumberField;
     [self addSubview:checkNumberField];
     
     UIView *seperateView2 = [[UIView alloc]init];
@@ -114,7 +116,7 @@
     [telephoneField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(telephoneLabel.mas_bottom).offset(Margin);
         make.left.equalTo(telephoneLabel.mas_left);
-        make.width.mas_equalTo(100);
+        make.width.mas_equalTo(200);
         make.height.mas_equalTo(30);
     }];
     
