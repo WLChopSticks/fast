@@ -11,6 +11,7 @@
 #import "WLLoginView.h"
 #import "AppDelegate.h"
 #import "WLHomeViewController.h"
+#import "WLBaseNavigationViewController.h"
 
 @interface WLLoginViewController ()<LoginviewDelegate>
 
@@ -51,7 +52,6 @@
     }else
     {
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-        NSDictionary *user_phone_dict = [NSDictionary dictionaryWithObject:telephone forKey:@"user_phone"];
         NSString *user_phone_string = [NSString stringWithFormat:@"{user_phone:%@}",telephone];
         [parameters setObject:user_phone_string forKey:@"inputParameter"];
         NSString *URL = @"http://47.104.85.148:18070/ckdhd/sendShortMessage.action";
@@ -99,7 +99,8 @@
                 [WLUtilities setUserLogin];
                 WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
                 AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate ];
-                appDelegate.window.rootViewController = homeVC;
+                WLBaseNavigationViewController *nav = [[WLBaseNavigationViewController alloc]initWithRootViewController:homeVC];
+                appDelegate.window.rootViewController = nav;
                 [appDelegate.window makeKeyAndVisible];
                 
             }else
