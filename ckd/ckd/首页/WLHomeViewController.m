@@ -17,6 +17,8 @@
 
 @interface WLHomeViewController ()
 
+@property (nonatomic, weak)WLMapViewController *mapVC;
+
 @end
 
 @implementation WLHomeViewController
@@ -59,6 +61,7 @@
 - (void)decorateMapView
 {
     WLMapViewController *mapVC = [[WLMapViewController alloc]init];
+    self.mapVC = mapVC;
     mapVC.view.backgroundColor = [UIColor yellowColor];
     mapVC.view.frame = Screen_Bounds;
     mapVC.automaticallyAdjustsScrollViewInsets = NO;
@@ -75,7 +78,7 @@
     
     UIButton *mapBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
     [mapBtn setImage:[UIImage imageNamed:@"home_ic_map"] forState:UIControlStateNormal];
-    [mapBtn addTarget:self action:@selector(hehe) forControlEvents:UIControlEventTouchUpInside];
+    [mapBtn addTarget:self action:@selector(mapBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:mapBtn];
     
     UIButton *collectBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
@@ -128,6 +131,11 @@
         make.width.mas_equalTo(Func_Btn_Width);
         make.height.mas_equalTo(Func_Btn_Height);
     }];
+}
+
+- (void)mapBtnDidClicking: (UIButton *)sender
+{
+    [self.mapVC startGetUserPosition];
 }
 
 - (void)hehe

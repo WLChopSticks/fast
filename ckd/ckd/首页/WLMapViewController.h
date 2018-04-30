@@ -10,4 +10,6 @@
 
 @interface WLMapViewController : WLBaseUIViewController
 
+- (void)startGetUserPosition;
+
 @end
