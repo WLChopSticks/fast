@@ -10,6 +10,10 @@
 #import "WLPlatform.h"
 #import "WLProfileViewController.h"
 #import "WLLoginViewController.h"
+#import "MapViewBaseDemoViewController.h"
+#import "WLMapViewController.h"
+
+
 
 @interface WLHomeViewController ()
 
@@ -29,8 +33,13 @@
     self.view.backgroundColor = [UIColor whiteColor];
     //导航栏布局
     [self decorateNavigationBar];
+    //地图页面
+    [self decorateMapView];
     //功能按钮布局
     [self decorateFunctionsButtons];
+    
+    
+    
     
 }
 
@@ -45,6 +54,16 @@
     UIImage *newsImage = [[UIImage imageNamed:@"nav_message"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem *newsBtn = [[UIBarButtonItem alloc]initWithImage:newsImage style:UIBarButtonItemStylePlain target:self action:@selector(hehe)];
     self.navigationItem.rightBarButtonItem = newsBtn;
+}
+
+- (void)decorateMapView
+{
+    WLMapViewController *mapVC = [[WLMapViewController alloc]init];
+    mapVC.view.backgroundColor = [UIColor yellowColor];
+    mapVC.view.frame = Screen_Bounds;
+    mapVC.automaticallyAdjustsScrollViewInsets = NO;
+    [self.view addSubview:mapVC.view];
+    [self addChildViewController:mapVC];
 }
 
 - (void)decorateFunctionsButtons
