@@ -11,6 +11,7 @@
 #import "WLProfileView.h"
 #import "WLSettingsViewController.h"
 #import "WLProfileDetailsViewController.h"
+#import "WLMyAccountController.h"
 
 @interface WLProfileViewController ()<ProfileviewDelegate>
 
@@ -55,6 +56,13 @@
     {
         id destinatinVC = [[NSClassFromString([item objectForKey:@"destination"])alloc]init];
         [self.navigationController pushViewController:destinatinVC animated:YES];
+    }else if ([[item objectForKey:@"destination_storyboard"] isEqualToString:@"myAccount"])
+    {
+        //取出stroryboard里面的控制器：
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"WLSettingsViewController" bundle:nil];
+        //将取出的storyboard里面的控制器被所需的控制器指着。
+        WLMyAccountController *myAccountVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"myAccount"];
+        [self.navigationController pushViewController:myAccountVC animated:YES];
     }
 }
 
@@ -76,7 +84,8 @@
                                @"me_ic_02", @"itemIcon",
                                @"我的账户", @"itemName",
                                @"剩余12天", @"itemRemark",
-                               @"ic_more", @"itemArrow",nil];
+                               @"ic_more", @"itemArrow",
+                               @"myAccount", @"destination_storyboard",nil];
     
     NSDictionary *myCollect = [NSDictionary dictionaryWithObjectsAndKeys:
                                @"me_ic_03", @"itemIcon",

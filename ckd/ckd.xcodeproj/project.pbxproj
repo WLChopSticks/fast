@@ -13,6 +13,7 @@
 		9B006B2620985AA000CDEFD0 /* WLRealNameIdentifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B006B2520985AA000CDEFD0 /* WLRealNameIdentifyCell.m */; };
 		9B006B2820985AE400CDEFD0 /* WLRealNameIdentifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B006B2720985AE400CDEFD0 /* WLRealNameIdentifyCell.xib */; };
 		9B006B2C2098B32D00CDEFD0 /* WLNewsCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B006B2B2098B32D00CDEFD0 /* WLNewsCenterViewController.m */; };
+		9B006B302098BA6D00CDEFD0 /* WLMyAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B006B2F2098BA6D00CDEFD0 /* WLMyAccountController.m */; };
 		9B01A0212095DB9400365BB8 /* WLLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A0202095DB9400365BB8 /* WLLoginView.m */; };
 		9B01A0242095F57C00365BB8 /* WLProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A0232095F57C00365BB8 /* WLProfileView.m */; };
 		9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A0262095FCBA00365BB8 /* WLProfileItemsCell.m */; };
@@ -73,6 +74,8 @@
 		9B006B2720985AE400CDEFD0 /* WLRealNameIdentifyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLRealNameIdentifyCell.xib; sourceTree = "<group>"; };
 		9B006B2A2098B32D00CDEFD0 /* WLNewsCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLNewsCenterViewController.h; sourceTree = "<group>"; };
 		9B006B2B2098B32D00CDEFD0 /* WLNewsCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLNewsCenterViewController.m; sourceTree = "<group>"; };
+		9B006B2E2098BA6D00CDEFD0 /* WLMyAccountController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMyAccountController.h; sourceTree = "<group>"; };
+		9B006B2F2098BA6D00CDEFD0 /* WLMyAccountController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMyAccountController.m; sourceTree = "<group>"; };
 		9B01A01F2095DB9400365BB8 /* WLLoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLLoginView.h; sourceTree = "<group>"; };
 		9B01A0202095DB9400365BB8 /* WLLoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLLoginView.m; sourceTree = "<group>"; };
 		9B01A0222095F57C00365BB8 /* WLProfileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLProfileView.h; sourceTree = "<group>"; };
@@ -171,6 +174,15 @@
 				9B006B2B2098B32D00CDEFD0 /* WLNewsCenterViewController.m */,
 			);
 			path = "消息中心";
+			sourceTree = "<group>";
+		};
+		9B006B2D2098B99A00CDEFD0 /* 我的账户 */ = {
+			isa = PBXGroup;
+			children = (
+				9B006B2E2098BA6D00CDEFD0 /* WLMyAccountController.h */,
+				9B006B2F2098BA6D00CDEFD0 /* WLMyAccountController.m */,
+			);
+			path = "我的账户";
 			sourceTree = "<group>";
 		};
 		9B01A02A20960B0600365BB8 /* 设置 */ = {
@@ -281,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				9B01A02A20960B0600365BB8 /* 设置 */,
+				9B006B2D2098B99A00CDEFD0 /* 我的账户 */,
 				9BB5BDFE20946AE90076DDB7 /* WLProfileViewController.h */,
 				9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */,
 				9B01A0222095F57C00365BB8 /* WLProfileView.h */,
@@ -535,6 +548,7 @@
 				9BB5BDCF209447200076DDB7 /* main.m in Sources */,
 				9B006B2C2098B32D00CDEFD0 /* WLNewsCenterViewController.m in Sources */,
 				9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */,
+				9B006B302098BA6D00CDEFD0 /* WLMyAccountController.m in Sources */,
 				9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */,
 				9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */,
 				9B006B2620985AA000CDEFD0 /* WLRealNameIdentifyCell.m in Sources */,
