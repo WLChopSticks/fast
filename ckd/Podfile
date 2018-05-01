@@ -6,4 +6,6 @@ pod 'AFNetworking', '~> 3.0'
 pod 'Masonry'
 pod 'BaiduMapKit'
 pod 'SGQRCode'
+pod 'ProgressHUD'
+pod 'MJExtension'
 end

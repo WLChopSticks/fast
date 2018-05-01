@@ -16,12 +16,16 @@ PODS:
     - AFNetworking/NSURLSession
   - BaiduMapKit (4.0.0)
   - Masonry (1.1.0)
+  - MJExtension (3.0.13)
+  - ProgressHUD (2.51)
   - SGQRCode (2.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - BaiduMapKit
   - Masonry
+  - MJExtension
+  - ProgressHUD
   - SGQRCode
 
 SPEC REPOS:
@@ -29,14 +33,18 @@ SPEC REPOS:
     - AFNetworking
     - BaiduMapKit
     - Masonry
+    - MJExtension
+    - ProgressHUD
     - SGQRCode
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
   BaiduMapKit: 8fa2eb2ca81b92b740b19d9ff3b59d751d3e92e1
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  ProgressHUD: 54b4c2fa202bf3da7dddc1c698ae4e6376333bd9
   SGQRCode: 6cd7f03ea6b74d1267820d427b07d1451b387c79
 
-PODFILE CHECKSUM: 3e37d9fb90c3ea889d9f26c6b0a1b8dbec4cc824
+PODFILE CHECKSUM: afe9439cd2d1620629508704a5e095591b3ef6f7
 
 COCOAPODS: 1.5.0
