@@ -63,6 +63,19 @@
 }
 
 #pragma -mark 代理方法
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
+{
+    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,
+          userLocation.location.coordinate.longitude);
+    [self.mapView setCenterCoordinate:userLocation.location.coordinate animated:YES];
+    [self.mapView updateLocationData:userLocation];
+    
+    //关闭坐标更新
+    [self.locService stopUserLocationService];
+}
+
+
+
 
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation
 {
