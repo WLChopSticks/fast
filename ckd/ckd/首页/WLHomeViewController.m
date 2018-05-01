@@ -14,8 +14,15 @@
 #import "WLMapViewController.h"
 #import "WLScanBitCodeViewController.h"
 #import "WLChargerStationModel.h"
+#import "WLRealNameIdentifyViewController.h"
+#import "WLNewsCenterViewController.h"
 
-
+typedef enum : NSUInteger {
+    UnRegistRealName,
+    UnPaidDeposit,
+    Unlogin,
+    Login
+} AccountStatus;
 
 @interface WLHomeViewController ()
 
@@ -42,11 +49,31 @@
     //功能按钮布局
     [self decorateFunctionsButtons];
     
+    //查看用户账户状态, 是否显示提示bar, 引导用户完善信息
+    [self decorateUserStatusPromptBar:[self judegeAccountStatus]];
+
     //请求充电站的位置节点
     [self aquireChargerStations];
     
     
     
+}
+
+- (AccountStatus)judegeAccountStatus
+{
+    if (![WLUtilities isUserLogin])
+    {
+        return Unlogin;
+    }
+    if (![WLUtilities isUserRealNameRegist])
+    {
+        return UnRegistRealName;
+    }
+    if ([WLUtilities isUserDepositPaid])
+    {
+        return UnPaidDeposit;
+    }
+    return Login;
 }
 
 - (void)aquireChargerStations
@@ -63,12 +90,12 @@
         NSDictionary *result = (NSDictionary *)responseObject;
         WLChargerStationModel *charrgerStationModel = [[WLChargerStationModel alloc]init];
         charrgerStationModel = [charrgerStationModel getChargerStationModel:result];
-        if ([result[@"code"]integerValue] == 1)
+        if ([charrgerStationModel.code isEqualToString:@"1"])
         {
             NSLog(@"查询城市信息成功");
         }else
         {
-            NSLog(@"查询城市信息成功");
+            NSLog(@"查询城市信息失败");
         }
     } failure:^(NSError *error) {
         NSLog(@"查询城市信息成功");
@@ -84,8 +111,8 @@
     self.navigationItem.leftBarButtonItem = profileBtn;
     
     UIImage *newsImage = [[UIImage imageNamed:@"nav_message"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIBarButtonItem *newsBtn = [[UIBarButtonItem alloc]initWithImage:newsImage style:UIBarButtonItemStylePlain target:self action:@selector(hehe)];
-    self.navigationItem.rightBarButtonItem = newsBtn;
+    UIBarButtonItem *newsCenterBtn = [[UIBarButtonItem alloc]initWithImage:newsImage style:UIBarButtonItemStylePlain target:self action:@selector(newsCenterBtnDidClicking)];
+    self.navigationItem.rightBarButtonItem = newsCenterBtn;
 }
 
 - (void)decorateMapView
@@ -163,6 +190,58 @@
     }];
 }
 
+- (void)decorateUserStatusPromptBar: (AccountStatus)status
+{
+    //用户信息完美
+    if (status == Login)
+    {
+        return;
+    }
+    UIView *backView = [[UIView alloc]init];
+    backView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:backView];
+    UILabel *promptLabel = [[UILabel alloc]init];
+    [backView addSubview:promptLabel];
+    UIButton *improveBtn = [[UIButton alloc]init];
+    [backView addSubview:improveBtn];
+    [improveBtn setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
+    //用户未实名
+    if (status == UnRegistRealName)
+    {
+        promptLabel.text = @"您未实名认证无法租借设备";
+        improveBtn.tag = status;
+        [improveBtn setTitle:@"立即认证" forState:UIControlStateNormal];
+        [improveBtn addTarget:self action:@selector(improveBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
+    }else if (status == UnPaidDeposit)
+    {
+        promptLabel.text = @"您未缴纳押金无法租借设备";
+        improveBtn.tag = status;
+        [improveBtn setTitle:@"立即缴纳" forState:UIControlStateNormal];
+        [improveBtn addTarget:self action:@selector(improveBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    [backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(64);
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(60);
+    }];
+    
+    [promptLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(backView.mas_centerY);
+        make.left.equalTo(backView.mas_left).offset(Margin);
+    }];
+    
+    [improveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(backView.mas_centerY);
+        make.right.equalTo(backView.mas_right).offset(-Margin);
+        make.width.mas_equalTo(80);
+        make.height.mas_equalTo(40);
+    }];
+    
+    
+    
+}
+
 - (void)mapBtnDidClicking: (UIButton *)sender
 {
     [self.mapVC startGetUserPosition];
@@ -185,6 +264,25 @@
     [self.navigationController pushViewController:scanBitCodeVC animated:YES];
 }
 
+- (void)newsCenterBtnDidClicking
+{
+    WLNewsCenterViewController *newsCenterVC = [[WLNewsCenterViewController alloc]init];
+    [self.navigationController pushViewController:newsCenterVC animated:YES];
+}
+
+- (void)improveBtnDidClicking: (UIButton *)sender
+{
+    if (sender.tag == UnRegistRealName)
+    {
+        WLRealNameIdentifyViewController *realNameIdentifyVC = [[WLRealNameIdentifyViewController alloc]init];
+        realNameIdentifyVC.shouldPopBack = YES;
+        [self.navigationController pushViewController:realNameIdentifyVC animated:YES];
+    }else if (sender.tag == UnPaidDeposit)
+    {
+        NSLog(@"跳转交押金页面");
+    }
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

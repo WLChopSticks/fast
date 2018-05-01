@@ -8,15 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class WLDataModel;
-@interface WLQuickLoginModel : NSObject
-
-@property (nonatomic, strong) NSString *code;
-@property (nonatomic, strong) WLDataModel *data;
-@property (nonatomic, strong) NSString *message;
-
-@end
-
 @interface WLDataModel : NSObject
 
 @property (nonatomic, strong) NSString *user_id;
@@ -31,3 +22,15 @@
 @property (nonatomic, strong) NSString *yj;
 
 @end
+
+@interface WLQuickLoginModel : NSObject
+
+@property (nonatomic, strong) NSString *code;
+@property (nonatomic, strong) WLDataModel *data;
+@property (nonatomic, strong) NSString *message;
+
++ (instancetype)getQuickLoginModel: (NSDictionary *)dict;
+
+@end
+
+

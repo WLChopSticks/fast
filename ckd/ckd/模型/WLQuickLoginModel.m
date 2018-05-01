@@ -7,9 +7,16 @@
 //
 
 #import "WLQuickLoginModel.h"
+#import <MJExtension.h>
 
 @implementation WLQuickLoginModel
 
-
++ (instancetype)getQuickLoginModel:(NSDictionary *)dict
+{
+    WLQuickLoginModel *model = [[WLQuickLoginModel alloc]init];
+    model = [WLQuickLoginModel mj_objectWithKeyValues:dict];
+    
+    return model;
+}
 
 @end

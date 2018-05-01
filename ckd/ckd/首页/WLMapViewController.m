@@ -63,19 +63,6 @@
 }
 
 #pragma -mark 代理方法
--(void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
-{
-    [self.mapView setCenterCoordinate:userLocation.location.coordinate animated:YES];
-    [self.mapView updateLocationData:userLocation];
-    [self.locService stopUserLocationService];
-    
-//    self.pointAnnotation = [[BMKPointAnnotation alloc] init];
-//    self.pointAnnotation.coordinate = userLocation.location.coordinate;
-//    self.pointAnnotation.title = @"我在这个地方";
-//    self.pointAnnotation.subtitle = @"你在哪呢";
-//    [self.mapView addAnnotation:_pointAnnotation];
-//    [self.mapView selectAnnotation:_pointAnnotation animated:YES];
-}
 
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation
 {

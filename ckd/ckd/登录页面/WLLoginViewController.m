@@ -13,6 +13,7 @@
 #import "WLHomeViewController.h"
 #import "WLBaseNavigationViewController.h"
 #import "WLQuickLoginModel.h"
+#import "WLRealNameIdentifyViewController.h"
 
 @interface WLLoginViewController ()<LoginviewDelegate>
 
@@ -81,6 +82,7 @@
 -(void)LoginView:(WLLoginView *)view loginBtnDidclicking:(UIButton *)sender
 {
     NSLog(@"登录按钮点击");
+    [self.loginView.checkNumberField resignFirstResponder];
     [ProgressHUD show:@"Please wait..."];
     if (self.loginView.checkNumberField.text.length == 0)
     {
@@ -96,24 +98,45 @@
         WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
         [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
             NSDictionary *result = (NSDictionary *)responseObject;
-            [ProgressHUD dismiss];
+            [ProgressHUD showSuccess];
             WLQuickLoginModel *quickLoginModel = [WLQuickLoginModel mj_objectWithKeyValues:result];
-            if ([result[@"code"]integerValue] == 1)
+            if ([quickLoginModel.code isEqualToString:@"1"])
             {
-                NSLog(@"登录成功");
+                //存储登录状态
                 [WLUtilities setUserLogin];
-                WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
-                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate ];
-                WLBaseNavigationViewController *nav = [[WLBaseNavigationViewController alloc]initWithRootViewController:homeVC];
-                appDelegate.window.rootViewController = nav;
-                [appDelegate.window makeKeyAndVisible];
                 
+//                NSString *user_id = quickLoginModel.data.user_id;
+                NSString *user_id = @"832f5a6d612c4d23b702f28de7018ab0";
+                [WLUtilities saveUserID:user_id];
+                //是否实名认证
+                if ([quickLoginModel.message isEqualToString:@"请先去认证"])
+                {
+                    NSLog(@"跳转实名认证界面");
+                    WLRealNameIdentifyViewController *realNameIdentifyVC = [[WLRealNameIdentifyViewController alloc]init];
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate ];
+                    WLBaseNavigationViewController *nav = [[WLBaseNavigationViewController alloc]initWithRootViewController:realNameIdentifyVC];
+                    appDelegate.window.rootViewController = nav;
+                    [appDelegate.window makeKeyAndVisible];
+                    
+                }else
+                {
+                    NSLog(@"登录成功");
+                    
+                    WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate ];
+//                    [APP jumpToHomeVC];
+                    WLBaseNavigationViewController *nav = [[WLBaseNavigationViewController alloc]initWithRootViewController:homeVC];
+                    appDelegate.window.rootViewController = nav;
+                    [appDelegate.window makeKeyAndVisible];
+                }
             }else
             {
                 NSLog(@"登录失败");
+                [ProgressHUD showError:quickLoginModel.message];
             }
             
         } failure:^(NSError *error) {
+            [ProgressHUD showError:@"登录失败"];
             NSLog(@"登录失败");
         }];
     }

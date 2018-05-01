@@ -29,6 +29,9 @@
 #import "WLBaseUIViewController.h"
 #import "WLBaseNavigationViewController.h"
 
+#define APP (AppDelegate *)[[UIApplication sharedApplication]delegate ]
+
+
 //屏幕尺寸
 #define Screen_Bounds [UIScreen mainScreen].bounds
 #define Screen_Size [UIScreen mainScreen].bounds.size

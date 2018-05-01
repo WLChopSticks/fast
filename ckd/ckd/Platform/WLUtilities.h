@@ -12,4 +12,12 @@
 
 + (BOOL)isUserLogin;
 + (void)setUserLogin;
++ (BOOL)isUserRealNameRegist;
++ (void)setUserNameRegist;
++ (BOOL)isUserDepositPaid;
++ (void)setUserDepositPaid;
+
++(void)saveUserID: (NSString *)user_id;
++ (NSString *)getUserID;
+
 @end
