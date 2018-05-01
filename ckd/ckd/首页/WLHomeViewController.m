@@ -13,6 +13,7 @@
 #import "MapViewBaseDemoViewController.h"
 #import "WLMapViewController.h"
 #import "WLScanBitCodeViewController.h"
+#import "WLChargerStationModel.h"
 
 
 
@@ -41,9 +42,37 @@
     //功能按钮布局
     [self decorateFunctionsButtons];
     
+    //请求充电站的位置节点
+    [self aquireChargerStations];
     
     
     
+}
+
+- (void)aquireChargerStations
+{
+    [ProgressHUD show];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+//    NSString *user_phone_string = [NSString stringWithFormat:@"{user_phone:%@}",telephone];
+//    [parameters setObject:user_phone_string forKey:@"inputParameter"];
+    NSString *URL = @"http://47.104.85.148:18070/ckdhd/quickCs.action";
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        [ProgressHUD dismiss];
+        NSDictionary *result = (NSDictionary *)responseObject;
+        WLChargerStationModel *charrgerStationModel = [[WLChargerStationModel alloc]init];
+        charrgerStationModel = [charrgerStationModel getChargerStationModel:result];
+        if ([result[@"code"]integerValue] == 1)
+        {
+            NSLog(@"查询城市信息成功");
+        }else
+        {
+            NSLog(@"查询城市信息成功");
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"查询城市信息成功");
+    }];
 }
 
 - (void)decorateNavigationBar

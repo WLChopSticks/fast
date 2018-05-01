@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "WLHomeViewController.h"
 #import "WLBaseNavigationViewController.h"
+#import "WLQuickLoginModel.h"
 
 @interface WLLoginViewController ()<LoginviewDelegate>
 
@@ -35,6 +36,7 @@
 -(void)LoginView:(WLLoginView *)view aquireCheckNumBtnDidclicking:(UIButton *)sender
 {
     NSLog(@"请求验证码");
+
     /*
      manager.responseSerializer = [AFHTTPResponseSerializer serializer];
      manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html", nil];
@@ -79,6 +81,7 @@
 -(void)LoginView:(WLLoginView *)view loginBtnDidclicking:(UIButton *)sender
 {
     NSLog(@"登录按钮点击");
+    [ProgressHUD show:@"Please wait..."];
     if (self.loginView.checkNumberField.text.length == 0)
     {
         NSLog(@"请输入验证码");
@@ -93,6 +96,8 @@
         WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
         [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
             NSDictionary *result = (NSDictionary *)responseObject;
+            [ProgressHUD dismiss];
+            WLQuickLoginModel *quickLoginModel = [WLQuickLoginModel mj_objectWithKeyValues:result];
             if ([result[@"code"]integerValue] == 1)
             {
                 NSLog(@"登录成功");
