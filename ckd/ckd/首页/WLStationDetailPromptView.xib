@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WLStationDetailPromptView"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="d4S-bn-GVp" customClass="WLStationDetailPromptView">
             <rect key="frame" x="0.0" y="0.0" width="427" height="117"/>
@@ -48,6 +48,9 @@
                         <constraint firstAttribute="width" constant="40" id="Sth-tW-nMB"/>
                     </constraints>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="collectionBtnDidClicking:" destination="-1" eventType="touchUpInside" id="w2f-jY-msH"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,6 +66,13 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="wsx-x9-wGT"/>
+            <connections>
+                <outlet property="chargerCount" destination="LWr-Gm-Z4c" id="5Dv-Nd-Lil"/>
+                <outlet property="collectionBtn" destination="iVY-Zl-S1E" id="s76-kB-2NN"/>
+                <outlet property="stationAddress" destination="Aya-sQ-Sqt" id="puO-23-6uf"/>
+                <outlet property="stationName" destination="f14-N7-ArF" id="B91-Ia-ZYc"/>
+                <outlet property="stationTelephone" destination="A3D-8j-fpJ" id="T4X-9s-OrA"/>
+            </connections>
             <point key="canvasLocation" x="-40.5" y="61.5"/>
         </view>
     </objects>

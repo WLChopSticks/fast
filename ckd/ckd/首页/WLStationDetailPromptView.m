@@ -30,6 +30,10 @@
     return self;
     
 }
+- (IBAction)collectionBtnDidClicking:(id)sender
+{
+    NSLog(@"收藏按钮点击了");
+}
 
 + (instancetype)instanceView
 {
