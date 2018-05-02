@@ -7,7 +7,9 @@
 //
 
 #import "WLMapViewController.h"
+#import "WLPlatform.h"
 #import "WLMapAnnotationView.h"
+#import "WLPointAnnotation.h"
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 #import <BaiduMapAPI_Location/BMKLocationComponent.h>
@@ -16,6 +18,7 @@
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>
 #import <BaiduMapAPI_Utils/BMKUtilsComponent.h>
 #import "WLEachChargerStationModel.h"
+#import "WLStationDetailPromptView.h"
 
 @interface WLMapViewController ()<BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate>
 
@@ -88,7 +91,45 @@
     if (newAnnotationView == nil) {
         newAnnotationView = [[WLMapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"available"];
     }
+
+    newAnnotationView.enabled = YES;
+    newAnnotationView.annotation = annotation;
+    
+    UIButton *touchBtn = [[UIButton alloc]initWithFrame:newAnnotationView.bounds];
+    touchBtn.backgroundColor = [UIColor clearColor];
+    touchBtn.tag = newAnnotationView.tag;
+    [touchBtn addTarget:self action:@selector(annotationDidClicking:) forControlEvents:UIControlEventTouchUpInside];
+    [newAnnotationView addSubview:touchBtn];
+//    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(annotationDidClicking:)];
+//    [newAnnotationView addGestureRecognizer:gesture];
+//    WLPointAnnotation *myAnnotation = annotation;
+//    newAnnotationView.tag = myAnnotation.tag;
     return newAnnotationView;
+}
+
+- (void)annotationDidClicking: (UIButton *)sender
+{
+    NSLog(@"123");
+    NSLog(@"%ld",(long)sender.tag);
+    [self showStationInfoPrompt:sender.tag];
+}
+
+-(void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
+{
+    NSLog(@"123");
+}
+
+- (void)showStationInfoPrompt: (NSInteger)index
+{
+//    UIView *stationInfoPromtView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Screen_Width, 60)];
+//    WLStationDetailPromptView * stationInfoPromtView = [[[NSBundle mainBundle]loadNibNamed:@"WLStationDetailPromptView" owner:nil options:nil]lastObject];
+    WLStationDetailPromptView *stationInfoPromtView = [WLStationDetailPromptView instanceView];
+    //    WLStationDetailPromptView * stationInfoPromtView = [[WLStationDetailPromptView alloc]init];
+    stationInfoPromtView.frame = CGRectMake(0, 0, Screen_Width, 160);
+    stationInfoPromtView.backgroundColor = [UIColor redColor];
+    stationInfoPromtView.stationName.text = @"123";
+    [self.view.superview addSubview:stationInfoPromtView];
+    
 }
 
 -(void)getLocationOfStationsInCurrentCity
@@ -99,9 +140,11 @@
         [self.mapView removeAnnotations:self.displayingAnnomation];
     }
     //将每个大头针显示在地图上
-    for (WLEachChargerStationInfoModel *model in self.LocationOfStations)
+    for (int i = 0; i < self.LocationOfStations.count; i++)
     {
-        BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
+        WLEachChargerStationInfoModel *model = self.LocationOfStations[i];
+        WLPointAnnotation* annotation = [[WLPointAnnotation alloc]init];
+        annotation.tag = i;
         CLLocationCoordinate2D coor;
         coor.latitude = model.zdwd.floatValue;
         coor.longitude = model.zdjd.floatValue;

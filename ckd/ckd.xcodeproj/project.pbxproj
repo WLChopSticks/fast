@@ -31,6 +31,9 @@
 		9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776BB20995C1D0068D5C1 /* WLWePay.m */; };
 		9B9776BF20995CD50068D5C1 /* WLInitPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776BE20995CD50068D5C1 /* WLInitPayModel.m */; };
 		9B9776C2209989720068D5C1 /* WLEachChargerStationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776C1209989720068D5C1 /* WLEachChargerStationModel.m */; };
+		9B9776C82099A5400068D5C1 /* WLPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776C72099A5400068D5C1 /* WLPointAnnotation.m */; };
+		9B9776CB2099AEEC0068D5C1 /* WLStationDetailPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776CA2099AEEC0068D5C1 /* WLStationDetailPromptView.m */; };
+		9B9776CD2099AEFC0068D5C1 /* WLStationDetailPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B9776CC2099AEFC0068D5C1 /* WLStationDetailPromptView.xib */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.mm */; };
 		9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC5209447200076DDB7 /* Main.storyboard */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
@@ -111,6 +114,11 @@
 		9B9776BE20995CD50068D5C1 /* WLInitPayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLInitPayModel.m; sourceTree = "<group>"; };
 		9B9776C0209989720068D5C1 /* WLEachChargerStationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLEachChargerStationModel.h; sourceTree = "<group>"; };
 		9B9776C1209989720068D5C1 /* WLEachChargerStationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLEachChargerStationModel.m; sourceTree = "<group>"; };
+		9B9776C62099A5400068D5C1 /* WLPointAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLPointAnnotation.h; sourceTree = "<group>"; };
+		9B9776C72099A5400068D5C1 /* WLPointAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLPointAnnotation.m; sourceTree = "<group>"; };
+		9B9776C92099AEEC0068D5C1 /* WLStationDetailPromptView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLStationDetailPromptView.h; sourceTree = "<group>"; };
+		9B9776CA2099AEEC0068D5C1 /* WLStationDetailPromptView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLStationDetailPromptView.m; sourceTree = "<group>"; };
+		9B9776CC2099AEFC0068D5C1 /* WLStationDetailPromptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLStationDetailPromptView.xib; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -306,6 +314,11 @@
 				9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */,
 				9B720DB7209759E400D88704 /* WLMapAnnotationView.h */,
 				9B720DB8209759E400D88704 /* WLMapAnnotationView.m */,
+				9B9776C62099A5400068D5C1 /* WLPointAnnotation.h */,
+				9B9776C72099A5400068D5C1 /* WLPointAnnotation.m */,
+				9B9776C92099AEEC0068D5C1 /* WLStationDetailPromptView.h */,
+				9B9776CA2099AEEC0068D5C1 /* WLStationDetailPromptView.m */,
+				9B9776CC2099AEFC0068D5C1 /* WLStationDetailPromptView.xib */,
 				9B4CEDB620974A3700F20FB5 /* MapViewBaseDemoViewController.h */,
 				9B4CEDB720974A3700F20FB5 /* MapViewBaseDemoViewController.mm */,
 			);
@@ -484,6 +497,7 @@
 				9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */,
 				9B01A0292095FCBA00365BB8 /* WLProfileItemsCell.xib in Resources */,
 				9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */,
+				9B9776CD2099AEFC0068D5C1 /* WLStationDetailPromptView.xib in Resources */,
 				9B01A03620960D6800365BB8 /* WLSettingsViewController.storyboard in Resources */,
 				9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */,
 				9B006B2820985AE400CDEFD0 /* WLRealNameIdentifyCell.xib in Resources */,
@@ -576,8 +590,10 @@
 				9B9776BF20995CD50068D5C1 /* WLInitPayModel.m in Sources */,
 				9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */,
 				9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */,
+				9B9776C82099A5400068D5C1 /* WLPointAnnotation.m in Sources */,
 				9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */,
 				9B006B2620985AA000CDEFD0 /* WLRealNameIdentifyCell.m in Sources */,
+				9B9776CB2099AEEC0068D5C1 /* WLStationDetailPromptView.m in Sources */,
 				9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */,
 				9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */,
 				9B01A03420960D5A00365BB8 /* WLSettingsViewController.m in Sources */,
