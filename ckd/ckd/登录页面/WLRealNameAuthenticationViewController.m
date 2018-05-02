@@ -66,6 +66,7 @@
             NSLog(@"完善个人资料成功");
             [ProgressHUD showSuccess:[NSString stringWithFormat:@"%@",result[@"message"]]];
             [WLUtilities setUserNameRegist];
+            [WLUtilities savuserName:self.name];
             [WLUtilities saveCurrentCityCode:self.currentCity.csdm andCityName:self.currentCity.csmc];
             [self jumpToPaidDepositVC];
         }

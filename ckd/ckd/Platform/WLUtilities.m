@@ -59,6 +59,18 @@
     return [def objectForKey:@"user_id"];
 }
 
++(void)savuserName:(NSString *)user_name
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def setObject:user_name forKey:@"user_name"];
+}
+
++(NSString *)getUserName
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    return [def objectForKey:@"user_name"];
+}
+
 +(void)saveCurrentCityCode:(NSString *)cityCode andCityName:(NSString *)cityName
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];

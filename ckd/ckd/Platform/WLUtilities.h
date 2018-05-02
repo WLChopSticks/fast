@@ -23,6 +23,9 @@
 +(NSString *)getCurrentCityCode;
 +(NSString *)getCurrentCityName;
 
++(void)savuserName: (NSString *)user_name;
++ (NSString *)getUserName;
+
 + (NSString *)getNowTimeTimestamp;
 
 

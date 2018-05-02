@@ -46,7 +46,7 @@
     //用户名字
     UILabel *userNameLabel = [[UILabel alloc]init];
     [userNameLabel setTextColor:[UIColor whiteColor]];
-    userNameLabel.text = @"名字";
+    userNameLabel.text = [WLUtilities getUserName].length > 0 ? [WLUtilities getUserName] : @"";
     [self addSubview:userNameLabel];
     
     //用户头像
