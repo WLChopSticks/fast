@@ -14,9 +14,10 @@
 #import "WLMapViewController.h"
 #import "WLScanBitCodeViewController.h"
 #import "WLChargerStationModel.h"
-#import "WLRealNameIdentifyViewController.h"
+#import "WLRealNameAuthenticationViewController.h"
 #import "WLNewsCenterViewController.h"
 #import "WLEachChargerStationModel.h"
+#import "WLPaidDepositViewController.h"
 
 typedef enum : NSUInteger {
     UnRegistRealName,
@@ -225,6 +226,12 @@ typedef enum : NSUInteger {
         improveBtn.tag = status;
         [improveBtn setTitle:@"立即缴纳" forState:UIControlStateNormal];
         [improveBtn addTarget:self action:@selector(improveBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
+    }else if (status == Unlogin)
+    {
+        promptLabel.text = @"您未登录无法租借设备";
+        improveBtn.tag = status;
+        [improveBtn setTitle:@"立即登录" forState:UIControlStateNormal];
+        [improveBtn addTarget:self action:@selector(improveBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     [backView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -281,12 +288,17 @@ typedef enum : NSUInteger {
 {
     if (sender.tag == UnRegistRealName)
     {
-        WLRealNameIdentifyViewController *realNameIdentifyVC = [[WLRealNameIdentifyViewController alloc]init];
-        realNameIdentifyVC.shouldPopBack = YES;
+        WLRealNameAuthenticationViewController *realNameIdentifyVC = [[WLRealNameAuthenticationViewController alloc]init];
         [self.navigationController pushViewController:realNameIdentifyVC animated:YES];
     }else if (sender.tag == UnPaidDeposit)
     {
         NSLog(@"跳转交押金页面");
+        WLPaidDepositViewController *paidDepositVC = [[WLPaidDepositViewController alloc]init];
+        [self.navigationController pushViewController:paidDepositVC animated:YES];
+    }else if (sender.tag == Unlogin)
+    {
+        WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
+        [self.navigationController pushViewController:loginVC animated:YES];
     }
     
 }

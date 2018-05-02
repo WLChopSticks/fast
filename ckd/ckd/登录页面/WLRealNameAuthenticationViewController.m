@@ -1,71 +1,54 @@
 //
-//  WLRealNameIdentifyViewController.m
+//  WLRealNameAuthenticationViewController.m
 //  ckd
 //
-//  Created by 王磊 on 2018/5/1.
+//  Created by 王磊 on 2018/5/2.
 //  Copyright © 2018年 wanglei. All rights reserved.
 //
 
-#import "WLRealNameIdentifyViewController.h"
-#import "WLPlatform.h"
-#import "WLRealNameIdentifyCell.h"
+#import "WLRealNameAuthenticationViewController.h"
 #import "WLChargerStationModel.h"
-#import "AppDelegate.h"
+#import "WLPlatform.h"
+#import "WLPaidDepositViewController.h"
 
 #define Cell_Height 50
 
-@interface WLRealNameIdentifyViewController ()<UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
+@interface WLRealNameAuthenticationViewController ()<UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *realNameTableView;
+
+@property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 
 @property (nonatomic, strong) NSArray *cityList;
 @property (nonatomic, strong) UITextField *currentCityField;
-@property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, strong) WLCityData *currentCity;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *ID_number;
 
+
+
+
 @end
 
-@implementation WLRealNameIdentifyViewController
+@implementation WLRealNameAuthenticationViewController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [super viewWillAppear:animated];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self decorateUI];
-
+    // Do any additional setup after loading the view from its nib.
+//    [self.realNameTableView reloadData];
 }
 
-- (void)decorateUI
-{
-    self.title = @"实名认证";
-    self.view.backgroundColor = LightGrayBackground;
-    
-    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 100, 100) style:UITableViewStylePlain];
-    self.tableView = tableView;
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [self.view addSubview:tableView];
-    
-    UIButton *submitBtn = [[UIButton alloc]init];
-    [submitBtn setTitle:@"提交" forState:UIControlStateNormal];
-    [submitBtn setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
-    [submitBtn addTarget:self action:@selector(submitBtnDidClicking) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:submitBtn];
-
-    [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top);
-        make.left.right.equalTo(self.view);
-        make.height.mas_equalTo(Cell_Height * 3 + 64);
-    }];
-    
-    [submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(tableView.mas_bottom).offset(Margin * 5);
-        make.left.equalTo(self.view.mas_left).offset(Margin);
-        make.right.equalTo(self.view.mas_right).offset(-Margin);
-        make.height.mas_equalTo(Cell_Height);
-    }];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
-
-- (void)submitBtnDidClicking
+- (IBAction)nextBtnDidClicking:(id)sender
 {
     NSLog(@"提交按钮点击了");
     
@@ -84,20 +67,19 @@
             [ProgressHUD showSuccess:[NSString stringWithFormat:@"%@",result[@"message"]]];
             [WLUtilities setUserNameRegist];
             [WLUtilities saveCurrentCityCode:self.currentCity.csdm andCityName:self.currentCity.csmc];
-            
+            [self jumpToPaidDepositVC];
         }
         else
         {
             NSLog(@"完善个人资料失败");
             [ProgressHUD showError:[NSString stringWithFormat:@"%@",result[@"message"]]];
         }
-
+        
     } failure:^(NSError *error) {
         NSLog(@"完善个人资料失败");
         [ProgressHUD showError:[NSString stringWithFormat:@"%@",error.description]];
         
     }];
-    
 }
 
 - (void)aquireCityList:(void (^)(NSNumber *))completeQuery
@@ -116,8 +98,8 @@
         if ([chargerStationModel.code isEqualToString:@"1"])
         {
             NSLog(@"查询城市信息成功");
-//            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//            [defaults setObject:chargerStationModel.data forKey:@"cityList"];
+            //            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            //            [defaults setObject:chargerStationModel.data forKey:@"cityList"];
             self.cityList= chargerStationModel.data;
             completeQuery([NSNumber numberWithBool:YES]);
         }else
@@ -227,12 +209,12 @@
             make.height.with.mas_equalTo(20);
         }];
     }
-//    WLRealNameIdentifyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"realNameCell"];
-//    if (cell == nil)
-//    {
-//        cell = [[[NSBundle mainBundle]loadNibNamed:@"WLRealNameIdentifyCell" owner:nil options:nil]lastObject];
-//    }
-//    cell.textLabel.text = @"123";
+    //    WLRealNameIdentifyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"realNameCell"];
+    //    if (cell == nil)
+    //    {
+    //        cell = [[[NSBundle mainBundle]loadNibNamed:@"WLRealNameIdentifyCell" owner:nil options:nil]lastObject];
+    //    }
+    //    cell.textLabel.text = @"123";
     return cell;
 }
 
@@ -249,19 +231,14 @@
                 NSLog(@"请求城市列表失败");
             }
         }];
-       
-       
+        
+        
     }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return Cell_Height;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma --mark pickerview
@@ -289,8 +266,6 @@
 // pickerView 每列个数
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    
-    
     return self.cityList.count;
 }
 
@@ -306,7 +281,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     self.currentCity = self.cityList[row];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    [self.realNameTableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
     
     [pickerView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(0);
@@ -333,6 +308,12 @@
     {
         self.ID_number = textField.text;
     }
+}
+
+- (void)jumpToPaidDepositVC
+{
+    WLPaidDepositViewController *paidDepositVC = [[WLPaidDepositViewController alloc]init];
+    [self.navigationController pushViewController:paidDepositVC animated:YES];
 }
 
 

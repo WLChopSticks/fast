@@ -17,7 +17,5 @@
 @property (nonatomic, strong) NSString *user_id;
 
 
-- (void)jumpToHomeVC;
-
 @end
 

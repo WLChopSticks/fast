@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B0013CB209A00150081F65D /* WLRealNameAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0013C9209A00150081F65D /* WLRealNameAuthenticationViewController.m */; };
+		9B0013CC209A00150081F65D /* WLRealNameAuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B0013CA209A00150081F65D /* WLRealNameAuthenticationViewController.xib */; };
+		9B0013CF209A03980081F65D /* WLBootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0013CE209A03980081F65D /* WLBootViewController.m */; };
+		9B0013D3209A08020081F65D /* WLPaidDepositViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0013D1209A08020081F65D /* WLPaidDepositViewController.m */; };
+		9B0013D4209A08020081F65D /* WLPaidDepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B0013D2209A08020081F65D /* WLPaidDepositViewController.xib */; };
 		9B006B122097F69700CDEFD0 /* WLQuickLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B006B112097F69700CDEFD0 /* WLQuickLoginModel.m */; };
 		9B006B152097FC3200CDEFD0 /* WLChargerStationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B006B142097FC3200CDEFD0 /* WLChargerStationModel.m */; };
 		9B006B232098561300CDEFD0 /* WLRealNameIdentifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B006B222098561300CDEFD0 /* WLRealNameIdentifyViewController.m */; };
@@ -69,6 +74,14 @@
 /* Begin PBXFileReference section */
 		1C55BFB4F50FBC05650FEF77 /* libPods-ckd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ckd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70750EA903547B5CF0F8D141 /* Pods-ckd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ckd.release.xcconfig"; path = "Pods/Target Support Files/Pods-ckd/Pods-ckd.release.xcconfig"; sourceTree = "<group>"; };
+		9B0013C8209A00150081F65D /* WLRealNameAuthenticationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLRealNameAuthenticationViewController.h; sourceTree = "<group>"; };
+		9B0013C9209A00150081F65D /* WLRealNameAuthenticationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLRealNameAuthenticationViewController.m; sourceTree = "<group>"; };
+		9B0013CA209A00150081F65D /* WLRealNameAuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLRealNameAuthenticationViewController.xib; sourceTree = "<group>"; };
+		9B0013CD209A03980081F65D /* WLBootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLBootViewController.h; sourceTree = "<group>"; };
+		9B0013CE209A03980081F65D /* WLBootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLBootViewController.m; sourceTree = "<group>"; };
+		9B0013D0209A08020081F65D /* WLPaidDepositViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLPaidDepositViewController.h; sourceTree = "<group>"; };
+		9B0013D1209A08020081F65D /* WLPaidDepositViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLPaidDepositViewController.m; sourceTree = "<group>"; };
+		9B0013D2209A08020081F65D /* WLPaidDepositViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLPaidDepositViewController.xib; sourceTree = "<group>"; };
 		9B006B102097F69700CDEFD0 /* WLQuickLoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLQuickLoginModel.h; sourceTree = "<group>"; };
 		9B006B112097F69700CDEFD0 /* WLQuickLoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLQuickLoginModel.m; sourceTree = "<group>"; };
 		9B006B132097FC3200CDEFD0 /* WLChargerStationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLChargerStationModel.h; sourceTree = "<group>"; };
@@ -349,6 +362,8 @@
 				9BB5BDF5209453850076DDB7 /* WLBaseNavigationViewController.m */,
 				9BB5BDF7209453C90076DDB7 /* WLBaseUIViewController.h */,
 				9BB5BDF8209453C90076DDB7 /* WLBaseUIViewController.m */,
+				9B0013CD209A03980081F65D /* WLBootViewController.h */,
+				9B0013CE209A03980081F65D /* WLBootViewController.m */,
 				9B4552FE2096F31F00C6C447 /* WLNetworkTool.h */,
 				9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */,
 				9B4553012096F3B000C6C447 /* WLUtilities.h */,
@@ -364,6 +379,12 @@
 				9BB5BE0320946E270076DDB7 /* WLLoginViewController.m */,
 				9B01A01F2095DB9400365BB8 /* WLLoginView.h */,
 				9B01A0202095DB9400365BB8 /* WLLoginView.m */,
+				9B0013C8209A00150081F65D /* WLRealNameAuthenticationViewController.h */,
+				9B0013C9209A00150081F65D /* WLRealNameAuthenticationViewController.m */,
+				9B0013CA209A00150081F65D /* WLRealNameAuthenticationViewController.xib */,
+				9B0013D0209A08020081F65D /* WLPaidDepositViewController.h */,
+				9B0013D1209A08020081F65D /* WLPaidDepositViewController.m */,
+				9B0013D2209A08020081F65D /* WLPaidDepositViewController.xib */,
 			);
 			path = "登录页面";
 			sourceTree = "<group>";
@@ -496,9 +517,11 @@
 			files = (
 				9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */,
 				9B01A0292095FCBA00365BB8 /* WLProfileItemsCell.xib in Resources */,
+				9B0013CC209A00150081F65D /* WLRealNameAuthenticationViewController.xib in Resources */,
 				9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */,
 				9B9776CD2099AEFC0068D5C1 /* WLStationDetailPromptView.xib in Resources */,
 				9B01A03620960D6800365BB8 /* WLSettingsViewController.storyboard in Resources */,
+				9B0013D4209A08020081F65D /* WLPaidDepositViewController.xib in Resources */,
 				9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */,
 				9B006B2820985AE400CDEFD0 /* WLRealNameIdentifyCell.xib in Resources */,
 			);
@@ -575,9 +598,11 @@
 				9BB5BE0420946E270076DDB7 /* WLLoginViewController.m in Sources */,
 				9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */,
 				9B4552FD2096DB3400C6C447 /* WLProfileDetailsViewController.m in Sources */,
+				9B0013CF209A03980081F65D /* WLBootViewController.m in Sources */,
 				9B006B152097FC3200CDEFD0 /* WLChargerStationModel.m in Sources */,
 				9B006B232098561300CDEFD0 /* WLRealNameIdentifyViewController.m in Sources */,
 				9B9776C2209989720068D5C1 /* WLEachChargerStationModel.m in Sources */,
+				9B0013CB209A00150081F65D /* WLRealNameAuthenticationViewController.m in Sources */,
 				9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */,
 				9B01A03B209617AF00365BB8 /* WLSettings.m in Sources */,
 				9B01A0242095F57C00365BB8 /* WLProfileView.m in Sources */,
@@ -588,6 +613,7 @@
 				9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */,
 				9B006B302098BA6D00CDEFD0 /* WLMyAccountController.m in Sources */,
 				9B9776BF20995CD50068D5C1 /* WLInitPayModel.m in Sources */,
+				9B0013D3209A08020081F65D /* WLPaidDepositViewController.m in Sources */,
 				9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */,
 				9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */,
 				9B9776C82099A5400068D5C1 /* WLPointAnnotation.m in Sources */,
@@ -763,11 +789,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SX6PFU3TZD;
+				DEVELOPMENT_TEAM = 4ZXGZQVLGT;
 				INFOPLIST_FILE = ckd/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaixin.ckdhd;
+				PRODUCT_BUNDLE_IDENTIFIER = wang.hehe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -781,11 +807,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SX6PFU3TZD;
+				DEVELOPMENT_TEAM = 4ZXGZQVLGT;
 				INFOPLIST_FILE = ckd/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaixin.ckdhd;
+				PRODUCT_BUNDLE_IDENTIFIER = wang.hehe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -13,7 +13,7 @@
 #import "WLHomeViewController.h"
 #import "WLBaseNavigationViewController.h"
 #import "WLQuickLoginModel.h"
-#import "WLRealNameIdentifyViewController.h"
+#import "WLRealNameAuthenticationViewController.h"
 
 @interface WLLoginViewController ()<LoginviewDelegate>
 
@@ -22,6 +22,12 @@
 @end
 
 @implementation WLLoginViewController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [super viewWillAppear:animated];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -112,22 +118,16 @@
                 if ([quickLoginModel.message isEqualToString:@"请先去认证"])
                 {
                     NSLog(@"跳转实名认证界面");
-                    WLRealNameIdentifyViewController *realNameIdentifyVC = [[WLRealNameIdentifyViewController alloc]init];
-                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate ];
-                    WLBaseNavigationViewController *nav = [[WLBaseNavigationViewController alloc]initWithRootViewController:realNameIdentifyVC];
-                    appDelegate.window.rootViewController = nav;
-                    [appDelegate.window makeKeyAndVisible];
+                    WLRealNameAuthenticationViewController *realNameIdentifyVC = [[WLRealNameAuthenticationViewController alloc]init];
+                    [self.navigationController pushViewController:realNameIdentifyVC animated:YES];
                     
                 }else
                 {
                     NSLog(@"登录成功");
-                    
-                    WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
-                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate ];
-//                    [APP jumpToHomeVC];
-                    WLBaseNavigationViewController *nav = [[WLBaseNavigationViewController alloc]initWithRootViewController:homeVC];
-                    appDelegate.window.rootViewController = nav;
-                    [appDelegate.window makeKeyAndVisible];
+                    WLRealNameAuthenticationViewController *realNameIdentifyVC = [[WLRealNameAuthenticationViewController alloc]init];
+                    [self.navigationController pushViewController:realNameIdentifyVC animated:YES];
+//                    WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
+//                    [self.navigationController pushViewController:homeVC animated:YES];
                 }
             }else
             {

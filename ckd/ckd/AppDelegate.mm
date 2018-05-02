@@ -9,9 +9,8 @@
 #import "AppDelegate.h"
 #import "WLPlatform.h"
 #import "WLBaseNavigationViewController.h"
-#import "WLHomeViewController.h"
-#import "WLLoginViewController.h"
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
+#import "WLBootViewController.h"
 
 #import "WLQuickLoginModel.h"
 #import "WLWePay.h"
@@ -29,24 +28,26 @@ BMKMapManager* _mapManager;
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:Screen_Bounds];
     //判断是否处于登录状态, 如果不, 则显示手机号码登录页面, 否则呈现首页
-    if ([WLUtilities isUserLogin])
+//    if ([WLUtilities isUserLogin])
     {
         
-        [self startBaiduMap];
-        [self jumpToHomeVC];
+//        [self jumpToHomeVC];
     }
-    else
-    {
-        WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
-        self.window.rootViewController = loginVC;
-        [self.window makeKeyAndVisible];
-    }
+//    else
+//    {
+//    }
+    WLBootViewController *bootVC = [[WLBootViewController alloc]init];
+    WLBaseNavigationViewController *nav = [[WLBaseNavigationViewController alloc]initWithRootViewController:bootVC];
+    self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
     
+    //注册百度地图
+    [self startBaiduMap];
     //向微信注册
     [WXApi registerApp:@"wx7e0a8fc77aeaf595"];
     
     WLWePay *we = [[WLWePay alloc]init];
-    [we createWePayRequestWithMoney:@"100"];
+//    [we createWePayRequestWithMoney:@"100"];
     
     return YES;
 }
@@ -152,13 +153,7 @@ BMKMapManager* _mapManager;
     }
 }
 
-- (void)jumpToHomeVC
-{
-    WLHomeViewController *vc = [[WLHomeViewController alloc]init];
-    WLBaseNavigationViewController *nav = [[WLBaseNavigationViewController alloc]initWithRootViewController:vc];
-    self.window.rootViewController = nav;
-    [self.window makeKeyAndVisible];
-}
+
 
 
 @end
