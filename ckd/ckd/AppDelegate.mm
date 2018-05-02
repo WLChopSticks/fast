@@ -29,18 +29,18 @@ BMKMapManager* _mapManager;
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:Screen_Bounds];
     //判断是否处于登录状态, 如果不, 则显示手机号码登录页面, 否则呈现首页
-//    if ([WLUtilities isUserLogin])
+    if ([WLUtilities isUserLogin])
     {
         
         [self startBaiduMap];
         [self jumpToHomeVC];
     }
-//    else
-//    {
-//        WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
-//        self.window.rootViewController = loginVC;
-//        [self.window makeKeyAndVisible];
-//    }
+    else
+    {
+        WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
+        self.window.rootViewController = loginVC;
+        [self.window makeKeyAndVisible];
+    }
     
     //向微信注册
     [WXApi registerApp:@""];
