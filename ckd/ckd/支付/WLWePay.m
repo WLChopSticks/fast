@@ -11,6 +11,8 @@
 #import "WLInitPayModel.h"
 #import <WXApi.h>
 
+#define PartnerId @"1503148131"
+
 @implementation WLWePay
 
 - (void)createWePayRequestWithMoney: (NSString *)fee
@@ -18,7 +20,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *total_fee = [NSString stringWithFormat:@"{total_fee:%@}",fee];
     [parameters setObject:total_fee forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/dlwlsj/addWxPayHy.action";
+    NSString *URL = @"http://47.104.85.148:18070/ckdhd/addWxPayHy.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
@@ -27,11 +29,15 @@
         {
             NSLog(@"初始化支付成功");
             PayReq *request = [[PayReq alloc] init];
-            request.partnerId = initPayModel.data.appid;
+    
+            request.partnerId = initPayModel.data.mch_id;
             request.prepayId= initPayModel.data.prepay_id;
             request.package = @"Sign=WXPay";
             request.nonceStr= initPayModel.data.nonce_str;
-            request.timeStamp= (UInt32)[[WLUtilities getNowTimeTimestamp]longLongValue];
+            NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+            NSTimeInterval a=[dat timeIntervalSince1970];
+            request.timeStamp= (UInt32)a;
+//            request.timeStamp= (UInt32)[[WLUtilities getNowTimeTimestamp]longLongValue / 1000];
             request.sign= initPayModel.data.sign;
             [WXApi sendReq:request];
         }else

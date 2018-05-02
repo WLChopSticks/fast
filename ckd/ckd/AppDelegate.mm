@@ -43,10 +43,10 @@ BMKMapManager* _mapManager;
     }
     
     //向微信注册
-    [WXApi registerApp:@""];
+    [WXApi registerApp:@"wx7e0a8fc77aeaf595"];
     
     WLWePay *we = [[WLWePay alloc]init];
-    [we createWePayRequestWithMoney:@"0.01"];
+    [we createWePayRequestWithMoney:@"100"];
     
     return YES;
 }

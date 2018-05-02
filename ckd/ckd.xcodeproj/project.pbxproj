@@ -761,13 +761,15 @@
 			baseConfigurationReference = CEE767F063C76A7AE601455B /* Pods-ckd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FL27D9E52C;
+				DEVELOPMENT_TEAM = SX6PFU3TZD;
 				INFOPLIST_FILE = ckd/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wang.hehe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaixin.ckdhd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -777,13 +779,15 @@
 			baseConfigurationReference = 70750EA903547B5CF0F8D141 /* Pods-ckd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FL27D9E52C;
+				DEVELOPMENT_TEAM = SX6PFU3TZD;
 				INFOPLIST_FILE = ckd/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wang.hehe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaixin.ckdhd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

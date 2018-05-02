@@ -8,6 +8,9 @@
 
 #import "WLInitPayModel.h"
 
+@implementation WLInitPayParametersModel
+@end
+
 @implementation WLInitPayModel
 
 +(instancetype)getInitPayModel:(NSDictionary *)dict
