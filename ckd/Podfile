@@ -8,4 +8,5 @@ pod 'BaiduMapKit'
 pod 'SGQRCode'
 pod 'ProgressHUD'
 pod 'MJExtension'
+pod 'WechatOpenSDK'
 end

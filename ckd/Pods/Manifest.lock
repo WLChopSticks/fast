@@ -19,6 +19,7 @@ PODS:
   - MJExtension (3.0.13)
   - ProgressHUD (2.51)
   - SGQRCode (2.2.0)
+  - WechatOpenSDK (1.8.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - MJExtension
   - ProgressHUD
   - SGQRCode
+  - WechatOpenSDK
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -36,6 +38,7 @@ SPEC REPOS:
     - MJExtension
     - ProgressHUD
     - SGQRCode
+    - WechatOpenSDK
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
@@ -44,7 +47,8 @@ SPEC CHECKSUMS:
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   ProgressHUD: 54b4c2fa202bf3da7dddc1c698ae4e6376333bd9
   SGQRCode: 6cd7f03ea6b74d1267820d427b07d1451b387c79
+  WechatOpenSDK: 676feec516a11173eafd1fe64b10d27babf28701
 
-PODFILE CHECKSUM: afe9439cd2d1620629508704a5e095591b3ef6f7
+PODFILE CHECKSUM: ca40a7ba5cd61328a67e145d01799d2e8d878c78
 
 COCOAPODS: 1.5.0

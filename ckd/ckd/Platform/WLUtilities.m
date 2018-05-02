@@ -59,4 +59,12 @@
     return [def objectForKey:@"user_id"];
 }
 
++(NSString *)getNowTimeTimestamp
+{
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a=[dat timeIntervalSince1970];
+    NSString*timeString = [NSString stringWithFormat:@"%0.f", a];//转为字符型
+    return timeString;
+}
+
 @end

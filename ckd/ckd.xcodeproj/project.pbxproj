@@ -28,6 +28,8 @@
 		9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */; };
 		9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DB8209759E400D88704 /* WLMapAnnotationView.m */; };
 		9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DBC209765D400D88704 /* WLScanBitCodeViewController.m */; };
+		9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776BB20995C1D0068D5C1 /* WLWePay.m */; };
+		9B9776BF20995CD50068D5C1 /* WLInitPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776BE20995CD50068D5C1 /* WLInitPayModel.m */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.mm */; };
 		9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC5209447200076DDB7 /* Main.storyboard */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
@@ -102,6 +104,10 @@
 		9B720DB8209759E400D88704 /* WLMapAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMapAnnotationView.m; sourceTree = "<group>"; };
 		9B720DBB209765D400D88704 /* WLScanBitCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLScanBitCodeViewController.h; sourceTree = "<group>"; };
 		9B720DBC209765D400D88704 /* WLScanBitCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLScanBitCodeViewController.m; sourceTree = "<group>"; };
+		9B9776BA20995C1D0068D5C1 /* WLWePay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLWePay.h; sourceTree = "<group>"; };
+		9B9776BB20995C1D0068D5C1 /* WLWePay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLWePay.m; sourceTree = "<group>"; };
+		9B9776BD20995CD50068D5C1 /* WLInitPayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLInitPayModel.h; sourceTree = "<group>"; };
+		9B9776BE20995CD50068D5C1 /* WLInitPayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLInitPayModel.m; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -163,6 +169,8 @@
 				9B006B112097F69700CDEFD0 /* WLQuickLoginModel.m */,
 				9B006B132097FC3200CDEFD0 /* WLChargerStationModel.h */,
 				9B006B142097FC3200CDEFD0 /* WLChargerStationModel.m */,
+				9B9776BD20995CD50068D5C1 /* WLInitPayModel.h */,
+				9B9776BE20995CD50068D5C1 /* WLInitPayModel.m */,
 			);
 			path = "模型";
 			sourceTree = "<group>";
@@ -213,6 +221,15 @@
 			path = "扫一扫";
 			sourceTree = "<group>";
 		};
+		9B9776B920995BFE0068D5C1 /* 支付 */ = {
+			isa = PBXGroup;
+			children = (
+				9B9776BA20995C1D0068D5C1 /* WLWePay.h */,
+				9B9776BB20995C1D0068D5C1 /* WLWePay.m */,
+			);
+			path = "支付";
+			sourceTree = "<group>";
+		};
 		9BB5BDB3209447200076DDB7 = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +262,7 @@
 				9B720DBA209765AC00D88704 /* 扫一扫 */,
 				9BB5BDF1209453240076DDB7 /* 首页 */,
 				9B006B0F2097F66800CDEFD0 /* 模型 */,
+				9B9776B920995BFE0068D5C1 /* 支付 */,
 				9BB5BDBF209447200076DDB7 /* AppDelegate.h */,
 				9BB5BDC0209447200076DDB7 /* AppDelegate.mm */,
 				9BB5BDC5209447200076DDB7 /* Main.storyboard */,
@@ -549,7 +567,9 @@
 				9B006B2C2098B32D00CDEFD0 /* WLNewsCenterViewController.m in Sources */,
 				9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */,
 				9B006B302098BA6D00CDEFD0 /* WLMyAccountController.m in Sources */,
+				9B9776BF20995CD50068D5C1 /* WLInitPayModel.m in Sources */,
 				9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */,
+				9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */,
 				9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */,
 				9B006B2620985AA000CDEFD0 /* WLRealNameIdentifyCell.m in Sources */,
 				9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */,

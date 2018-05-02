@@ -20,4 +20,7 @@
 +(void)saveUserID: (NSString *)user_id;
 + (NSString *)getUserID;
 
++ (NSString *)getNowTimeTimestamp;
+
+
 @end

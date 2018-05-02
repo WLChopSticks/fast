@@ -14,6 +14,8 @@
 + (instancetype)sharedNetworkToolManager;
 
 - (void)POST_queryWithURL: (NSString *)urlString andParameters: (NSDictionary *)parameters success:(nullable void (^)(id _Nullable responseObject))success failure:(nullable void (^)(NSError *error))failure;
+
+- (void)GET_queryWithURL: (NSString *)urlString andParameters: (NSDictionary *)parameters success:(nullable void (^)(id _Nullable responseObject))success failure:(nullable void (^)(NSError *error))failure;
 @end
 
 
