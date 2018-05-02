@@ -26,6 +26,7 @@
 @property (nonatomic, strong) BMKLocationService *locService;
 @property (nonatomic, strong) BMKGeoCodeSearch *geocodesearch;
 @property (nonatomic, strong) BMKPointAnnotation *pointAnnotation;
+@property (nonatomic, weak) WLStationDetailPromptView *stationDetailpromptView;
 
 @property (nonatomic, strong) NSMutableArray *displayingAnnomation;
 
@@ -121,13 +122,17 @@
 
 - (void)showStationInfoPrompt: (NSInteger)index
 {
-//    UIView *stationInfoPromtView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Screen_Width, 60)];
-//    WLStationDetailPromptView * stationInfoPromtView = [[[NSBundle mainBundle]loadNibNamed:@"WLStationDetailPromptView" owner:nil options:nil]lastObject];
+    [self.stationDetailpromptView removeFromSuperview];
     WLStationDetailPromptView *stationInfoPromtView = [WLStationDetailPromptView instanceView];
-    //    WLStationDetailPromptView * stationInfoPromtView = [[WLStationDetailPromptView alloc]init];
+    self.stationDetailpromptView = stationInfoPromtView;
     stationInfoPromtView.frame = CGRectMake(0, 0, Screen_Width, 160);
-    stationInfoPromtView.backgroundColor = [UIColor redColor];
-    stationInfoPromtView.stationName.text = @"123";
+    stationInfoPromtView.backgroundColor = [UIColor whiteColor];
+    WLEachChargerStationInfoModel *model = self.LocationOfStations[index];
+    stationInfoPromtView.stationName.text = model.zdmc;
+    stationInfoPromtView.stationAddress.text = model.zddz;
+//    stationInfoPromtView.stationTelephone.text = model.zddm;
+    stationInfoPromtView.chargerCount.text = model.dcsl;
+    [stationInfoPromtView.collectionBtn setImage:[UIImage imageNamed:@"ic_collect"] forState:UIControlStateNormal];
     [self.view.superview addSubview:stationInfoPromtView];
     
 }

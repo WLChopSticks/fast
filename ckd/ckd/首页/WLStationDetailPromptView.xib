@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,9 +34,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWr-Gm-Z4c">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWr-Gm-Z4c">
                     <rect key="frame" x="377" y="56" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -59,8 +58,10 @@
                 <constraint firstItem="A3D-8j-fpJ" firstAttribute="top" secondItem="Aya-sQ-Sqt" secondAttribute="bottom" constant="8" id="Qus-Vq-WP9"/>
                 <constraint firstItem="Aya-sQ-Sqt" firstAttribute="leading" secondItem="f14-N7-ArF" secondAttribute="leading" id="TQE-yF-JnP"/>
                 <constraint firstItem="f14-N7-ArF" firstAttribute="top" secondItem="wsx-x9-wGT" secondAttribute="top" constant="8" id="ftY-CJ-YXX"/>
+                <constraint firstItem="LWr-Gm-Z4c" firstAttribute="top" secondItem="iVY-Zl-S1E" secondAttribute="bottom" constant="8" id="idX-UC-am6"/>
                 <constraint firstItem="wsx-x9-wGT" firstAttribute="trailing" secondItem="iVY-Zl-S1E" secondAttribute="trailing" constant="8" id="mbd-pk-QBU"/>
                 <constraint firstItem="Aya-sQ-Sqt" firstAttribute="top" secondItem="f14-N7-ArF" secondAttribute="bottom" constant="8" id="mxq-sQ-qfE"/>
+                <constraint firstItem="wsx-x9-wGT" firstAttribute="trailing" secondItem="LWr-Gm-Z4c" secondAttribute="trailing" constant="8" id="nRg-L4-jHa"/>
                 <constraint firstItem="A3D-8j-fpJ" firstAttribute="leading" secondItem="Aya-sQ-Sqt" secondAttribute="leading" id="tRI-u6-3NT"/>
                 <constraint firstItem="iVY-Zl-S1E" firstAttribute="top" secondItem="wsx-x9-wGT" secondAttribute="top" constant="8" id="vK1-ZH-4YJ"/>
             </constraints>
