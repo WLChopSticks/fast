@@ -13,6 +13,11 @@
 
 + (instancetype)getQuickLoginModel:(NSDictionary *)dict
 {
+    [WLQuickLoginModel mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+        return @{
+                 @"data":@"data"
+                 };
+    }];
     WLQuickLoginModel *model = [[WLQuickLoginModel alloc]init];
     model = [WLQuickLoginModel mj_objectWithKeyValues:dict];
     

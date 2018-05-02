@@ -105,8 +105,8 @@
                 //存储登录状态
                 [WLUtilities setUserLogin];
                 
-//                NSString *user_id = quickLoginModel.data.user_id;
-                NSString *user_id = @"832f5a6d612c4d23b702f28de7018ab0";
+                NSString *user_id = quickLoginModel.data.user_id;
+//                NSString *user_id = @"832f5a6d612c4d23b702f28de7018ab0";
                 [WLUtilities saveUserID:user_id];
                 //是否实名认证
                 if ([quickLoginModel.message isEqualToString:@"请先去认证"])
