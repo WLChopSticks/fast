@@ -21,7 +21,8 @@ static WLNetworkTool *_instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/json",@"application/json", @"text/javascript", @"text/html",@"text/plain" , nil];
+        
         _instance = [[WLNetworkTool alloc]init];
         _instance.manager = manager;
     });

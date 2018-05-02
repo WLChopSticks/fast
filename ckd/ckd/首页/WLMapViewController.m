@@ -15,6 +15,7 @@
 #import <BaiduMapAPI_Radar/BMKRadarComponent.h>
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>
 #import <BaiduMapAPI_Utils/BMKUtilsComponent.h>
+#import "WLEachChargerStationModel.h"
 
 @interface WLMapViewController ()<BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate>
 
@@ -22,6 +23,8 @@
 @property (nonatomic, strong) BMKLocationService *locService;
 @property (nonatomic, strong) BMKGeoCodeSearch *geocodesearch;
 @property (nonatomic, strong) BMKPointAnnotation *pointAnnotation;
+
+@property (nonatomic, strong) NSMutableArray *displayingAnnomation;
 
 @end
 
@@ -34,6 +37,7 @@
     [self.view addSubview:_mapView];
     self.locService = [[BMKLocationService alloc]init];
     self.geocodesearch = [[BMKGeoCodeSearch alloc]init];
+    self.displayingAnnomation = [NSMutableArray array];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,6 +89,26 @@
         newAnnotationView = [[WLMapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"available"];
     }
     return newAnnotationView;
+}
+
+-(void)getLocationOfStationsInCurrentCity
+{
+    //先移除地图上所有的大头针
+    if (self.displayingAnnomation.count > 0)
+    {
+        [self.mapView removeAnnotations:self.displayingAnnomation];
+    }
+    //将每个大头针显示在地图上
+    for (WLEachChargerStationInfoModel *model in self.LocationOfStations)
+    {
+        BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
+        CLLocationCoordinate2D coor;
+        coor.latitude = model.zdwd.floatValue;
+        coor.longitude = model.zdjd.floatValue;
+        annotation.coordinate = coor;
+        [self.mapView addAnnotation:annotation];
+        [self.displayingAnnomation addObject:annotation];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

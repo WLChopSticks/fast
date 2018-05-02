@@ -83,6 +83,7 @@
             NSLog(@"完善个人资料成功");
             [ProgressHUD showSuccess:[NSString stringWithFormat:@"%@",result[@"message"]]];
             [WLUtilities setUserNameRegist];
+            [WLUtilities saveCurrentCityCode:self.currentCity.csdm andCityName:self.currentCity.csmc];
             if (self.shouldPopBack)
             {
                 NSLog(@"是push进来的");

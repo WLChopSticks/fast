@@ -16,6 +16,7 @@
 #import "WLChargerStationModel.h"
 #import "WLRealNameIdentifyViewController.h"
 #import "WLNewsCenterViewController.h"
+#import "WLEachChargerStationModel.h"
 
 typedef enum : NSUInteger {
     UnRegistRealName,
@@ -81,24 +82,30 @@ typedef enum : NSUInteger {
     [ProgressHUD show];
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    NSString *user_phone_string = [NSString stringWithFormat:@"{user_phone:%@}",telephone];
-//    [parameters setObject:user_phone_string forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/quickCs.action";
+    NSString *cityCode = [NSString stringWithFormat:@"{csdm:1}"];
+//    NSString *cityCode = [NSString stringWithFormat:@"{csdm:%@}",[WLUtilities getCurrentCityCode]];
+    [parameters setObject:cityCode forKey:@"inputParameter"];
+    NSString *URL = @"http://47.104.85.148:18070/ckdhd/queryCsZd.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         [ProgressHUD dismiss];
         NSDictionary *result = (NSDictionary *)responseObject;
-        WLChargerStationModel *charrgerStationModel = [[WLChargerStationModel alloc]init];
-        charrgerStationModel = [charrgerStationModel getChargerStationModel:result];
-        if ([charrgerStationModel.code isEqualToString:@"1"])
+        WLEachChargerStationModel *eachChargerStationModel = [[WLEachChargerStationModel alloc]init];
+        eachChargerStationModel = [eachChargerStationModel getEachChargerStationModel:result];
+        if ([eachChargerStationModel.code isEqualToString:@"1"])
         {
             NSLog(@"查询城市信息成功");
+            self.mapVC.LocationOfStations = eachChargerStationModel.data;
+            [self.mapVC getLocationOfStationsInCurrentCity];
         }else
         {
+            [ProgressHUD showError:@"查询城市信息失败"];
             NSLog(@"查询城市信息失败");
         }
     } failure:^(NSError *error) {
-        NSLog(@"查询城市信息成功");
+        [ProgressHUD showError:@"查询城市信息失败"];
+        NSLog(@"查询城市信息失败");
+        NSLog(@"%@",error);
     }];
 }
 
@@ -130,7 +137,7 @@ typedef enum : NSUInteger {
 {
     UIButton *refreshBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
     [refreshBtn setImage:[UIImage imageNamed:@"home_ic_refresh"] forState:UIControlStateNormal];
-    [refreshBtn addTarget:self action:@selector(hehe) forControlEvents:UIControlEventTouchUpInside];
+    [refreshBtn addTarget:self action:@selector(refreshBtnDidClicking) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:refreshBtn];
     
     UIButton *mapBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
@@ -282,6 +289,12 @@ typedef enum : NSUInteger {
         NSLog(@"跳转交押金页面");
     }
     
+}
+
+- (void)refreshBtnDidClicking
+{
+    //重新请求该市站点信息
+    [self aquireChargerStations];
 }
 
 - (void)didReceiveMemoryWarning {

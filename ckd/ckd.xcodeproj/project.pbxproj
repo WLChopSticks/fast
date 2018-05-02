@@ -30,6 +30,7 @@
 		9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DBC209765D400D88704 /* WLScanBitCodeViewController.m */; };
 		9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776BB20995C1D0068D5C1 /* WLWePay.m */; };
 		9B9776BF20995CD50068D5C1 /* WLInitPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776BE20995CD50068D5C1 /* WLInitPayModel.m */; };
+		9B9776C2209989720068D5C1 /* WLEachChargerStationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776C1209989720068D5C1 /* WLEachChargerStationModel.m */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.mm */; };
 		9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC5209447200076DDB7 /* Main.storyboard */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
@@ -108,6 +109,8 @@
 		9B9776BB20995C1D0068D5C1 /* WLWePay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLWePay.m; sourceTree = "<group>"; };
 		9B9776BD20995CD50068D5C1 /* WLInitPayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLInitPayModel.h; sourceTree = "<group>"; };
 		9B9776BE20995CD50068D5C1 /* WLInitPayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLInitPayModel.m; sourceTree = "<group>"; };
+		9B9776C0209989720068D5C1 /* WLEachChargerStationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLEachChargerStationModel.h; sourceTree = "<group>"; };
+		9B9776C1209989720068D5C1 /* WLEachChargerStationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLEachChargerStationModel.m; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 				9B006B112097F69700CDEFD0 /* WLQuickLoginModel.m */,
 				9B006B132097FC3200CDEFD0 /* WLChargerStationModel.h */,
 				9B006B142097FC3200CDEFD0 /* WLChargerStationModel.m */,
+				9B9776C0209989720068D5C1 /* WLEachChargerStationModel.h */,
+				9B9776C1209989720068D5C1 /* WLEachChargerStationModel.m */,
 				9B9776BD20995CD50068D5C1 /* WLInitPayModel.h */,
 				9B9776BE20995CD50068D5C1 /* WLInitPayModel.m */,
 			);
@@ -558,6 +563,7 @@
 				9B4552FD2096DB3400C6C447 /* WLProfileDetailsViewController.m in Sources */,
 				9B006B152097FC3200CDEFD0 /* WLChargerStationModel.m in Sources */,
 				9B006B232098561300CDEFD0 /* WLRealNameIdentifyViewController.m in Sources */,
+				9B9776C2209989720068D5C1 /* WLEachChargerStationModel.m in Sources */,
 				9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */,
 				9B01A03B209617AF00365BB8 /* WLSettings.m in Sources */,
 				9B01A0242095F57C00365BB8 /* WLProfileView.m in Sources */,

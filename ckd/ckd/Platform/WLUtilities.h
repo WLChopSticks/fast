@@ -19,6 +19,9 @@
 
 +(void)saveUserID: (NSString *)user_id;
 + (NSString *)getUserID;
++(void)saveCurrentCityCode: (NSString *)cityCode andCityName: (NSString *)cityName;
++(NSString *)getCurrentCityCode;
++(NSString *)getCurrentCityName;
 
 + (NSString *)getNowTimeTimestamp;
 

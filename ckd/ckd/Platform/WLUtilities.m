@@ -59,6 +59,25 @@
     return [def objectForKey:@"user_id"];
 }
 
++(void)saveCurrentCityCode:(NSString *)cityCode andCityName:(NSString *)cityName
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def setObject:cityCode forKey:@"city_code"];
+    [def setObject:cityName forKey:@"city_name"];
+}
+
++(NSString *)getCurrentCityCode
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    return [def objectForKey:@"city_code"];
+}
+
++(NSString *)getCurrentCityName
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    return [def objectForKey:@"city_name"];
+}
+
 +(NSString *)getNowTimeTimestamp
 {
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
