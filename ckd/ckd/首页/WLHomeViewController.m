@@ -159,14 +159,13 @@ typedef enum : NSUInteger {
     UIButton *iconBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
 //    [iconBtn setImage:[UIImage imageNamed:@"icon_code"] forState:UIControlStateNormal];
     [iconBtn setBackgroundImage:[UIImage imageNamed:@"icon_code"] forState:UIControlStateNormal];
-    iconBtn.backgroundColor = [UIColor blueColor];
     [iconBtn addTarget:self action:@selector(iconBtnDidClicking) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:iconBtn];
     
     [iconBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view.mas_centerX);
         make.bottom.equalTo(self.view.mas_bottom).offset(-30);
-        make.width.height.equalTo(self.view.mas_width).multipliedBy(0.3);
+        make.width.height.equalTo(self.view.mas_width).multipliedBy(0.4);
     }];
     
     [refreshBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -235,7 +234,7 @@ typedef enum : NSUInteger {
     }
     
     [backView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).offset(64);
+        make.top.equalTo(self.view.mas_top);
         make.left.right.equalTo(self.view);
         make.height.mas_equalTo(60);
     }];

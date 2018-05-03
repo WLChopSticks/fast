@@ -35,18 +35,24 @@
 
 @implementation WLMapViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.mapView = [[BMKMapView alloc] initWithFrame:self.view.bounds];
+    self.mapView = [[BMKMapView alloc] init];
     [self.view addSubview:_mapView];
+    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.equalTo(self.view);
+    }];
     self.locService = [[BMKLocationService alloc]init];
     self.geocodesearch = [[BMKGeoCodeSearch alloc]init];
     self.displayingAnnomation = [NSMutableArray array];
     self.showedPromptIndex = -1;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self.mapView viewWillAppear];
     self.mapView.delegate = self;
     self.locService.delegate = self;
@@ -57,6 +63,7 @@
     self.mapView.userTrackingMode = BMKUserTrackingModeNone;
     //定位
     [self.locService startUserLocationService];
+    
     
 }
 
@@ -129,12 +136,12 @@
     [self dismissStationInfoPrompt];
     WLStationDetailPromptView *stationInfoPromtView = [WLStationDetailPromptView instanceView];
     self.stationDetailpromptView = stationInfoPromtView;
-    stationInfoPromtView.frame = CGRectMake(0, 0, Screen_Width, 160);
+    stationInfoPromtView.frame = CGRectMake(0, 0, Screen_Width, 100);
     stationInfoPromtView.backgroundColor = [UIColor whiteColor];
     WLEachChargerStationInfoModel *model = self.LocationOfStations[index];
     stationInfoPromtView.stationName.text = model.zdmc;
     stationInfoPromtView.stationAddress.text = model.zddz;
-//    stationInfoPromtView.stationTelephone.text = model.zddm;
+    stationInfoPromtView.stationTelephone.text = @"";
     stationInfoPromtView.chargerCount.text = model.dcsl;
     [stationInfoPromtView.collectionBtn setImage:[UIImage imageNamed:@"ic_collect"] forState:UIControlStateNormal];
     [self.view.superview addSubview:stationInfoPromtView];

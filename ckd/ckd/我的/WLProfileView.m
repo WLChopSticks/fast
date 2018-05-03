@@ -69,11 +69,22 @@
         make.height.equalTo(self.mas_height).multipliedBy(0.25);
     }];
     
-    [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_top).offset(Margin * 1.5);
-        make.left.equalTo(self.mas_left).offset(Margin);
-        make.width.height.mas_equalTo(30);
-    }];
+    //iPhone x 适配
+    if ([WLUtilities isIphoneX])
+    {
+        [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.mas_top).offset(Margin * 5);
+            make.left.equalTo(self.mas_left).offset(Margin);
+            make.width.height.mas_equalTo(30);
+        }];
+    }else
+    {
+        [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.mas_top).offset(Margin * 1.5);
+            make.left.equalTo(self.mas_left).offset(Margin);
+            make.width.height.mas_equalTo(30);
+        }];
+    }
     
     [userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.mas_centerX);

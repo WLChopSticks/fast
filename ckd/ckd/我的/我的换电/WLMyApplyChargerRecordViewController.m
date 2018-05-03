@@ -144,7 +144,6 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *footerView = [[UIView alloc]init];
-//    footerView.backgroundColor = [UIColor blueColor];
     return footerView;
 }
 

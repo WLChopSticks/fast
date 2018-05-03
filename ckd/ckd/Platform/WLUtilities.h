@@ -29,4 +29,6 @@
 + (NSString *)getNowTimeTimestamp;
 
 
++ (BOOL)isIphoneX;
+
 @end

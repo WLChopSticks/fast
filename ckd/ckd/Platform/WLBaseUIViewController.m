@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //在navigation下页面自动下串
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 -(void)viewWillAppear:(BOOL)animated

@@ -7,6 +7,7 @@
 //
 
 #import "WLUtilities.h"
+#import <sys/sysctl.h>
 
 @implementation WLUtilities
 
@@ -96,6 +97,30 @@
     NSTimeInterval a=[dat timeIntervalSince1970];
     NSString*timeString = [NSString stringWithFormat:@"%0.f", a];//转为字符型
     return timeString;
+}
+
++(BOOL)isIphoneX
+{
+    NSString *platform = [WLUtilities getCurrentDeviceModelDescription];
+    if ([platform isEqualToString:@"iPhone10,3"])    return YES;
+    if ([platform isEqualToString:@"iPhone10,6"])    return YES;
+    return NO;
+}
+
++ (NSString *)getCurrentDeviceModelDescription{
+    int mib[2];
+    size_t len;
+    char *machine;
+    
+    mib[0] = CTL_HW;
+    mib[1] = HW_MACHINE;
+    sysctl(mib, 2, NULL, &len, NULL, 0);
+    machine = malloc(len);
+    sysctl(mib, 2, machine, &len, NULL, 0);
+    
+    NSString *platform = [NSString stringWithCString:machine encoding:NSASCIIStringEncoding];
+    free(machine);
+    return platform;
 }
 
 @end

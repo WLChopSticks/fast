@@ -40,13 +40,12 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVY-Zl-S1E">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVY-Zl-S1E">
                     <rect key="frame" x="379" y="8" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="RX0-yZ-pl3"/>
                         <constraint firstAttribute="width" constant="40" id="Sth-tW-nMB"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
                     <connections>
                         <action selector="collectionBtnDidClicking:" destination="-1" eventType="touchUpInside" id="w2f-jY-msH"/>
                     </connections>
