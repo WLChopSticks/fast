@@ -11,12 +11,12 @@
 #import "WLBaseNavigationViewController.h"
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 #import "WLBootViewController.h"
+#import "WLWePay.h"
 
 #import "WLChargerRecord.h"
 #import "WLInquireCostDetailModel.h"
 #import "WLAquireChargerModel.h"
 #import "WLDepositStatusModel.h"
-#import "WLWePay.h"
 
 BMKMapManager* _mapManager;
 

@@ -23,9 +23,7 @@
 		9B01A0242095F57C00365BB8 /* WLProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A0232095F57C00365BB8 /* WLProfileView.m */; };
 		9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A0262095FCBA00365BB8 /* WLProfileItemsCell.m */; };
 		9B01A0292095FCBA00365BB8 /* WLProfileItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B01A0272095FCBA00365BB8 /* WLProfileItemsCell.xib */; };
-		9B01A03420960D5A00365BB8 /* WLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A03320960D5A00365BB8 /* WLSettingsViewController.m */; };
 		9B01A03620960D6800365BB8 /* WLSettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B01A03520960D6800365BB8 /* WLSettingsViewController.storyboard */; };
-		9B01A03B209617AF00365BB8 /* WLSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01A03A209617AF00365BB8 /* WLSettings.m */; };
 		9B4552FD2096DB3400C6C447 /* WLProfileDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */; };
 		9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */; };
 		9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4553022096F3B000C6C447 /* WLUtilities.m */; };
@@ -113,11 +111,7 @@
 		9B01A0252095FCBA00365BB8 /* WLProfileItemsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLProfileItemsCell.h; sourceTree = "<group>"; };
 		9B01A0262095FCBA00365BB8 /* WLProfileItemsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLProfileItemsCell.m; sourceTree = "<group>"; };
 		9B01A0272095FCBA00365BB8 /* WLProfileItemsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLProfileItemsCell.xib; sourceTree = "<group>"; };
-		9B01A03220960D5A00365BB8 /* WLSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLSettingsViewController.h; sourceTree = "<group>"; };
-		9B01A03320960D5A00365BB8 /* WLSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLSettingsViewController.m; sourceTree = "<group>"; };
 		9B01A03520960D6800365BB8 /* WLSettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WLSettingsViewController.storyboard; sourceTree = "<group>"; };
-		9B01A039209617AF00365BB8 /* WLSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLSettings.h; sourceTree = "<group>"; };
-		9B01A03A209617AF00365BB8 /* WLSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLSettings.m; sourceTree = "<group>"; };
 		9B4552FB2096DB3400C6C447 /* WLProfileDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLProfileDetailsViewController.h; sourceTree = "<group>"; };
 		9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLProfileDetailsViewController.m; sourceTree = "<group>"; };
 		9B4552FE2096F31F00C6C447 /* WLNetworkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLNetworkTool.h; sourceTree = "<group>"; };
@@ -266,13 +260,9 @@
 		9B01A02A20960B0600365BB8 /* 设置 */ = {
 			isa = PBXGroup;
 			children = (
-				9B01A03220960D5A00365BB8 /* WLSettingsViewController.h */,
-				9B01A03320960D5A00365BB8 /* WLSettingsViewController.m */,
 				9BFF6D8A209B307D003457D4 /* WLSettingDetailViewController.h */,
 				9BFF6D8B209B307D003457D4 /* WLSettingDetailViewController.m */,
 				9BFF6D8C209B307D003457D4 /* WLSettingDetailViewController.xib */,
-				9B01A039209617AF00365BB8 /* WLSettings.h */,
-				9B01A03A209617AF00365BB8 /* WLSettings.m */,
 				9B4552FB2096DB3400C6C447 /* WLProfileDetailsViewController.h */,
 				9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */,
 				9B006B212098561300CDEFD0 /* WLRealNameIdentifyViewController.h */,
@@ -670,7 +660,6 @@
 				9B0013CB209A00150081F65D /* WLRealNameAuthenticationViewController.m in Sources */,
 				9B977721209AB6400068D5C1 /* WLExpireTimeModel.m in Sources */,
 				9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */,
-				9B01A03B209617AF00365BB8 /* WLSettings.m in Sources */,
 				9B01A0242095F57C00365BB8 /* WLProfileView.m in Sources */,
 				9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */,
 				9BB5BDF9209453C90076DDB7 /* WLBaseUIViewController.m in Sources */,
@@ -690,7 +679,6 @@
 				9B9776CB2099AEEC0068D5C1 /* WLStationDetailPromptView.m in Sources */,
 				9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */,
 				9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */,
-				9B01A03420960D5A00365BB8 /* WLSettingsViewController.m in Sources */,
 				9B977714209AA8A90068D5C1 /* WLChargerRecord.m in Sources */,
 				9BFF6D88209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.m in Sources */,
 				9B01A0212095DB9400365BB8 /* WLLoginView.m in Sources */,

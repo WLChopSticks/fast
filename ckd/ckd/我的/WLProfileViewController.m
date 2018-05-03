@@ -9,7 +9,6 @@
 #import "WLProfileViewController.h"
 #import "WLPlatform.h"
 #import "WLProfileView.h"
-#import "WLSettingsViewController.h"
 #import "WLSettingDetailViewController.h"
 #import "WLProfileDetailsViewController.h"
 #import "WLMyAccountController.h"
