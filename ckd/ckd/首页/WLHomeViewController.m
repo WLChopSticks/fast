@@ -161,10 +161,20 @@ typedef enum : NSUInteger {
     [iconBtn addTarget:self action:@selector(iconBtnDidClicking) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:iconBtn];
     
+    UILabel *introductionLabel = [[UILabel alloc]init];
+    introductionLabel.text = @"扫码换电";
+    introductionLabel.textColor = [UIColor whiteColor];
+    [iconBtn addSubview:introductionLabel];
+    
     [iconBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view.mas_centerX);
         make.bottom.equalTo(self.view.mas_bottom).offset(-30);
         make.width.height.equalTo(self.view.mas_width).multipliedBy(0.4);
+    }];
+    
+    [introductionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(iconBtn.mas_centerX);
+        make.bottom.equalTo(iconBtn.mas_bottom).offset(-60);
     }];
     
     [refreshBtn mas_makeConstraints:^(MASConstraintMaker *make) {
