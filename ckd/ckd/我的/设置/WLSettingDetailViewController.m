@@ -10,7 +10,7 @@
 #import "WLScanBitCodeViewController.h"
 #import "WLLoginViewController.h"
 #import "WLBootViewController.h"
-#import "WLProfileViewController.h"
+#import "WLChangeTelephoneNumberViewController.h"
 
 @interface WLSettingDetailViewController ()
 
@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = @"设置";
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     self.versionLabel.text = [NSString stringWithFormat:@"版本v%@",version];
     self.view.backgroundColor = LightGrayBackground;
@@ -47,6 +48,8 @@
 - (IBAction)changeTelNumberBtnDidClicking:(id)sender
 {
     NSLog(@"更换手机号按钮点击了");
+    WLChangeTelephoneNumberViewController *changeTelNumberVC = [[WLChangeTelephoneNumberViewController alloc]init];
+    [self.navigationController pushViewController:changeTelNumberVC animated:YES];
 }
 - (IBAction)returnChargerBtnDidClicking:(id)sender
 {

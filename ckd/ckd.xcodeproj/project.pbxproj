@@ -60,6 +60,8 @@
 		9BFF6D89209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BFF6D87209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.xib */; };
 		9BFF6D8D209B307D003457D4 /* WLSettingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF6D8B209B307D003457D4 /* WLSettingDetailViewController.m */; };
 		9BFF6D8E209B307D003457D4 /* WLSettingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BFF6D8C209B307D003457D4 /* WLSettingDetailViewController.xib */; };
+		9BFF6D92209B4252003457D4 /* WLChangeTelephoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF6D90209B4252003457D4 /* WLChangeTelephoneNumberViewController.m */; };
+		9BFF6D93209B4252003457D4 /* WLChangeTelephoneNumberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BFF6D91209B4252003457D4 /* WLChangeTelephoneNumberViewController.xib */; };
 		FE98CF3A172DEAD6991E9E7A /* libPods-ckd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C55BFB4F50FBC05650FEF77 /* libPods-ckd.a */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +184,9 @@
 		9BFF6D8A209B307D003457D4 /* WLSettingDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLSettingDetailViewController.h; sourceTree = "<group>"; };
 		9BFF6D8B209B307D003457D4 /* WLSettingDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLSettingDetailViewController.m; sourceTree = "<group>"; };
 		9BFF6D8C209B307D003457D4 /* WLSettingDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLSettingDetailViewController.xib; sourceTree = "<group>"; };
+		9BFF6D8F209B4252003457D4 /* WLChangeTelephoneNumberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLChangeTelephoneNumberViewController.h; sourceTree = "<group>"; };
+		9BFF6D90209B4252003457D4 /* WLChangeTelephoneNumberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLChangeTelephoneNumberViewController.m; sourceTree = "<group>"; };
+		9BFF6D91209B4252003457D4 /* WLChangeTelephoneNumberViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLChangeTelephoneNumberViewController.xib; sourceTree = "<group>"; };
 		CEE767F063C76A7AE601455B /* Pods-ckd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ckd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ckd/Pods-ckd.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -263,6 +268,9 @@
 				9BFF6D8A209B307D003457D4 /* WLSettingDetailViewController.h */,
 				9BFF6D8B209B307D003457D4 /* WLSettingDetailViewController.m */,
 				9BFF6D8C209B307D003457D4 /* WLSettingDetailViewController.xib */,
+				9BFF6D8F209B4252003457D4 /* WLChangeTelephoneNumberViewController.h */,
+				9BFF6D90209B4252003457D4 /* WLChangeTelephoneNumberViewController.m */,
+				9BFF6D91209B4252003457D4 /* WLChangeTelephoneNumberViewController.xib */,
 				9B4552FB2096DB3400C6C447 /* WLProfileDetailsViewController.h */,
 				9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */,
 				9B006B212098561300CDEFD0 /* WLRealNameIdentifyViewController.h */,
@@ -567,6 +575,7 @@
 				9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */,
 				9B97772B209B02530068D5C1 /* WLMyAccountView.xib in Resources */,
 				9B01A0292095FCBA00365BB8 /* WLProfileItemsCell.xib in Resources */,
+				9BFF6D93209B4252003457D4 /* WLChangeTelephoneNumberViewController.xib in Resources */,
 				9B0013CC209A00150081F65D /* WLRealNameAuthenticationViewController.xib in Resources */,
 				9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */,
 				9BFF6D89209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.xib in Resources */,
@@ -680,6 +689,7 @@
 				9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */,
 				9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */,
 				9B977714209AA8A90068D5C1 /* WLChargerRecord.m in Sources */,
+				9BFF6D92209B4252003457D4 /* WLChangeTelephoneNumberViewController.m in Sources */,
 				9BFF6D88209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.m in Sources */,
 				9B01A0212095DB9400365BB8 /* WLLoginView.m in Sources */,
 			);
