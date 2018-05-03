@@ -70,12 +70,16 @@
             if ([result[@"code"]integerValue] == 1)
             {
                 NSLog(@"获取验证码成功");
+                [ProgressHUD showSuccess:@"发送验证码成功"];
             }else
             {
                 NSLog(@"获取验证码失败");
+                [ProgressHUD showError:@"发送验证码失败"];
             }
         } failure:^(NSError *error) {
             NSLog(@"获取验证码失败");
+            NSLog(@"%@",error);
+            [ProgressHUD showError:@"发送验证码失败"];
         }];
     }
 }

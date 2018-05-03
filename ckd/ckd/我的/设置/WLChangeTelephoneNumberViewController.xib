@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WLChangeTelephoneNumberViewController">
             <connections>
                 <outlet property="checkNumField" destination="3io-yM-Ddg" id="D9i-Oh-ny6"/>
+                <outlet property="finishBtn" destination="mQh-wt-sLe" id="DMs-CT-1Fz"/>
                 <outlet property="telephoneField" destination="8Lu-Vz-f90" id="Wj4-Ps-0CZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
