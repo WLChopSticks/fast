@@ -27,6 +27,7 @@
 @property (nonatomic, strong) BMKGeoCodeSearch *geocodesearch;
 @property (nonatomic, strong) BMKPointAnnotation *pointAnnotation;
 @property (nonatomic, weak) WLStationDetailPromptView *stationDetailpromptView;
+@property (nonatomic, assign) NSInteger showedPromptIndex;
 
 @property (nonatomic, strong) NSMutableArray *displayingAnnomation;
 
@@ -42,6 +43,7 @@
     self.locService = [[BMKLocationService alloc]init];
     self.geocodesearch = [[BMKGeoCodeSearch alloc]init];
     self.displayingAnnomation = [NSMutableArray array];
+    self.showedPromptIndex = -1;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,42 +89,44 @@
 
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation
 {
-    //if ([annotation isKindOfClass:[BMKPointAnnotation class]]) //判断是哪个BMKPointAnnotation
-    WLMapAnnotationView *newAnnotationView = (WLMapAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"available"];
-    if (newAnnotationView == nil) {
-        newAnnotationView = [[WLMapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"available"];
+    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) //判断是哪个BMKPointAnnotation
+    {
+        WLMapAnnotationView *newAnnotationView = (WLMapAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"annotation"];
+        if (newAnnotationView == nil)
+        {
+            newAnnotationView = [[WLMapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotation"];
+        }
+        newAnnotationView.annotation = annotation;
+        newAnnotationView.userInteractionEnabled = YES;
+//        if (myAnnotation.tag == 1)
+        {
+            newAnnotationView.image = [UIImage imageNamed:@"station_available"];
+        }
+        
+
+        return newAnnotationView;
     }
-
-    newAnnotationView.enabled = YES;
-    newAnnotationView.annotation = annotation;
-    
-    UIButton *touchBtn = [[UIButton alloc]initWithFrame:newAnnotationView.bounds];
-    touchBtn.backgroundColor = [UIColor clearColor];
-    touchBtn.tag = newAnnotationView.tag;
-    [touchBtn addTarget:self action:@selector(annotationDidClicking:) forControlEvents:UIControlEventTouchUpInside];
-    [newAnnotationView addSubview:touchBtn];
-//    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(annotationDidClicking:)];
-//    [newAnnotationView addGestureRecognizer:gesture];
-//    WLPointAnnotation *myAnnotation = annotation;
-//    newAnnotationView.tag = myAnnotation.tag;
-    return newAnnotationView;
-}
-
-- (void)annotationDidClicking: (UIButton *)sender
-{
-    NSLog(@"123");
-    NSLog(@"%ld",(long)sender.tag);
-    [self showStationInfoPrompt:sender.tag];
+    return nil;
 }
 
 -(void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
 {
-    NSLog(@"123");
+    view.paopaoView.hidden = YES;
+    WLPointAnnotation *myAnnotation = (WLPointAnnotation *)view.annotation;
+    if (myAnnotation.tag == self.showedPromptIndex)
+    {
+        [self dismissStationInfoPrompt];
+    }else
+    {
+        [self showStationInfoPrompt:myAnnotation.tag];
+        self.showedPromptIndex = myAnnotation.tag;
+    }
+    view.selected = NO;
 }
 
 - (void)showStationInfoPrompt: (NSInteger)index
 {
-    [self.stationDetailpromptView removeFromSuperview];
+    [self dismissStationInfoPrompt];
     WLStationDetailPromptView *stationInfoPromtView = [WLStationDetailPromptView instanceView];
     self.stationDetailpromptView = stationInfoPromtView;
     stationInfoPromtView.frame = CGRectMake(0, 0, Screen_Width, 160);
@@ -135,6 +139,16 @@
     [stationInfoPromtView.collectionBtn setImage:[UIImage imageNamed:@"ic_collect"] forState:UIControlStateNormal];
     [self.view.superview addSubview:stationInfoPromtView];
     
+}
+
+- (void)dismissStationInfoPrompt
+{
+    //如果当前显示提示框的index为-1, 则表示为未显示;
+    if (self.showedPromptIndex != -1)
+    {
+        [self.stationDetailpromptView removeFromSuperview];
+        self.showedPromptIndex = -1;
+    }
 }
 
 -(void)getLocationOfStationsInCurrentCity
@@ -150,6 +164,7 @@
         WLEachChargerStationInfoModel *model = self.LocationOfStations[i];
         WLPointAnnotation* annotation = [[WLPointAnnotation alloc]init];
         annotation.tag = i;
+        annotation.title = @"";
         CLLocationCoordinate2D coor;
         coor.latitude = model.zdwd.floatValue;
         coor.longitude = model.zdjd.floatValue;

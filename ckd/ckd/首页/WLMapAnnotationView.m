@@ -28,7 +28,8 @@
         
         _bgImageView = [[UIImageView alloc] initWithFrame:self.frame];
         _bgImageView.image = [UIImage imageNamed:@"station_available"];
-        [self addSubview:_bgImageView];
+//        _bgImageView.userInteractionEnabled = NO;
+//        [self addSubview:_bgImageView];
     }
     return self;
 }
