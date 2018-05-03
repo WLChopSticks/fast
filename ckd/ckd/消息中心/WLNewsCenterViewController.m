@@ -19,7 +19,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"消息中心";
-    self.view.backgroundColor = LightGrayBackground;
     UIImageView *placeholderBackView = [[UIImageView alloc]init];
     placeholderBackView.image = [UIImage imageNamed:@"message_defaultpage"];
     [self.view addSubview:placeholderBackView];

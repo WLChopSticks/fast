@@ -29,12 +29,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"我的换电记录";
-    self.view.backgroundColor = LightGrayBackground;
     
-//    if (![WLUtilities isUserLogin])
-//    {
-//        [self showEmptyRecordView];
-//    }else
+    if (![WLUtilities isUserLogin])
+    {
+        [self showEmptyRecordView];
+    }else
     {
         [self queryChargerRecord];
     }
@@ -47,7 +46,7 @@
 - (void)queryChargerRecord
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *para_String = [NSString stringWithFormat:@"{user_id:c1aff8bcad6e4d1a97713e10f62a00b2}"];
+    NSString *para_String = [NSString stringWithFormat:@"{user_id:%@}",[WLUtilities getUserID]];
     [parameters setObject:para_String forKey:@"inputParameter"];
     NSString *URL = @"http://47.104.85.148:18070/ckdhd/Hdcjl.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];

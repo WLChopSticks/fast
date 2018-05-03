@@ -23,7 +23,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"更换手机号码";
-    self.view.backgroundColor = LightGrayBackground;
     
 }
 

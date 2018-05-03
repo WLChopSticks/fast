@@ -19,6 +19,18 @@
     // Do any additional setup after loading the view.
     //在navigation下页面自动下串
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    //全局设置返回按键
+    UIImage *navBackImage = [[UIImage imageNamed:@"nav_ic_back_pressed"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithImage:navBackImage style:UIBarButtonItemStylePlain target:self action:@selector(backBtnDidClicking)];
+    self.navigationItem.leftBarButtonItem = backBtn;
+    
+    //全局设置导航条颜色
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+    
+    //全局设置控制器背景颜色
+    self.view.backgroundColor = LightGrayBackground;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -30,6 +42,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)backBtnDidClicking
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

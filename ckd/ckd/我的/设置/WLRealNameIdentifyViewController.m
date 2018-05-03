@@ -37,7 +37,6 @@
 - (void)decorateUI
 {
     self.title = @"实名认证";
-    self.view.backgroundColor = LightGrayBackground;
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 100, 100) style:UITableViewStylePlain];
     self.tableView = tableView;

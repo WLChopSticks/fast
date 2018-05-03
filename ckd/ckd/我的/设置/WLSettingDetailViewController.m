@@ -34,7 +34,7 @@
     self.title = @"设置";
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     self.versionLabel.text = [NSString stringWithFormat:@"版本v%@",version];
-    self.view.backgroundColor = LightGrayBackground;
+
 }
 
 - (void)didReceiveMemoryWarning {

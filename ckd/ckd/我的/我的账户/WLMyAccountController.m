@@ -27,9 +27,7 @@
     [super viewDidLoad];
     
     self.title = @"我的账户";
-    
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.view.backgroundColor = LightGrayBackground;
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

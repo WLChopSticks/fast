@@ -17,89 +17,91 @@
     return [[def objectForKey:@"loginStatus"]boolValue];
 }
 
-+(void)setUserLogin
++ (void)setUserLogin
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     [def setObject:[NSNumber numberWithBool:YES] forKey:@"loginStatus"];
 }
 
-+  (BOOL)isUserRealNameRegist
++ (void)setUserLogout
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def removeObjectForKey:@"loginStatus"];
+    [def removeObjectForKey:@"realNameRegist"];
+    [def removeObjectForKey:@"depositPaid"];
+    [def removeObjectForKey:@"user_id"];
+    [def removeObjectForKey:@"user_name"];
+    [def removeObjectForKey:@"city_code"];
+    [def removeObjectForKey:@"city_name"];
+}
+
++ (BOOL)isUserRealNameRegist
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     return [[def objectForKey:@"realNameRegist"]boolValue];
 }
-+(void)setUserNameRegist
++ (void)setUserNameRegist
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     [def setObject:[NSNumber numberWithBool:YES] forKey:@"realNameRegist"];
 }
 
-+(BOOL)isUserDepositPaid
++ (BOOL)isUserDepositPaid
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     return [[def objectForKey:@"depositPaid"]boolValue];
 }
 
-+(void)setUserDepositPaid
++ (void)setUserDepositPaid
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     [def setObject:[NSNumber numberWithBool:YES] forKey:@"depositPaid"];
 }
 
-
-
-+(void)saveUserID: (NSString *)user_id
++ (void)saveUserID: (NSString *)user_id
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     [def setObject:user_id forKey:@"user_id"];
 }
 
-+(NSString *)getUserID
++ (NSString *)getUserID
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     return [def objectForKey:@"user_id"];
 }
 
-+(void)savuserName:(NSString *)user_name
++ (void)savuserName:(NSString *)user_name
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     [def setObject:user_name forKey:@"user_name"];
 }
 
-+(NSString *)getUserName
++ (NSString *)getUserName
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     return [def objectForKey:@"user_name"];
 }
 
-+(void)saveCurrentCityCode:(NSString *)cityCode andCityName:(NSString *)cityName
++ (void)saveCurrentCityCode:(NSString *)cityCode andCityName:(NSString *)cityName
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     [def setObject:cityCode forKey:@"city_code"];
     [def setObject:cityName forKey:@"city_name"];
 }
 
-+(NSString *)getCurrentCityCode
++ (NSString *)getCurrentCityCode
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     return [def objectForKey:@"city_code"];
 }
 
-+(NSString *)getCurrentCityName
++ (NSString *)getCurrentCityName
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     return [def objectForKey:@"city_name"];
 }
 
-+(NSString *)getNowTimeTimestamp
-{
-    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-    NSTimeInterval a=[dat timeIntervalSince1970];
-    NSString*timeString = [NSString stringWithFormat:@"%0.f", a];//转为字符型
-    return timeString;
-}
-
-+(BOOL)isIphoneX
++ (BOOL)isIphoneX
 {
     NSString *platform = [WLUtilities getCurrentDeviceModelDescription];
     if ([platform isEqualToString:@"iPhone10,3"])    return YES;

@@ -112,7 +112,7 @@ typedef enum : NSUInteger {
 
 - (void)decorateNavigationBar
 {
-    self.title = @"HEHEHE";
+    self.title = @"诚快达";
     
     UIImage *profileImage = [[UIImage imageNamed:@"nav_defaultavatar"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem *profileBtn = [[UIBarButtonItem alloc]initWithImage:profileImage style:UIBarButtonItemStylePlain target:self action:@selector(profileBtnDidClicking)];
@@ -127,7 +127,6 @@ typedef enum : NSUInteger {
 {
     WLMapViewController *mapVC = [[WLMapViewController alloc]init];
     self.mapVC = mapVC;
-    mapVC.view.backgroundColor = [UIColor yellowColor];
     mapVC.view.frame = Screen_Bounds;
     mapVC.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:mapVC.view];
