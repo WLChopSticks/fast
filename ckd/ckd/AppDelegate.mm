@@ -12,7 +12,10 @@
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 #import "WLBootViewController.h"
 
-#import "WLQuickLoginModel.h"
+#import "WLChargerRecord.h"
+#import "WLInquireCostDetailModel.h"
+#import "WLAquireChargerModel.h"
+#import "WLDepositStatusModel.h"
 #import "WLWePay.h"
 
 BMKMapManager* _mapManager;
@@ -47,9 +50,128 @@ BMKMapManager* _mapManager;
     [WXApi registerApp:@"wx7e0a8fc77aeaf595"];
     
     WLWePay *we = [[WLWePay alloc]init];
-//    [we createWePayRequestWithMoney:@"100"];
+    [we createWePayRequestWithMoney:@"100"];
+//    [self queryDepositStatus];
     
     return YES;
+}
+
+//查询押金状态
+- (void)queryDepositStatus
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *para_String = [NSString stringWithFormat:@"{user_id:c1aff8bcad6e4d1a97713e10f62a00b2}"];
+    [parameters setObject:para_String forKey:@"inputParameter"];
+    NSString *URL = @"http://47.104.85.148:18070/ckdhd/queryYjzt.action";
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        [ProgressHUD dismiss];
+        NSDictionary *result = (NSDictionary *)responseObject;
+        WLDepositStatusModel *depositStatusModel = [[WLDepositStatusModel alloc]init];
+        depositStatusModel = [WLDepositStatusModel getDepositStatusModel:result];
+        if ([depositStatusModel.code isEqualToString:@"1"])
+        {
+            NSLog(@"查询押金状态成功");
+            
+        }else
+        {
+            [ProgressHUD showError:@"查询押金状态失败"];
+            NSLog(@"查询押金状态失败");
+        }
+    } failure:^(NSError *error) {
+        [ProgressHUD showError:@"查询押金状态失败"];
+        NSLog(@"查询押金状态失败");
+        NSLog(@"%@",error);
+    }];
+}
+
+//换电池流程
+- (void)queryAquireCharger
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *para_String = [NSString stringWithFormat:@"{user_id:c1aff8bcad6e4d1a97713e10f62a00b2,zlbj:KTS000021,hdcbj:0}"];
+    [parameters setObject:para_String forKey:@"inputParameter"];
+    NSString *URL = @"http://47.104.85.148:18070/ckdhd/HdlcCz.action";
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        [ProgressHUD dismiss];
+        NSDictionary *result = (NSDictionary *)responseObject;
+        WLAquireChargerModel *aquireChargerModel = [[WLAquireChargerModel alloc]init];
+        aquireChargerModel = [WLAquireChargerModel getAquireChargerModel:result];
+        if ([aquireChargerModel.code isEqualToString:@"1"])
+        {
+            NSLog(@"查询换电流程成功");
+            
+        }else
+        {
+            [ProgressHUD showError:@"查询换电流程失败"];
+            NSLog(@"查询换电流程失败");
+        }
+    } failure:^(NSError *error) {
+        [ProgressHUD showError:@"查询换电流程失败"];
+        NSLog(@"查询换电流程失败");
+        NSLog(@"%@",error);
+    }];
+}
+
+//查询信息费用
+- (void)queryCostDetail
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *para_String = [NSString stringWithFormat:@"{fylxdm:1,fylb:0}"];
+    [parameters setObject:para_String forKey:@"inputParameter"];
+    NSString *URL = @"http://47.104.85.148:18070/ckdhd/queryFyxx.action";
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        [ProgressHUD dismiss];
+        NSDictionary *result = (NSDictionary *)responseObject;
+        WLInquireCostDetailModel *costDetailModel = [[WLInquireCostDetailModel alloc]init];
+        costDetailModel = [WLInquireCostDetailModel getInquireCostDetailModel:result];
+        if ([costDetailModel.code isEqualToString:@"1"])
+        {
+            NSLog(@"查询换电记录成功");
+            
+        }else
+        {
+            [ProgressHUD showError:@"查询换电记录失败"];
+            NSLog(@"查询换电记录失败");
+        }
+    } failure:^(NSError *error) {
+        [ProgressHUD showError:@"查询换电记录失败"];
+        NSLog(@"查询换电记录失败");
+        NSLog(@"%@",error);
+    }];
+}
+
+//换电记录查询
+- (void)queryChargerRecord
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *para_String = [NSString stringWithFormat:@"{user_id:c1aff8bcad6e4d1a97713e10f62a00b2}"];
+//    NSString *para_String = [NSString stringWithFormat:@"{user_id:%@,zlbj:KTS000021,hdcbj:0}",[WLUtilities getUserID]];
+    //    NSString *cityCode = [NSString stringWithFormat:@"{csdm:%@}",[WLUtilities getCurrentCityCode]];
+    [parameters setObject:para_String forKey:@"inputParameter"];
+    NSString *URL = @"http://47.104.85.148:18070/ckdhd/Hdcjl.action";
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        [ProgressHUD dismiss];
+        NSDictionary *result = (NSDictionary *)responseObject;
+        WLChargerRecord *chargerRecordModel = [[WLChargerRecord alloc]init];
+        chargerRecordModel = [WLChargerRecord getChargerRecordModel:result];
+        if ([chargerRecordModel.code isEqualToString:@"1"])
+        {
+            NSLog(@"查询换电记录成功");
+            
+        }else
+        {
+            [ProgressHUD showError:@"查询换电记录失败"];
+            NSLog(@"查询换电记录失败");
+        }
+    } failure:^(NSError *error) {
+        [ProgressHUD showError:@"查询换电记录失败"];
+        NSLog(@"查询换电记录失败");
+        NSLog(@"%@",error);
+    }];
 }
 
 

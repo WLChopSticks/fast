@@ -10,8 +10,24 @@
 #import "WLPlatform.h"
 #import "WLInitPayModel.h"
 #import <WXApi.h>
+#import "WLDataMD5.h"
+
 
 #define PartnerId @"1503148131"
+
+@interface WLWePay()
+
+@property (nonatomic, strong) NSString *appId;
+@property (nonatomic, strong) NSString *partnerId;
+@property (nonatomic, strong) NSString *prepayId;
+@property (nonatomic, strong) NSString *package;
+@property (nonatomic, strong) NSString *nonceStr;
+@property (nonatomic, strong) NSString *tradeType;
+@property (nonatomic, strong) NSString *outTradeNo;
+@property (nonatomic, strong) NSString *price;
+
+
+@end
 
 @implementation WLWePay
 
@@ -27,18 +43,47 @@
         WLInitPayModel *initPayModel = [WLInitPayModel getInitPayModel:result];
         if ([initPayModel.code integerValue] == 1)
         {
-            NSLog(@"初始化支付成功");
+            self.appId = initPayModel.data.appid;
+            self.partnerId = initPayModel.data.mch_id;
+            self.prepayId = initPayModel.data.prepay_id;
+            self.package = @"Sign=WXPay";
+            self.nonceStr = initPayModel.data.nonce_str;
+            self.tradeType = initPayModel.data.trade_type;
+            self.outTradeNo = initPayModel.data.out_trade_no;
+            self.price = fee;
+            
+            
+            
             PayReq *request = [[PayReq alloc] init];
-    
             request.partnerId = initPayModel.data.mch_id;
             request.prepayId= initPayModel.data.prepay_id;
             request.package = @"Sign=WXPay";
             request.nonceStr= initPayModel.data.nonce_str;
-            NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-            NSTimeInterval a=[dat timeIntervalSince1970];
-            request.timeStamp= (UInt32)a;
+
+            // 将当前时间转化成时间戳
+            NSDate *datenow = [NSDate date];
+            NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
+            UInt32 timeStamp =[timeSp intValue];
+            request.timeStamp= timeStamp;
+            // 签名加密
+            WLDataMD5 *md5 = [[WLDataMD5 alloc] init];
+            request.sign = [md5.dic objectForKey:@"sign"];
+            request.sign=[md5 createMD5SingForPay:self.appId
+                                        partnerid:self.partnerId
+                                         prepayid:self.prepayId
+                                          package:self.package
+                                         noncestr:self.nonceStr
+                                        timestamp:timeStamp];
+            
+            
+            NSLog(@"初始化支付成功");
+    
+    
+//                        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+//            NSTimeInterval a=[dat timeIntervalSince1970];
+//            request.timeStamp= (UInt32)a;
 //            request.timeStamp= (UInt32)[[WLUtilities getNowTimeTimestamp]longLongValue / 1000];
-            request.sign= initPayModel.data.sign;
+//            request.sign= initPayModel.data.sign;
             [WXApi sendReq:request];
         }else
         {

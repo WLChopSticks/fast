@@ -39,6 +39,12 @@
 		9B9776C82099A5400068D5C1 /* WLPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776C72099A5400068D5C1 /* WLPointAnnotation.m */; };
 		9B9776CB2099AEEC0068D5C1 /* WLStationDetailPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776CA2099AEEC0068D5C1 /* WLStationDetailPromptView.m */; };
 		9B9776CD2099AEFC0068D5C1 /* WLStationDetailPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B9776CC2099AEFC0068D5C1 /* WLStationDetailPromptView.xib */; };
+		9B977714209AA8A90068D5C1 /* WLChargerRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B977713209AA8A90068D5C1 /* WLChargerRecord.m */; };
+		9B977718209AAC300068D5C1 /* WLInquireCostDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B977717209AAC300068D5C1 /* WLInquireCostDetailModel.m */; };
+		9B97771B209AB04F0068D5C1 /* WLAquireChargerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B97771A209AB04F0068D5C1 /* WLAquireChargerModel.m */; };
+		9B97771E209AB49F0068D5C1 /* WLDepositStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B97771D209AB49F0068D5C1 /* WLDepositStatusModel.m */; };
+		9B977721209AB6400068D5C1 /* WLExpireTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B977720209AB6400068D5C1 /* WLExpireTimeModel.m */; };
+		9B977724209ADCEF0068D5C1 /* WLDataMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B977723209ADCEF0068D5C1 /* WLDataMD5.m */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.mm */; };
 		9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC5209447200076DDB7 /* Main.storyboard */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
@@ -132,6 +138,18 @@
 		9B9776C92099AEEC0068D5C1 /* WLStationDetailPromptView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLStationDetailPromptView.h; sourceTree = "<group>"; };
 		9B9776CA2099AEEC0068D5C1 /* WLStationDetailPromptView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLStationDetailPromptView.m; sourceTree = "<group>"; };
 		9B9776CC2099AEFC0068D5C1 /* WLStationDetailPromptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLStationDetailPromptView.xib; sourceTree = "<group>"; };
+		9B977712209AA8A90068D5C1 /* WLChargerRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLChargerRecord.h; sourceTree = "<group>"; };
+		9B977713209AA8A90068D5C1 /* WLChargerRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLChargerRecord.m; sourceTree = "<group>"; };
+		9B977716209AAC300068D5C1 /* WLInquireCostDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLInquireCostDetailModel.h; sourceTree = "<group>"; };
+		9B977717209AAC300068D5C1 /* WLInquireCostDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLInquireCostDetailModel.m; sourceTree = "<group>"; };
+		9B977719209AB04F0068D5C1 /* WLAquireChargerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLAquireChargerModel.h; sourceTree = "<group>"; };
+		9B97771A209AB04F0068D5C1 /* WLAquireChargerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLAquireChargerModel.m; sourceTree = "<group>"; };
+		9B97771C209AB49F0068D5C1 /* WLDepositStatusModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLDepositStatusModel.h; sourceTree = "<group>"; };
+		9B97771D209AB49F0068D5C1 /* WLDepositStatusModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLDepositStatusModel.m; sourceTree = "<group>"; };
+		9B97771F209AB6400068D5C1 /* WLExpireTimeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLExpireTimeModel.h; sourceTree = "<group>"; };
+		9B977720209AB6400068D5C1 /* WLExpireTimeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLExpireTimeModel.m; sourceTree = "<group>"; };
+		9B977722209ADCEF0068D5C1 /* WLDataMD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLDataMD5.h; sourceTree = "<group>"; };
+		9B977723209ADCEF0068D5C1 /* WLDataMD5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLDataMD5.m; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -197,6 +215,18 @@
 				9B9776C1209989720068D5C1 /* WLEachChargerStationModel.m */,
 				9B9776BD20995CD50068D5C1 /* WLInitPayModel.h */,
 				9B9776BE20995CD50068D5C1 /* WLInitPayModel.m */,
+				9B977712209AA8A90068D5C1 /* WLChargerRecord.h */,
+				9B977713209AA8A90068D5C1 /* WLChargerRecord.m */,
+				9B977719209AB04F0068D5C1 /* WLAquireChargerModel.h */,
+				9B97771A209AB04F0068D5C1 /* WLAquireChargerModel.m */,
+				9B977716209AAC300068D5C1 /* WLInquireCostDetailModel.h */,
+				9B977717209AAC300068D5C1 /* WLInquireCostDetailModel.m */,
+				9B97771C209AB49F0068D5C1 /* WLDepositStatusModel.h */,
+				9B97771D209AB49F0068D5C1 /* WLDepositStatusModel.m */,
+				9B97771F209AB6400068D5C1 /* WLExpireTimeModel.h */,
+				9B977720209AB6400068D5C1 /* WLExpireTimeModel.m */,
+				9B977722209ADCEF0068D5C1 /* WLDataMD5.h */,
+				9B977723209ADCEF0068D5C1 /* WLDataMD5.m */,
 			);
 			path = "模型";
 			sourceTree = "<group>";
@@ -594,7 +624,9 @@
 				9B006B122097F69700CDEFD0 /* WLQuickLoginModel.m in Sources */,
 				9B4CEDB820974A3700F20FB5 /* MapViewBaseDemoViewController.mm in Sources */,
 				9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */,
+				9B97771E209AB49F0068D5C1 /* WLDepositStatusModel.m in Sources */,
 				9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */,
+				9B97771B209AB04F0068D5C1 /* WLAquireChargerModel.m in Sources */,
 				9BB5BE0420946E270076DDB7 /* WLLoginViewController.m in Sources */,
 				9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */,
 				9B4552FD2096DB3400C6C447 /* WLProfileDetailsViewController.m in Sources */,
@@ -603,6 +635,7 @@
 				9B006B232098561300CDEFD0 /* WLRealNameIdentifyViewController.m in Sources */,
 				9B9776C2209989720068D5C1 /* WLEachChargerStationModel.m in Sources */,
 				9B0013CB209A00150081F65D /* WLRealNameAuthenticationViewController.m in Sources */,
+				9B977721209AB6400068D5C1 /* WLExpireTimeModel.m in Sources */,
 				9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */,
 				9B01A03B209617AF00365BB8 /* WLSettings.m in Sources */,
 				9B01A0242095F57C00365BB8 /* WLProfileView.m in Sources */,
@@ -614,15 +647,18 @@
 				9B006B302098BA6D00CDEFD0 /* WLMyAccountController.m in Sources */,
 				9B9776BF20995CD50068D5C1 /* WLInitPayModel.m in Sources */,
 				9B0013D3209A08020081F65D /* WLPaidDepositViewController.m in Sources */,
+				9B977724209ADCEF0068D5C1 /* WLDataMD5.m in Sources */,
 				9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */,
 				9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */,
 				9B9776C82099A5400068D5C1 /* WLPointAnnotation.m in Sources */,
 				9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */,
+				9B977718209AAC300068D5C1 /* WLInquireCostDetailModel.m in Sources */,
 				9B006B2620985AA000CDEFD0 /* WLRealNameIdentifyCell.m in Sources */,
 				9B9776CB2099AEEC0068D5C1 /* WLStationDetailPromptView.m in Sources */,
 				9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */,
 				9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */,
 				9B01A03420960D5A00365BB8 /* WLSettingsViewController.m in Sources */,
+				9B977714209AA8A90068D5C1 /* WLChargerRecord.m in Sources */,
 				9B01A0212095DB9400365BB8 /* WLLoginView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -788,12 +824,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4ZXGZQVLGT;
+				DEVELOPMENT_TEAM = SX6PFU3TZD;
 				INFOPLIST_FILE = ckd/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wang.hehe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qbkj.ckdhd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -806,12 +843,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4ZXGZQVLGT;
+				DEVELOPMENT_TEAM = SX6PFU3TZD;
 				INFOPLIST_FILE = ckd/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wang.hehe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qbkj.ckdhd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
