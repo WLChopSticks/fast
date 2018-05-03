@@ -45,6 +45,7 @@
 		9B97771E209AB49F0068D5C1 /* WLDepositStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B97771D209AB49F0068D5C1 /* WLDepositStatusModel.m */; };
 		9B977721209AB6400068D5C1 /* WLExpireTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B977720209AB6400068D5C1 /* WLExpireTimeModel.m */; };
 		9B977724209ADCEF0068D5C1 /* WLDataMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B977723209ADCEF0068D5C1 /* WLDataMD5.m */; };
+		9B977729209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B977728209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.mm */; };
 		9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC5209447200076DDB7 /* Main.storyboard */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
@@ -150,6 +151,8 @@
 		9B977720209AB6400068D5C1 /* WLExpireTimeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLExpireTimeModel.m; sourceTree = "<group>"; };
 		9B977722209ADCEF0068D5C1 /* WLDataMD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLDataMD5.h; sourceTree = "<group>"; };
 		9B977723209ADCEF0068D5C1 /* WLDataMD5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLDataMD5.m; sourceTree = "<group>"; };
+		9B977727209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMyApplyChargerRecordViewController.h; sourceTree = "<group>"; };
+		9B977728209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMyApplyChargerRecordViewController.m; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -286,6 +289,15 @@
 			path = "支付";
 			sourceTree = "<group>";
 		};
+		9B977725209AF9140068D5C1 /* 我的换电 */ = {
+			isa = PBXGroup;
+			children = (
+				9B977727209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.h */,
+				9B977728209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m */,
+			);
+			path = "我的换电";
+			sourceTree = "<group>";
+		};
 		9BB5BDB3209447200076DDB7 = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				9B01A02A20960B0600365BB8 /* 设置 */,
+				9B977725209AF9140068D5C1 /* 我的换电 */,
 				9B006B2D2098B99A00CDEFD0 /* 我的账户 */,
 				9BB5BDFE20946AE90076DDB7 /* WLProfileViewController.h */,
 				9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */,
@@ -623,6 +636,7 @@
 			files = (
 				9B006B122097F69700CDEFD0 /* WLQuickLoginModel.m in Sources */,
 				9B4CEDB820974A3700F20FB5 /* MapViewBaseDemoViewController.mm in Sources */,
+				9B977729209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m in Sources */,
 				9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */,
 				9B97771E209AB49F0068D5C1 /* WLDepositStatusModel.m in Sources */,
 				9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */,

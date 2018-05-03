@@ -77,21 +77,24 @@
     NSDictionary *exchangPower = [NSDictionary dictionaryWithObjectsAndKeys:
                                   @"me_ic_01", @"itemIcon",
                                   @"我的换电", @"itemName",
-                                  @"13次", @"itemRemark",
-                                  @"ic_more", @"itemArrow",nil];
+                                  @"", @"itemRemark",
+//                                  @"13次", @"itemRemark",
+                                  @"ic_more", @"itemArrow",
+                                  @"WLMyApplyChargerRecordViewController", @"destination",nil];
     
     NSDictionary *myAccount = [NSDictionary dictionaryWithObjectsAndKeys:
                                @"me_ic_02", @"itemIcon",
                                @"我的账户", @"itemName",
-                               @"剩余12天", @"itemRemark",
+                               @"", @"itemRemark",
+//                               @"剩余12天", @"itemRemark",
                                @"ic_more", @"itemArrow",
                                @"myAccount", @"destination_storyboard",nil];
     
-    NSDictionary *myCollect = [NSDictionary dictionaryWithObjectsAndKeys:
-                               @"me_ic_03", @"itemIcon",
-                               @"我的收藏", @"itemName",
-                               @"", @"itemRemark",
-                               @"ic_more", @"itemArrow",nil];
+//    NSDictionary *myCollect = [NSDictionary dictionaryWithObjectsAndKeys:
+//                               @"me_ic_03", @"itemIcon",
+//                               @"我的收藏", @"itemName",
+//                               @"", @"itemRemark",
+//                               @"ic_more", @"itemArrow",nil];
     
     NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys:
                               @"me_ic_04", @"itemIcon",
@@ -100,14 +103,15 @@
                               @"ic_more", @"itemArrow",
                               @"WLSettingsViewController", @"destination",nil];
     
-    NSDictionary *helpCenter = [NSDictionary dictionaryWithObjectsAndKeys:
-                                @"me_ic_05", @"itemIcon",
-                                @"帮助中心", @"itemName",
-                                @"", @"itemRemark",
-                                @"ic_more", @"itemArrow",nil];
+//    NSDictionary *helpCenter = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                @"me_ic_05", @"itemIcon",
+//                                @"帮助中心", @"itemName",
+//                                @"", @"itemRemark",
+//                                @"ic_more", @"itemArrow",nil];
     
-    NSArray *itemsArr1 = @[exchangPower, myAccount, myCollect];
-    NSArray *itemsArr2 = @[settings, helpCenter];
+    //此处是设置了两个section 分别展示profile中的选项
+    NSArray *itemsArr1 = @[exchangPower, myAccount];
+    NSArray *itemsArr2 = @[settings];
     NSArray *itemsArr = @[itemsArr1, itemsArr2];
     return itemsArr;
 }
