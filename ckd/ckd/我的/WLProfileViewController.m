@@ -10,6 +10,7 @@
 #import "WLPlatform.h"
 #import "WLProfileView.h"
 #import "WLSettingsViewController.h"
+#import "WLSettingDetailViewController.h"
 #import "WLProfileDetailsViewController.h"
 #import "WLMyAccountController.h"
 
@@ -66,6 +67,10 @@
 //        //将取出的storyboard里面的控制器被所需的控制器指着。
 //        WLMyAccountController *myAccountVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"myAccount"];
 //        [self.navigationController pushViewController:myAccountVC animated:YES];
+    }else if ([[item objectForKey:@"destination_xib"] isEqualToString:@"WLSettingDetailViewController"])
+    {
+        WLSettingDetailViewController *destinatinVC = [[WLSettingDetailViewController alloc]initWithNibName:@"WLSettingDetailViewController" bundle:nil];
+        [self.navigationController pushViewController:destinatinVC animated:YES];
     }
 
 //    else if ([[item objectForKey:@"destination_storyboard"] isEqualToString:@"myAccount"])
@@ -113,7 +118,7 @@
                               @"设置", @"itemName",
                               @"", @"itemRemark",
                               @"ic_more", @"itemArrow",
-                              @"WLSettingsViewController", @"destination",nil];
+                              @"WLSettingDetailViewController", @"destination_xib",nil];
     
 //    NSDictionary *helpCenter = [NSDictionary dictionaryWithObjectsAndKeys:
 //                                @"me_ic_05", @"itemIcon",

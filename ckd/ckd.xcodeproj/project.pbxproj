@@ -58,6 +58,10 @@
 		9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDFB209453DF0076DDB7 /* WLHomeViewController.m */; };
 		9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */; };
 		9BB5BE0420946E270076DDB7 /* WLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BE0320946E270076DDB7 /* WLLoginViewController.m */; };
+		9BFF6D88209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF6D86209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.m */; };
+		9BFF6D89209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BFF6D87209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.xib */; };
+		9BFF6D8D209B307D003457D4 /* WLSettingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF6D8B209B307D003457D4 /* WLSettingDetailViewController.m */; };
+		9BFF6D8E209B307D003457D4 /* WLSettingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BFF6D8C209B307D003457D4 /* WLSettingDetailViewController.xib */; };
 		FE98CF3A172DEAD6991E9E7A /* libPods-ckd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C55BFB4F50FBC05650FEF77 /* libPods-ckd.a */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +182,12 @@
 		9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLProfileViewController.m; sourceTree = "<group>"; };
 		9BB5BE0220946E270076DDB7 /* WLLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLLoginViewController.h; sourceTree = "<group>"; };
 		9BB5BE0320946E270076DDB7 /* WLLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLLoginViewController.m; sourceTree = "<group>"; };
+		9BFF6D85209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLApplyChargerRecordCellTableViewCell.h; sourceTree = "<group>"; };
+		9BFF6D86209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLApplyChargerRecordCellTableViewCell.m; sourceTree = "<group>"; };
+		9BFF6D87209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLApplyChargerRecordCellTableViewCell.xib; sourceTree = "<group>"; };
+		9BFF6D8A209B307D003457D4 /* WLSettingDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLSettingDetailViewController.h; sourceTree = "<group>"; };
+		9BFF6D8B209B307D003457D4 /* WLSettingDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLSettingDetailViewController.m; sourceTree = "<group>"; };
+		9BFF6D8C209B307D003457D4 /* WLSettingDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLSettingDetailViewController.xib; sourceTree = "<group>"; };
 		CEE767F063C76A7AE601455B /* Pods-ckd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ckd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ckd/Pods-ckd.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -258,6 +268,9 @@
 			children = (
 				9B01A03220960D5A00365BB8 /* WLSettingsViewController.h */,
 				9B01A03320960D5A00365BB8 /* WLSettingsViewController.m */,
+				9BFF6D8A209B307D003457D4 /* WLSettingDetailViewController.h */,
+				9BFF6D8B209B307D003457D4 /* WLSettingDetailViewController.m */,
+				9BFF6D8C209B307D003457D4 /* WLSettingDetailViewController.xib */,
 				9B01A039209617AF00365BB8 /* WLSettings.h */,
 				9B01A03A209617AF00365BB8 /* WLSettings.m */,
 				9B4552FB2096DB3400C6C447 /* WLProfileDetailsViewController.h */,
@@ -295,6 +308,9 @@
 			children = (
 				9B977727209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.h */,
 				9B977728209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m */,
+				9BFF6D85209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.h */,
+				9BFF6D86209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.m */,
+				9BFF6D87209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.xib */,
 			);
 			path = "我的换电";
 			sourceTree = "<group>";
@@ -563,8 +579,10 @@
 				9B01A0292095FCBA00365BB8 /* WLProfileItemsCell.xib in Resources */,
 				9B0013CC209A00150081F65D /* WLRealNameAuthenticationViewController.xib in Resources */,
 				9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */,
+				9BFF6D89209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.xib in Resources */,
 				9B9776CD2099AEFC0068D5C1 /* WLStationDetailPromptView.xib in Resources */,
 				9B01A03620960D6800365BB8 /* WLSettingsViewController.storyboard in Resources */,
+				9BFF6D8E209B307D003457D4 /* WLSettingDetailViewController.xib in Resources */,
 				9B0013D4209A08020081F65D /* WLPaidDepositViewController.xib in Resources */,
 				9B006B2820985AE400CDEFD0 /* WLRealNameIdentifyCell.xib in Resources */,
 			);
@@ -639,6 +657,7 @@
 				9B977729209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m in Sources */,
 				9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */,
 				9B97771E209AB49F0068D5C1 /* WLDepositStatusModel.m in Sources */,
+				9BFF6D8D209B307D003457D4 /* WLSettingDetailViewController.m in Sources */,
 				9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */,
 				9B97771B209AB04F0068D5C1 /* WLAquireChargerModel.m in Sources */,
 				9BB5BE0420946E270076DDB7 /* WLLoginViewController.m in Sources */,
@@ -673,6 +692,7 @@
 				9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */,
 				9B01A03420960D5A00365BB8 /* WLSettingsViewController.m in Sources */,
 				9B977714209AA8A90068D5C1 /* WLChargerRecord.m in Sources */,
+				9BFF6D88209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.m in Sources */,
 				9B01A0212095DB9400365BB8 /* WLLoginView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

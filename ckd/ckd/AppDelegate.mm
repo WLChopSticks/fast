@@ -143,36 +143,7 @@ BMKMapManager* _mapManager;
     }];
 }
 
-//换电记录查询
-- (void)queryChargerRecord
-{
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *para_String = [NSString stringWithFormat:@"{user_id:c1aff8bcad6e4d1a97713e10f62a00b2}"];
-//    NSString *para_String = [NSString stringWithFormat:@"{user_id:%@,zlbj:KTS000021,hdcbj:0}",[WLUtilities getUserID]];
-    //    NSString *cityCode = [NSString stringWithFormat:@"{csdm:%@}",[WLUtilities getCurrentCityCode]];
-    [parameters setObject:para_String forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/Hdcjl.action";
-    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
-        [ProgressHUD dismiss];
-        NSDictionary *result = (NSDictionary *)responseObject;
-        WLChargerRecord *chargerRecordModel = [[WLChargerRecord alloc]init];
-        chargerRecordModel = [WLChargerRecord getChargerRecordModel:result];
-        if ([chargerRecordModel.code isEqualToString:@"1"])
-        {
-            NSLog(@"查询换电记录成功");
-            
-        }else
-        {
-            [ProgressHUD showError:@"查询换电记录失败"];
-            NSLog(@"查询换电记录失败");
-        }
-    } failure:^(NSError *error) {
-        [ProgressHUD showError:@"查询换电记录失败"];
-        NSLog(@"查询换电记录失败");
-        NSLog(@"%@",error);
-    }];
-}
+
 
 
 

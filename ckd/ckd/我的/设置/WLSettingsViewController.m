@@ -10,6 +10,7 @@
 #import "WLPlatform.h"
 #import "WLSettings.h"
 #import "WLProfileDetailsViewController.h"
+#import "WLSettingDetailViewController.h"
 
 @interface WLSettingsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
