@@ -46,8 +46,8 @@
 		9B977721209AB6400068D5C1 /* WLExpireTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B977720209AB6400068D5C1 /* WLExpireTimeModel.m */; };
 		9B977724209ADCEF0068D5C1 /* WLDataMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B977723209ADCEF0068D5C1 /* WLDataMD5.m */; };
 		9B977729209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B977728209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m */; };
+		9B97772B209B02530068D5C1 /* WLMyAccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B97772A209B02530068D5C1 /* WLMyAccountView.xib */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.mm */; };
-		9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC5209447200076DDB7 /* Main.storyboard */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
 		9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDCA209447200076DDB7 /* LaunchScreen.storyboard */; };
 		9BB5BDCF209447200076DDB7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDCE209447200076DDB7 /* main.m */; };
@@ -153,10 +153,10 @@
 		9B977723209ADCEF0068D5C1 /* WLDataMD5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLDataMD5.m; sourceTree = "<group>"; };
 		9B977727209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMyApplyChargerRecordViewController.h; sourceTree = "<group>"; };
 		9B977728209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMyApplyChargerRecordViewController.m; sourceTree = "<group>"; };
+		9B97772A209B02530068D5C1 /* WLMyAccountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLMyAccountView.xib; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		9BB5BDC6209447200076DDB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9BB5BDC8209447200076DDB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BB5BDCB209447200076DDB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9BB5BDCD209447200076DDB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -248,6 +248,7 @@
 			children = (
 				9B006B2E2098BA6D00CDEFD0 /* WLMyAccountController.h */,
 				9B006B2F2098BA6D00CDEFD0 /* WLMyAccountController.m */,
+				9B97772A209B02530068D5C1 /* WLMyAccountView.xib */,
 			);
 			path = "我的账户";
 			sourceTree = "<group>";
@@ -333,7 +334,6 @@
 				9B9776B920995BFE0068D5C1 /* 支付 */,
 				9BB5BDBF209447200076DDB7 /* AppDelegate.h */,
 				9BB5BDC0209447200076DDB7 /* AppDelegate.mm */,
-				9BB5BDC5209447200076DDB7 /* Main.storyboard */,
 				9BB5BDC8209447200076DDB7 /* Assets.xcassets */,
 				9BB5BDCA209447200076DDB7 /* LaunchScreen.storyboard */,
 				9BB5BDCD209447200076DDB7 /* Info.plist */,
@@ -559,13 +559,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */,
+				9B97772B209B02530068D5C1 /* WLMyAccountView.xib in Resources */,
 				9B01A0292095FCBA00365BB8 /* WLProfileItemsCell.xib in Resources */,
 				9B0013CC209A00150081F65D /* WLRealNameAuthenticationViewController.xib in Resources */,
 				9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */,
 				9B9776CD2099AEFC0068D5C1 /* WLStationDetailPromptView.xib in Resources */,
 				9B01A03620960D6800365BB8 /* WLSettingsViewController.storyboard in Resources */,
 				9B0013D4209A08020081F65D /* WLPaidDepositViewController.xib in Resources */,
-				9BB5BDC7209447200076DDB7 /* Main.storyboard in Resources */,
 				9B006B2820985AE400CDEFD0 /* WLRealNameIdentifyCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -709,14 +709,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9BB5BDC5209447200076DDB7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9BB5BDC6209447200076DDB7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9BB5BDCA209447200076DDB7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

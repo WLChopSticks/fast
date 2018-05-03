@@ -9,6 +9,8 @@
 #import "WLMyAccountController.h"
 
 @interface WLMyAccountController ()
+@property (weak, nonatomic) IBOutlet UIView *name;
+
 
 @end
 
@@ -18,12 +20,16 @@
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [super viewWillAppear:animated];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"购买套餐";
+    self.title = @"我的账户";
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.view.backgroundColor = LightGrayBackground;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -34,6 +40,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)extendMonthTimeBtnDidClicking:(id)sender
+{
+    NSLog(@"我的月卡续费按钮点击了");
+}
+- (IBAction)PaidDepositBtnDidClicking:(id)sender
+{
+    NSLog(@"缴纳押金按钮点击了");
 }
 
 #pragma mark - Table view data source

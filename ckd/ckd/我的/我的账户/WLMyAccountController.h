@@ -6,8 +6,9 @@
 //  Copyright © 2018年 wanglei. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "WLBaseUIViewController.h"
 
-@interface WLMyAccountController : UITableViewController
+
+@interface WLMyAccountController : WLBaseUIViewController
 
 @end

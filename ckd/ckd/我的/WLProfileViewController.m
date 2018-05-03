@@ -56,14 +56,26 @@
     {
         id destinatinVC = [[NSClassFromString([item objectForKey:@"destination"])alloc]init];
         [self.navigationController pushViewController:destinatinVC animated:YES];
-    }else if ([[item objectForKey:@"destination_storyboard"] isEqualToString:@"myAccount"])
+    }else if ([[item objectForKey:@"destination_xib"] isEqualToString:@"WLMyAccountController"])
     {
-        //取出stroryboard里面的控制器：
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"WLSettingsViewController" bundle:nil];
-        //将取出的storyboard里面的控制器被所需的控制器指着。
-        WLMyAccountController *myAccountVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"myAccount"];
-        [self.navigationController pushViewController:myAccountVC animated:YES];
+        WLMyAccountController *destinatinVC = [[WLMyAccountController alloc]initWithNibName:@"WLMyAccountView" bundle:nil];
+//        id destinatinVC = [[NSClassFromString([item objectForKey:@"destination_xib"])alloc]];
+        [self.navigationController pushViewController:destinatinVC animated:YES];
+//        //取出stroryboard里面的控制器：
+//        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"WLSettingsViewController" bundle:nil];
+//        //将取出的storyboard里面的控制器被所需的控制器指着。
+//        WLMyAccountController *myAccountVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"myAccount"];
+//        [self.navigationController pushViewController:myAccountVC animated:YES];
     }
+
+//    else if ([[item objectForKey:@"destination_storyboard"] isEqualToString:@"myAccount"])
+//    {
+//        //取出stroryboard里面的控制器：
+//        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"WLSettingsViewController" bundle:nil];
+//        //将取出的storyboard里面的控制器被所需的控制器指着。
+//        WLMyAccountController *myAccountVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"myAccount"];
+//        [self.navigationController pushViewController:myAccountVC animated:YES];
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,7 +100,7 @@
                                @"", @"itemRemark",
 //                               @"剩余12天", @"itemRemark",
                                @"ic_more", @"itemArrow",
-                               @"myAccount", @"destination_storyboard",nil];
+                               @"WLMyAccountController", @"destination_xib",nil];
     
 //    NSDictionary *myCollect = [NSDictionary dictionaryWithObjectsAndKeys:
 //                               @"me_ic_03", @"itemIcon",

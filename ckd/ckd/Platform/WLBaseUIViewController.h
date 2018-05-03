@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WLPlatform.h"
 
 @interface WLBaseUIViewController : UIViewController
 
