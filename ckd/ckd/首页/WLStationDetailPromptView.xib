@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,12 +28,6 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3D-8j-fpJ">
-                    <rect key="frame" x="8" y="66" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWr-Gm-Z4c">
                     <rect key="frame" x="377" y="56" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -50,18 +44,48 @@
                         <action selector="collectionBtnDidClicking:" destination="-1" eventType="touchUpInside" id="w2f-jY-msH"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EU-Y2-YMb">
+                    <rect key="frame" x="115" y="66" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyA-bV-tAy">
+                    <rect key="frame" x="8" y="66" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWz-cw-t8L">
+                    <rect key="frame" x="102" y="66" width="8" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u90-CW-xef">
+                    <rect key="frame" x="55" y="66" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="f14-N7-ArF" firstAttribute="leading" secondItem="wsx-x9-wGT" secondAttribute="leading" constant="8" id="3ds-sH-KRX"/>
-                <constraint firstItem="A3D-8j-fpJ" firstAttribute="top" secondItem="Aya-sQ-Sqt" secondAttribute="bottom" constant="8" id="Qus-Vq-WP9"/>
+                <constraint firstItem="u90-CW-xef" firstAttribute="leading" secondItem="cyA-bV-tAy" secondAttribute="trailing" constant="5" id="LbD-0k-O7u"/>
+                <constraint firstItem="IWz-cw-t8L" firstAttribute="centerY" secondItem="u90-CW-xef" secondAttribute="centerY" id="PJM-o2-6aU"/>
+                <constraint firstItem="cyA-bV-tAy" firstAttribute="top" secondItem="Aya-sQ-Sqt" secondAttribute="bottom" constant="8" id="PMn-pl-s70"/>
+                <constraint firstItem="u90-CW-xef" firstAttribute="centerY" secondItem="cyA-bV-tAy" secondAttribute="centerY" id="Rl3-ba-1iA"/>
                 <constraint firstItem="Aya-sQ-Sqt" firstAttribute="leading" secondItem="f14-N7-ArF" secondAttribute="leading" id="TQE-yF-JnP"/>
+                <constraint firstItem="IWz-cw-t8L" firstAttribute="leading" secondItem="u90-CW-xef" secondAttribute="trailing" constant="5" id="W4I-o7-Vlt"/>
+                <constraint firstItem="6EU-Y2-YMb" firstAttribute="centerY" secondItem="IWz-cw-t8L" secondAttribute="centerY" id="bYJ-ia-ev7"/>
                 <constraint firstItem="f14-N7-ArF" firstAttribute="top" secondItem="wsx-x9-wGT" secondAttribute="top" constant="8" id="ftY-CJ-YXX"/>
+                <constraint firstItem="cyA-bV-tAy" firstAttribute="leading" secondItem="Aya-sQ-Sqt" secondAttribute="leading" id="hAr-xs-YPz"/>
                 <constraint firstItem="LWr-Gm-Z4c" firstAttribute="top" secondItem="iVY-Zl-S1E" secondAttribute="bottom" constant="8" id="idX-UC-am6"/>
                 <constraint firstItem="wsx-x9-wGT" firstAttribute="trailing" secondItem="iVY-Zl-S1E" secondAttribute="trailing" constant="8" id="mbd-pk-QBU"/>
                 <constraint firstItem="Aya-sQ-Sqt" firstAttribute="top" secondItem="f14-N7-ArF" secondAttribute="bottom" constant="8" id="mxq-sQ-qfE"/>
                 <constraint firstItem="wsx-x9-wGT" firstAttribute="trailing" secondItem="LWr-Gm-Z4c" secondAttribute="trailing" constant="8" id="nRg-L4-jHa"/>
-                <constraint firstItem="A3D-8j-fpJ" firstAttribute="leading" secondItem="Aya-sQ-Sqt" secondAttribute="leading" id="tRI-u6-3NT"/>
+                <constraint firstItem="6EU-Y2-YMb" firstAttribute="leading" secondItem="IWz-cw-t8L" secondAttribute="trailing" constant="5" id="rR1-7O-Jh1"/>
                 <constraint firstItem="iVY-Zl-S1E" firstAttribute="top" secondItem="wsx-x9-wGT" secondAttribute="top" constant="8" id="vK1-ZH-4YJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -69,9 +93,11 @@
             <connections>
                 <outlet property="chargerCount" destination="LWr-Gm-Z4c" id="5Dv-Nd-Lil"/>
                 <outlet property="collectionBtn" destination="iVY-Zl-S1E" id="s76-kB-2NN"/>
+                <outlet property="endTime" destination="6EU-Y2-YMb" id="N0P-bs-Aay"/>
+                <outlet property="startTime" destination="u90-CW-xef" id="RBq-f1-l6j"/>
                 <outlet property="stationAddress" destination="Aya-sQ-Sqt" id="puO-23-6uf"/>
                 <outlet property="stationName" destination="f14-N7-ArF" id="B91-Ia-ZYc"/>
-                <outlet property="stationTelephone" destination="A3D-8j-fpJ" id="T4X-9s-OrA"/>
+                <outlet property="timeCaption" destination="cyA-bV-tAy" id="Jwq-mk-8yd"/>
             </connections>
             <point key="canvasLocation" x="-40.5" y="61.5"/>
         </view>

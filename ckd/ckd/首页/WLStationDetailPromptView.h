@@ -11,9 +11,11 @@
 @interface WLStationDetailPromptView : UIView
 @property (weak, nonatomic) IBOutlet UILabel *stationName;
 @property (weak, nonatomic) IBOutlet UILabel *stationAddress;
-@property (weak, nonatomic) IBOutlet UILabel *stationTelephone;
 @property (weak, nonatomic) IBOutlet UILabel *chargerCount;
 @property (weak, nonatomic) IBOutlet UIButton *collectionBtn;
+@property (weak, nonatomic) IBOutlet UILabel *startTime;
+@property (weak, nonatomic) IBOutlet UILabel *endTime;
+@property (weak, nonatomic) IBOutlet UILabel *timeCaption;
 
 
 + (instancetype)instanceView;
