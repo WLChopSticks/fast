@@ -41,7 +41,7 @@ BMKMapManager* _mapManager;
     [WXApi registerApp:@"wx7e0a8fc77aeaf595"];
     
     WLWePay *we = [[WLWePay alloc]init];
-//    [we createWePayRequestWithMoney:@"100"];
+    [we createWePayRequestWithMoney:@"100"];
 //    [self queryDepositStatus];
     
     return YES;
@@ -210,7 +210,7 @@ BMKMapManager* _mapManager;
     } else {
         NSLog(@"经纬度类型设置失败");
     }
-    BOOL ret = [_mapManager start:@"LAtVCqrgsdzQrnlgyI3Nu5Bn9p2bhIuu" generalDelegate:self];
+    BOOL ret = [_mapManager start:@"od8frLbiZOnpGXqEhDFTvl75EUXamOtn" generalDelegate:self];
     if (!ret) {
         NSLog(@"manager start failed!");
     }

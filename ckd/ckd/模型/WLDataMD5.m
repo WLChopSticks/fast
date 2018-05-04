@@ -169,7 +169,7 @@
 
 //创建发起支付时的sige签名
 
--(NSString *)createMD5SingForPay:(NSString *)appid_key partnerid:(NSString *)partnerid_key prepayid:(NSString *)prepayid_key package:(NSString *)package_key noncestr:(NSString *)noncestr_key timestamp:(UInt32)timestamp_key
+-(NSString *)createMD5SingForPay:(NSString *)appid_key partnerid:(NSString *)partnerid_key prepayid:(NSString *)prepayid_key package:(NSString *)package_key noncestr:(NSString *)noncestr_key timestamp:(UInt32)timestamp_key app_id: (NSString *)app_id
 {
     NSMutableDictionary *signParams = [NSMutableDictionary dictionary];
     [signParams setObject:appid_key forKey:@"appid"];
@@ -197,7 +197,7 @@
     }
     //添加商户密钥key字段
 #warning 注意此处一定要添加上商户密钥
-    [contentString appendFormat:@"key=%@", WX_PartnerKey];
+    [contentString appendFormat:@"key=%@", app_id];
     NSString *result = [self md5:contentString];
     
     NSLog(@"result = %@",result);

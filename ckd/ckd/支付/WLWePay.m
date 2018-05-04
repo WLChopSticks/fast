@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString *tradeType;
 @property (nonatomic, strong) NSString *outTradeNo;
 @property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSString *api_id;
 
 
 @end
@@ -50,6 +51,7 @@
             self.nonceStr = initPayModel.data.nonce_str;
             self.tradeType = initPayModel.data.trade_type;
             self.outTradeNo = initPayModel.data.out_trade_no;
+            self.api_id = initPayModel.data.api_key;
             self.price = fee;
             
             
@@ -59,12 +61,16 @@
             request.prepayId= initPayModel.data.prepay_id;
             request.package = @"Sign=WXPay";
             request.nonceStr= initPayModel.data.nonce_str;
+            request.sign = initPayModel.data.sign;
 
             // 将当前时间转化成时间戳
             NSDate *datenow = [NSDate date];
             NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
             UInt32 timeStamp =[timeSp intValue];
             request.timeStamp= timeStamp;
+            
+            
+            
             // 签名加密
             WLDataMD5 *md5 = [[WLDataMD5 alloc] init];
             request.sign = [md5.dic objectForKey:@"sign"];
@@ -73,9 +79,10 @@
                                          prepayid:self.prepayId
                                           package:self.package
                                          noncestr:self.nonceStr
-                                        timestamp:timeStamp];
+                                        timestamp:timeStamp app_id:self.api_id];
             
             
+            [WXApi sendReq:request];
             NSLog(@"初始化支付成功");
     
     
@@ -84,7 +91,6 @@
 //            request.timeStamp= (UInt32)a;
 //            request.timeStamp= (UInt32)[[WLUtilities getNowTimeTimestamp]longLongValue / 1000];
 //            request.sign= initPayModel.data.sign;
-            [WXApi sendReq:request];
         }else
         {
             NSLog(@"初始化支付失败");
