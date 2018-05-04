@@ -7,7 +7,6 @@
 //
 
 #import "WLMapViewController.h"
-#import "WLPlatform.h"
 #import "WLMapAnnotationView.h"
 #import "WLPointAnnotation.h"
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>
@@ -141,7 +140,8 @@
     WLEachChargerStationInfoModel *model = self.LocationOfStations[index];
     stationInfoPromtView.stationName.text = model.zdmc;
     stationInfoPromtView.stationAddress.text = model.zddz;
-    stationInfoPromtView.stationTelephone.text = @"";
+//    stationInfoPromtView.startTime.text = model.kssj;
+//    stationInfoPromtView.endTime.text = model.jssj;
     stationInfoPromtView.chargerCount.text = model.dcsl;
     [stationInfoPromtView.collectionBtn setImage:[UIImage imageNamed:@"ic_collect"] forState:UIControlStateNormal];
     [self.view.superview addSubview:stationInfoPromtView];

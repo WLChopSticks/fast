@@ -7,7 +7,6 @@
 //
 
 #import "WLHomeViewController.h"
-#import "WLPlatform.h"
 #import "WLProfileViewController.h"
 #import "WLLoginViewController.h"
 #import "MapViewBaseDemoViewController.h"
@@ -18,6 +17,7 @@
 #import "WLNewsCenterViewController.h"
 #import "WLEachChargerStationModel.h"
 #import "WLPaidDepositViewController.h"
+#import "WLCustomerServiceViewController.h"
 
 typedef enum : NSUInteger {
     UnRegistRealName,
@@ -152,7 +152,7 @@ typedef enum : NSUInteger {
     
     UIButton *serviceBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
     [serviceBtn setImage:[UIImage imageNamed:@"home_ic_service"] forState:UIControlStateNormal];
-    [serviceBtn addTarget:self action:@selector(hehe) forControlEvents:UIControlEventTouchUpInside];
+    [serviceBtn addTarget:self action:@selector(serviceBtnDidClicking) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:serviceBtn];
 
     UIButton *iconBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
@@ -290,6 +290,12 @@ typedef enum : NSUInteger {
 {
     WLNewsCenterViewController *newsCenterVC = [[WLNewsCenterViewController alloc]init];
     [self.navigationController pushViewController:newsCenterVC animated:YES];
+}
+
+- (void)serviceBtnDidClicking
+{
+    WLCustomerServiceViewController *customerServiceVC = [[WLCustomerServiceViewController alloc]init];
+    [self.navigationController pushViewController:customerServiceVC animated:YES];
 }
 
 - (void)improveBtnDidClicking: (UIButton *)sender

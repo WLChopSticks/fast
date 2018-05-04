@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WLCustomerServiceViewController">
+            <connections>
+                <outlet property="firstTelephoneLabel" destination="0hy-8x-ts7" id="qCK-BV-sd0"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服电话" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBY-6h-NDY">
+                    <rect key="frame" x="20" y="40" width="70" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4P-Om-Ode">
+                    <rect key="frame" x="0.0" y="81" width="375" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_sellphone" translatesAutoresizingMaskIntoConstraints="NO" id="Vtq-6U-pB6">
+                            <rect key="frame" x="10" y="5" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="F10-Ed-AO6"/>
+                                <constraint firstAttribute="width" constant="40" id="QoO-Ae-SBc"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hy-8x-ts7">
+                            <rect key="frame" x="60" y="14.5" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWQ-ou-pKo">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <connections>
+                                <action selector="firstTelephoneBtnDidCLicking:" destination="-1" eventType="touchUpInside" id="nkB-iz-Ih7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="XWQ-ou-pKo" firstAttribute="top" secondItem="b4P-Om-Ode" secondAttribute="top" id="6HW-iv-s9r"/>
+                        <constraint firstItem="XWQ-ou-pKo" firstAttribute="leading" secondItem="b4P-Om-Ode" secondAttribute="leading" id="6Ri-sk-bOO"/>
+                        <constraint firstItem="0hy-8x-ts7" firstAttribute="leading" secondItem="Vtq-6U-pB6" secondAttribute="trailing" constant="10" id="9eG-lE-uZM"/>
+                        <constraint firstAttribute="bottom" secondItem="XWQ-ou-pKo" secondAttribute="bottom" id="D18-Yl-pax"/>
+                        <constraint firstAttribute="trailing" secondItem="XWQ-ou-pKo" secondAttribute="trailing" id="aWk-2l-fkc"/>
+                        <constraint firstItem="0hy-8x-ts7" firstAttribute="centerY" secondItem="Vtq-6U-pB6" secondAttribute="centerY" id="cZ0-KK-IKP"/>
+                        <constraint firstItem="Vtq-6U-pB6" firstAttribute="centerY" secondItem="b4P-Om-Ode" secondAttribute="centerY" id="jPY-qa-PJw"/>
+                        <constraint firstItem="Vtq-6U-pB6" firstAttribute="leading" secondItem="b4P-Om-Ode" secondAttribute="leading" constant="10" id="xuf-IZ-1jb"/>
+                        <constraint firstAttribute="height" constant="50" id="zfA-DG-2FN"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRM-Wz-Sgw">
+                    <rect key="frame" x="8" y="567" width="359" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="4YW-fw-X5J"/>
+                    </constraints>
+                    <state key="normal" title="拨打电话" backgroundImage="btn_orange">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="submitBtnDidCLicking:" destination="-1" eventType="touchUpInside" id="3En-5g-amk"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="aBY-6h-NDY" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="3Yc-fE-dGc"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="HRM-Wz-Sgw" secondAttribute="bottom" constant="50" id="FnE-ig-kIr"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="HRM-Wz-Sgw" secondAttribute="trailing" constant="8" id="Gew-6X-wVN"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="b4P-Om-Ode" secondAttribute="trailing" id="HvS-2c-QUT"/>
+                <constraint firstItem="HRM-Wz-Sgw" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="8" id="L7C-8f-dGR"/>
+                <constraint firstItem="b4P-Om-Ode" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="On9-dL-2PX"/>
+                <constraint firstItem="b4P-Om-Ode" firstAttribute="top" secondItem="aBY-6h-NDY" secondAttribute="bottom" constant="20" id="QS3-eA-O3o"/>
+                <constraint firstItem="aBY-6h-NDY" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="bGq-Ow-5lL"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_orange" width="344" height="47"/>
+        <image name="ic_sellphone" width="23" height="23"/>
+    </resources>
+</document>

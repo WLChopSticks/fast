@@ -80,7 +80,7 @@
     }else
     {
         [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.mas_top).offset(Margin * 1.5);
+            make.top.equalTo(self.mas_top).offset(20);
             make.left.equalTo(self.mas_left).offset(Margin);
             make.width.height.mas_equalTo(30);
         }];

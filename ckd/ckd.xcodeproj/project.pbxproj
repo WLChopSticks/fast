@@ -45,6 +45,8 @@
 		9B977724209ADCEF0068D5C1 /* WLDataMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B977723209ADCEF0068D5C1 /* WLDataMD5.m */; };
 		9B977729209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B977728209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m */; };
 		9B97772B209B02530068D5C1 /* WLMyAccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B97772A209B02530068D5C1 /* WLMyAccountView.xib */; };
+		9B977730209BD8BA0068D5C1 /* WLCustomerServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B97772E209BD8BA0068D5C1 /* WLCustomerServiceViewController.m */; };
+		9B977731209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B97772F209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.mm */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
 		9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDCA209447200076DDB7 /* LaunchScreen.storyboard */; };
@@ -154,6 +156,9 @@
 		9B977727209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMyApplyChargerRecordViewController.h; sourceTree = "<group>"; };
 		9B977728209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMyApplyChargerRecordViewController.m; sourceTree = "<group>"; };
 		9B97772A209B02530068D5C1 /* WLMyAccountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLMyAccountView.xib; sourceTree = "<group>"; };
+		9B97772D209BD8BA0068D5C1 /* WLCustomerServiceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLCustomerServiceViewController.h; sourceTree = "<group>"; };
+		9B97772E209BD8BA0068D5C1 /* WLCustomerServiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLCustomerServiceViewController.m; sourceTree = "<group>"; };
+		9B97772F209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLCustomerServiceViewController.xib; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -313,6 +318,16 @@
 			path = "我的换电";
 			sourceTree = "<group>";
 		};
+		9B97772C209BD8600068D5C1 /* 客服 */ = {
+			isa = PBXGroup;
+			children = (
+				9B97772D209BD8BA0068D5C1 /* WLCustomerServiceViewController.h */,
+				9B97772E209BD8BA0068D5C1 /* WLCustomerServiceViewController.m */,
+				9B97772F209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib */,
+			);
+			path = "客服";
+			sourceTree = "<group>";
+		};
 		9BB5BDB3209447200076DDB7 = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +358,7 @@
 				9B006B292098B30C00CDEFD0 /* 消息中心 */,
 				9BB5BE0120946E0A0076DDB7 /* 登录页面 */,
 				9B720DBA209765AC00D88704 /* 扫一扫 */,
+				9B97772C209BD8600068D5C1 /* 客服 */,
 				9BB5BDF1209453240076DDB7 /* 首页 */,
 				9B006B0F2097F66800CDEFD0 /* 模型 */,
 				9B9776B920995BFE0068D5C1 /* 支付 */,
@@ -572,6 +588,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B977731209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib in Resources */,
 				9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */,
 				9B97772B209B02530068D5C1 /* WLMyAccountView.xib in Resources */,
 				9B01A0292095FCBA00365BB8 /* WLProfileItemsCell.xib in Resources */,
@@ -658,6 +675,7 @@
 				9B97771E209AB49F0068D5C1 /* WLDepositStatusModel.m in Sources */,
 				9BFF6D8D209B307D003457D4 /* WLSettingDetailViewController.m in Sources */,
 				9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */,
+				9B977730209BD8BA0068D5C1 /* WLCustomerServiceViewController.m in Sources */,
 				9B97771B209AB04F0068D5C1 /* WLAquireChargerModel.m in Sources */,
 				9BB5BE0420946E270076DDB7 /* WLLoginViewController.m in Sources */,
 				9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */,
