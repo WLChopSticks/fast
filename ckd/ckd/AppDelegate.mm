@@ -40,8 +40,7 @@ BMKMapManager* _mapManager;
     //向微信注册
     [WXApi registerApp:@"wx7e0a8fc77aeaf595"];
     
-    WLWePay *we = [[WLWePay alloc]init];
-    [we createWePayRequestWithMoney:@"100"];
+
 //    [self queryDepositStatus];
     
     return YES;
@@ -72,35 +71,6 @@ BMKMapManager* _mapManager;
     } failure:^(NSError *error) {
         [ProgressHUD showError:@"查询押金状态失败"];
         NSLog(@"查询押金状态失败");
-        NSLog(@"%@",error);
-    }];
-}
-
-//换电池流程
-- (void)queryAquireCharger
-{
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *para_String = [NSString stringWithFormat:@"{user_id:c1aff8bcad6e4d1a97713e10f62a00b2,zlbj:KTS000021,hdcbj:0}"];
-    [parameters setObject:para_String forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/HdlcCz.action";
-    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
-        [ProgressHUD dismiss];
-        NSDictionary *result = (NSDictionary *)responseObject;
-        WLAquireChargerModel *aquireChargerModel = [[WLAquireChargerModel alloc]init];
-        aquireChargerModel = [WLAquireChargerModel getAquireChargerModel:result];
-        if ([aquireChargerModel.code isEqualToString:@"1"])
-        {
-            NSLog(@"查询换电流程成功");
-            
-        }else
-        {
-            [ProgressHUD showError:@"查询换电流程失败"];
-            NSLog(@"查询换电流程失败");
-        }
-    } failure:^(NSError *error) {
-        [ProgressHUD showError:@"查询换电流程失败"];
-        NSLog(@"查询换电流程失败");
         NSLog(@"%@",error);
     }];
 }

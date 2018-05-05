@@ -29,6 +29,7 @@
 		9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4553022096F3B000C6C447 /* WLUtilities.m */; };
 		9B4CEDB820974A3700F20FB5 /* MapViewBaseDemoViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CEDB720974A3700F20FB5 /* MapViewBaseDemoViewController.mm */; };
 		9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */; };
+		9B634D21209D7CEB00A5CB31 /* WLCommonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B634D20209D7CEB00A5CB31 /* WLCommonTool.m */; };
 		9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DB8209759E400D88704 /* WLMapAnnotationView.m */; };
 		9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DBC209765D400D88704 /* WLScanBitCodeViewController.m */; };
 		9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776BB20995C1D0068D5C1 /* WLWePay.m */; };
@@ -126,6 +127,8 @@
 		9B4CEDB720974A3700F20FB5 /* MapViewBaseDemoViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MapViewBaseDemoViewController.mm; sourceTree = "<group>"; };
 		9B4CEDB920974E9D00F20FB5 /* WLMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMapViewController.h; sourceTree = "<group>"; };
 		9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMapViewController.m; sourceTree = "<group>"; };
+		9B634D1F209D7CEB00A5CB31 /* WLCommonTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLCommonTool.h; sourceTree = "<group>"; };
+		9B634D20209D7CEB00A5CB31 /* WLCommonTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLCommonTool.m; sourceTree = "<group>"; };
 		9B720DB7209759E400D88704 /* WLMapAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMapAnnotationView.h; sourceTree = "<group>"; };
 		9B720DB8209759E400D88704 /* WLMapAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMapAnnotationView.m; sourceTree = "<group>"; };
 		9B720DBB209765D400D88704 /* WLScanBitCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLScanBitCodeViewController.h; sourceTree = "<group>"; };
@@ -441,6 +444,8 @@
 				9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */,
 				9B4553012096F3B000C6C447 /* WLUtilities.h */,
 				9B4553022096F3B000C6C447 /* WLUtilities.m */,
+				9B634D1F209D7CEB00A5CB31 /* WLCommonTool.h */,
+				9B634D20209D7CEB00A5CB31 /* WLCommonTool.m */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -693,6 +698,7 @@
 				9BB5BDCF209447200076DDB7 /* main.m in Sources */,
 				9B006B2C2098B32D00CDEFD0 /* WLNewsCenterViewController.m in Sources */,
 				9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */,
+				9B634D21209D7CEB00A5CB31 /* WLCommonTool.m in Sources */,
 				9B006B302098BA6D00CDEFD0 /* WLMyAccountController.m in Sources */,
 				9B9776BF20995CD50068D5C1 /* WLInitPayModel.m in Sources */,
 				9B0013D3209A08020081F65D /* WLPaidDepositViewController.m in Sources */,

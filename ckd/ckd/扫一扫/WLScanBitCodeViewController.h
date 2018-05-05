@@ -8,6 +8,11 @@
 
 #import "WLBaseUIViewController.h"
 
+
+
 @interface WLScanBitCodeViewController : WLBaseUIViewController
+
+//
+@property (nonatomic, assign) Scan_Code_Action action;
 
 @end

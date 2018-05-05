@@ -152,7 +152,7 @@
         make.top.equalTo(checkNumberLabel.mas_top);
         make.right.equalTo(seperateView2.mas_right).offset(-Margin);
         make.bottom.equalTo(seperateView2.mas_top).offset(-Margin * 2);
-        make.width.mas_equalTo(100);
+        make.width.mas_equalTo(120);
     }];
     
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -180,13 +180,14 @@
         make.left.equalTo(templateLabel.mas_right).offset(Margin);
         //        make.width.height.mas_equalTo(50);
     }];
-    
-    
+
 }
 
 - (void)aquireCheckNumBtnDidClicking: (UIButton *)sender
 {
+    //按钮点击后更改状态, 并且进入倒计时, 并跳转处理逻辑
     sender.selected = YES;
+    [self createCountdown:sender];
     if ([self.delegate respondsToSelector:@selector(LoginView:aquireCheckNumBtnDidclicking:)])
     {
         [self.delegate LoginView:self aquireCheckNumBtnDidclicking:sender];
@@ -227,10 +228,34 @@
     }
 }
 
-- (void)hehe
+// 开启倒计时效果
+-(void)createCountdown: (UIButton *)sender
 {
-    NSLog(@"123");
+    __block NSInteger time = CountDownTime; //倒计时时间
+    [WLCommonTool createEverySecondTimer:^(dispatch_source_t timer) {
+        //倒计时结束，关闭
+        if(time <= 0)
+        {
+            dispatch_source_cancel(timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [sender setTitle:@"获取验证码" forState:UIControlStateNormal];
+                sender.userInteractionEnabled = YES;
+                sender.selected = NO;
+            });
+        }else
+        {
+            int seconds = time % 60;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //设置按钮显示读秒效果
+                [sender setTitle:[NSString stringWithFormat:@"重新发送(%.2d)", seconds] forState:UIControlStateSelected];
+                sender.userInteractionEnabled = NO;
+            });
+            time--;
+        }
+    }];
 }
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

@@ -25,6 +25,7 @@
 #import <MJExtension.h>
 #import <ProgressHUD.h>
 #import "WLUtilities.h"
+#import "WLCommonTool.h"
 #import "WLNetworkTool.h"
 #import "WLBaseUIViewController.h"
 #import "WLBaseNavigationViewController.h"
@@ -50,8 +51,15 @@
 //灰色背景
 #define LightGrayBackground [UIColor colorWithRed:251/255.0 green:249/255.0 blue:250/255.0 alpha:1.0]
 
+//扫码动作类型
+typedef enum : NSUInteger {
+    Scan_Canbin,
+    Get_Charger,
+    Return_Charger,
+} Scan_Code_Action;
 
-
+//到时候按钮时长
+#define CountDownTime 30
 
 
 

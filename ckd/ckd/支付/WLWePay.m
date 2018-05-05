@@ -32,6 +32,17 @@
 
 @implementation WLWePay
 
+static WLWePay *_instance;
++(instancetype)sharedWePay
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [[WLWePay alloc]init];
+
+    });
+    return _instance;
+}
+
 - (void)createWePayRequestWithMoney: (NSString *)fee
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];

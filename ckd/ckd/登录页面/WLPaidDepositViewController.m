@@ -8,6 +8,7 @@
 
 #import "WLPaidDepositViewController.h"
 #import "WLHomeViewController.h"
+#import "WLWePay.h"
 
 @interface WLPaidDepositViewController ()
 
@@ -27,6 +28,7 @@
 - (IBAction)paidBtnDidClicking:(id)sender
 {
     NSLog(@"点击了充值按钮");
+    [[WLWePay sharedWePay]createWePayRequestWithMoney:@"100"];
     //发起微信支付, 成功后返回首页
     [self jumpToHomeVC];
 }

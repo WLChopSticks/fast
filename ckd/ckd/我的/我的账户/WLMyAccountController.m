@@ -7,6 +7,7 @@
 //
 
 #import "WLMyAccountController.h"
+#import "WLWePay.h"
 
 @interface WLMyAccountController ()
 @property (weak, nonatomic) IBOutlet UIView *name;
@@ -45,6 +46,7 @@
 }
 - (IBAction)PaidDepositBtnDidClicking:(id)sender
 {
+    [[WLWePay sharedWePay]createWePayRequestWithMoney:@"1"];
     NSLog(@"缴纳押金按钮点击了");
 }
 

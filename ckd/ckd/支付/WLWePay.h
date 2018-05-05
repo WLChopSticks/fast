@@ -10,6 +10,7 @@
 
 @interface WLWePay : NSObject
 
++ (instancetype)sharedWePay;
 - (void)createWePayRequestWithMoney: (NSString *)fee;
 
 @end
