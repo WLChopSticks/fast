@@ -287,7 +287,8 @@ typedef enum : NSUInteger {
 
 - (void)profileBtnDidClicking
 {
-    WLProfileViewController *profileVC = [[WLProfileViewController alloc]init];
+//    WLProfileViewController *profileVC = [[WLProfileViewController alloc]init];
+    WLProfileViewController *profileVC = [[WLProfileViewController alloc]initWithNibName:@"WLProfileViewController" bundle:nil];
     [self.navigationController pushViewController:profileVC animated:YES];
 }
 

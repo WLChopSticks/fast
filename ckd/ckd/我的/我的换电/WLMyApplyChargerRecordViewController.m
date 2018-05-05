@@ -79,17 +79,21 @@
 
 - (void)showApplyChargerRecordList
 {
-    UITableView *recordListView = [[UITableView alloc]init];
-    recordListView.delegate = self;
-    recordListView.dataSource = self;
-    [self.view addSubview:recordListView];
-    recordListView.backgroundColor = [UIColor whiteColor];
-    
-    [recordListView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.bottom.equalTo(self.view);
-    }];
-    
-    
+    if (self.recordArr.count > 0)
+    {
+        UITableView *recordListView = [[UITableView alloc]init];
+        recordListView.delegate = self;
+        recordListView.dataSource = self;
+        [self.view addSubview:recordListView];
+        recordListView.backgroundColor = [UIColor whiteColor];
+        
+        [recordListView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.bottom.equalTo(self.view);
+        }];
+    }else
+    {
+        [self showEmptyRecordView];
+    }    
 }
 
 - (void)showEmptyRecordView

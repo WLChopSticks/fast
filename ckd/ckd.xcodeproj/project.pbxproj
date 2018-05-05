@@ -32,6 +32,7 @@
 		9B634D21209D7CEB00A5CB31 /* WLCommonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B634D20209D7CEB00A5CB31 /* WLCommonTool.m */; };
 		9B634D25209D830300A5CB31 /* WLCertificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B634D23209D830300A5CB31 /* WLCertificationController.m */; };
 		9B634D26209D830300A5CB31 /* WLCertificationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B634D24209D830300A5CB31 /* WLCertificationController.xib */; };
+		9B634D28209D978A00A5CB31 /* WLProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B634D27209D978A00A5CB31 /* WLProfileViewController.xib */; };
 		9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DB8209759E400D88704 /* WLMapAnnotationView.m */; };
 		9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DBC209765D400D88704 /* WLScanBitCodeViewController.m */; };
 		9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776BB20995C1D0068D5C1 /* WLWePay.m */; };
@@ -134,6 +135,7 @@
 		9B634D22209D830300A5CB31 /* WLCertificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLCertificationController.h; sourceTree = "<group>"; };
 		9B634D23209D830300A5CB31 /* WLCertificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLCertificationController.m; sourceTree = "<group>"; };
 		9B634D24209D830300A5CB31 /* WLCertificationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLCertificationController.xib; sourceTree = "<group>"; };
+		9B634D27209D978A00A5CB31 /* WLProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLProfileViewController.xib; sourceTree = "<group>"; };
 		9B720DB7209759E400D88704 /* WLMapAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMapAnnotationView.h; sourceTree = "<group>"; };
 		9B720DB8209759E400D88704 /* WLMapAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMapAnnotationView.m; sourceTree = "<group>"; };
 		9B720DBB209765D400D88704 /* WLScanBitCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLScanBitCodeViewController.h; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				9B006B2D2098B99A00CDEFD0 /* 我的账户 */,
 				9BB5BDFE20946AE90076DDB7 /* WLProfileViewController.h */,
 				9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */,
+				9B634D27209D978A00A5CB31 /* WLProfileViewController.xib */,
 				9B01A0222095F57C00365BB8 /* WLProfileView.h */,
 				9B01A0232095F57C00365BB8 /* WLProfileView.m */,
 				9B01A0252095FCBA00365BB8 /* WLProfileItemsCell.h */,
@@ -602,6 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B977731209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib in Resources */,
+				9B634D28209D978A00A5CB31 /* WLProfileViewController.xib in Resources */,
 				9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */,
 				9B97772B209B02530068D5C1 /* WLMyAccountView.xib in Resources */,
 				9B01A0292095FCBA00365BB8 /* WLProfileItemsCell.xib in Resources */,

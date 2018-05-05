@@ -25,10 +25,6 @@
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithImage:navBackImage style:UIBarButtonItemStylePlain target:self action:@selector(backBtnDidClicking)];
     self.navigationItem.leftBarButtonItem = backBtn;
     
-    //全局设置导航条颜色
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
-    
     //全局设置控制器背景颜色
     self.view.backgroundColor = LightGrayBackground;
 }
@@ -37,6 +33,10 @@
 {
     NSLog(@"%@",self.description);
     [super viewWillAppear:animated];
+    //全局设置导航条颜色
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
 }
 
 - (void)didReceiveMemoryWarning {
