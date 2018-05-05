@@ -11,6 +11,9 @@
 #import "WLHomeViewController.h"
 #import "WLLoginViewController.h"
 
+
+#import "WLCertificationController.h"
+
 @interface WLBootViewController ()
 
 @end
@@ -24,11 +27,12 @@
     //判断是否处于登录状态, 如果不, 则显示手机号码登录页面, 否则呈现首页
 //    if ([WLUtilities isUserLogin])
 //    {
-//        [self jumpToHomeVC];
+        [self jumpToHomeVC];
 //    }else
 //    {
-        [self jumpToLoginVC];
+//        [self jumpToLoginVC];
 //    }
+
 }
 
 - (void)didReceiveMemoryWarning {

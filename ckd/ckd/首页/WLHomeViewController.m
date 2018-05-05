@@ -20,10 +20,11 @@
 #import "WLCustomerServiceViewController.h"
 
 typedef enum : NSUInteger {
-    UnRegistRealName,
-    UnPaidDeposit,
-    Unlogin,
-    Login
+    UnRegistRealName,//未实名
+    UnPaidDeposit,//未缴纳押金
+    UnPaidRent,//未缴纳租金
+    Unlogin,//未登录
+    Login//登录
 } AccountStatus;
 
 @interface WLHomeViewController ()
@@ -71,9 +72,13 @@ typedef enum : NSUInteger {
     {
         return UnRegistRealName;
     }
-    if ([WLUtilities isUserDepositPaid])
+    if (![WLUtilities isUserDepositPaid])
     {
         return UnPaidDeposit;
+    }
+    if (![WLUtilities isUserRentPaid])
+    {
+        return UnPaidRent;
     }
     return Login;
 }
@@ -234,6 +239,12 @@ typedef enum : NSUInteger {
         improveBtn.tag = status;
         [improveBtn setTitle:@"立即缴纳" forState:UIControlStateNormal];
         [improveBtn addTarget:self action:@selector(improveBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
+    }else if (status == UnPaidRent)
+    {
+        promptLabel.text = @"您未缴纳租金无法租借设备";
+        improveBtn.tag = status;
+        [improveBtn setTitle:@"立即缴纳" forState:UIControlStateNormal];
+        [improveBtn addTarget:self action:@selector(improveBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
     }else if (status == Unlogin)
     {
         promptLabel.text = @"您未登录无法租借设备";
@@ -307,6 +318,11 @@ typedef enum : NSUInteger {
     }else if (sender.tag == UnPaidDeposit)
     {
         NSLog(@"跳转交押金页面");
+        WLPaidDepositViewController *paidDepositVC = [[WLPaidDepositViewController alloc]init];
+        [self.navigationController pushViewController:paidDepositVC animated:YES];
+    }else if (sender.tag == UnPaidRent)
+    {
+        NSLog(@"跳转交租金页面");
         WLPaidDepositViewController *paidDepositVC = [[WLPaidDepositViewController alloc]init];
         [self.navigationController pushViewController:paidDepositVC animated:YES];
     }else if (sender.tag == Unlogin)

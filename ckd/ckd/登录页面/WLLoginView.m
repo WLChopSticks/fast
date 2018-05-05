@@ -32,7 +32,7 @@
 - (void)decorateUI
 {
     UIImageView *logoView = [[UIImageView alloc]init];
-    UIImage *logoImage = [UIImage imageNamed:@"logo"];
+    UIImage *logoImage = [UIImage imageNamed:@"app_icon"];
     logoView.image = logoImage;
     [self addSubview:logoView];
     
@@ -134,13 +134,6 @@
         make.height.mas_equalTo(30);
     }];
     
-    [checkNumberField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(checkNumberLabel.mas_bottom).offset(Margin);
-        make.left.equalTo(telephoneLabel.mas_left);
-        make.width.mas_equalTo(100);
-        make.height.mas_equalTo(30);
-    }];
-    
     [seperateView2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(checkNumberField.mas_bottom);
         make.left.equalTo(self.mas_left).offset(Margin);
@@ -155,6 +148,13 @@
         make.width.mas_equalTo(120);
     }];
     
+    [checkNumberField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(checkNumberLabel.mas_bottom).offset(Margin);
+        make.left.equalTo(telephoneLabel.mas_left);
+        make.right.equalTo(aquireCheckNumBtn.mas_left).offset(-Margin);
+        make.height.mas_equalTo(30);
+    }];
+
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(seperateView2.mas_bottom).offset(Margin * 3);
         make.left.equalTo(self.mas_left).offset(Margin);

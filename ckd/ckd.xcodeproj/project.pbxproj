@@ -30,6 +30,8 @@
 		9B4CEDB820974A3700F20FB5 /* MapViewBaseDemoViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CEDB720974A3700F20FB5 /* MapViewBaseDemoViewController.mm */; };
 		9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */; };
 		9B634D21209D7CEB00A5CB31 /* WLCommonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B634D20209D7CEB00A5CB31 /* WLCommonTool.m */; };
+		9B634D25209D830300A5CB31 /* WLCertificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B634D23209D830300A5CB31 /* WLCertificationController.m */; };
+		9B634D26209D830300A5CB31 /* WLCertificationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B634D24209D830300A5CB31 /* WLCertificationController.xib */; };
 		9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DB8209759E400D88704 /* WLMapAnnotationView.m */; };
 		9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DBC209765D400D88704 /* WLScanBitCodeViewController.m */; };
 		9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776BB20995C1D0068D5C1 /* WLWePay.m */; };
@@ -129,6 +131,9 @@
 		9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMapViewController.m; sourceTree = "<group>"; };
 		9B634D1F209D7CEB00A5CB31 /* WLCommonTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLCommonTool.h; sourceTree = "<group>"; };
 		9B634D20209D7CEB00A5CB31 /* WLCommonTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLCommonTool.m; sourceTree = "<group>"; };
+		9B634D22209D830300A5CB31 /* WLCertificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLCertificationController.h; sourceTree = "<group>"; };
+		9B634D23209D830300A5CB31 /* WLCertificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLCertificationController.m; sourceTree = "<group>"; };
+		9B634D24209D830300A5CB31 /* WLCertificationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLCertificationController.xib; sourceTree = "<group>"; };
 		9B720DB7209759E400D88704 /* WLMapAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMapAnnotationView.h; sourceTree = "<group>"; };
 		9B720DB8209759E400D88704 /* WLMapAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMapAnnotationView.m; sourceTree = "<group>"; };
 		9B720DBB209765D400D88704 /* WLScanBitCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLScanBitCodeViewController.h; sourceTree = "<group>"; };
@@ -457,6 +462,9 @@
 				9BB5BE0320946E270076DDB7 /* WLLoginViewController.m */,
 				9B01A01F2095DB9400365BB8 /* WLLoginView.h */,
 				9B01A0202095DB9400365BB8 /* WLLoginView.m */,
+				9B634D22209D830300A5CB31 /* WLCertificationController.h */,
+				9B634D23209D830300A5CB31 /* WLCertificationController.m */,
+				9B634D24209D830300A5CB31 /* WLCertificationController.xib */,
 				9B0013C8209A00150081F65D /* WLRealNameAuthenticationViewController.h */,
 				9B0013C9209A00150081F65D /* WLRealNameAuthenticationViewController.m */,
 				9B0013CA209A00150081F65D /* WLRealNameAuthenticationViewController.xib */,
@@ -606,6 +614,7 @@
 				9BFF6D8E209B307D003457D4 /* WLSettingDetailViewController.xib in Resources */,
 				9B0013D4209A08020081F65D /* WLPaidDepositViewController.xib in Resources */,
 				9B006B2820985AE400CDEFD0 /* WLRealNameIdentifyCell.xib in Resources */,
+				9B634D26209D830300A5CB31 /* WLCertificationController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,6 +719,7 @@
 				9B977718209AAC300068D5C1 /* WLInquireCostDetailModel.m in Sources */,
 				9B006B2620985AA000CDEFD0 /* WLRealNameIdentifyCell.m in Sources */,
 				9B9776CB2099AEEC0068D5C1 /* WLStationDetailPromptView.m in Sources */,
+				9B634D25209D830300A5CB31 /* WLCertificationController.m in Sources */,
 				9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */,
 				9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */,
 				9B977714209AA8A90068D5C1 /* WLChargerRecord.m in Sources */,

@@ -58,6 +58,18 @@
     [def setObject:[NSNumber numberWithBool:YES] forKey:@"depositPaid"];
 }
 
++ (BOOL)isUserRentPaid
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    return [[def objectForKey:@"rent"]boolValue];
+}
+
++ (void)setUserRentPaid
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def setObject:[NSNumber numberWithBool:YES] forKey:@"rent"];
+}
+
 + (void)saveUserID: (NSString *)user_id
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];

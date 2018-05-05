@@ -20,6 +20,9 @@
 //用户支付押金状态
 + (BOOL)isUserDepositPaid;
 + (void)setUserDepositPaid;
+//用户支付租金状态
++ (BOOL)isUserRentPaid;
++ (void)setUserRentPaid;
 //user_id
 +(void)saveUserID: (NSString *)user_id;
 + (NSString *)getUserID;

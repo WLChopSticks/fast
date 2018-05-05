@@ -13,7 +13,7 @@
 #import "WLHomeViewController.h"
 #import "WLBaseNavigationViewController.h"
 #import "WLQuickLoginModel.h"
-#import "WLRealNameAuthenticationViewController.h"
+#import "WLCertificationController.h"
 
 @interface WLLoginViewController ()<LoginviewDelegate>
 
@@ -119,19 +119,17 @@
 //                NSString *user_id = @"832f5a6d612c4d23b702f28de7018ab0";
                 [WLUtilities saveUserID:user_id];
                 //是否实名认证
-                if ([quickLoginModel.message isEqualToString:@"请先去认证"])
-                {
-                    NSLog(@"跳转实名认证界面");
-                    WLRealNameAuthenticationViewController *realNameIdentifyVC = [[WLRealNameAuthenticationViewController alloc]init];
-                    [self.navigationController pushViewController:realNameIdentifyVC animated:YES];
-                    
-                }else
+//                if ([quickLoginModel.message isEqualToString:@"请先去认证"])
+//                {
+//                    NSLog(@"跳转实名认证界面");
+//                    WLCertificationController *certificationVC = [[WLCertificationController alloc]init];
+//                    [self.navigationController pushViewController:certificationVC animated:YES];
+//
+//                }else
                 {
                     NSLog(@"登录成功");
-                    WLRealNameAuthenticationViewController *realNameIdentifyVC = [[WLRealNameAuthenticationViewController alloc]init];
-                    [self.navigationController pushViewController:realNameIdentifyVC animated:YES];
-//                    WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
-//                    [self.navigationController pushViewController:homeVC animated:YES];
+                    WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
+                    [self.navigationController pushViewController:homeVC animated:YES];
                 }
             }else
             {
