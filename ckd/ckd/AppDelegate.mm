@@ -156,9 +156,16 @@ BMKMapManager* _mapManager;
         PayResp *response = (PayResp *)resp;
         switch(response.errCode){
             case WXSuccess:
+            {
                 //服务器端查询支付通知或查询API返回的结果再提示成功
                 NSLog(@"支付成功");
                 break;
+            }
+            case WXErrCodeUserCancel:
+            {
+                NSLog(@"用户取消支付");
+                break;
+            }
             default:
                 NSLog(@"支付失败，retcode=%d",resp.errCode);
                 break;
