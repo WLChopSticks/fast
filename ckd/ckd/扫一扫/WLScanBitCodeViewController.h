@@ -12,7 +12,7 @@
 
 @interface WLScanBitCodeViewController : WLBaseUIViewController
 
-//
+//扫码动作类型
 @property (nonatomic, assign) Scan_Code_Action action;
 
 @end

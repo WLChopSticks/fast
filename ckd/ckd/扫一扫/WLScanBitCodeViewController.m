@@ -98,11 +98,15 @@
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
         if ([obj.stringValue hasPrefix:@"{"])
         {
+            //扫电池
+            self.action = Get_Charger;
             NSData *jsonData =  [obj.stringValue dataUsingEncoding:NSUTF8StringEncoding];
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
             self.code = [dict objectForKey:@"code"];
         }else
         {
+            //扫柜子
+            self.action = Scan_Canbin;
             self.code = obj.stringValue;
         }
         if (self.code.length > 0)
@@ -138,6 +142,38 @@
 //换电池流程
 - (void)queryAquireCharger
 {
+   
+    NSString *actionType = [self getScanActionType];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *para_String = [NSString stringWithFormat:@"{user_id:%@,zlbj:%@,hdcbj:%@}",[WLUtilities getUserID], self.code, actionType];
+    [parameters setObject:para_String forKey:@"inputParameter"];
+    NSString *URL = @"http://47.104.85.148:18070/ckdhd/HdlcCz.action";
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        [ProgressHUD dismiss];
+        NSDictionary *result = (NSDictionary *)responseObject;
+        WLAquireChargerModel *aquireChargerModel = [[WLAquireChargerModel alloc]init];
+        aquireChargerModel = [WLAquireChargerModel getAquireChargerModel:result];
+        if ([aquireChargerModel.code isEqualToString:@"1"])
+        {
+            NSLog(@"查询换电流程成功");
+            
+        }else
+        {
+            [ProgressHUD showError:aquireChargerModel.message];
+            NSLog(@"查询换电流程失败");
+            [self.manager startRunning];
+        }
+    } failure:^(NSError *error) {
+        [ProgressHUD showError:@"查询换电流程失败"];
+        NSLog(@"查询换电流程失败");
+        NSLog(@"%@",error);
+        [self.manager startRunning];
+    }];
+}
+
+- (NSString *)getScanActionType
+{
     NSString *actionStr;
     switch (self.action)
     {
@@ -154,31 +190,7 @@
         default:
             break;
     }
-    
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *para_String = [NSString stringWithFormat:@"{user_id:%@,zlbj:%@,hdcbj:%@}",[WLUtilities getUserID], self.code, actionStr];
-    [parameters setObject:para_String forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/HdlcCz.action";
-    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
-        [ProgressHUD dismiss];
-        NSDictionary *result = (NSDictionary *)responseObject;
-        WLAquireChargerModel *aquireChargerModel = [[WLAquireChargerModel alloc]init];
-        aquireChargerModel = [WLAquireChargerModel getAquireChargerModel:result];
-        if ([aquireChargerModel.code isEqualToString:@"1"])
-        {
-            NSLog(@"查询换电流程成功");
-            
-        }else
-        {
-            [ProgressHUD showError:@"查询换电流程失败"];
-            NSLog(@"查询换电流程失败");
-        }
-    } failure:^(NSError *error) {
-        [ProgressHUD showError:@"查询换电流程失败"];
-        NSLog(@"查询换电流程失败");
-        NSLog(@"%@",error);
-    }];
+    return actionStr;
 }
 
 /*

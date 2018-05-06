@@ -29,6 +29,7 @@
 #import "WLNetworkTool.h"
 #import "WLBaseUIViewController.h"
 #import "WLBaseNavigationViewController.h"
+#import "WLCommonAPI.h"
 
 #define APP (AppDelegate *)[[UIApplication sharedApplication]delegate ]
 

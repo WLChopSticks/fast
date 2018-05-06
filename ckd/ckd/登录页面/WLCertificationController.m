@@ -10,12 +10,9 @@
 #import "WLChargerStationModel.h"
 #import "WLHomeViewController.h"
 #import "WLBootViewController.h"
+#import "WLChosenItemsView.h"
 
-
-#define Cell_ID @"cityName"
-#define Cell_Height_Citylist 45
-
-@interface WLCertificationController ()<UITableViewDelegate, UITableViewDataSource>
+@interface WLCertificationController ()<chosenViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *IDNumberField;
@@ -44,71 +41,45 @@
 - (void)chooseCityGestureDidClicking
 {
     NSLog(@"选择城市列表");
-    [self aquireCityList:^(NSNumber *completeQuery) {
-        if ([completeQuery boolValue] == YES)
+    [ProgressHUD show];
+    [[WLCommonAPI sharedCommonAPIManager]aquireCityList:^(id result) {
+        if ([result isKindOfClass:[NSDictionary class]])
         {
-            NSLog(@"调起view选择城市");
-            [self createCityListView];
-        }else{
+            NSDictionary *resultDict = (NSDictionary *)result;
+            WLChargerStationModel *chargerStationModel = [[WLChargerStationModel alloc]init];
+            chargerStationModel = [chargerStationModel getChargerStationModel:resultDict];
+            if ([chargerStationModel.code isEqualToString:@"1"])
+            {
+                NSLog(@"查询城市信息成功");
+                self.cityList= chargerStationModel.data;
+                [ProgressHUD dismiss];
+                [self createCityListView];
+            }else
+            {
+                NSLog(@"查询城市信息失败");
+                [ProgressHUD showError:@"请求城市列表失败"];
+            }
+        }else
+        {
             NSLog(@"请求城市列表失败");
+            [ProgressHUD showError:@"请求城市列表失败"];
         }
     }];
 }
 
 - (void)createCityListView
 {
-    UIView *cityListBackView = [[UIView alloc]init];
-    self.cityListBackView = cityListBackView;
-    cityListBackView.backgroundColor = [UIColor blackColor];
-    cityListBackView.alpha = 0.5;
-    [self.view addSubview:cityListBackView];
-    
-    UITableView *citylistView = [[UITableView alloc]init];
-    citylistView.delegate = self;
-    citylistView.dataSource = self;
-    [self.view addSubview:citylistView];
-    [citylistView registerClass:[UITableViewCell class] forCellReuseIdentifier:Cell_ID];
-    
-    [cityListBackView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.bottom.equalTo(self.view);
-    }];
-    
-    [citylistView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view.mas_centerX);
-        make.centerY.equalTo(self.view.mas_centerY);
-        make.width.mas_equalTo(200);
-        make.height.mas_equalTo(Cell_Height_Citylist * self.cityList.count);
-    }];
-    
+    WLChosenItemsView *cityListView = [[WLChosenItemsView alloc]initWithFrame:Screen_Bounds andChosenItems:self.cityList];
+    cityListView.delegate = self;
+    [self.view addSubview:cityListView];
 }
 
-#pragma --mark tableView delegate
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma --mark citylistView delegate
+-(void)chosenView:(WLChosenItemsView *)view didSelectItemInListView:(id)item
 {
-    return self.cityList.count;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Cell_ID forIndexPath:indexPath];
-    WLCityData *model = self.cityList[indexPath.row];
-    cell.textLabel.text = model.csmc;
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    tableView.hidden = YES;
-    self.cityListBackView.hidden = YES;
-    self.currentCityModel = self.cityList[indexPath.row];
-    self.currentCity.text = self.currentCityModel.csmc;
-    [tableView removeFromSuperview];
-    [self.cityListBackView removeFromSuperview];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return Cell_Height_Citylist;
+    WLCityData *model = (WLCityData *)item;
+    self.currentCity.text = model.csmc;
+    self.currentCityModel = model;
 }
 
 //提交按钮点击
@@ -131,36 +102,6 @@
     
     [self queryCompletePrivateInformation];
     
-}
-
-//获取城市列表
-- (void)aquireCityList:(void (^)(NSNumber *))completeQuery
-{
-    [ProgressHUD show];
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/quickCs.action";
-    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
-        [ProgressHUD dismiss];
-        NSDictionary *result = (NSDictionary *)responseObject;
-        WLChargerStationModel *chargerStationModel = [[WLChargerStationModel alloc]init];
-        chargerStationModel = [chargerStationModel getChargerStationModel:result];
-        if ([chargerStationModel.code isEqualToString:@"1"])
-        {
-            NSLog(@"查询城市信息成功");
-            //            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            //            [defaults setObject:chargerStationModel.data forKey:@"cityList"];
-            self.cityList= chargerStationModel.data;
-            completeQuery([NSNumber numberWithBool:YES]);
-        }else
-        {
-            NSLog(@"查询城市信息失败");
-            completeQuery([NSNumber numberWithBool:NO]);
-        }
-    } failure:^(NSError *error) {
-        NSLog(@"查询城市信息失败");
-        completeQuery([NSNumber numberWithBool:NO]);
-    }];
 }
 
 //完善个人信息请求
