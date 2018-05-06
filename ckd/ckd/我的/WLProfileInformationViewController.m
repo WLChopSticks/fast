@@ -12,6 +12,7 @@
 #import "WLPlatform.h"
 #import "WLChargerStationModel.h"
 #import "WLChosenItemsView.h"
+#import "WLCertificationController.h"
 
 @interface WLProfileInformationViewController ()<chosenViewDelegate>
 
@@ -24,21 +25,38 @@
 
 @property (nonatomic, strong) NSArray *cityList;
 @property (nonatomic, strong) WLCityData *currentCity;
+@property (nonatomic, strong) WLQingLoginModel *qingLoginModel;
+@property (weak, nonatomic) IBOutlet UILabel *borrowCharger;
 
 
 @end
 
 @implementation WLProfileInformationViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (![WLUtilities isUserRealNameRegist])
+    {
+        NSLog(@"跳转实名认证页面");
+        WLCertificationController *certificationVC = [[WLCertificationController alloc]init];
+        [self.navigationController pushViewController:certificationVC animated:YES];
+    }else
+    {
+        //请求个人详细信息
+        [self queryProfileInfo];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"我的信息";
+    
     //选项添加点击事件
     [self addViewGestures];
-    //请求个人详细信息
-    [self queryProfileInfo];
+   
 }
 
 - (void)addViewGestures
@@ -52,6 +70,7 @@
 
 - (void)queryProfileInfo
 {
+    [ProgressHUD show];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *parametersStr = [NSString stringWithFormat:@"{user_id:%@}",[WLUtilities getUserID]];
     [parameters setObject:parametersStr forKey:@"inputParameter"];
@@ -60,20 +79,21 @@
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
         WLQingLoginModel *model = [WLQingLoginModel getQingLoginModel:result];
+        self.qingLoginModel = model;
         if ([model.code integerValue] == 1)
         {
-            NSLog(@"获取验证码成功");
-            [ProgressHUD showSuccess:@"发送验证码成功"];
+            NSLog(@"获取个人信息成功");
+            [ProgressHUD dismiss];
             [self showProfileInfoDetails:model];
         }else
         {
-            NSLog(@"获取验证码失败");
-            [ProgressHUD showError:@"发送验证码失败"];
+            NSLog(@"获取个人信息失败");
+            [ProgressHUD showError:model.message];
         }
     } failure:^(NSError *error) {
-        NSLog(@"获取验证码失败");
+        NSLog(@"获取个人信息失败");
         NSLog(@"%@",error);
-        [ProgressHUD showError:@"发送验证码失败"];
+        [ProgressHUD showError:@"获取个人信息失败"];
     }];
 }
 
@@ -83,6 +103,7 @@
     self.ID_numberLabel.text = model.data.idcard;
     self.telephoneLabel.text = model.data.user_phone;
     self.cityLabel.text = model.data.csmc;
+    self.borrowCharger.text = model.data.dcdm;
 }
 
 - (void)telephoneItemDidClicking
@@ -132,9 +153,55 @@
 -(void)chosenView:(WLChosenItemsView *)view didSelectItemInListView:(id)item
 {
     WLCityData *model = (WLCityData *)item;
-    self.cityLabel.text = model.csmc;
-    self.currentCity = model;
+
     NSLog(@"选择了城市%@",model.csmc);
+    
+    
+    NSString *promptStr = [NSString stringWithFormat:@"确定要将您的位置切换到 %@",model.csmc];
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:promptStr preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self queryChangeCurrentCity:model];
+    }];
+    
+    // Add the actions.
+    [alertVC addAction:cancelAction];
+    [alertVC addAction:okAction];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
+- (void)queryChangeCurrentCity: (WLCityData *)model
+{
+    [ProgressHUD show];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *user_phone_string = [NSString stringWithFormat:@"{user_id:%@,area_id:%@,idcard:%@,user_realname:%@}",[WLUtilities getUserID],model.csdm, self.qingLoginModel.data.idcard,self.qingLoginModel.data.user_realname];
+    [parameters setObject:user_phone_string forKey:@"inputParameter"];
+    NSString *URL = @"http://47.104.85.148:18070/ckdhd/updateUser.action";
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        [ProgressHUD dismiss];
+        NSDictionary *result = (NSDictionary *)responseObject;
+        if ([result[@"code"] isEqualToString:@"1"])
+        {
+            NSLog(@"切换城市成功");
+            self.cityLabel.text = model.csmc;
+            self.currentCity = model;
+            [ProgressHUD showSuccess:[NSString stringWithFormat:@"切换城市成功"]];
+            [WLUtilities saveCurrentCityCode:model.csdm andCityName:model.csmc];
+            
+            
+        }
+        else
+        {
+            NSLog(@"切换城市失败");
+            [ProgressHUD showError:[NSString stringWithFormat:@"切换城市失败"]];
+        }
+        
+    } failure:^(NSError *error) {
+        NSLog(@"切换城市失败");
+        [ProgressHUD showError:[NSString stringWithFormat:@"%@",error.description]];
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

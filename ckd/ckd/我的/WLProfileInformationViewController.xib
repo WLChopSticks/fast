@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WLProfileInformationViewController">
             <connections>
                 <outlet property="ID_numberLabel" destination="MgE-Jt-P0R" id="4na-Hp-2hr"/>
+                <outlet property="borrowCharger" destination="xoe-XU-JBQ" id="lgN-qS-Fni"/>
                 <outlet property="cityLabel" destination="u00-CQ-gSB" id="fzw-gV-nZT"/>
                 <outlet property="cityView" destination="FKX-6C-O3K" id="v07-cR-BtJ"/>
                 <outlet property="nameLabel" destination="Z2a-uc-20E" id="hPF-E3-llF"/>
@@ -144,6 +145,30 @@
                         <constraint firstItem="ywt-5O-y3A" firstAttribute="leading" secondItem="FKX-6C-O3K" secondAttribute="leading" constant="10" id="tH0-No-QrR"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Hh-37-K9c">
+                    <rect key="frame" x="0.0" y="240" width="375" height="45"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="再借电池:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPm-Fd-JAH">
+                            <rect key="frame" x="10" y="12" width="74" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoe-XU-JBQ">
+                            <rect key="frame" x="100" y="12" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="ZPm-Fd-JAH" firstAttribute="leading" secondItem="3Hh-37-K9c" secondAttribute="leading" constant="10" id="0Ef-UM-vPb"/>
+                        <constraint firstItem="ZPm-Fd-JAH" firstAttribute="centerY" secondItem="3Hh-37-K9c" secondAttribute="centerY" id="T4x-J0-hXR"/>
+                        <constraint firstItem="xoe-XU-JBQ" firstAttribute="centerY" secondItem="ZPm-Fd-JAH" secondAttribute="centerY" id="h2H-xx-qh8"/>
+                        <constraint firstAttribute="height" constant="45" id="igd-J7-tby"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -153,15 +178,19 @@
                 <constraint firstItem="9SB-wo-hss" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="Efr-k5-WMX"/>
                 <constraint firstItem="9SB-wo-hss" firstAttribute="top" secondItem="KZs-Hz-D3t" secondAttribute="bottom" constant="10" id="FOh-wP-4ol"/>
                 <constraint firstItem="KZs-Hz-D3t" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="IEj-qG-OVl"/>
+                <constraint firstItem="3Hh-37-K9c" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="IcD-4u-WJV"/>
                 <constraint firstItem="MgE-Jt-P0R" firstAttribute="leading" secondItem="Z2a-uc-20E" secondAttribute="leading" id="JdA-Wf-wbC"/>
                 <constraint firstItem="KZs-Hz-D3t" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="JeV-gd-axw"/>
                 <constraint firstItem="eXh-Wj-gvx" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="KEM-hE-0g0"/>
                 <constraint firstItem="eXh-Wj-gvx" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="N31-FB-uz5"/>
                 <constraint firstItem="5Gv-L8-FnW" firstAttribute="leading" secondItem="MgE-Jt-P0R" secondAttribute="leading" id="Ssy-cn-xtT"/>
                 <constraint firstItem="FKX-6C-O3K" firstAttribute="top" secondItem="9SB-wo-hss" secondAttribute="bottom" constant="10" id="UNO-SW-zTo"/>
+                <constraint firstItem="3Hh-37-K9c" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="fKf-hq-bbw"/>
                 <constraint firstItem="9SB-wo-hss" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="hbt-JS-a1z"/>
                 <constraint firstItem="eXh-Wj-gvx" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="pxR-0o-l8c"/>
+                <constraint firstItem="xoe-XU-JBQ" firstAttribute="leading" secondItem="u00-CQ-gSB" secondAttribute="leading" id="qRt-Bf-0fh"/>
                 <constraint firstItem="FKX-6C-O3K" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="rOq-8H-EQ4"/>
+                <constraint firstItem="3Hh-37-K9c" firstAttribute="top" secondItem="FKX-6C-O3K" secondAttribute="bottom" constant="10" id="vZ3-2g-5gI"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="24.5" y="51.5"/>

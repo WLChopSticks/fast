@@ -82,6 +82,7 @@
     }
     [tableView removeFromSuperview];
     [self.backView removeFromSuperview];
+    [self removeFromSuperview];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

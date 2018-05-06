@@ -7,6 +7,8 @@
 //
 
 #import "WLProfileDetailsViewController.h"
+#import "WLPlatform.h"
+#import "WLCertificationController.h"
 
 @interface WLProfileDetailsViewController ()
 
@@ -29,6 +31,16 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.title = @"个人资料";
+    
+    //如果未实名, 先进行实名认证
+    if (![WLUtilities isUserRealNameRegist])
+    {
+        NSLog(@"跳转实名认证页面");
+        WLCertificationController *certificationVC = [[WLCertificationController alloc]init];
+        [self.navigationController pushViewController:certificationVC animated:YES];
+    }else{
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
