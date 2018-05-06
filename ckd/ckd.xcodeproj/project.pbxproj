@@ -26,6 +26,10 @@
 		9B01A03620960D6800365BB8 /* WLSettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B01A03520960D6800365BB8 /* WLSettingsViewController.storyboard */; };
 		9B0211EA209E90AD00282AF1 /* WLCommonAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0211E9209E90AD00282AF1 /* WLCommonAPI.m */; };
 		9B0211ED209E94B600282AF1 /* WLChosenItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0211EC209E94B600282AF1 /* WLChosenItemsView.m */; };
+		9B0211F0209E9ECE00282AF1 /* WLPaidRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0211EF209E9ECE00282AF1 /* WLPaidRecordViewController.m */; };
+		9B0211F3209E9F4C00282AF1 /* WLRecordEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0211F2209E9F4C00282AF1 /* WLRecordEmptyView.m */; };
+		9B0211F6209EA23C00282AF1 /* WLPaidRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0211F5209EA23C00282AF1 /* WLPaidRecordModel.m */; };
+		9B0211F8209EA38D00282AF1 /* WLPaidRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B0211F7209EA38D00282AF1 /* WLPaidRecordViewController.xib */; };
 		9B4552FD2096DB3400C6C447 /* WLProfileDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */; };
 		9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */; };
 		9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4553022096F3B000C6C447 /* WLUtilities.m */; };
@@ -129,6 +133,13 @@
 		9B0211E9209E90AD00282AF1 /* WLCommonAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLCommonAPI.m; sourceTree = "<group>"; };
 		9B0211EB209E94B600282AF1 /* WLChosenItemsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLChosenItemsView.h; sourceTree = "<group>"; };
 		9B0211EC209E94B600282AF1 /* WLChosenItemsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLChosenItemsView.m; sourceTree = "<group>"; };
+		9B0211EE209E9ECE00282AF1 /* WLPaidRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLPaidRecordViewController.h; sourceTree = "<group>"; };
+		9B0211EF209E9ECE00282AF1 /* WLPaidRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLPaidRecordViewController.m; sourceTree = "<group>"; };
+		9B0211F1209E9F4C00282AF1 /* WLRecordEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLRecordEmptyView.h; sourceTree = "<group>"; };
+		9B0211F2209E9F4C00282AF1 /* WLRecordEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLRecordEmptyView.m; sourceTree = "<group>"; };
+		9B0211F4209EA23C00282AF1 /* WLPaidRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLPaidRecordModel.h; sourceTree = "<group>"; };
+		9B0211F5209EA23C00282AF1 /* WLPaidRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLPaidRecordModel.m; sourceTree = "<group>"; };
+		9B0211F7209EA38D00282AF1 /* WLPaidRecordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLPaidRecordViewController.xib; sourceTree = "<group>"; };
 		9B4552FB2096DB3400C6C447 /* WLProfileDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLProfileDetailsViewController.h; sourceTree = "<group>"; };
 		9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLProfileDetailsViewController.m; sourceTree = "<group>"; };
 		9B4552FE2096F31F00C6C447 /* WLNetworkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLNetworkTool.h; sourceTree = "<group>"; };
@@ -270,6 +281,8 @@
 				9B977723209ADCEF0068D5C1 /* WLDataMD5.m */,
 				9B634D31209DAF6F00A5CB31 /* WLQingLoginModel.h */,
 				9B634D32209DAF6F00A5CB31 /* WLQingLoginModel.m */,
+				9B0211F4209EA23C00282AF1 /* WLPaidRecordModel.h */,
+				9B0211F5209EA23C00282AF1 /* WLPaidRecordModel.m */,
 			);
 			path = "模型";
 			sourceTree = "<group>";
@@ -448,6 +461,11 @@
 				9B634D29209DAC4600A5CB31 /* WLProfileInformationViewController.h */,
 				9B634D2A209DAC4600A5CB31 /* WLProfileInformationViewController.m */,
 				9B634D2B209DAC4600A5CB31 /* WLProfileInformationViewController.xib */,
+				9B0211EE209E9ECE00282AF1 /* WLPaidRecordViewController.h */,
+				9B0211EF209E9ECE00282AF1 /* WLPaidRecordViewController.m */,
+				9B0211F7209EA38D00282AF1 /* WLPaidRecordViewController.xib */,
+				9B0211F1209E9F4C00282AF1 /* WLRecordEmptyView.h */,
+				9B0211F2209E9F4C00282AF1 /* WLRecordEmptyView.m */,
 				9B01A0222095F57C00365BB8 /* WLProfileView.h */,
 				9B01A0232095F57C00365BB8 /* WLProfileView.m */,
 				9B01A0252095FCBA00365BB8 /* WLProfileItemsCell.h */,
@@ -637,6 +655,7 @@
 				9B0013CC209A00150081F65D /* WLRealNameAuthenticationViewController.xib in Resources */,
 				9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */,
 				9BFF6D89209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.xib in Resources */,
+				9B0211F8209EA38D00282AF1 /* WLPaidRecordViewController.xib in Resources */,
 				9B9776CD2099AEFC0068D5C1 /* WLStationDetailPromptView.xib in Resources */,
 				9B01A03620960D6800365BB8 /* WLSettingsViewController.storyboard in Resources */,
 				9BFF6D8E209B307D003457D4 /* WLSettingDetailViewController.xib in Resources */,
@@ -713,6 +732,7 @@
 				9B0211EA209E90AD00282AF1 /* WLCommonAPI.m in Sources */,
 				9B006B122097F69700CDEFD0 /* WLQuickLoginModel.m in Sources */,
 				9B634D2C209DAC4600A5CB31 /* WLProfileInformationViewController.m in Sources */,
+				9B0211F6209EA23C00282AF1 /* WLPaidRecordModel.m in Sources */,
 				9B4CEDB820974A3700F20FB5 /* MapViewBaseDemoViewController.mm in Sources */,
 				9B977729209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m in Sources */,
 				9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */,
@@ -740,6 +760,7 @@
 				9B634D21209D7CEB00A5CB31 /* WLCommonTool.m in Sources */,
 				9B006B302098BA6D00CDEFD0 /* WLMyAccountController.m in Sources */,
 				9B634D33209DAF6F00A5CB31 /* WLQingLoginModel.m in Sources */,
+				9B0211F3209E9F4C00282AF1 /* WLRecordEmptyView.m in Sources */,
 				9B0211ED209E94B600282AF1 /* WLChosenItemsView.m in Sources */,
 				9B9776BF20995CD50068D5C1 /* WLInitPayModel.m in Sources */,
 				9B0013D3209A08020081F65D /* WLPaidDepositViewController.m in Sources */,
@@ -752,6 +773,7 @@
 				9B006B2620985AA000CDEFD0 /* WLRealNameIdentifyCell.m in Sources */,
 				9B9776CB2099AEEC0068D5C1 /* WLStationDetailPromptView.m in Sources */,
 				9B634D25209D830300A5CB31 /* WLCertificationController.m in Sources */,
+				9B0211F0209E9ECE00282AF1 /* WLPaidRecordViewController.m in Sources */,
 				9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */,
 				9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */,
 				9B977714209AA8A90068D5C1 /* WLChargerRecord.m in Sources */,

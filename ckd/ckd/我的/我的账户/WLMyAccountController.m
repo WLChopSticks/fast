@@ -8,6 +8,7 @@
 
 #import "WLMyAccountController.h"
 #import "WLWePay.h"
+#import "WLPaidRecordViewController.h"
 
 @interface WLMyAccountController ()
 @property (weak, nonatomic) IBOutlet UIView *name;
@@ -29,12 +30,29 @@
     
     self.title = @"我的账户";
 
+    
+    [self decorateNavigationBar];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+- (void)decorateNavigationBar
+{
+    UIBarButtonItem *paidRecord = [[UIBarButtonItem alloc]initWithTitle:@"缴费记录" style:UIBarButtonItemStylePlain target:self action:@selector(paidRecordDidClicking)];
+    self.navigationItem.rightBarButtonItem = paidRecord;
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+}
+
+- (void)paidRecordDidClicking
+{
+    NSLog(@"缴费记录按钮点击了");
+    WLPaidRecordViewController *paidRecordVC = [[WLPaidRecordViewController alloc]init];
+    [self.navigationController pushViewController:paidRecordVC animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
