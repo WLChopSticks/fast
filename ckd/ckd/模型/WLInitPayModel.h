@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSString *sign;//签名
 @property (nonatomic, strong) NSString *responseString;//微信支付返回
 @property (nonatomic, strong) NSString *api_key;//App需要
-@property (nonatomic, strong) NSString *out_trade_no;
+@property (nonatomic, strong) NSString *out_trade_no;//订单号
 
 
 @end

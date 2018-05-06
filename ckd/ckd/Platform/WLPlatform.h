@@ -62,7 +62,13 @@ typedef enum : NSUInteger {
 //到时候按钮时长
 #define CountDownTime 30
 
-
+//支付完成通知
+#define WePayResponseNotification @"WePayResponseNotification"
+typedef enum : NSInteger {
+    Paid_Success,
+    Paid_Fail,
+    Paid_Cancel,
+} PaidResult;
 
 
 

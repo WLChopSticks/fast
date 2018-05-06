@@ -11,4 +11,7 @@
 
 @interface WLBaseUIViewController : UIViewController
 
+//为自定义导航栏返回按键默认的返回方法
+- (void)backBtnDidClicking;
+
 @end

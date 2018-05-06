@@ -154,24 +154,32 @@ BMKMapManager* _mapManager;
     if ([resp isKindOfClass:[PayResp class]])
     {
         PayResp *response = (PayResp *)resp;
-        switch(response.errCode){
+        NSMutableDictionary *resultDict = [NSMutableDictionary dictionary];
+        switch(response.errCode)
+        {
             case WXSuccess:
             {
                 //服务器端查询支付通知或查询API返回的结果再提示成功
                 NSLog(@"支付成功");
+                [resultDict setObject:[NSNumber numberWithInteger:Paid_Success] forKey:@"result"];
                 break;
             }
             case WXErrCodeUserCancel:
             {
                 NSLog(@"用户取消支付");
+                [resultDict setObject:[NSNumber numberWithInteger:Paid_Cancel] forKey:@"result"];
                 break;
             }
             default:
                 NSLog(@"支付失败，retcode=%d",resp.errCode);
+                [resultDict setObject:[NSNumber numberWithInteger:Paid_Fail] forKey:@"result"];
                 break;
         }
+        [[NSNotificationCenter defaultCenter]postNotificationName:WePayResponseNotification object:nil userInfo:resultDict];
     }
 }
+
+
 
 #pragma --mark 百度地图方法
 - (void)startBaiduMap

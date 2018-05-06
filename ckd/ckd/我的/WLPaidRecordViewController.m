@@ -10,8 +10,11 @@
 #import "WLRecordEmptyView.h"
 #import "WLPlatform.h"
 #import "WLPaidRecordModel.h"
+#import "WLPaidRecordCell.h"
 
-@interface WLPaidRecordViewController ()
+@interface WLPaidRecordViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) NSArray *paidList;
 
 @end
 
@@ -49,6 +52,8 @@
         {
             NSLog(@"获取缴费记录成功");
             [ProgressHUD showSuccess:model.message];
+            self.paidList = model.data;
+            [self showPaidRecordView];
         }else
         {
             NSLog(@"获取缴费记录失败");
@@ -63,10 +68,49 @@
     }];
 }
 
+- (void)showPaidRecordView
+{
+    UITableView *paidRecordView = [[UITableView alloc]init];
+    paidRecordView.dataSource = self;
+    paidRecordView.delegate = self;
+    [self.view addSubview:paidRecordView];
+    
+    [paidRecordView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.equalTo(self.view);
+    }];
+}
+
 - (void)showEmptyRecordView
 {
     WLRecordEmptyView *emptyView = [[WLRecordEmptyView alloc]initWithFrame:Screen_Bounds];
     [self.view addSubview:emptyView];
+}
+
+#pragma --mark tableview delegate
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.paidList.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    WLPaidRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (cell == nil)
+    {
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"WLPaidRecordCell" owner:nil options:nil]lastObject];
+    }
+    WLPaidRecordDetailModel *model = self.paidList[indexPath.row];
+    cell.order_idLabel.text = model.orderid;
+    cell.priceDetaiLabel.text = model.fxqmc;
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@ 元",model.fyje];
+    cell.paidTimeLabel.text = model.jfsj;
+    
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150;
 }
 
 - (void)didReceiveMemoryWarning {

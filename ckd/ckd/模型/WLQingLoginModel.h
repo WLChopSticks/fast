@@ -15,7 +15,7 @@
  */
 
 @interface WLUserExpireTimeModel : NSObject
-@property (nonatomic, strong) NSString *lsh;
+@property (nonatomic, strong) NSString *lsh;//Bljl流水号
 @property (nonatomic, strong) NSString *fylxdm;//费用类型代码
 @property (nonatomic, strong) NSString *fylb;//费用类别
 @property (nonatomic, strong) NSString *jssj;//结束时间

@@ -42,6 +42,10 @@
     //定义此页面导航栏颜色
     self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    UIImage *navBackImage = [[UIImage imageNamed:@"nav_ic_back"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithImage:navBackImage style:UIBarButtonItemStylePlain target:self action:@selector(backBtnDidClicking)];
+    self.navigationItem.leftBarButtonItem = backBtn;
+
     
     //查询当天换电次数
     [self queryExchangeChargerTimeForToday];

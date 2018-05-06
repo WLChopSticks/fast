@@ -18,6 +18,7 @@
 #import "WLEachChargerStationModel.h"
 #import "WLPaidDepositViewController.h"
 #import "WLCustomerServiceViewController.h"
+#import "WLMyAccountController.h"
 
 typedef enum : NSUInteger {
     UnRegistRealName,//未实名
@@ -316,17 +317,19 @@ typedef enum : NSUInteger {
     {
         WLRealNameAuthenticationViewController *realNameIdentifyVC = [[WLRealNameAuthenticationViewController alloc]init];
         [self.navigationController pushViewController:realNameIdentifyVC animated:YES];
-    }else if (sender.tag == UnPaidDeposit)
+    }else if (sender.tag == UnPaidDeposit || sender.tag == UnPaidRent)
     {
-        NSLog(@"跳转交押金页面");
-        WLPaidDepositViewController *paidDepositVC = [[WLPaidDepositViewController alloc]init];
-        [self.navigationController pushViewController:paidDepositVC animated:YES];
-    }else if (sender.tag == UnPaidRent)
-    {
-        NSLog(@"跳转交租金页面");
-        WLPaidDepositViewController *paidDepositVC = [[WLPaidDepositViewController alloc]init];
-        [self.navigationController pushViewController:paidDepositVC animated:YES];
-    }else if (sender.tag == Unlogin)
+        NSLog(@"跳转交押金/租金页面");
+        WLMyAccountController *myAccountVC = [[WLMyAccountController alloc]initWithNibName:@"WLMyAccountView" bundle:nil];
+        [self.navigationController pushViewController:myAccountVC animated:YES];
+    }
+//    else if (sender.tag == UnPaidRent)
+//    {
+//        NSLog(@"跳转交租金页面");
+//        WLPaidDepositViewController *paidDepositVC = [[WLPaidDepositViewController alloc]init];
+//        [self.navigationController pushViewController:paidDepositVC animated:YES];
+//    }
+    else if (sender.tag == Unlogin)
     {
         WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
         [self.navigationController pushViewController:loginVC animated:YES];

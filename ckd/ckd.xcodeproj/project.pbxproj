@@ -32,6 +32,8 @@
 		9B0211F8209EA38D00282AF1 /* WLPaidRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B0211F7209EA38D00282AF1 /* WLPaidRecordViewController.xib */; };
 		9B0211FB209EB16400282AF1 /* WLWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0211FA209EB16400282AF1 /* WLWebViewController.m */; };
 		9B0211FE209F0E9200282AF1 /* WLUserInfoMaintainance.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0211FD209F0E9200282AF1 /* WLUserInfoMaintainance.m */; };
+		9B021202209F1F0900282AF1 /* WLPaidRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B021200209F1F0900282AF1 /* WLPaidRecordCell.m */; };
+		9B021203209F1F0900282AF1 /* WLPaidRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B021201209F1F0900282AF1 /* WLPaidRecordCell.xib */; };
 		9B4552FD2096DB3400C6C447 /* WLProfileDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */; };
 		9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */; };
 		9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4553022096F3B000C6C447 /* WLUtilities.m */; };
@@ -146,6 +148,9 @@
 		9B0211FA209EB16400282AF1 /* WLWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLWebViewController.m; sourceTree = "<group>"; };
 		9B0211FC209F0E9200282AF1 /* WLUserInfoMaintainance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLUserInfoMaintainance.h; sourceTree = "<group>"; };
 		9B0211FD209F0E9200282AF1 /* WLUserInfoMaintainance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLUserInfoMaintainance.m; sourceTree = "<group>"; };
+		9B0211FF209F1F0900282AF1 /* WLPaidRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLPaidRecordCell.h; sourceTree = "<group>"; };
+		9B021200209F1F0900282AF1 /* WLPaidRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLPaidRecordCell.m; sourceTree = "<group>"; };
+		9B021201209F1F0900282AF1 /* WLPaidRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLPaidRecordCell.xib; sourceTree = "<group>"; };
 		9B4552FB2096DB3400C6C447 /* WLProfileDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLProfileDetailsViewController.h; sourceTree = "<group>"; };
 		9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLProfileDetailsViewController.m; sourceTree = "<group>"; };
 		9B4552FE2096F31F00C6C447 /* WLNetworkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLNetworkTool.h; sourceTree = "<group>"; };
@@ -472,6 +477,9 @@
 				9B0211EE209E9ECE00282AF1 /* WLPaidRecordViewController.h */,
 				9B0211EF209E9ECE00282AF1 /* WLPaidRecordViewController.m */,
 				9B0211F7209EA38D00282AF1 /* WLPaidRecordViewController.xib */,
+				9B0211FF209F1F0900282AF1 /* WLPaidRecordCell.h */,
+				9B021200209F1F0900282AF1 /* WLPaidRecordCell.m */,
+				9B021201209F1F0900282AF1 /* WLPaidRecordCell.xib */,
 				9B0211F1209E9F4C00282AF1 /* WLRecordEmptyView.h */,
 				9B0211F2209E9F4C00282AF1 /* WLRecordEmptyView.m */,
 				9B01A0222095F57C00365BB8 /* WLProfileView.h */,
@@ -672,6 +680,7 @@
 				9B0013D4209A08020081F65D /* WLPaidDepositViewController.xib in Resources */,
 				9B006B2820985AE400CDEFD0 /* WLRealNameIdentifyCell.xib in Resources */,
 				9B634D26209D830300A5CB31 /* WLCertificationController.xib in Resources */,
+				9B021203209F1F0900282AF1 /* WLPaidRecordCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,6 +789,7 @@
 				9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */,
 				9B9776C82099A5400068D5C1 /* WLPointAnnotation.m in Sources */,
 				9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */,
+				9B021202209F1F0900282AF1 /* WLPaidRecordCell.m in Sources */,
 				9B977718209AAC300068D5C1 /* WLInquireCostDetailModel.m in Sources */,
 				9B006B2620985AA000CDEFD0 /* WLRealNameIdentifyCell.m in Sources */,
 				9B9776CB2099AEEC0068D5C1 /* WLStationDetailPromptView.m in Sources */,

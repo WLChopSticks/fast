@@ -96,6 +96,9 @@
         [scanManager stopRunning];
         
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
+        //如果扫到的是json则说明扫的是电池的码
+        //dg18040001
+        //{"code":"KTS000003","chk":"780e81f1650d63b7b646a66871d05e2d"}
         if ([obj.stringValue hasPrefix:@"{"])
         {
             //扫电池
@@ -113,8 +116,6 @@
         {
             [self queryAquireCharger];
         }
-        //dg18040001
-        //{"code":"KTS000003","chk":"780e81f1650d63b7b646a66871d05e2d"}
        
     } else {
         NSLog(@"暂未识别出扫描的二维码");
