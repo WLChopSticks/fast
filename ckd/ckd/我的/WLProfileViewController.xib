@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="ProfileItemsView" destination="xuD-aJ-a1Q" id="b3D-Z3-FVC"/>
                 <outlet property="SettingsView" destination="XEz-oz-s73" id="esG-Mj-Os6"/>
+                <outlet property="exchangeChargerTime" destination="aIo-vF-Lte" id="jEO-0H-lME"/>
                 <outlet property="myAccountView" destination="J66-zY-wM6" id="aNl-Ve-8Z3"/>
                 <outlet property="myExchangeView" destination="zCI-Tn-etc" id="EgJ-YG-hTJ"/>
                 <outlet property="profileInfoView" destination="TJF-xm-lxt" id="Xoi-IY-fDX"/>
@@ -92,13 +93,6 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_more" translatesAutoresizingMaskIntoConstraints="NO" id="qfz-wM-ZXu">
-                                    <rect key="frame" x="295" y="7.5" width="30" height="30"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="0b5-yU-hnF"/>
-                                        <constraint firstAttribute="width" constant="30" id="AXx-Il-MiS"/>
-                                    </constraints>
-                                </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZS-J2-e47">
                                     <rect key="frame" x="0.0" y="44" width="335" height="1"/>
                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -106,17 +100,23 @@
                                         <constraint firstAttribute="height" constant="1" id="CGs-oJ-A8B"/>
                                     </constraints>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日换电" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIo-vF-Lte">
+                                    <rect key="frame" x="255.5" y="12" width="69.5" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <gestureRecognizers/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="qfz-wM-ZXu" secondAttribute="trailing" constant="10" id="Lbv-6z-hhj"/>
+                                <constraint firstItem="aIo-vF-Lte" firstAttribute="centerY" secondItem="zCI-Tn-etc" secondAttribute="centerY" id="0rT-vt-21S"/>
                                 <constraint firstAttribute="trailing" secondItem="YZS-J2-e47" secondAttribute="trailing" id="NNY-Ny-zTU"/>
                                 <constraint firstAttribute="bottom" secondItem="YZS-J2-e47" secondAttribute="bottom" id="QJ5-Lu-OG3"/>
+                                <constraint firstAttribute="trailing" secondItem="aIo-vF-Lte" secondAttribute="trailing" constant="10" id="QlD-cp-phh"/>
                                 <constraint firstItem="QX6-jF-g9t" firstAttribute="leading" secondItem="zCI-Tn-etc" secondAttribute="leading" constant="10" id="ZBq-6z-WEj"/>
                                 <constraint firstItem="Fg6-Y7-sZ0" firstAttribute="centerY" secondItem="QX6-jF-g9t" secondAttribute="centerY" id="ZqX-eI-4cE"/>
                                 <constraint firstItem="Fg6-Y7-sZ0" firstAttribute="leading" secondItem="QX6-jF-g9t" secondAttribute="trailing" constant="10" id="e6N-YK-71K"/>
-                                <constraint firstItem="qfz-wM-ZXu" firstAttribute="centerY" secondItem="zCI-Tn-etc" secondAttribute="centerY" id="j5O-Oz-5En"/>
                                 <constraint firstItem="QX6-jF-g9t" firstAttribute="centerY" secondItem="zCI-Tn-etc" secondAttribute="centerY" id="jsQ-IB-GcK"/>
                                 <constraint firstItem="YZS-J2-e47" firstAttribute="leading" secondItem="zCI-Tn-etc" secondAttribute="leading" id="zrP-IQ-VLy"/>
                             </constraints>
@@ -137,13 +137,6 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_more" translatesAutoresizingMaskIntoConstraints="NO" id="S9i-Dr-Bw1">
-                                    <rect key="frame" x="295" y="7.5" width="30" height="30"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="T04-eI-4T4"/>
-                                        <constraint firstAttribute="width" constant="30" id="ewh-oL-UzF"/>
-                                    </constraints>
-                                </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcL-44-Bmp">
                                     <rect key="frame" x="0.0" y="44" width="335" height="1"/>
                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -154,10 +147,8 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="S9i-Dr-Bw1" firstAttribute="centerY" secondItem="J66-zY-wM6" secondAttribute="centerY" id="0ep-62-x7c"/>
                                 <constraint firstItem="gEZ-ns-jnC" firstAttribute="leading" secondItem="uqM-vD-wLP" secondAttribute="trailing" constant="10" id="BTI-17-lQb"/>
                                 <constraint firstAttribute="trailing" secondItem="bcL-44-Bmp" secondAttribute="trailing" id="EKU-7e-Ove"/>
-                                <constraint firstAttribute="trailing" secondItem="S9i-Dr-Bw1" secondAttribute="trailing" constant="10" id="FHm-KB-SlA"/>
                                 <constraint firstItem="uqM-vD-wLP" firstAttribute="leading" secondItem="J66-zY-wM6" secondAttribute="leading" constant="10" id="UsI-CO-6TL"/>
                                 <constraint firstItem="gEZ-ns-jnC" firstAttribute="centerY" secondItem="uqM-vD-wLP" secondAttribute="centerY" id="WX1-xr-nXr"/>
                                 <constraint firstItem="uqM-vD-wLP" firstAttribute="centerY" secondItem="J66-zY-wM6" secondAttribute="centerY" id="dOq-eQ-Obw"/>

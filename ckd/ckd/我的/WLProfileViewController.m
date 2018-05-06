@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIView *myAccountView;
 @property (weak, nonatomic) IBOutlet UIView *SettingsView;
 @property (weak, nonatomic) IBOutlet UIView *ProfileItemsView;
+@property (weak, nonatomic) IBOutlet UILabel *exchangeChargerTime;
 
 
 
@@ -39,6 +40,9 @@
     //定义此页面导航栏颜色
     self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
+    //查询当天换电次数
+    [self queryExchangeChargerTimeForToday];
 }
 
 - (void)viewDidLoad {
@@ -59,6 +63,32 @@
     self.ProfileItemsView.layer.cornerRadius = 8;
     self.ProfileItemsView.layer.masksToBounds = YES;
     
+}
+
+- (void)queryExchangeChargerTimeForToday
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *parametersStr = [NSString stringWithFormat:@"{user_id:%@}",[WLUtilities getUserID]];
+    [parameters setObject:parametersStr forKey:@"inputParameter"];
+    NSString *URL = @"http://47.104.85.148:18070/ckdhd/HdcjlCs.action";
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        NSDictionary *result = (NSDictionary *)responseObject;
+        
+        if ([result[@"code"] integerValue] == 1)
+        {
+            NSLog(@"查询今日换电次数成功");
+            NSString *timesForToday = result[@"data"][@"hdcs"];
+            self.exchangeChargerTime.text = [NSString stringWithFormat:@"今日换电: %@次", timesForToday];
+            
+        }else
+        {
+            NSLog(@"查询今日换电次数失败");
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"获取缴费记录失败");
+        NSLog(@"%@",error);
+    }];
 }
 
 - (void)addGesturesToViews
