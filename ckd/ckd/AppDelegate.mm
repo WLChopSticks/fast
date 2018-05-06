@@ -12,6 +12,7 @@
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 #import "WLBootViewController.h"
 #import "WLWePay.h"
+#import "WLUserInfoMaintainance.h"
 
 #import "WLChargerRecord.h"
 #import "WLInquireCostDetailModel.h"
@@ -26,9 +27,10 @@ BMKMapManager* _mapManager;
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //如果用户已经登录, 则获取用户信息
     self.window = [[UIWindow alloc]initWithFrame:Screen_Bounds];
     WLBootViewController *bootVC = [[WLBootViewController alloc]init];
     WLBaseNavigationViewController *nav = [[WLBaseNavigationViewController alloc]initWithRootViewController:bootVC];

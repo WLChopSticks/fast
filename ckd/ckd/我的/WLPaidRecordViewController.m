@@ -53,7 +53,13 @@
             NSLog(@"获取缴费记录成功");
             [ProgressHUD showSuccess:model.message];
             self.paidList = model.data;
-            [self showPaidRecordView];
+            if (self.paidList.count > 0)
+            {
+                [self showPaidRecordView];
+            }else
+            {
+                [self showEmptyRecordView];
+            }
         }else
         {
             NSLog(@"获取缴费记录失败");

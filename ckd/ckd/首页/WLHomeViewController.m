@@ -13,12 +13,14 @@
 #import "WLMapViewController.h"
 #import "WLScanBitCodeViewController.h"
 #import "WLChargerStationModel.h"
-#import "WLRealNameAuthenticationViewController.h"
 #import "WLNewsCenterViewController.h"
 #import "WLEachChargerStationModel.h"
 #import "WLPaidDepositViewController.h"
 #import "WLCustomerServiceViewController.h"
 #import "WLMyAccountController.h"
+#import "WLCertificationController.h"
+#import "WLUserInfoMaintainance.h"
+#import "WLBootViewController.h"
 
 typedef enum : NSUInteger {
     UnRegistRealName,//未实名
@@ -54,7 +56,26 @@ typedef enum : NSUInteger {
     [self decorateFunctionsButtons];
     
     //查看用户账户状态, 是否显示提示bar, 引导用户完善信息
-    [self decorateUserStatusPromptBar:[self judegeAccountStatus]];
+    [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+        if (result.boolValue)
+        {
+            NSLog(@"获取个人信息成功");
+            [self decorateUserStatusPromptBar:[self judegeAccountStatus]];
+        }else
+        {
+            NSLog(@"获取个人信息失败");
+            //查询失败, 退出登录
+            WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
+            for (UIViewController *vc in self.navigationController.viewControllers)
+            {
+                if ([vc isKindOfClass:[WLBootViewController class]])
+                {
+                    [self.navigationController popToViewController:vc animated:NO];
+                    [vc.navigationController pushViewController:loginVC animated:YES];
+                }
+            }
+        }
+    }];
 
     //请求充电站的位置节点
     [self aquireChargerStations];
@@ -69,15 +90,17 @@ typedef enum : NSUInteger {
     {
         return Unlogin;
     }
-    if (![WLUtilities isUserRealNameRegist])
+   
+    WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
+    if (userInfo.model.data.user_realname.length <= 0)
     {
         return UnRegistRealName;
     }
-    if (![WLUtilities isUserDepositPaid])
+    if (userInfo.model.data.yj.integerValue == 0)
     {
         return UnPaidDeposit;
     }
-    if (![WLUtilities isUserRentPaid])
+    if (userInfo.model.data.zj.integerValue == 0)
     {
         return UnPaidRent;
     }
@@ -151,10 +174,10 @@ typedef enum : NSUInteger {
     [mapBtn addTarget:self action:@selector(mapBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:mapBtn];
     
-    UIButton *collectBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
-    [collectBtn setImage:[UIImage imageNamed:@"home_ic_collect"] forState:UIControlStateNormal];
-    [collectBtn addTarget:self action:@selector(hehe) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:collectBtn];
+//    UIButton *collectBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
+//    [collectBtn setImage:[UIImage imageNamed:@"home_ic_collect"] forState:UIControlStateNormal];
+//    [collectBtn addTarget:self action:@selector(hehe) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:collectBtn];
     
     UIButton *serviceBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
     [serviceBtn setImage:[UIImage imageNamed:@"home_ic_service"] forState:UIControlStateNormal];
@@ -197,12 +220,12 @@ typedef enum : NSUInteger {
         make.height.mas_equalTo(Func_Btn_Height);
     }];
     
-    [collectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(iconBtn.mas_centerY).offset(-20);
-        make.right.equalTo(self.view.mas_right).offset(-Margin);
-        make.width.mas_equalTo(Func_Btn_Width);
-        make.height.mas_equalTo(Func_Btn_Height);
-    }];
+//    [collectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(iconBtn.mas_centerY).offset(-20);
+//        make.right.equalTo(self.view.mas_right).offset(-Margin);
+//        make.width.mas_equalTo(Func_Btn_Width);
+//        make.height.mas_equalTo(Func_Btn_Height);
+//    }];
     
     [serviceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(iconBtn.mas_centerY).offset(+40);
@@ -315,8 +338,8 @@ typedef enum : NSUInteger {
 {
     if (sender.tag == UnRegistRealName)
     {
-        WLRealNameAuthenticationViewController *realNameIdentifyVC = [[WLRealNameAuthenticationViewController alloc]init];
-        [self.navigationController pushViewController:realNameIdentifyVC animated:YES];
+        WLCertificationController *certificationVC = [[WLCertificationController alloc]init];
+        [self.navigationController pushViewController:certificationVC animated:YES];
     }else if (sender.tag == UnPaidDeposit || sender.tag == UnPaidRent)
     {
         NSLog(@"跳转交押金/租金页面");

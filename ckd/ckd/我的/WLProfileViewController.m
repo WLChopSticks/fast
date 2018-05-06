@@ -40,7 +40,7 @@
     [super viewWillAppear:animated];
     
     //定义此页面导航栏颜色
-    self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:255/255.0 green:93/255.0 blue:67/255.0 alpha:1.0];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     UIImage *navBackImage = [[UIImage imageNamed:@"nav_ic_back"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc]initWithImage:navBackImage style:UIBarButtonItemStylePlain target:self action:@selector(backBtnDidClicking)];
@@ -137,7 +137,8 @@
 - (void)profileInfoViewDidClicking:(id)sender
 {
     NSLog(@"我的信息点击了");
-    if ([WLUtilities isUserRealNameRegist])
+    WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
+    if (userInfo.model.data.user_realname.length > 0)
     {
         NSLog(@"跳转我的信息页面");
         WLProfileInformationViewController *vc = [[WLProfileInformationViewController alloc]init];

@@ -36,16 +36,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (![WLUtilities isUserRealNameRegist])
-    {
-        NSLog(@"跳转实名认证页面");
-        WLCertificationController *certificationVC = [[WLCertificationController alloc]init];
-        [self.navigationController pushViewController:certificationVC animated:YES];
-    }else
-    {
-        //请求个人详细信息
-        [self queryProfileInfo];
-    }
 }
 
 - (void)viewDidLoad {
@@ -56,6 +46,9 @@
     
     //选项添加点击事件
     [self addViewGestures];
+    
+    //请求个人详细信息
+    [self queryProfileInfo];
    
 }
 

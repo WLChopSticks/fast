@@ -158,7 +158,7 @@
         if ([aquireChargerModel.code isEqualToString:@"1"])
         {
             NSLog(@"查询换电流程成功");
-            
+            [ProgressHUD showSuccess:aquireChargerModel.message];
         }else
         {
             [ProgressHUD showError:aquireChargerModel.message];
