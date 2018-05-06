@@ -31,6 +31,7 @@
 		9B0211F6209EA23C00282AF1 /* WLPaidRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0211F5209EA23C00282AF1 /* WLPaidRecordModel.m */; };
 		9B0211F8209EA38D00282AF1 /* WLPaidRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B0211F7209EA38D00282AF1 /* WLPaidRecordViewController.xib */; };
 		9B0211FB209EB16400282AF1 /* WLWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0211FA209EB16400282AF1 /* WLWebViewController.m */; };
+		9B0211FE209F0E9200282AF1 /* WLUserInfoMaintainance.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0211FD209F0E9200282AF1 /* WLUserInfoMaintainance.m */; };
 		9B4552FD2096DB3400C6C447 /* WLProfileDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */; };
 		9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */; };
 		9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4553022096F3B000C6C447 /* WLUtilities.m */; };
@@ -143,6 +144,8 @@
 		9B0211F7209EA38D00282AF1 /* WLPaidRecordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLPaidRecordViewController.xib; sourceTree = "<group>"; };
 		9B0211F9209EB16400282AF1 /* WLWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLWebViewController.h; sourceTree = "<group>"; };
 		9B0211FA209EB16400282AF1 /* WLWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLWebViewController.m; sourceTree = "<group>"; };
+		9B0211FC209F0E9200282AF1 /* WLUserInfoMaintainance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLUserInfoMaintainance.h; sourceTree = "<group>"; };
+		9B0211FD209F0E9200282AF1 /* WLUserInfoMaintainance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLUserInfoMaintainance.m; sourceTree = "<group>"; };
 		9B4552FB2096DB3400C6C447 /* WLProfileDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLProfileDetailsViewController.h; sourceTree = "<group>"; };
 		9B4552FC2096DB3400C6C447 /* WLProfileDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLProfileDetailsViewController.m; sourceTree = "<group>"; };
 		9B4552FE2096F31F00C6C447 /* WLNetworkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLNetworkTool.h; sourceTree = "<group>"; };
@@ -461,6 +464,8 @@
 				9BB5BDFE20946AE90076DDB7 /* WLProfileViewController.h */,
 				9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */,
 				9B634D27209D978A00A5CB31 /* WLProfileViewController.xib */,
+				9B0211FC209F0E9200282AF1 /* WLUserInfoMaintainance.h */,
+				9B0211FD209F0E9200282AF1 /* WLUserInfoMaintainance.m */,
 				9B634D29209DAC4600A5CB31 /* WLProfileInformationViewController.h */,
 				9B634D2A209DAC4600A5CB31 /* WLProfileInformationViewController.m */,
 				9B634D2B209DAC4600A5CB31 /* WLProfileInformationViewController.xib */,
@@ -781,6 +786,7 @@
 				9B634D25209D830300A5CB31 /* WLCertificationController.m in Sources */,
 				9B0211F0209E9ECE00282AF1 /* WLPaidRecordViewController.m in Sources */,
 				9B01A0282095FCBA00365BB8 /* WLProfileItemsCell.m in Sources */,
+				9B0211FE209F0E9200282AF1 /* WLUserInfoMaintainance.m in Sources */,
 				9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */,
 				9B977714209AA8A90068D5C1 /* WLChargerRecord.m in Sources */,
 				9BFF6D92209B4252003457D4 /* WLChangeTelephoneNumberViewController.m in Sources */,

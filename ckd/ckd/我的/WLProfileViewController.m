@@ -14,6 +14,7 @@
 #import "WLMyApplyChargerRecordViewController.h"
 #import "WLCertificationController.h"
 #import "WLProfileInformationViewController.h"
+#import "WLUserInfoMaintainance.h"
 
 @interface WLProfileViewController ()<ProfileviewDelegate>
 
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIView *SettingsView;
 @property (weak, nonatomic) IBOutlet UIView *ProfileItemsView;
 @property (weak, nonatomic) IBOutlet UILabel *exchangeChargerTime;
+@property (weak, nonatomic) IBOutlet UILabel *expireTimeLabel;
 
 
 
@@ -43,6 +45,8 @@
     
     //查询当天换电次数
     [self queryExchangeChargerTimeForToday];
+    //查询月卡到期时间
+    [self queryQinglogin];
 }
 
 - (void)viewDidLoad {
@@ -88,6 +92,26 @@
     } failure:^(NSError *error) {
         NSLog(@"获取缴费记录失败");
         NSLog(@"%@",error);
+    }];
+}
+
+- (void)queryQinglogin
+{
+    [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+        //如果成功则显示到期时间
+        if ([result boolValue])
+        {
+            NSArray *expireTimeArr = [[[[WLUserInfoMaintainance sharedMaintain]model]data]list];
+            for (WLUserExpireTimeModel *model in expireTimeArr)
+            {
+                //租金
+                if ([model.fylxdm isEqualToString:@"2"])
+                {
+                    self.expireTimeLabel.text = [NSString stringWithFormat:@"%@ 到期",model.jssj];
+                    break;
+                }
+            }
+        }
     }];
 }
 

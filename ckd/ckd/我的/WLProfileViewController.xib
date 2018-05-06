@@ -16,6 +16,7 @@
                 <outlet property="ProfileItemsView" destination="xuD-aJ-a1Q" id="b3D-Z3-FVC"/>
                 <outlet property="SettingsView" destination="XEz-oz-s73" id="esG-Mj-Os6"/>
                 <outlet property="exchangeChargerTime" destination="aIo-vF-Lte" id="jEO-0H-lME"/>
+                <outlet property="expireTimeLabel" destination="O1I-6F-YES" id="Hxe-eX-ObN"/>
                 <outlet property="myAccountView" destination="J66-zY-wM6" id="aNl-Ve-8Z3"/>
                 <outlet property="myExchangeView" destination="zCI-Tn-etc" id="EgJ-YG-hTJ"/>
                 <outlet property="profileInfoView" destination="TJF-xm-lxt" id="Xoi-IY-fDX"/>
@@ -144,16 +145,24 @@
                                         <constraint firstAttribute="height" constant="1" id="cW7-2D-VFT"/>
                                     </constraints>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="过期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1I-6F-YES">
+                                    <rect key="frame" x="290" y="12" width="35" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="gEZ-ns-jnC" firstAttribute="leading" secondItem="uqM-vD-wLP" secondAttribute="trailing" constant="10" id="BTI-17-lQb"/>
                                 <constraint firstAttribute="trailing" secondItem="bcL-44-Bmp" secondAttribute="trailing" id="EKU-7e-Ove"/>
+                                <constraint firstAttribute="trailing" secondItem="O1I-6F-YES" secondAttribute="trailing" constant="10" id="Fca-Q9-SUL"/>
                                 <constraint firstItem="uqM-vD-wLP" firstAttribute="leading" secondItem="J66-zY-wM6" secondAttribute="leading" constant="10" id="UsI-CO-6TL"/>
                                 <constraint firstItem="gEZ-ns-jnC" firstAttribute="centerY" secondItem="uqM-vD-wLP" secondAttribute="centerY" id="WX1-xr-nXr"/>
                                 <constraint firstItem="uqM-vD-wLP" firstAttribute="centerY" secondItem="J66-zY-wM6" secondAttribute="centerY" id="dOq-eQ-Obw"/>
                                 <constraint firstItem="bcL-44-Bmp" firstAttribute="leading" secondItem="J66-zY-wM6" secondAttribute="leading" id="nDn-0o-cu0"/>
                                 <constraint firstAttribute="bottom" secondItem="bcL-44-Bmp" secondAttribute="bottom" id="nL5-yg-Lnb"/>
+                                <constraint firstItem="O1I-6F-YES" firstAttribute="centerY" secondItem="J66-zY-wM6" secondAttribute="centerY" id="qG4-rZ-vVq"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEz-oz-s73">
