@@ -11,6 +11,8 @@
 #import "WLLoginViewController.h"
 #import "WLBootViewController.h"
 #import "WLChangeTelephoneNumberViewController.h"
+#import "WLWebViewController.h"
+
 
 @interface WLSettingDetailViewController ()
 
@@ -34,8 +36,12 @@
     self.title = @"设置";
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     self.versionLabel.text = [NSString stringWithFormat:@"版本v%@",version];
+    
+    
 
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -45,18 +51,27 @@
 
 #pragma --mark 各个按钮点击事件, 此处cell都是通过盖一个btn实现点击的
 
-- (IBAction)changeTelNumberBtnDidClicking:(id)sender
+- (IBAction)aboutUsItemDidClicking:(id)sender
 {
-    NSLog(@"更换手机号按钮点击了");
-    WLChangeTelephoneNumberViewController *changeTelNumberVC = [[WLChangeTelephoneNumberViewController alloc]init];
-    [self.navigationController pushViewController:changeTelNumberVC animated:YES];
+    NSLog(@"关于我们点击了");
+    [self jumpToWebViewWithTitle:@"关于我们" andURL:@"https://www.baidu.com"];
 }
-- (IBAction)returnChargerBtnDidClicking:(id)sender
+- (IBAction)UserAgreementItemDidClicking:(id)sender
 {
-    NSLog(@"退电按钮点击了");
-    WLScanBitCodeViewController *scanBitCodeVC = [[WLScanBitCodeViewController alloc]init];
-    [self.navigationController pushViewController:scanBitCodeVC animated:YES];
+    NSLog(@"用户协议点击了");
+    [self jumpToWebViewWithTitle:@"用户协议" andURL:@"https://www.baidu.com"];
 }
+- (IBAction)PurchaseIntroducitonItemDidClicking:(id)sender
+{
+    NSLog(@"购买说明点击了");
+    [self jumpToWebViewWithTitle:@"购买说明" andURL:@"https://www.baidu.com"];
+}
+- (IBAction)DepositIntroductionDidClicking:(id)sender
+{
+    NSLog(@"押金说明点击了");
+    [self jumpToWebViewWithTitle:@"押金说明" andURL:@"https://www.baidu.com"];
+}
+
 - (IBAction)logoutBtnDidClicking:(id)sender
 {
     NSLog(@"退出登录点击了");
@@ -69,6 +84,15 @@
             [vc.navigationController pushViewController:loginVC animated:YES];
         }
     } 
+}
+
+//跳转webview页面
+- (void)jumpToWebViewWithTitle: (NSString *)title andURL: (NSString *)urlString
+{
+    WLWebViewController *webVC = [[WLWebViewController alloc]init];
+    webVC.title = title;
+    webVC.requestURL = urlString;
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 /*
