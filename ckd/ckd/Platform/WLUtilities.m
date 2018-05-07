@@ -138,4 +138,22 @@
     return platform;
 }
 
++ (void)savePaidPrice:(NSString *)price
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def setObject:price forKey:@"paid_Price"];
+}
+
++ (NSString *)getPaidPrice
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    return [def objectForKey:@"paid_Price"];
+}
+
++(void)deletePaidPrice
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def removeObjectForKey:@"paid_Price"];
+}
+
 @end

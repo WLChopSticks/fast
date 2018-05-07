@@ -66,7 +66,7 @@
         return;
     }
     //查看是否交押金
-    if (userInfo.model.data.yj)
+    if (userInfo.model.data.yj.integerValue)
     {
         for (WLUserPaidListModel *model in userInfo.model.data.list1)
         {
@@ -80,12 +80,11 @@
         }
     }else
     {
-        self.depositPriceLabel.text = @"未缴纳押金";
-        [self.paidDepositBtn setTitle:@"退缴纳押金" forState:UIControlStateNormal];
+        [self changeCellStatusToUnpaidDeposit];
     }
     
     //查看是否交租金
-    if (userInfo.model.data.zj)
+    if (userInfo.model.data.zj.integerValue)
     {
         for (WLUserExpireTimeModel *model in userInfo.model.data.list)
         {
@@ -131,7 +130,7 @@
 - (IBAction)PaidDepositBtnDidClicking:(id)sender
 {
     WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
-    if (!userInfo.model.data.yj)
+    if (userInfo.model.data.yj.integerValue)
     {
         //退押金
         [self queryReturnDeposit];
@@ -180,6 +179,7 @@
         {
             NSLog(@"退押金成功");
             [ProgressHUD showSuccess:result[@"message"]];
+            [self changeCellStatusToUnpaidDeposit];
             
         }else
         {
@@ -200,9 +200,10 @@
     switch (result) {
         case Paid_Success:
         {
-            [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
-                [self checkUserPaidStatus];
-            }];
+//            [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+//                [self checkUserPaidStatus];
+//            }];
+            [self changeCellStatusTopaidDeposit];
             break;
         }
         case Paid_Fail:
@@ -221,6 +222,17 @@
     }
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 
+}
+
+- (void)changeCellStatusToUnpaidDeposit
+{
+    self.depositPriceLabel.text = @"未缴纳押金";
+    [self.paidDepositBtn setTitle:@"缴纳押金" forState:UIControlStateNormal];
+}
+- (void)changeCellStatusTopaidDeposit
+{
+    self.depositPriceLabel.text = [NSString stringWithFormat:@"%@ 元",[WLUtilities getPaidPrice]];
+    [self.paidDepositBtn setTitle:@"退押金" forState:UIControlStateNormal];
 }
 
 

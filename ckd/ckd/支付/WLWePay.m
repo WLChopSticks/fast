@@ -54,7 +54,7 @@ static WLWePay *_instance;
 
     self.type = [NSString stringWithFormat:@"%lu",(unsigned long)type];
     self.typeCode = [NSString stringWithFormat:@"%lu",(unsigned long)typeCode];
-    self.priceDetailCode = [NSString stringWithFormat:@"%lu",(unsigned long)priceDetailCode];
+    self.priceDetailCode = [NSString stringWithFormat:@"%02lu",(unsigned long)priceDetailCode];
     
     [self queryPriceForDifferentPriceTypeComplete:^(NSString *fee) {
         if (fee)
@@ -147,16 +147,19 @@ static WLWePay *_instance;
         
         if ([result[@"code"] integerValue] == 1)
         {
-            NSLog(@"查询今日换电次数成功");
+            NSLog(@"查询费用详情成功");
+            //此处存储的费用金额为了付押金后, 本地处理付款成功的状态
+            [WLUtilities deletePaidPrice];
+            [WLUtilities savePaidPrice:result[@"data"][@"fyje"]];
             completion(result[@"data"][@"fyje"]);
             
         }else
         {
-            NSLog(@"查询今日换电次数失败");
+            NSLog(@"查询费用详情失败");
             completion(nil);
         }
     } failure:^(NSError *error) {
-        NSLog(@"获取缴费记录失败");
+        NSLog(@"查询费用详情失败");
         NSLog(@"%@",error);
         completion(nil);
     }];

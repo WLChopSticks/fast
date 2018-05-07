@@ -37,4 +37,9 @@
 //判断是否为iPhone X
 + (BOOL)isIphoneX;
 
+//存储缴费金额
++ (void)savePaidPrice: (NSString *)price;
++ (NSString *)getPaidPrice;
++ (void)deletePaidPrice;//每次请求新的金额前都需要删除存储的金额
+
 @end
