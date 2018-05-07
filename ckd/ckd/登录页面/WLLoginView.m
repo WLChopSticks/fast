@@ -42,6 +42,7 @@
     [self addSubview:telephoneLabel];
     
     UITextField *telephoneField = [[UITextField alloc]init];
+    telephoneField.keyboardType = UIKeyboardTypePhonePad;
     self.telephoneField = telephoneField;
     [self addSubview:telephoneField];
     
@@ -55,6 +56,7 @@
     [self addSubview:checkNumberLabel];
     
     UITextField *checkNumberField = [[UITextField alloc]init];
+    checkNumberField.keyboardType = UIKeyboardTypePhonePad;
     self.checkNumberField = checkNumberField;
     [self addSubview:checkNumberField];
     
@@ -180,7 +182,16 @@
         make.left.equalTo(templateLabel.mas_right).offset(Margin);
         //        make.width.height.mas_equalTo(50);
     }];
+    
+    //点击view使键盘消失
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapView)];
+    [self addGestureRecognizer:gesture];
 
+}
+
+- (void)tapView
+{
+    [self.telephoneField resignFirstResponder];
 }
 
 - (void)aquireCheckNumBtnDidClicking: (UIButton *)sender
