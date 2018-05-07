@@ -58,6 +58,8 @@
     if (telephone.length < 11)
     {
         NSLog(@"手机号码不正确");
+        [ProgressHUD showError:@"手机号不正确"];
+        return;
     }else
     {
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];

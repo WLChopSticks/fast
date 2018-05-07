@@ -197,7 +197,11 @@
 - (void)aquireCheckNumBtnDidClicking: (UIButton *)sender
 {
     //按钮点击后更改状态, 并且进入倒计时, 并跳转处理逻辑
-    sender.selected = YES;
+    if (self.telephoneField.text.length == 11)
+    {
+        sender.selected = YES;
+        [self.checkNumberField becomeFirstResponder];
+    }
     [self createCountdown:sender];
     if ([self.delegate respondsToSelector:@selector(LoginView:aquireCheckNumBtnDidclicking:)])
     {

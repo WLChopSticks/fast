@@ -23,7 +23,7 @@
 	<key>AquirePriceDetailInformation</key>
 	<string>{host}/ckdhd/queryFyxx.action</string>
 	<key>AquireCheckSMS</key>
-	<string>{host}/ckdhd/sendShortMessage</string>
+	<string>{host}/ckdhd/sendShortMessage.action</string>
 	<key>AquireExchangeChargerRecord</key>
 	<string>{host}/ckdhd/Hdcjl.action</string>
 	<key>ChangeTelephoneNumber</key>
