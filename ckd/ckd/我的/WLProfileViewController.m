@@ -70,6 +70,7 @@
     //设置圆角边框
     self.ProfileItemsView.layer.cornerRadius = 8;
     self.ProfileItemsView.layer.masksToBounds = YES;
+    self.ProfileItemsView.backgroundColor = LightGrayBackground;
     
 }
 
