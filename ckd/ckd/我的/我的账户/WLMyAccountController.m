@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIView *name;
 @property (weak, nonatomic) IBOutlet UILabel *rentTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *depositPriceLabel;
+@property (weak, nonatomic) IBOutlet UIButton *paidMonthCardBtn;
 @property (weak, nonatomic) IBOutlet UIButton *paidDepositBtn;
 
 
@@ -35,6 +36,8 @@
     [super viewDidLoad];
     
     self.title = @"我的账户";
+    [WLCommonTool makeViewShowingWithRoundCorner:self.paidDepositBtn andRadius:Btn_Radius];
+    [WLCommonTool makeViewShowingWithRoundCorner:self.paidMonthCardBtn andRadius:Btn_Radius];
 
     
     [self decorateNavigationBar];

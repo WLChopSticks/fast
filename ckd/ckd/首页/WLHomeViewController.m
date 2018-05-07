@@ -249,6 +249,8 @@ typedef enum : NSUInteger {
     UILabel *promptLabel = [[UILabel alloc]init];
     [backView addSubview:promptLabel];
     UIButton *improveBtn = [[UIButton alloc]init];
+    improveBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [WLCommonTool makeViewShowingWithRoundCorner:improveBtn andRadius:Btn_Radius];
     [backView addSubview:improveBtn];
     [improveBtn setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
     //用户未实名

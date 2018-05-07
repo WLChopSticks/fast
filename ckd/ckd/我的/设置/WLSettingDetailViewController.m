@@ -17,8 +17,7 @@
 @interface WLSettingDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
-
-
+@property (weak, nonatomic) IBOutlet UIButton *exitBtn;
 
 @end
 
@@ -34,6 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"设置";
+    [WLCommonTool makeViewShowingWithRoundCorner:self.exitBtn andRadius:Btn_Radius];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     self.versionLabel.text = [NSString stringWithFormat:@"版本v%@",version];
     
@@ -54,22 +54,26 @@
 - (IBAction)aboutUsItemDidClicking:(id)sender
 {
     NSLog(@"关于我们点击了");
-    [self jumpToWebViewWithTitle:@"关于我们" andURL:@"https://www.baidu.com"];
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [self jumpToWebViewWithTitle:@"关于我们" andURL:networkTool.queryAPIList[@"AboutUs"]];
 }
 - (IBAction)UserAgreementItemDidClicking:(id)sender
 {
     NSLog(@"用户协议点击了");
-    [self jumpToWebViewWithTitle:@"用户协议" andURL:@"https://www.baidu.com"];
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [self jumpToWebViewWithTitle:@"用户协议" andURL:networkTool.queryAPIList[@"UserAgreement"]];
 }
 - (IBAction)PurchaseIntroducitonItemDidClicking:(id)sender
 {
     NSLog(@"购买说明点击了");
-    [self jumpToWebViewWithTitle:@"购买说明" andURL:@"https://www.baidu.com"];
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [self jumpToWebViewWithTitle:@"购买说明" andURL:networkTool.queryAPIList[@"PurchaseIntroduction"]];
 }
 - (IBAction)DepositIntroductionDidClicking:(id)sender
 {
     NSLog(@"押金说明点击了");
-    [self jumpToWebViewWithTitle:@"押金说明" andURL:@"https://www.baidu.com"];
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [self jumpToWebViewWithTitle:@"押金说明" andURL:networkTool.queryAPIList[@"DepositIntrduction"]];
 }
 
 - (IBAction)logoutBtnDidClicking:(id)sender

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WLSettingDetailViewController">
             <connections>
+                <outlet property="exitBtn" destination="tzb-dx-3Kq" id="ZA0-SX-RzJ"/>
                 <outlet property="versionLabel" destination="3WU-IH-S6X" id="3D0-cT-q8r"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

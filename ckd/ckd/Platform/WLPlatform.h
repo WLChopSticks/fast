@@ -45,6 +45,7 @@
 #define Func_Btn_Height 50
 
 #define Margin 10
+#define Btn_Radius 8
 
 //字体颜色风格
 #define LightGrayStyle [UIColor lightGrayColor]

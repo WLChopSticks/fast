@@ -45,6 +45,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"我的信息";
+    [WLCommonTool makeViewShowingWithRoundCorner:self.returnChargerBtn andRadius:Btn_Radius];
     
     //选项添加点击事件
     [self addViewGestures];

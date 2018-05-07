@@ -36,5 +36,13 @@
 	<string>{host}/ckdhd/sendShortMessageU.action</string>
 	<key>AquirePaidRecordList</key>
 	<string>{host}/ckdhd/queryJfjl.action</string>
+	<key>UserAgreement</key>
+	<string>{host}/ckdhd/portal/pages/yhxy/yhxy.jsp</string>
+	<key>PurchaseIntroduction</key>
+	<string>{host}/ckdhd/portal/pages/gmsm/gmsm.jsp</string>
+	<key>DepositIntrduction</key>
+	<string>{host}/ckdhd/portal/pages/yjsm/yjsm.jsp</string>
+	<key>AboutUs</key>
+	<string>{host}/ckdhd/portal/pages/gywm/gywm.jsp</string>
 </dict>
 </plist>

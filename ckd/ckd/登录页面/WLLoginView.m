@@ -65,6 +65,7 @@
     [self addSubview:seperateView2];
     
     UIButton *aquireCheckNumBtn = [[UIButton alloc]init];
+    [WLCommonTool makeViewShowingWithRoundCorner:aquireCheckNumBtn andRadius:Btn_Radius];
     [aquireCheckNumBtn setBackgroundImage:[UIImage imageNamed:@"btn_code"] forState:UIControlStateNormal];
     [aquireCheckNumBtn setBackgroundImage:[UIImage imageNamed:@"btn_gray"] forState:UIControlStateSelected];
     [aquireCheckNumBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
@@ -73,6 +74,7 @@
     [self addSubview:aquireCheckNumBtn];
     
     UIButton *loginBtn = [[UIButton alloc]init];
+    [WLCommonTool makeViewShowingWithRoundCorner:loginBtn andRadius:Btn_Radius];
     self.loginBtn = loginBtn;
     [loginBtn setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
     [loginBtn setBackgroundImage:[UIImage imageNamed:@"btn_gray"] forState:UIControlStateDisabled];

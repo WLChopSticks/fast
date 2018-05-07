@@ -25,4 +25,10 @@
     dispatch_resume(_timer);
 }
 
++ (void)makeViewShowingWithRoundCorner: (UIView *)view andRadius: (CGFloat)radius
+{
+    view.layer.cornerRadius = radius;
+    view.layer.masksToBounds = YES;
+}
+
 @end

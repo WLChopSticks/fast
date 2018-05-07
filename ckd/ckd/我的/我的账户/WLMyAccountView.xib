@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="depositPriceLabel" destination="cFX-PI-RQk" id="AI3-xK-rbT"/>
                 <outlet property="paidDepositBtn" destination="mMx-45-Zmr" id="gtN-lQ-sgx"/>
+                <outlet property="paidMonthCardBtn" destination="Edc-nl-J5l" id="LME-N5-CDX"/>
                 <outlet property="rentTimeLabel" destination="Hpn-fL-fMJ" id="V2p-Gy-ULH"/>
                 <outlet property="view" destination="evT-vh-MF1" id="dXA-Nm-Kog"/>
             </connections>
