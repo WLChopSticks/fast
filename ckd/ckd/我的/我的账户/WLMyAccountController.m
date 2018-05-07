@@ -171,8 +171,8 @@
     }
     NSString *parametersStr = [NSString stringWithFormat:@"{bljl_lsh:%@,user_id:%@,fyxqdm:%@}",serialNumber, [WLUtilities getUserID], priceDetailCode];
     [parameters setObject:parametersStr forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/tksq.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"ReturnDeposit"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
         

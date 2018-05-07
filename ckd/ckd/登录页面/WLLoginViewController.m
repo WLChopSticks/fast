@@ -63,8 +63,8 @@
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         NSString *user_phone_string = [NSString stringWithFormat:@"{user_phone:%@}",telephone];
         [parameters setObject:user_phone_string forKey:@"inputParameter"];
-        NSString *URL = @"http://47.104.85.148:18070/ckdhd/sendShortMessage.action";
         WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+        NSString *URL = networkTool.queryAPIList[@"AquireCheckSMS"];
         [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
             NSDictionary *result = (NSDictionary *)responseObject;
             if ([result[@"code"]integerValue] == 1)
@@ -108,10 +108,10 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *telephone = self.loginView.telephoneField.text;
     NSString *checkNumber = self.loginView.checkNumberField.text;
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/quicklogin_quicklogin.action";
     NSString *parameter_string = [NSString stringWithFormat:@"{user_name:%@,user_phone:%@,yzm:%@}",telephone,telephone,checkNumber];
     [parameters setObject:parameter_string forKey:@"inputParameter"];
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"QuickLogin"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
         [ProgressHUD showSuccess];

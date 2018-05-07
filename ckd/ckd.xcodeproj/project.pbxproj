@@ -64,6 +64,7 @@
 		9B97772B209B02530068D5C1 /* WLMyAccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B97772A209B02530068D5C1 /* WLMyAccountView.xib */; };
 		9B977730209BD8BA0068D5C1 /* WLCustomerServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B97772E209BD8BA0068D5C1 /* WLCustomerServiceViewController.m */; };
 		9B977731209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B97772F209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib */; };
+		9B97773F209FF1FA0068D5C1 /* QueryApiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B97773E209FF1FA0068D5C1 /* QueryApiList.plist */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.mm */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
 		9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDCA209447200076DDB7 /* LaunchScreen.storyboard */; };
@@ -205,6 +206,7 @@
 		9B97772D209BD8BA0068D5C1 /* WLCustomerServiceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLCustomerServiceViewController.h; sourceTree = "<group>"; };
 		9B97772E209BD8BA0068D5C1 /* WLCustomerServiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLCustomerServiceViewController.m; sourceTree = "<group>"; };
 		9B97772F209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLCustomerServiceViewController.xib; sourceTree = "<group>"; };
+		9B97773E209FF1FA0068D5C1 /* QueryApiList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = QueryApiList.plist; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 				9BB5BDCA209447200076DDB7 /* LaunchScreen.storyboard */,
 				9BB5BDCD209447200076DDB7 /* Info.plist */,
 				9BB5BDCE209447200076DDB7 /* main.m */,
+				9B97773E209FF1FA0068D5C1 /* QueryApiList.plist */,
 			);
 			path = ckd;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				9B634D2D209DAC4600A5CB31 /* WLProfileInformationViewController.xib in Resources */,
 				9B977731209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib in Resources */,
 				9B634D28209D978A00A5CB31 /* WLProfileViewController.xib in Resources */,
+				9B97773F209FF1FA0068D5C1 /* QueryApiList.plist in Resources */,
 				9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */,
 				9B97772B209B02530068D5C1 /* WLMyAccountView.xib in Resources */,
 				9B01A0292095FCBA00365BB8 /* WLProfileItemsCell.xib in Resources */,

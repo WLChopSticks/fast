@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>host</key>
+	<string>http://47.104.85.148:18070</string>
+	<key>QuickLogin</key>
+	<string>{host}/ckdhd/quicklogin_quicklogin.action</string>
+	<key>CompletePrivateInformation</key>
+	<string>{host}/ckdhd/updateUser.action</string>
+	<key>InitWePay</key>
+	<string>{host}/ckdhd/addWxPayHy.action</string>
+	<key>AquireCityInformation</key>
+	<string>{host}/ckdhd/quickCs.action</string>
+	<key>AquireStationsOfCity</key>
+	<string>{host}/ckdhd/queryCsZd.action</string>
+	<key>UploadPaidResult</key>
+	<string>{host}/ckdhd/queryBljlPayRusult.action</string>
+	<key>ReturnDeposit</key>
+	<string>{host}/ckdhd/tksq.action</string>
+	<key>ExchangeChargerProgress</key>
+	<string>{host}/ckdhd/HdlcCz.action</string>
+	<key>AquirePriceDetailInformation</key>
+	<string>{host}/ckdhd/queryFyxx.action</string>
+	<key>AquireCheckSMS</key>
+	<string>{host}/ckdhd/sendShortMessage</string>
+	<key>AquireExchangeChargerRecord</key>
+	<string>{host}/ckdhd/Hdcjl.action</string>
+	<key>ChangeTelephoneNumber</key>
+	<string>{host}/ckdhd/updateUserPhone.action</string>
+	<key>QingLogin</key>
+	<string>{host}/ckdhd/qLogin.action</string>
+	<key>AquireExchangeTimesEveryday</key>
+	<string>{host}/ckdhd/HdcjlCs.action</string>
+	<key>JudgeAvailableOfTelephoneNumber</key>
+	<string>{host}/ckdhd/sendShortMessageU.action</string>
+	<key>AquirePaidRecordList</key>
+	<string>{host}/ckdhd/queryJfjl.action</string>
+</dict>
+</plist>

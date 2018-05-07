@@ -77,34 +77,7 @@ BMKMapManager* _mapManager;
     }];
 }
 
-//查询信息费用
-- (void)queryCostDetail
-{
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *para_String = [NSString stringWithFormat:@"{fylxdm:1,fylb:0}"];
-    [parameters setObject:para_String forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/queryFyxx.action";
-    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
-        [ProgressHUD dismiss];
-        NSDictionary *result = (NSDictionary *)responseObject;
-        WLInquireCostDetailModel *costDetailModel = [[WLInquireCostDetailModel alloc]init];
-        costDetailModel = [WLInquireCostDetailModel getInquireCostDetailModel:result];
-        if ([costDetailModel.code isEqualToString:@"1"])
-        {
-            NSLog(@"查询换电记录成功");
-            
-        }else
-        {
-            [ProgressHUD showError:@"查询换电记录失败"];
-            NSLog(@"查询换电记录失败");
-        }
-    } failure:^(NSError *error) {
-        [ProgressHUD showError:@"查询换电记录失败"];
-        NSLog(@"查询换电记录失败");
-        NSLog(@"%@",error);
-    }];
-}
+
 
 
 

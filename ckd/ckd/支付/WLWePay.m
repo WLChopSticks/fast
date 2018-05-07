@@ -62,8 +62,8 @@ static WLWePay *_instance;
             NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
             NSString *total_fee = [NSString stringWithFormat:@"{total_fee:%@}",fee];
             [parameters setObject:total_fee forKey:@"inputParameter"];
-            NSString *URL = @"http://47.104.85.148:18070/ckdhd/addWxPayHy.action";
             WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+            NSString *URL = networkTool.queryAPIList[@"InitWePay"];
             [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
                 NSDictionary *result = (NSDictionary *)responseObject;
                 WLInitPayModel *initPayModel = [WLInitPayModel getInitPayModel:result];
@@ -139,8 +139,8 @@ static WLWePay *_instance;
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *parametersStr = [NSString stringWithFormat:@"{fylxdm:%@,fylb:%@,fyxqdm:%@,user_id:%@}",self.typeCode, self.type, self.priceDetailCode, [WLUtilities getUserID]];
     [parameters setObject:parametersStr forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/queryFyxx.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"AquirePriceDetailInformation"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
         
@@ -191,12 +191,11 @@ static WLWePay *_instance;
 
 - (void)uploadWepayFinishStatus
 {
-    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *payInfo = [NSString stringWithFormat:@"{order_id:%@,jffs:%@,user_id:%@,fyje:%@,fyxqdm:%@,fylxdm:%@,Fylb:%@}",self.order_id, @"03", [WLUtilities getUserID], self.price, self.priceDetailCode, self.typeCode,self.type];
     [parameters setObject:payInfo forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/queryBljlPayRusult.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"UploadPaidResult"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
         

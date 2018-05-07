@@ -112,11 +112,12 @@ typedef enum : NSUInteger {
     [ProgressHUD show];
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *cityCode = [NSString stringWithFormat:@"{csdm:1}"];
 //    NSString *cityCode = [NSString stringWithFormat:@"{csdm:%@}",[WLUtilities getCurrentCityCode]];
+    WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
+        NSString *cityCode = [NSString stringWithFormat:@"{csdm:%@}",[WLUtilities getCurrentCityCode]];
     [parameters setObject:cityCode forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/queryCsZd.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"AquireStationsOfCity"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         [ProgressHUD dismiss];
         NSDictionary *result = (NSDictionary *)responseObject;

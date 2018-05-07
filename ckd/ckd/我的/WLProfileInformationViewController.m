@@ -67,8 +67,8 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *parametersStr = [NSString stringWithFormat:@"{user_id:%@}",[WLUtilities getUserID]];
     [parameters setObject:parametersStr forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/qLogin.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"QingLogin"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
         WLQingLoginModel *model = [WLQingLoginModel getQingLoginModel:result];
@@ -169,8 +169,8 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *user_phone_string = [NSString stringWithFormat:@"{user_id:%@,area_id:%@,user_realname:%@}",[WLUtilities getUserID],model.csdm, self.qingLoginModel.data.user_realname];
     [parameters setObject:user_phone_string forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/updateUser.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"CompletePrivateInformation"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         [ProgressHUD dismiss];
         NSDictionary *result = (NSDictionary *)responseObject;

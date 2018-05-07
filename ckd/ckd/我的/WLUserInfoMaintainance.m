@@ -27,8 +27,8 @@ static WLUserInfoMaintainance *_instance;
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *parametersStr = [NSString stringWithFormat:@"{user_id:%@}",[WLUtilities getUserID]];
     [parameters setObject:parametersStr forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/qLogin.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"QingLogin"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
         WLQingLoginModel *model = [WLQingLoginModel getQingLoginModel:result];

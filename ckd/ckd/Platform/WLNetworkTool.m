@@ -25,6 +25,9 @@ static WLNetworkTool *_instance;
         
         _instance = [[WLNetworkTool alloc]init];
         _instance.manager = manager;
+        //读取api列表
+        [_instance getQueryAPIListFromPlistFile];
+        
     });
     return _instance;
 }
@@ -47,6 +50,23 @@ static WLNetworkTool *_instance;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
+}
+
+- (void)getQueryAPIListFromPlistFile
+{
+     NSString *filePath = [[NSBundle mainBundle]pathForResource:@"QueryApiList.plist" ofType:nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:filePath];
+    NSString *host = dict[@"host"];
+    NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
+    [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        NSString *api = [NSString stringWithFormat:@"%@",obj];
+        if ([api containsString:@"{host}"])
+        {
+            api = [api stringByReplacingOccurrencesOfString:@"{host}" withString:host];
+            [newDict setObject:api forKey:key];
+        }
+    }];
+    self.queryAPIList = newDict;
 }
 
 @end

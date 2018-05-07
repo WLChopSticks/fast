@@ -113,8 +113,8 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *user_phone_string = [NSString stringWithFormat:@"{user_id:%@,area_id:%@,idcard:%@,user_realname:%@}",[WLUtilities getUserID],self.currentCityModel.csdm,self.IDNumberField.text,self.nameField.text];
     [parameters setObject:user_phone_string forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/updateUser.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"CompletePrivateInformation"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         [ProgressHUD dismiss];
         NSDictionary *result = (NSDictionary *)responseObject;

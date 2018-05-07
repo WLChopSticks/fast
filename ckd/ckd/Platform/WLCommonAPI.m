@@ -24,8 +24,8 @@ static WLCommonAPI *_instance;
 - (void)aquireCityList:(void (^)(id result))completeQuery
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/quickCs.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"AquireCityInformation"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         completeQuery(responseObject);
     } failure:^(NSError *error) {

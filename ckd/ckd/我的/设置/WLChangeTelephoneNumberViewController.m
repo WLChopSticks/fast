@@ -66,8 +66,8 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *user_phone_string = [NSString stringWithFormat:@"{user_phone:%@}",telephone];
     [parameters setObject:user_phone_string forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/sendShortMessage.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"AquireCheckSMS"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
         if ([result[@"code"]integerValue] == 1)
@@ -91,8 +91,8 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *user_phone_string = [NSString stringWithFormat:@"{user_id:%@,user_phone:%@,yzm=%@}",[WLUtilities getUserID], self.telephoneField.text, self.checkNumField.text];
     [parameters setObject:user_phone_string forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/updateUserPhone.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"ChangeTelephoneNumber"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
         if ([result[@"code"]integerValue] == 1)
@@ -119,8 +119,8 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *parametersStr = [NSString stringWithFormat:@"{user_phone:%@}",self.telephoneField.text];
     [parameters setObject:parametersStr forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/sendShortMessageU.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"JudgeAvailableOfTelephoneNumber"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
         
