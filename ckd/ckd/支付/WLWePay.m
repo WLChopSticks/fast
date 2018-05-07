@@ -11,6 +11,7 @@
 #import "WLInitPayModel.h"
 #import <WXApi.h>
 #import "WLDataMD5.h"
+#import "WLQueryPriceInfoModel.h"
 
 
 #define PartnerId @"1503148131"
@@ -30,9 +31,14 @@
 
 
 
-@property (nonatomic, strong) NSString *type;// 类别 0 电动车 1电池
-@property (nonatomic, strong) NSString *typeCode;// 费用类型代码1 押金 2租金
-@property (nonatomic, strong) NSString *priceDetailCode;
+@property (nonatomic, strong) NSString *priceType;// 类别 0 电动车 1电池
+@property (nonatomic, strong) NSString *priceTypeCode;// 费用类型代码1 押金 2租金
+@property (nonatomic, strong) NSString *priceDetailName;//fyxqmc
+@property (nonatomic, strong) NSString *priceDetailCode;//fyxqdm
+@property (nonatomic, strong) NSString *cityCode;//csmc
+@property (nonatomic, strong) NSString *priceNumber;//fyje
+
+
 
 @end
 
@@ -52,8 +58,8 @@ static WLWePay *_instance;
 - (void)createWePayRequestWithPriceType: (PriceType)type andPriceTypeCode: (PriceTypeCode)typeCode andPriceDetailCode: (PriceDetailCode)priceDetailCode
 {
 
-    self.type = [NSString stringWithFormat:@"%lu",(unsigned long)type];
-    self.typeCode = [NSString stringWithFormat:@"%lu",(unsigned long)typeCode];
+    self.priceType = [NSString stringWithFormat:@"%lu",(unsigned long)type];
+    self.priceTypeCode = [NSString stringWithFormat:@"%lu",(unsigned long)typeCode];
     self.priceDetailCode = [NSString stringWithFormat:@"%02lu",(unsigned long)priceDetailCode];
     
     [self queryPriceForDifferentPriceTypeComplete:^(NSString *fee) {
@@ -81,7 +87,7 @@ static WLWePay *_instance;
                     self.price = fee;
                     
                     
-                    [self uploadWepayFinishStatus];
+                    [self uploadWepayOrder];
                     
                     PayReq *request = [[PayReq alloc] init];
                     request.partnerId = initPayModel.data.mch_id;
@@ -138,20 +144,37 @@ static WLWePay *_instance;
 - (void)queryPriceForDifferentPriceTypeComplete: (void(^)(NSString *fee))completion
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *parametersStr = [NSString stringWithFormat:@"{fylxdm:%@,fylb:%@,fyxqdm:%@,user_id:%@}",self.typeCode, self.type, self.priceDetailCode, [WLUtilities getUserID]];
+    NSString *parametersStr = [NSString stringWithFormat:@"{fylxdm:%@,fylb:%@,fyxqdm:%@,user_id:%@}",self.priceTypeCode, self.priceType, self.priceDetailCode, [WLUtilities getUserID]];
     [parameters setObject:parametersStr forKey:@"inputParameter"];
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
     NSString *URL = networkTool.queryAPIList[@"AquirePriceDetailInformation"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
-        
-        if ([result[@"code"] integerValue] == 1)
+        WLQueryPriceInfoModel *model = [WLQueryPriceInfoModel getQueryPriceInfoModel:result];
+        if ([model.code integerValue] == 1)
         {
             NSLog(@"查询费用详情成功");
+            /*
+             @property (nonatomic, strong) NSString *priceType;// 类别 0 电动车 1电池
+             @property (nonatomic, strong) NSString *priceTypeCode;// 费用类型代码1 押金 2租金
+             @property (nonatomic, strong) NSString *priceDetailName;//fyxqmc
+             @property (nonatomic, strong) NSString *priceDetailCode;//fyxqdm
+             @property (nonatomic, strong) NSString *cityCode;//csmc
+             @property (nonatomic, strong) NSString *priceNumber;//fyje
+             */
+            self.priceType = model.data.fylb;
+            self.priceTypeCode = model.data.fylxdm;
+            self.priceDetailName = model.data.fyxqmc;
+            self.priceDetailCode = model.data.fyxqdm;
+            self.cityCode = model.data.csdm;
+            self.priceNumber = model.data.fyje;
             //此处存储的费用金额为了付押金后, 本地处理付款成功的状态
-            [WLUtilities deletePaidPrice];
-            [WLUtilities savePaidPrice:result[@"data"][@"fyje"]];
-            completion(result[@"data"][@"fyje"]);
+//            [WLUtilities deletePaidPrice];
+//            [WLUtilities savePaidPrice:result[@"data"][@"fyje"]];
+            
+            
+            
+            completion(self.priceNumber);
             
         }else
         {
@@ -173,7 +196,7 @@ static WLWePay *_instance;
         case Paid_Success:
         {
             //将支付订单号等上传服务器
-            [self uploadWepayFinishStatus];
+//            [self uploadWepayFinishStatus];
             break;
         }
         case Paid_Fail:
@@ -193,10 +216,10 @@ static WLWePay *_instance;
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
-- (void)uploadWepayFinishStatus
+- (void)uploadWepayOrder
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *payInfo = [NSString stringWithFormat:@"{order_id:%@,jffs:%@,user_id:%@,fyje:%@,fyxqdm:%@,fylxdm:%@,Fylb:%@}",self.order_id, @"03", [WLUtilities getUserID], self.price, self.priceDetailCode, self.typeCode,self.type];
+    NSString *payInfo = [NSString stringWithFormat:@"{order_id:%@,jffs:%@,user_id:%@,fyje:%@,fyxqdm:%@,fylxdm:%@,Fylb:%@}",self.order_id, @"03", [WLUtilities getUserID], self.priceNumber, self.priceDetailCode, self.priceTypeCode,self.priceType];
     [parameters setObject:payInfo forKey:@"inputParameter"];
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
     NSString *URL = networkTool.queryAPIList[@"UploadPaidResult"];

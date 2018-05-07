@@ -200,10 +200,10 @@
     switch (result) {
         case Paid_Success:
         {
-//            [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
-//                [self checkUserPaidStatus];
-//            }];
-            [self changeCellStatusTopaidDeposit];
+            [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+                [self checkUserPaidStatus];
+            }];
+//            [self changeCellStatusTopaidDeposit];
             break;
         }
         case Paid_Fail:

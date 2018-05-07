@@ -65,6 +65,7 @@
 		9B977730209BD8BA0068D5C1 /* WLCustomerServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B97772E209BD8BA0068D5C1 /* WLCustomerServiceViewController.m */; };
 		9B977731209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B97772F209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib */; };
 		9B97773F209FF1FA0068D5C1 /* QueryApiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B97773E209FF1FA0068D5C1 /* QueryApiList.plist */; };
+		9B9E05B020A06CC000F5F045 /* WLQueryPriceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9E05AF20A06CC000F5F045 /* WLQueryPriceInfoModel.m */; };
 		9BB5BDC1209447200076DDB7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC0209447200076DDB7 /* AppDelegate.mm */; };
 		9BB5BDC9209447200076DDB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDC8209447200076DDB7 /* Assets.xcassets */; };
 		9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5BDCA209447200076DDB7 /* LaunchScreen.storyboard */; };
@@ -207,6 +208,8 @@
 		9B97772E209BD8BA0068D5C1 /* WLCustomerServiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLCustomerServiceViewController.m; sourceTree = "<group>"; };
 		9B97772F209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLCustomerServiceViewController.xib; sourceTree = "<group>"; };
 		9B97773E209FF1FA0068D5C1 /* QueryApiList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = QueryApiList.plist; sourceTree = "<group>"; };
+		9B9E05AE20A06CC000F5F045 /* WLQueryPriceInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLQueryPriceInfoModel.h; sourceTree = "<group>"; };
+		9B9E05AF20A06CC000F5F045 /* WLQueryPriceInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLQueryPriceInfoModel.m; sourceTree = "<group>"; };
 		9BB5BDBC209447200076DDB7 /* ckd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ckd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5BDBF209447200076DDB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BB5BDC0209447200076DDB7 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 				9B634D32209DAF6F00A5CB31 /* WLQingLoginModel.m */,
 				9B0211F4209EA23C00282AF1 /* WLPaidRecordModel.h */,
 				9B0211F5209EA23C00282AF1 /* WLPaidRecordModel.m */,
+				9B9E05AE20A06CC000F5F045 /* WLQueryPriceInfoModel.h */,
+				9B9E05AF20A06CC000F5F045 /* WLQueryPriceInfoModel.m */,
 			);
 			path = "模型";
 			sourceTree = "<group>";
@@ -757,6 +762,7 @@
 				9B634D2C209DAC4600A5CB31 /* WLProfileInformationViewController.m in Sources */,
 				9B0211F6209EA23C00282AF1 /* WLPaidRecordModel.m in Sources */,
 				9B4CEDB820974A3700F20FB5 /* MapViewBaseDemoViewController.mm in Sources */,
+				9B9E05B020A06CC000F5F045 /* WLQueryPriceInfoModel.m in Sources */,
 				9B977729209AF9540068D5C1 /* WLMyApplyChargerRecordViewController.m in Sources */,
 				9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */,
 				9B97771E209AB49F0068D5C1 /* WLDepositStatusModel.m in Sources */,
