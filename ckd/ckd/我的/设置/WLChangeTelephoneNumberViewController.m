@@ -39,7 +39,8 @@
         [ProgressHUD showError:@"请输入手机号码"];
     }else
     {
-        [self aquireSMSCheckNumber];
+        //先检查手机号是否被注册过, 没有则请求验证码
+        [self queryIfTelephoneIsValid];
     }
 }
 - (IBAction)finishBtnDidClicking:(id)sender
@@ -110,6 +111,34 @@
         NSLog(@"手机号更改失败");
         NSLog(@"%@",error);
         [ProgressHUD showError:@"手机号更改失败"];
+    }];
+}
+
+- (void)queryIfTelephoneIsValid
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *parametersStr = [NSString stringWithFormat:@"{user_phone:%@}",self.telephoneField.text];
+    [parameters setObject:parametersStr forKey:@"inputParameter"];
+    NSString *URL = @"http://47.104.85.148:18070/ckdhd/sendShortMessageU.action";
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        NSDictionary *result = (NSDictionary *)responseObject;
+        
+        if ([result[@"code"] integerValue] == 1)
+        {
+            NSLog(@"查询手机号成功");
+            //手机号可用, 发送验证码
+            [self aquireSMSCheckNumber];
+            
+        }else
+        {
+            NSLog(@"查询手机号失败");
+            [ProgressHUD showError:result[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"查询手机号失败");
+        NSLog(@"%@",error);
+        [ProgressHUD showError:@"获取验证码失败"];
     }];
 }
 
