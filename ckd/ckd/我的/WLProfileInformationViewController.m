@@ -167,7 +167,7 @@
 {
     [ProgressHUD show];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *user_phone_string = [NSString stringWithFormat:@"{user_id:%@,area_id:%@,idcard:%@,user_realname:%@}",[WLUtilities getUserID],model.csdm, self.qingLoginModel.data.idcard,self.qingLoginModel.data.user_realname];
+    NSString *user_phone_string = [NSString stringWithFormat:@"{user_id:%@,area_id:%@,user_realname:%@}",[WLUtilities getUserID],model.csdm, self.qingLoginModel.data.user_realname];
     [parameters setObject:user_phone_string forKey:@"inputParameter"];
     NSString *URL = @"http://47.104.85.148:18070/ckdhd/updateUser.action";
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
@@ -181,8 +181,6 @@
             self.currentCity = model;
             [ProgressHUD showSuccess:[NSString stringWithFormat:@"切换城市成功"]];
             [WLUtilities saveCurrentCityCode:model.csdm andCityName:model.csmc];
-            
-            
         }
         else
         {

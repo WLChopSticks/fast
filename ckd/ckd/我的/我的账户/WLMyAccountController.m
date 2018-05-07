@@ -116,10 +116,10 @@
 }
 - (IBAction)extendMonthTimeBtnDidClicking:(id)sender
 {
-    NSLog(@"我的月卡续费按钮点击了");
+    NSLog(@"立即续费按钮点击了");
     //未缴纳押金需要先交押金
     WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
-    if (!userInfo.model.data.yj)
+    if (!userInfo.model.data.yj.integerValue)
     {
         [ProgressHUD showError:@"请先缴纳押金"];
     }else
