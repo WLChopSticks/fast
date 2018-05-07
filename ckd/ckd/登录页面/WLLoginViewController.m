@@ -93,55 +93,52 @@
 {
     NSLog(@"登录按钮点击");
     [self.loginView.checkNumberField resignFirstResponder];
-    [ProgressHUD show:@"Please wait..."];
-    if (self.loginView.checkNumberField.text.length == 0)
+    
+    if (self.loginView.telephoneField.text.length != 11)
     {
-        NSLog(@"请输入验证码");
-    }else
-    {
-        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-        NSString *telephone = self.loginView.telephoneField.text;
-        NSString *checkNumber = self.loginView.checkNumberField.text;
-        NSString *URL = @"http://47.104.85.148:18070/ckdhd/quicklogin_quicklogin.action";
-        NSString *parameter_string = [NSString stringWithFormat:@"{user_name:%@,user_phone:%@,yzm:%@}",telephone,telephone,checkNumber];
-        [parameters setObject:parameter_string forKey:@"inputParameter"];
-        WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-        [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
-            NSDictionary *result = (NSDictionary *)responseObject;
-            [ProgressHUD showSuccess];
-            WLQuickLoginModel *quickLoginModel = [WLQuickLoginModel mj_objectWithKeyValues:result];
-            if ([quickLoginModel.code isEqualToString:@"1"])
-            {
-                //存储登录状态
-                [WLUtilities setUserLogin];
-                
-                NSString *user_id = quickLoginModel.data.user_id;
-//                NSString *user_id = @"832f5a6d612c4d23b702f28de7018ab0";
-                [WLUtilities saveUserID:user_id];
-                //是否实名认证
-//                if ([quickLoginModel.message isEqualToString:@"请先去认证"])
-//                {
-//                    NSLog(@"跳转实名认证界面");
-//                    WLCertificationController *certificationVC = [[WLCertificationController alloc]init];
-//                    [self.navigationController pushViewController:certificationVC animated:YES];
-//
-//                }else
-                {
-                    NSLog(@"登录成功");
-                    WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
-                    [self.navigationController pushViewController:homeVC animated:YES];
-                }
-            }else
-            {
-                NSLog(@"登录失败");
-                [ProgressHUD showError:quickLoginModel.message];
-            }
-            
-        } failure:^(NSError *error) {
-            [ProgressHUD showError:@"登录失败"];
-            NSLog(@"登录失败");
-        }];
+        [ProgressHUD showError:@"请输入手机号"];
+        return;
     }
+    if (self.loginView.checkNumberField.text.length != 6)
+    {
+        [ProgressHUD showError:@"请输入验证码"];
+        return;
+    }
+    [ProgressHUD show];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *telephone = self.loginView.telephoneField.text;
+    NSString *checkNumber = self.loginView.checkNumberField.text;
+    NSString *URL = @"http://47.104.85.148:18070/ckdhd/quicklogin_quicklogin.action";
+    NSString *parameter_string = [NSString stringWithFormat:@"{user_name:%@,user_phone:%@,yzm:%@}",telephone,telephone,checkNumber];
+    [parameters setObject:parameter_string forKey:@"inputParameter"];
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        NSDictionary *result = (NSDictionary *)responseObject;
+        [ProgressHUD showSuccess];
+        WLQuickLoginModel *quickLoginModel = [WLQuickLoginModel mj_objectWithKeyValues:result];
+        if ([quickLoginModel.code isEqualToString:@"1"])
+        {
+            //存储登录状态
+            [WLUtilities setUserLogin];
+            
+            NSString *user_id = quickLoginModel.data.user_id;
+            [WLUtilities saveUserID:user_id];
+            NSLog(@"登录成功");
+            //登录成功跳转首页
+            WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
+            [self.navigationController pushViewController:homeVC animated:YES];
+
+        }else
+        {
+            NSLog(@"登录失败");
+            [ProgressHUD showError:quickLoginModel.message];
+        }
+        
+    } failure:^(NSError *error) {
+        [ProgressHUD showError:@"登录失败"];
+        NSLog(@"登录失败");
+    }];
+
 }
 
 
