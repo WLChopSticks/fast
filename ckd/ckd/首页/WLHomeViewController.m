@@ -204,7 +204,7 @@ typedef enum : NSUInteger {
     
     [introductionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(iconBtn.mas_centerX);
-        make.bottom.equalTo(iconBtn.mas_bottom).offset(-60);
+        make.bottom.equalTo(iconBtn.mas_bottom).multipliedBy(0.65);
     }];
     
     [refreshBtn mas_makeConstraints:^(MASConstraintMaker *make) {

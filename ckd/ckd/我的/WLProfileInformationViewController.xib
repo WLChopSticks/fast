@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,6 +17,7 @@
                 <outlet property="cityLabel" destination="u00-CQ-gSB" id="fzw-gV-nZT"/>
                 <outlet property="cityView" destination="FKX-6C-O3K" id="v07-cR-BtJ"/>
                 <outlet property="nameLabel" destination="Z2a-uc-20E" id="hPF-E3-llF"/>
+                <outlet property="returnChargerBtn" destination="ePE-mc-5g3" id="iSs-qn-ssG"/>
                 <outlet property="telephoneLabel" destination="5Gv-L8-FnW" id="wZl-f8-Fat"/>
                 <outlet property="telephoneView" destination="9SB-wo-hss" id="OTJ-tj-0hD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -160,10 +161,25 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePE-mc-5g3">
+                            <rect key="frame" x="305" y="8" width="60" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Dgb-ej-Xot"/>
+                                <constraint firstAttribute="width" constant="60" id="ps4-cB-PPT"/>
+                            </constraints>
+                            <state key="normal" title="退电池" backgroundImage="btn_orange">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="returnChargerBtnDidClicking:" destination="-1" eventType="touchUpInside" id="zwJ-1w-tdf"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="ZPm-Fd-JAH" firstAttribute="leading" secondItem="3Hh-37-K9c" secondAttribute="leading" constant="10" id="0Ef-UM-vPb"/>
+                        <constraint firstItem="ePE-mc-5g3" firstAttribute="centerY" secondItem="3Hh-37-K9c" secondAttribute="centerY" id="IeW-2N-hgd"/>
+                        <constraint firstAttribute="trailing" secondItem="ePE-mc-5g3" secondAttribute="trailing" constant="10" id="M35-TN-atf"/>
                         <constraint firstItem="ZPm-Fd-JAH" firstAttribute="centerY" secondItem="3Hh-37-K9c" secondAttribute="centerY" id="T4x-J0-hXR"/>
                         <constraint firstItem="xoe-XU-JBQ" firstAttribute="centerY" secondItem="ZPm-Fd-JAH" secondAttribute="centerY" id="h2H-xx-qh8"/>
                         <constraint firstAttribute="height" constant="45" id="igd-J7-tby"/>
@@ -197,6 +213,7 @@
         </view>
     </objects>
     <resources>
+        <image name="btn_orange" width="344" height="47"/>
         <image name="ic_more" width="23" height="23"/>
     </resources>
 </document>

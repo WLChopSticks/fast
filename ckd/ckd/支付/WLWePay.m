@@ -81,6 +81,7 @@ static WLWePay *_instance;
                     self.price = fee;
                     
                     
+                    [self uploadWepayFinishStatus];
                     
                     PayReq *request = [[PayReq alloc] init];
                     request.partnerId = initPayModel.data.mch_id;
@@ -108,7 +109,7 @@ static WLWePay *_instance;
                                                 timestamp:timeStamp app_id:self.api_id];
                     
                     //监听支付状态
-                    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(uploadWepayFinishStatus) name:WePayResponseNotification object:nil];
+//                    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(uploadWepayFinishStatus) name:WePayResponseNotification object:nil];
                     [WXApi sendReq:request];
                     NSLog(@"初始化支付成功");
                     
@@ -198,14 +199,14 @@ static WLWePay *_instance;
     NSString *URL = networkTool.queryAPIList[@"UploadPaidResult"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
-        
-        if ([result[@"code"] integerValue] == 1)
-        {
-            NSLog(@"支付结果上传成功");
-        }else
-        {
-            NSLog(@"支付结果上传失败");
-        }
+//
+//        if ([result[@"code"] integerValue] == 1)
+//        {
+//            NSLog(@"支付结果上传成功");
+//        }else
+//        {
+//            NSLog(@"支付结果上传失败");
+//        }
     } failure:^(NSError *error) {
         NSLog(@"支付结果上传失败");
         NSLog(@"%@",error);

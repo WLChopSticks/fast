@@ -13,6 +13,7 @@
 #import "WLChargerStationModel.h"
 #import "WLChosenItemsView.h"
 #import "WLCertificationController.h"
+#import "WLScanBitCodeViewController.h"
 
 @interface WLProfileInformationViewController ()<chosenViewDelegate>
 
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) WLCityData *currentCity;
 @property (nonatomic, strong) WLQingLoginModel *qingLoginModel;
 @property (weak, nonatomic) IBOutlet UILabel *borrowCharger;
+@property (weak, nonatomic) IBOutlet UIButton *returnChargerBtn;
 
 
 @end
@@ -46,6 +48,8 @@
     
     //选项添加点击事件
     [self addViewGestures];
+    //如果没有租电池, 则退电池按钮是隐藏的
+    self.returnChargerBtn.hidden = YES;
     
     //请求个人详细信息
     [self queryProfileInfo];
@@ -97,6 +101,10 @@
     self.telephoneLabel.text = model.data.user_phone;
     self.cityLabel.text = model.data.csmc;
     self.borrowCharger.text = model.data.dcdm;
+    if (self.borrowCharger.text.length > 0)
+    {
+        self.returnChargerBtn.hidden = NO;
+    }
 }
 
 - (void)telephoneItemDidClicking
@@ -198,6 +206,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)returnChargerBtnDidClicking:(id)sender
+{
+    NSLog(@"退电池点击了");
+    WLScanBitCodeViewController *scanBitCodeVC = [[WLScanBitCodeViewController alloc]init];
+    [self.navigationController pushViewController:scanBitCodeVC animated:YES];
 }
 
 /*

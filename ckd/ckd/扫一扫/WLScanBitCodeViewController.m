@@ -56,7 +56,9 @@
 
 - (SGQRCodeScanningView *)scanningView {
     if (!_scanningView) {
-        _scanningView = [[SGQRCodeScanningView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        _scanningView = [[SGQRCodeScanningView alloc] initWithFrame:Screen_Bounds];
+        CGFloat offset = self.navigationController.navigationBar.frame.size.height + 20;
+        _scanningView.center = CGPointMake(self.view.center.x, self.view.center.y- offset);
         _scanningView.scanningImageName = @"qrcode_line";
         _scanningView.scanningAnimationStyle = ScanningAnimationStyleDefault;
         _scanningView.cornerColor = [UIColor orangeColor];
@@ -99,23 +101,31 @@
         //如果扫到的是json则说明扫的是电池的码
         //dg18040001
         //{"code":"KTS000003","chk":"780e81f1650d63b7b646a66871d05e2d"}
-        if ([obj.stringValue hasPrefix:@"{"])
-        {
-            //扫电池
-            self.action = Get_Charger;
-            NSData *jsonData =  [obj.stringValue dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-            self.code = [dict objectForKey:@"code"];
-        }else
-        {
-            //扫柜子
-            self.action = Scan_Canbin;
-            self.code = obj.stringValue;
-        }
-        if (self.code.length > 0)
-        {
-            [self queryAquireCharger];
-        }
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"扫码内容" message:obj.stringValue preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleCancel handler:nil];
+        [vc addAction:cancel];
+        [self presentViewController:vc animated:YES completion:^{
+            
+            if ([obj.stringValue hasPrefix:@"{"])
+            {
+                //扫电池
+                self.action = Get_Charger;
+                NSData *jsonData =  [obj.stringValue dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+                self.code = [dict objectForKey:@"code"];
+            }else
+            {
+                //扫柜子
+                self.action = Scan_Canbin;
+                self.code = obj.stringValue;
+            }
+            if (self.code.length > 0)
+            {
+                [self queryAquireCharger];
+            }
+        }];
+        
+        
        
     } else {
         NSLog(@"暂未识别出扫描的二维码");
@@ -127,7 +137,8 @@
         _promptLabel = [[UILabel alloc] init];
         _promptLabel.backgroundColor = [UIColor clearColor];
         CGFloat promptLabelX = 0;
-        CGFloat promptLabelY = 0.73 * self.view.frame.size.height;
+        CGFloat offset = self.navigationController.navigationBar.frame.size.height;
+        CGFloat promptLabelY = self.view.center.y - offset + 0.5 * 0.7 * self.view.frame.size.width;
         CGFloat promptLabelW = self.view.frame.size.width;
         CGFloat promptLabelH = 25;
         _promptLabel.frame = CGRectMake(promptLabelX, promptLabelY, promptLabelW, promptLabelH);
