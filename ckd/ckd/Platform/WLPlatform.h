@@ -64,6 +64,13 @@ typedef enum : NSUInteger {
 //到时候按钮时长
 #define CountDownTime 30
 
+//支付类型
+//扫码动作类型
+typedef enum : NSUInteger {
+    Paid_Deposit,
+    Paid_Rent,
+} Paid_Type;
+
 //支付完成通知
 #define WePayResponseNotification @"WePayResponseNotification"
 typedef enum : NSInteger {

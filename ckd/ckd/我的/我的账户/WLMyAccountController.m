@@ -11,6 +11,9 @@
 #import "WLPaidRecordViewController.h"
 #import "WLUserInfoMaintainance.h"
 
+//轮询次数, 间隔为2s
+#define Repeat_Query_Count 5
+
 @interface WLMyAccountController ()
 @property (weak, nonatomic) IBOutlet UIView *name;
 @property (weak, nonatomic) IBOutlet UILabel *rentTimeLabel;
@@ -18,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *paidMonthCardBtn;
 @property (weak, nonatomic) IBOutlet UIButton *paidDepositBtn;
 
+@property (nonatomic, assign) NSInteger queryCount;
+@property (nonatomic, assign) Paid_Type paidType;
 
 @end
 
@@ -126,6 +131,7 @@
         [ProgressHUD showError:@"请先缴纳押金"];
     }else
     {
+        self.paidType = Paid_Rent;
         [[WLWePay sharedWePay]createWePayRequestWithPriceType:Charger andPriceTypeCode:RentPrice andPriceDetailCode:ChargerRent];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wePayFinishProcess:) name:WePayResponseNotification object:nil];
     }
@@ -140,6 +146,7 @@
     }else
     {
         //交押金
+        self.paidType = Paid_Deposit;
         [[WLWePay sharedWePay]createWePayRequestWithPriceType:Charger andPriceTypeCode:DepositPrice andPriceDetailCode:ChargerDeposit];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wePayFinishProcess:) name:WePayResponseNotification object:nil];
     }
@@ -182,7 +189,9 @@
         {
             NSLog(@"退押金成功");
             [ProgressHUD showSuccess:result[@"message"]];
-            [self changeCellStatusToUnpaidDeposit];
+            //轮询 未交押金为字符串0
+            self.queryCount = Repeat_Query_Count;
+            [self repeatQueryUserDepositStatus:@"0"];
             
         }else
         {
@@ -196,6 +205,48 @@
     }];
 }
 
+//轮询押金状态
+- (void)repeatQueryUserDepositStatus: (NSString *)expectStatus
+{
+    WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
+    
+    if (self.queryCount > 0 && ![userInfo.model.data.yj isEqualToString:expectStatus])
+    {
+        [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+            [self checkUserPaidStatus];
+            if (![userInfo.model.data.yj isEqualToString:expectStatus])
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self repeatQueryUserDepositStatus:expectStatus];
+                });
+                self.queryCount--;
+            }
+        }];
+    }
+    
+}
+
+//轮询租金状态
+- (void)repeatQueryUserPaidRentStatus: (NSString *)expectStatus
+{
+    WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
+    
+    if (self.queryCount > 0 && ![userInfo.model.data.zj isEqualToString:expectStatus])
+    {
+        [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+            [self checkUserPaidStatus];
+            if (![userInfo.model.data.zj isEqualToString:expectStatus])
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self repeatQueryUserPaidRentStatus:expectStatus];
+                });
+                self.queryCount--;
+            }
+        }];
+    }
+    
+}
+
 - (void)wePayFinishProcess: (NSNotification *)notice
 {
     NSDictionary *dict = notice.userInfo;
@@ -203,9 +254,21 @@
     switch (result) {
         case Paid_Success:
         {
-            [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
-                [self checkUserPaidStatus];
-            }];
+            [ProgressHUD showSuccess:@"支付成功"];
+            if (self.paidType == Paid_Deposit)
+            {
+                //轮询 交押金为字符串1
+                self.queryCount = Repeat_Query_Count;
+                [self repeatQueryUserDepositStatus:@"1"];
+            }else if (self.paidType == Paid_Deposit)
+            {
+                //轮询 交租金为字符串1
+                self.queryCount = Repeat_Query_Count;
+                [self repeatQueryUserPaidRentStatus:@"1"];
+            }
+//            [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+//                [self checkUserPaidStatus];
+//            }];
 //            [self changeCellStatusTopaidDeposit];
             break;
         }

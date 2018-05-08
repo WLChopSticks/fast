@@ -33,6 +33,7 @@ typedef enum : NSUInteger {
 @interface WLHomeViewController ()
 
 @property (nonatomic, weak)WLMapViewController *mapVC;
+@property (nonatomic, weak) UIView *promptStatusView;
 
 @end
 
@@ -247,6 +248,7 @@ typedef enum : NSUInteger {
     //用户信息完美
     if (status == Login)
     {
+        [self.promptStatusView removeFromSuperview];
         return;
     }
     UIView *backView = [[UIView alloc]init];
@@ -321,6 +323,27 @@ typedef enum : NSUInteger {
 
 - (void)iconBtnDidClicking
 {
+    AccountStatus status = [self judegeAccountStatus];
+    if (status == Unlogin)
+    {
+        [ProgressHUD showError:@"请登录"];
+        return;
+    }
+    if (status == UnRegistRealName)
+    {
+        [ProgressHUD showError:@"请实名认证"];
+        return;
+    }
+    if (status == UnPaidDeposit)
+    {
+        [ProgressHUD showError:@"请缴纳押金"];
+        return;
+    }
+    if (status == UnPaidRent)
+    {
+        [ProgressHUD showError:@"请缴纳租金"];
+        return;
+    }
     WLScanBitCodeViewController *scanBitCodeVC = [[WLScanBitCodeViewController alloc]init];
     [self.navigationController pushViewController:scanBitCodeVC animated:YES];
 }
