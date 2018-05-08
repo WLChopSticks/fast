@@ -219,7 +219,7 @@ static WLWePay *_instance;
 - (void)uploadWepayOrder
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *payInfo = [NSString stringWithFormat:@"{order_id:%@,jffs:%@,user_id:%@,fyje:%@,fyxqdm:%@,fylxdm:%@,Fylb:%@}",self.order_id, @"03", [WLUtilities getUserID], self.priceNumber, self.priceDetailCode, self.priceTypeCode,self.priceType];
+    NSString *payInfo = [NSString stringWithFormat:@"{orderid:%@,jffs:%@,user_id:%@,fyje:%@,fyxqdm:%@,fylxdm:%@,fylb:%@}",self.order_id, @"03", [WLUtilities getUserID], self.priceNumber, self.priceDetailCode, self.priceTypeCode,self.priceType];
     [parameters setObject:payInfo forKey:@"inputParameter"];
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
     NSString *URL = networkTool.queryAPIList[@"UploadPaidResult"];
