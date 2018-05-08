@@ -9,6 +9,7 @@
 #import "WLChosenItemsView.h"
 #import <Masonry.h>
 #import "WLChargerStationModel.h"
+#import "WLCommonTool.h"
 
 #define Cell_ID @"cityName"
 #define Cell_Height_Citylist 45
@@ -35,6 +36,9 @@
         [self addSubview:backView];
         
         UITableView *listView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+        listView.separatorInset = UIEdgeInsetsZero;
+        //圆角处理
+        [WLCommonTool makeViewShowingWithRoundCorner:listView andRadius:10];
         listView.delegate = self;
         listView.dataSource = self;
         [self addSubview:listView];
@@ -44,11 +48,13 @@
             make.top.left.right.bottom.equalTo(self);
         }];
         
+        //计算一下tableView的高度, 最多显示五个
+        NSInteger count = self.chosenItems.count > 5 ? 5 : self.chosenItems.count;
         [listView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.mas_centerX);
             make.centerY.equalTo(self.mas_centerY);
             make.width.mas_equalTo(200);
-            make.height.mas_equalTo(Cell_Height_Citylist * self.chosenItems.count);
+            make.height.mas_equalTo(Cell_Height_Citylist * count);
         }];
     }
     return self;

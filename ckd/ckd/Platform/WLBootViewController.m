@@ -25,13 +25,13 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     //判断是否处于登录状态, 如果不, 则显示手机号码登录页面, 否则呈现首页
-//    if ([WLUtilities isUserLogin])
-//    {
+    if ([WLUtilities isUserLogin])
+    {
         [self jumpToHomeVC];
-//    }else
-//    {
-//        [self jumpToLoginVC];
-//    }
+    }else
+    {
+        [self jumpToLoginVC];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

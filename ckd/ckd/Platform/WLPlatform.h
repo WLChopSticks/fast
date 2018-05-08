@@ -30,6 +30,7 @@
 #import "WLBaseUIViewController.h"
 #import "WLBaseNavigationViewController.h"
 #import "WLCommonAPI.h"
+#import "WLUserInfoMaintainance.h"
 
 #define APP (AppDelegate *)[[UIApplication sharedApplication]delegate ]
 

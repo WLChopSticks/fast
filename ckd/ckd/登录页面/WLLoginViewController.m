@@ -14,6 +14,7 @@
 #import "WLBaseNavigationViewController.h"
 #import "WLQuickLoginModel.h"
 #import "WLCertificationController.h"
+#import "WLWebViewController.h"
 
 @interface WLLoginViewController ()<LoginviewDelegate>
 
@@ -89,6 +90,11 @@
 -(void)LoginView:(WLLoginView *)view userAgreementBtnDidclicking:(UIButton *)sender
 {
     NSLog(@"请求用户协议");
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    WLWebViewController *webVC = [[WLWebViewController alloc]init];
+    webVC.title = @"用户协议";
+    webVC.requestURL = networkTool.queryAPIList[@"UserAgreement"];
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 -(void)LoginView:(WLLoginView *)view loginBtnDidclicking:(UIButton *)sender
@@ -117,7 +123,7 @@
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
         [ProgressHUD showSuccess];
-        WLQuickLoginModel *quickLoginModel = [WLQuickLoginModel mj_objectWithKeyValues:result];
+        WLQingLoginModel *quickLoginModel = [WLQingLoginModel mj_objectWithKeyValues:result];
         if ([quickLoginModel.code isEqualToString:@"1"])
         {
             //存储登录状态
@@ -125,6 +131,7 @@
             
             NSString *user_id = quickLoginModel.data.user_id;
             [WLUtilities saveUserID:user_id];
+            [[WLUserInfoMaintainance sharedMaintain]setModel:quickLoginModel];
             NSLog(@"登录成功");
             //登录成功跳转首页
             WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];

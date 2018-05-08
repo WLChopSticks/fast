@@ -42,6 +42,12 @@ typedef enum : NSUInteger {
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [super viewWillAppear:animated];
+    
+    //在请求国轻登录接口后, 每次显示页面都要判断是否需要提示用户实名认证交押金交租金
+    if ([[WLUserInfoMaintainance sharedMaintain]model] != nil)
+    {
+        [self decorateUserStatusPromptBar:[self judegeAccountStatus]];
+    }
 }
 
 - (void)viewDidLoad {
@@ -55,12 +61,15 @@ typedef enum : NSUInteger {
     //功能按钮布局
     [self decorateFunctionsButtons];
     
+    //第一次加载home也的请求轻登录接口, 之后在viewWillAppear直接查看数据, 不在请求
     //查看用户账户状态, 是否显示提示bar, 引导用户完善信息
     [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
         if (result.boolValue)
         {
             NSLog(@"获取个人信息成功");
             [self decorateUserStatusPromptBar:[self judegeAccountStatus]];
+            //请求充电站的位置节点
+            [self aquireChargerStations];
         }else
         {
             NSLog(@"获取个人信息失败");
@@ -77,8 +86,6 @@ typedef enum : NSUInteger {
         }
     }];
 
-    //请求充电站的位置节点
-    [self aquireChargerStations];
     
     
     
@@ -112,9 +119,8 @@ typedef enum : NSUInteger {
     [ProgressHUD show];
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    NSString *cityCode = [NSString stringWithFormat:@"{csdm:%@}",[WLUtilities getCurrentCityCode]];
     WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
-        NSString *cityCode = [NSString stringWithFormat:@"{csdm:%@}",[WLUtilities getCurrentCityCode]];
+        NSString *cityCode = [NSString stringWithFormat:@"{csdm:%@}",userInfo.model.data.area_id];
     [parameters setObject:cityCode forKey:@"inputParameter"];
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
     NSString *URL = networkTool.queryAPIList[@"AquireStationsOfCity"];
@@ -307,14 +313,8 @@ typedef enum : NSUInteger {
     [self.mapVC startGetUserPosition];
 }
 
-- (void)hehe
-{
-    NSLog(@"123");
-}
-
 - (void)profileBtnDidClicking
 {
-//    WLProfileViewController *profileVC = [[WLProfileViewController alloc]init];
     WLProfileViewController *profileVC = [[WLProfileViewController alloc]initWithNibName:@"WLProfileViewController" bundle:nil];
     [self.navigationController pushViewController:profileVC animated:YES];
 }
