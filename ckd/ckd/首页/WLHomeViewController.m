@@ -86,10 +86,6 @@ typedef enum : NSUInteger {
             }
         }
     }];
-
-    
-    
-    
 }
 
 - (AccountStatus)judegeAccountStatus
@@ -155,9 +151,9 @@ typedef enum : NSUInteger {
     UIBarButtonItem *profileBtn = [[UIBarButtonItem alloc]initWithImage:profileImage style:UIBarButtonItemStylePlain target:self action:@selector(profileBtnDidClicking)];
     self.navigationItem.leftBarButtonItem = profileBtn;
     
-    UIImage *newsImage = [[UIImage imageNamed:@"nav_message"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIBarButtonItem *newsCenterBtn = [[UIBarButtonItem alloc]initWithImage:newsImage style:UIBarButtonItemStylePlain target:self action:@selector(newsCenterBtnDidClicking)];
-    self.navigationItem.rightBarButtonItem = newsCenterBtn;
+//    UIImage *newsImage = [[UIImage imageNamed:@"nav_message"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//    UIBarButtonItem *newsCenterBtn = [[UIBarButtonItem alloc]initWithImage:newsImage style:UIBarButtonItemStylePlain target:self action:@selector(newsCenterBtnDidClicking)];
+//    self.navigationItem.rightBarButtonItem = newsCenterBtn;
 }
 
 - (void)decorateMapView

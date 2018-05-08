@@ -144,7 +144,8 @@
     stationInfoPromtView.startTime.text = model.kssj;
     stationInfoPromtView.endTime.text = model.jssj;
     stationInfoPromtView.chargerCount.text = model.dcsl;
-    [stationInfoPromtView.collectionBtn setImage:[UIImage imageNamed:@"ic_collect"] forState:UIControlStateNormal];
+    [stationInfoPromtView.collectionBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+//    [stationInfoPromtView.collectionBtn setImage:[UIImage imageNamed:@"ic_collect"] forState:UIControlStateNormal];
     [self.view.superview addSubview:stationInfoPromtView];
     
 }
