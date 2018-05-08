@@ -119,15 +119,14 @@
 {
     view.paopaoView.hidden = YES;
     WLPointAnnotation *myAnnotation = (WLPointAnnotation *)view.annotation;
-    if (myAnnotation.tag == self.showedPromptIndex)
-    {
-        [self dismissStationInfoPrompt];
-    }else
-    {
-        [self showStationInfoPrompt:myAnnotation.tag];
-        self.showedPromptIndex = myAnnotation.tag;
-    }
-    view.selected = NO;
+    [self showStationInfoPrompt:myAnnotation.tag];
+    self.showedPromptIndex = myAnnotation.tag;
+}
+
+//点击空白处, 将站点详情隐藏
+-(void)mapView:(BMKMapView *)mapView didDeselectAnnotationView:(BMKAnnotationView *)view
+{
+    [self dismissStationInfoPrompt];
 }
 
 - (void)showStationInfoPrompt: (NSInteger)index
