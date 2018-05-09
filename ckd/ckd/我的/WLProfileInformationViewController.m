@@ -211,9 +211,18 @@
 - (IBAction)returnChargerBtnDidClicking:(id)sender
 {
     NSLog(@"退电池点击了");
-    WLScanBitCodeViewController *scanBitCodeVC = [[WLScanBitCodeViewController alloc]init];
-    scanBitCodeVC.action = Return_Charger;
-    [self.navigationController pushViewController:scanBitCodeVC animated:YES];
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定要退电池吗?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        WLScanBitCodeViewController *scanBitCodeVC = [[WLScanBitCodeViewController alloc]init];
+        scanBitCodeVC.action = Return_Charger;
+        [self.navigationController pushViewController:scanBitCodeVC animated:YES];
+    }];
+    [alertVC addAction:cancelAction];
+    [alertVC addAction:okAction];
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 /*

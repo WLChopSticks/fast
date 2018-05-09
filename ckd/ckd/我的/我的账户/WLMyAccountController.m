@@ -138,18 +138,27 @@
 }
 - (IBAction)PaidDepositBtnDidClicking:(id)sender
 {
-    WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
-    if (userInfo.model.data.yj.integerValue)
-    {
-        //退押金
-        [self queryReturnDeposit];
-    }else
-    {
-        //交押金
-        self.paidType = Paid_Deposit;
-        [[WLWePay sharedWePay]createWePayRequestWithPriceType:Charger andPriceTypeCode:DepositPrice andPriceDetailCode:ChargerDeposit];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wePayFinishProcess:) name:WePayResponseNotification object:nil];
-    }
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"退押金后您将不能租赁电池?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
+        if (userInfo.model.data.yj.integerValue)
+        {
+            //退押金
+            [self queryReturnDeposit];
+        }else
+        {
+            //交押金
+            self.paidType = Paid_Deposit;
+            [[WLWePay sharedWePay]createWePayRequestWithPriceType:Charger andPriceTypeCode:DepositPrice andPriceDetailCode:ChargerDeposit];
+            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wePayFinishProcess:) name:WePayResponseNotification object:nil];
+        }
+    }];
+    [alertVC addAction:cancelAction];
+    [alertVC addAction:okAction];
+    [self presentViewController:alertVC animated:YES completion:nil];
     NSLog(@"缴纳/退押金按钮点击了");
 }
 
