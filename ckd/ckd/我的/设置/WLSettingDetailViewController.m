@@ -18,6 +18,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *exitBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *appIcon;
 
 @end
 
@@ -27,6 +29,13 @@
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [super viewWillAppear:animated];
+    //4s时需要缩小图标
+    if ([IS_IPHONE4())
+    {
+        [self.appIcon mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.width.mas_equalTo(70);
+        }];
+    }
 }
 
 - (void)viewDidLoad {

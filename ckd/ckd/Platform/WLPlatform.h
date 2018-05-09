@@ -79,6 +79,22 @@ typedef enum : NSInteger {
     Paid_Cancel,
 } PaidResult;
 
+//判断设备型号
+#define IS_IPAD()       (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE()     (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_LANDSCAPE()  (UIDeviceOrientationIsLandscape((UIDeviceOrientation)[[UIApplication sharedApplication] statusBarOrientation]))
+#define IS_PORTRAIT()   (UIDeviceOrientationIsPortrait((UIDeviceOrientation)[[UIApplication sharedApplication] statusBarOrientation]))
+#define IS_IPHONE4()    (IS_IPHONE() && (([[UIScreen mainScreen] bounds].size.height == 480.0) || \
+([[UIScreen mainScreen] bounds].size.width == 480.0)))
+#define IS_IPHONE5()    (IS_IPHONE() && (([[UIScreen mainScreen] bounds].size.height == 568.0) || \
+([[UIScreen mainScreen] bounds].size.width == 568.0)))
+#define IS_IPHONE6()    (IS_IPHONE() && (([[UIScreen mainScreen] bounds].size.height == 667.0) || \
+([[UIScreen mainScreen] bounds].size.width == 667.0)))
+#define IS_IPHONEX() (IS_IPHONE() && (([[UIScreen mainScreen] bounds].size.width == 375.0) && ([[UIScreen mainScreen] bounds].size.height == 812.0) || ([[UIScreen mainScreen] bounds].size.width == 812.0) && ([[UIScreen mainScreen] bounds].size.height == 375.0)))
+#define IS_IPHONE6PLUS() (IS_IPHONE() && ([UIScreen mainScreen].scale == 3.0) && !IS_IPHONEX())
+#define IS_IPHONE6PLUS_STANDARD()   (IS_IPHONE() && [[UIScreen mainScreen] bounds].size.height == 736.0)
+#define IS_IPHONE6PLUS_ZOOMED()     (IS_IPHONE() && [[UIScreen mainScreen] bounds].size.height == 667.0 && \
+IS_OS_8_OR_LATER && [UIScreen mainScreen].nativeScale < [UIScreen mainScreen].scale)
 
 
 
