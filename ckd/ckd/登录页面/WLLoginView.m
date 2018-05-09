@@ -83,26 +83,29 @@
     [loginBtn addTarget:self action:@selector(loginBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:loginBtn];
     
+    UIView *userAgreementView = [[UIView alloc]init];
+    [self addSubview:userAgreementView];
+    
     UIButton *checkBoxBtn = [[UIButton alloc]init];
     self.checkboxBtn = checkBoxBtn;
     [checkBoxBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateSelected];
     [checkBoxBtn setImage:[UIImage imageNamed:@"btn_normal"] forState:UIControlStateNormal];
     checkBoxBtn.selected = YES;
     [checkBoxBtn addTarget:self action:@selector(checkboxBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:checkBoxBtn];
+    [userAgreementView addSubview:checkBoxBtn];
     
     UILabel *templateLabel = [[UILabel alloc]init];
     [templateLabel setTextColor:LightGrayStyle];
     templateLabel.font = [UIFont systemFontOfSize:14];
     templateLabel.text = @"我已仔细查阅并同意";
-    [self addSubview:templateLabel];
+    [userAgreementView addSubview:templateLabel];
     
     UIButton *userAgreementBtn = [[UIButton alloc]init];
     [userAgreementBtn setTitle:@"<诚快达用户协议>" forState:UIControlStateNormal];
     userAgreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [userAgreementBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [userAgreementBtn addTarget:self action:@selector(userAgreementBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:userAgreementBtn];
+    [userAgreementView addSubview:userAgreementBtn];
     
     [logoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.mas_centerX);
@@ -166,18 +169,27 @@
         make.height.mas_equalTo(50);
     }];
     
-    [checkBoxBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(loginBtn.mas_bottom).offset(Margin * 2);
-        make.left.equalTo(self.mas_left).offset(Margin * 3);
+    [userAgreementView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(loginBtn.mas_centerX);
+        make.top.equalTo(loginBtn.mas_bottom).offset(Margin);
+        make.width.equalTo(loginBtn.mas_width);
         make.width.height.mas_equalTo(30);
     }];
     
     [templateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(checkBoxBtn.mas_centerY);
-        make.left.equalTo(checkBoxBtn.mas_right).offset(Margin);
+        make.centerY.equalTo(userAgreementView.mas_centerY);
+        make.centerX.equalTo(userAgreementView.mas_centerX).offset(-50);
+//        make.left.equalTo(checkBoxBtn.mas_right).offset(Margin);
         //        make.right.equalTo(self.mas_right).offset(-Margin);
         //        make.height.mas_equalTo(50);
     }];
+
+    [checkBoxBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(userAgreementView.mas_centerY);
+        make.right.equalTo(templateLabel.mas_left).offset(-Margin * 0.5);
+        make.width.height.mas_equalTo(30);
+    }];
+    
     
     [userAgreementBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(checkBoxBtn.mas_centerY);
