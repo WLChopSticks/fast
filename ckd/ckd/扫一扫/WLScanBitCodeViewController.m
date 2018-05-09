@@ -115,8 +115,14 @@
                 self.code = [dict objectForKey:@"code"];
             }else
             {
-                //扫柜子
-                self.action = Scan_Canbin;
+                if (self.action == Return_Charger)
+                {
+                    
+                }else
+                {
+                    //扫柜子
+                    self.action = Scan_Canbin;
+                }
                 self.code = obj.stringValue;
             }
             if (self.code.length > 0)
