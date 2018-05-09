@@ -10,8 +10,12 @@
 
 @interface WLApplyChargerRecordCellTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *chargerNumber;
-@property (weak, nonatomic) IBOutlet UILabel *stationName;
+@property (weak, nonatomic) IBOutlet UILabel *getStationName
+;
+@property (weak, nonatomic) IBOutlet UILabel *returnStationName
+;
 @property (weak, nonatomic) IBOutlet UILabel *getTime;
 @property (weak, nonatomic) IBOutlet UILabel *returnTime;
+@property (weak, nonatomic) IBOutlet UIView *lineView;
 
 @end

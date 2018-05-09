@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSString *zdmc;///站点名称
 @property (nonatomic, strong) NSString *ghsj;///归还时间
 @property (nonatomic, strong) NSString *user_id;///用户id
+@property (nonatomic, strong) NSString *fjgmc;///放入机柜名称
+@property (nonatomic, strong) NSString *qjgmc;///取出机柜名称
 
 @end
 

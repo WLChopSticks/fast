@@ -124,10 +124,12 @@
     }
     WLChargerRecordListModel *model = self.recordArr[indexPath.section];
     cell.chargerNumber.text = model.dcdm;
-    cell.stationName.text = model.zdmc;
+    cell.getStationName.text = model.qjgmc;
+    cell.returnStationName.text = model.fjgmc;
     cell.getTime.text = model.jqsj;
     cell.returnTime.text = model.ghsj;
-    cell.backgroundColor = LightGrayBackground;
+    cell.lineView.backgroundColor = [UIColor colorWithRed:255/255.0 green:93/255.0 blue:67/255.0 alpha:1.0];
+    
     
     return cell;
 }
@@ -135,12 +137,13 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *footerView = [[UIView alloc]init];
+    footerView.backgroundColor = LightGrayBackground;
     return footerView;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150;
+    return 160;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
