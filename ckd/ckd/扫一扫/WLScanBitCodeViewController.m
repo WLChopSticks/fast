@@ -10,6 +10,7 @@
 #import "SGQRCode.h"
 #import "WLHomeViewController.h"
 #import "WLAquireChargerModel.h"
+#import "UIButton+WLVerticalImageTitle.h"
 
 @interface WLScanBitCodeViewController ()<SGQRCodeScanManagerDelegate>
 @property (nonatomic, strong) SGQRCodeScanManager *manager;
@@ -24,7 +25,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.scanningView addTimer];
-    [_manager startRunning];
+//    [_manager startRunning];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -33,7 +34,7 @@
 }
 
 - (void)dealloc {
-    NSLog(@"WBQRCodeScanningVC - dealloc");
+    NSLog(@"scanBitCodeVC - dealloc");
     [self removeScanningView];
 }
 
@@ -44,12 +45,30 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self.view addSubview:self.scanningView];
-    [self setupNavigationBar];
-    [self setupQRCodeScanning];
+    [self decorateNavigationBar];
+//    [self decorateQRCodeScanning];
     [self.view addSubview:self.promptLabel];
+    
+    UIButton *torchBtn = [[UIButton alloc]initWithFrame:CGRectMake(100, 300, 100, 100)];
+    [torchBtn setImage:[UIImage imageNamed:@"ic_flashlight"] forState:UIControlStateNormal];
+    [torchBtn setImage:[UIImage imageNamed:@"ic_flashlight_open"] forState:UIControlStateSelected];
+    [torchBtn addTarget:self action:@selector(torchBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [torchBtn setTitle:@"轻触打开" forState:UIControlStateNormal];
+    [torchBtn setTitle:@"轻触关闭" forState:UIControlStateSelected];
+    [torchBtn layoutButtonWithEdgeInsetsStyle:WLButtonEdgeInsetsStyleTop imageTitleSpace:10];
+    [self.view addSubview:torchBtn];
+
+    [torchBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.promptLabel.mas_bottom).offset(Margin);
+        make.centerX.equalTo(self.view.mas_centerX);
+//        make.width.height.mas_equalTo(70);
+    }];
+
 }
 
-- (void)setupNavigationBar {
+- (void)decorateNavigationBar
+{
     self.navigationItem.title = @"扫一扫";
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"相册" style:(UIBarButtonItemStyleDone) target:self action:@selector(rightBarButtonItenAction)];
 }
@@ -81,7 +100,8 @@
     }
 }
 
-- (void)setupQRCodeScanning {
+- (void)decorateQRCodeScanning
+{
     self.manager = [SGQRCodeScanManager sharedManager];
     NSArray *arr = @[AVMetadataObjectTypeQRCode, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code];
     // AVCaptureSessionPreset1920x1080 推荐使用，对于小型的二维码读取率较高
@@ -138,6 +158,29 @@
     }
 }
 
+- (void)torchBtnDidClicking: (UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
+    if (captureDeviceClass != nil)
+    {
+        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        if ([device hasTorch]) { // 判断是否有闪光灯
+            // 请求独占访问硬件设备
+            [device lockForConfiguration:nil];
+            if (sender.selected == YES)
+            {
+                [device setTorchMode:AVCaptureTorchModeOn]; // 手电筒开
+            }else
+            {
+                [device setTorchMode:AVCaptureTorchModeOff]; // 手电筒关
+            }
+            // 请求解除独占访问硬件设备
+            [device unlockForConfiguration];
+        }
+    }
+}
+
 - (UILabel *)promptLabel {
     if (!_promptLabel) {
         _promptLabel = [[UILabel alloc] init];
@@ -155,6 +198,8 @@
     }
     return _promptLabel;
 }
+
+
 
 
 //换电池流程
