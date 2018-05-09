@@ -212,6 +212,7 @@
 {
     NSLog(@"退电池点击了");
     WLScanBitCodeViewController *scanBitCodeVC = [[WLScanBitCodeViewController alloc]init];
+    scanBitCodeVC.action = Return_Charger;
     [self.navigationController pushViewController:scanBitCodeVC animated:YES];
 }
 
