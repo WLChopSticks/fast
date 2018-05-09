@@ -176,6 +176,17 @@
         {
             NSLog(@"查询换电流程成功");
             [ProgressHUD showSuccess:aquireChargerModel.message];
+            //退电池和换电池成功后 回首页
+            if (self.action == Return_Charger || self.action == Get_Charger)
+            {
+                for (UIViewController *vc in self.navigationController.viewControllers)
+                {
+                    if ([vc isKindOfClass:[WLHomeViewController class]])
+                    {
+                        [self.navigationController popToViewController:vc animated:NO];
+                    }
+                } 
+            }
         }else
         {
             [ProgressHUD showError:aquireChargerModel.message];
