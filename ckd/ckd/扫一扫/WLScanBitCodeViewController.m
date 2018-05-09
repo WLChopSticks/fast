@@ -25,7 +25,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.scanningView addTimer];
-//    [_manager startRunning];
+    [_manager startRunning];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -46,7 +46,7 @@
     
     [self.view addSubview:self.scanningView];
     [self decorateNavigationBar];
-//    [self decorateQRCodeScanning];
+    [self decorateQRCodeScanning];
     [self.view addSubview:self.promptLabel];
     
     UIButton *torchBtn = [[UIButton alloc]initWithFrame:CGRectMake(100, 300, 100, 100)];
@@ -236,8 +236,12 @@
         {
             [ProgressHUD showError:aquireChargerModel.message];
             NSLog(@"查询换电流程失败");
-            [self.manager startRunning];
         }
+        __weak WLScanBitCodeViewController *weakSelf = self;
+        //如果是扫柜子, 或者退电换电失败 都要重新开始扫描
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf.manager startRunning];
+        });
     } failure:^(NSError *error) {
         [ProgressHUD showError:@"查询换电流程失败"];
         NSLog(@"查询换电流程失败");
