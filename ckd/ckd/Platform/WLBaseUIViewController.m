@@ -7,6 +7,7 @@
 //
 
 #import "WLBaseUIViewController.h"
+#import <UMAnalytics/MobClick.h>
 
 @interface WLBaseUIViewController ()
 
@@ -37,6 +38,14 @@
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+    
+    [MobClick beginLogPageView:self.description]; //("Pagename"为页面名称，可自定义)
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:self.description];
 }
 
 - (void)didReceiveMemoryWarning {

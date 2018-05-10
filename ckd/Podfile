@@ -9,4 +9,9 @@ pod 'SGQRCode'
 pod 'ProgressHUD'
 pod 'MJExtension'
 pod 'WechatOpenSDK'
+
+pod 'UMCCommon' 
+pod 'UMCAnalytics'
+pod 'UMCSecurityPlugins'
+
 end

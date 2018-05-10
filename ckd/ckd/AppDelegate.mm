@@ -12,6 +12,7 @@
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 #import "WLBootViewController.h"
 #import "WLWePay.h"
+#import <UMCommon/UMCommon.h>
 #import "WLUserInfoMaintainance.h"
 
 #import "WLChargerRecord.h"
@@ -42,7 +43,7 @@ BMKMapManager* _mapManager;
     //向微信注册
     [WXApi registerApp:@"wx7e0a8fc77aeaf595"];
     
-
+    [UMConfigure initWithAppkey:@"5af19409b27b0a33a4000044" channel:@"App Store"];
 //    [self queryDepositStatus];
     
     return YES;
