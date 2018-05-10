@@ -88,6 +88,7 @@
 - (IBAction)logoutBtnDidClicking:(id)sender
 {
     NSLog(@"退出登录点击了");
+    [WLUtilities setUserLogout];
     WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
     for (UIViewController *vc in self.navigationController.viewControllers)
     {
