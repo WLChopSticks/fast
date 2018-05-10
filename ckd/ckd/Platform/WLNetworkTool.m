@@ -32,6 +32,11 @@ static WLNetworkTool *_instance;
     return _instance;
 }
 
++ (void)refreshQueryAPIList
+{
+    [_instance getQueryAPIListFromPlistFile];
+}
+
 -(void)POST_queryWithURL:(NSString *)urlString andParameters:(NSDictionary *)parameters success:(void (^)(id _Nullable))success failure:(void (^)(NSError *))failure
 {
     [_instance.manager POST:urlString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -54,15 +59,20 @@ static WLNetworkTool *_instance;
 
 - (void)getQueryAPIListFromPlistFile
 {
-     NSString *filePath = [[NSBundle mainBundle]pathForResource:@"QueryApiList.plist" ofType:nil];
+    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"QueryApiList.plist" ofType:nil];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:filePath];
-    NSString *host = dict[@"host"];
     NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
+    if (self.currentHost.length <= 0)
+    {
+        NSString *host = dict[@"hosts"][0];
+        self.currentHost = [[host componentsSeparatedByString:@","]lastObject];
+        
+    }
     [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         NSString *api = [NSString stringWithFormat:@"%@",obj];
         if ([api containsString:@"{host}"])
         {
-            api = [api stringByReplacingOccurrencesOfString:@"{host}" withString:host];
+            api = [api stringByReplacingOccurrencesOfString:@"{host}" withString:self.currentHost];
             [newDict setObject:api forKey:key];
         }
     }];

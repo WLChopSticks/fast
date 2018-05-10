@@ -15,6 +15,7 @@
 - (void)LoginView: (WLLoginView *)view aquireCheckNumBtnDidclicking: (UIButton *)sender;
 - (void)LoginView: (WLLoginView *)view loginBtnDidclicking: (UIButton *)sender;
 - (void)LoginView: (WLLoginView *)view userAgreementBtnDidclicking: (UIButton *)sender;
+- (void)LoginView: (WLLoginView *)view configHostBtnDidclicking: (UIButton *)sender;
 
 @end
 

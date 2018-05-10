@@ -15,6 +15,7 @@
 #import "WLQuickLoginModel.h"
 #import "WLCertificationController.h"
 #import "WLWebViewController.h"
+#import "WLConfigHostViewController.h"
 
 @interface WLLoginViewController ()<LoginviewDelegate>
 
@@ -148,6 +149,12 @@
         NSLog(@"登录失败");
     }];
 
+}
+
+-(void)LoginView:(WLLoginView *)view configHostBtnDidclicking:(UIButton *)sender
+{
+    WLConfigHostViewController *vc = [[WLConfigHostViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

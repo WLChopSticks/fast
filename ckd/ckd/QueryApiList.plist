@@ -4,6 +4,11 @@
 <dict>
 	<key>host</key>
 	<string>http://47.104.85.148:18070</string>
+	<key>hosts</key>
+	<array>
+		<string>formal,http://47.104.107.196:18070</string>
+		<string>test,http://47.104.85.148:18070</string>
+	</array>
 	<key>QuickLogin</key>
 	<string>{host}/ckdhd/quicklogin_quicklogin.action</string>
 	<key>CompletePrivateInformation</key>

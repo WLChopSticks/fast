@@ -78,6 +78,7 @@
 		9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDFB209453DF0076DDB7 /* WLHomeViewController.m */; };
 		9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */; };
 		9BB5BE0420946E270076DDB7 /* WLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5BE0320946E270076DDB7 /* WLLoginViewController.m */; };
+		9BF70F1820A49891001E4B7A /* WLConfigHostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF70F1720A49891001E4B7A /* WLConfigHostViewController.m */; };
 		9BFF6D88209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF6D86209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.m */; };
 		9BFF6D89209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BFF6D87209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.xib */; };
 		9BFF6D8D209B307D003457D4 /* WLSettingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF6D8B209B307D003457D4 /* WLSettingDetailViewController.m */; };
@@ -237,6 +238,8 @@
 		9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLProfileViewController.m; sourceTree = "<group>"; };
 		9BB5BE0220946E270076DDB7 /* WLLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLLoginViewController.h; sourceTree = "<group>"; };
 		9BB5BE0320946E270076DDB7 /* WLLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLLoginViewController.m; sourceTree = "<group>"; };
+		9BF70F1620A49891001E4B7A /* WLConfigHostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLConfigHostViewController.h; sourceTree = "<group>"; };
+		9BF70F1720A49891001E4B7A /* WLConfigHostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLConfigHostViewController.m; sourceTree = "<group>"; };
 		9BFF6D85209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLApplyChargerRecordCellTableViewCell.h; sourceTree = "<group>"; };
 		9BFF6D86209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLApplyChargerRecordCellTableViewCell.m; sourceTree = "<group>"; };
 		9BFF6D87209B2C82003457D4 /* WLApplyChargerRecordCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLApplyChargerRecordCellTableViewCell.xib; sourceTree = "<group>"; };
@@ -524,6 +527,8 @@
 				9B0211FA209EB16400282AF1 /* WLWebViewController.m */,
 				9B02AFBC20A332A900D95B9A /* UIButton+WLVerticalImageTitle.h */,
 				9B02AFBD20A332A900D95B9A /* UIButton+WLVerticalImageTitle.m */,
+				9BF70F1620A49891001E4B7A /* WLConfigHostViewController.h */,
+				9BF70F1720A49891001E4B7A /* WLConfigHostViewController.m */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -779,6 +784,7 @@
 				9B0211EA209E90AD00282AF1 /* WLCommonAPI.m in Sources */,
 				9B006B122097F69700CDEFD0 /* WLQuickLoginModel.m in Sources */,
 				9B634D2C209DAC4600A5CB31 /* WLProfileInformationViewController.m in Sources */,
+				9BF70F1820A49891001E4B7A /* WLConfigHostViewController.m in Sources */,
 				9B0211F6209EA23C00282AF1 /* WLPaidRecordModel.m in Sources */,
 				9B4CEDB820974A3700F20FB5 /* MapViewBaseDemoViewController.mm in Sources */,
 				9B9E05B020A06CC000F5F045 /* WLQueryPriceInfoModel.m in Sources */,

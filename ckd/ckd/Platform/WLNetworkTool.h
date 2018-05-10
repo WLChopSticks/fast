@@ -12,8 +12,10 @@
 @interface WLNetworkTool : NSObject
 
 @property (nonatomic, strong) NSDictionary *queryAPIList;
+@property (nonatomic, strong) NSString *currentHost;
 
 + (instancetype)sharedNetworkToolManager;
++ (void)refreshQueryAPIList;
 
 - (void)POST_queryWithURL: (NSString *)urlString andParameters: (NSDictionary *)parameters success:(nullable void (^)(id _Nullable responseObject))success failure:(nullable void (^)(NSError *error))failure;
 
