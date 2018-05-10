@@ -49,6 +49,8 @@ typedef enum : NSUInteger {
     {
         [self decorateUserStatusPromptBar:[self judegeAccountStatus]];
     }
+    //如果有别的页面的loading view先消除
+    [ProgressHUD dismiss];
 }
 
 - (void)viewDidLoad {
@@ -241,13 +243,17 @@ typedef enum : NSUInteger {
 
 - (void)decorateUserStatusPromptBar: (AccountStatus)status
 {
+    if (self.promptStatusView)
+    {
+        [self.promptStatusView removeFromSuperview];
+    }
     //用户信息完美
     if (status == Login)
     {
-        [self.promptStatusView removeFromSuperview];
         return;
     }
     UIView *backView = [[UIView alloc]init];
+    self.promptStatusView = backView;
     backView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:backView];
     UILabel *promptLabel = [[UILabel alloc]init];

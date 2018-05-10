@@ -79,6 +79,10 @@ typedef enum : NSInteger {
     Paid_Cancel,
 } PaidResult;
 
+//轮询用户押金租金状态通知
+#define RepeatQueryUserDepositStatusComplete @"RepeatQueryUserDepositStatusComplete"
+#define RepeatQueryUserPaidRentStatus @"RepeatQueryUserPaidRentStatus"
+
 //判断设备型号
 #define IS_IPAD()       (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define IS_IPHONE()     (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)

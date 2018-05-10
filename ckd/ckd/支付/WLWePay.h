@@ -27,7 +27,13 @@ typedef enum : NSUInteger {
 
 @interface WLWePay : NSObject
 
+//轮询押金租金状态的次数
+@property (nonatomic, assign) NSInteger queryCount;
+
 + (instancetype)sharedWePay;
 - (void)createWePayRequestWithPriceType: (PriceType)type andPriceTypeCode: (PriceTypeCode)typeCode andPriceDetailCode: (PriceDetailCode)priceDetailCode;
+
+- (void)repeatQueryUserDepositStatus: (NSString *)expectStatus;
+- (void)repeatQueryUserPaidRentStatus: (NSString *)expectStatus;
 
 @end

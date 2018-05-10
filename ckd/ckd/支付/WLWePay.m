@@ -15,6 +15,8 @@
 
 
 #define PartnerId @"1503148131"
+//轮询次数, 间隔为2s
+#define Repeat_Query_Count 5
 
 @interface WLWePay()
 
@@ -239,5 +241,63 @@ static WLWePay *_instance;
     }];
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
+
+
+//轮询押金状态
+- (void)repeatQueryUserDepositStatus: (NSString *)expectStatus
+{
+    WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
+    
+    if (self.queryCount > 0 && ![userInfo.model.data.yj isEqualToString:expectStatus])
+    {
+        [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+//            [self checkUserPaidStatus];
+            if (![userInfo.model.data.yj isEqualToString:expectStatus])
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self repeatQueryUserDepositStatus:expectStatus];
+                });
+                self.queryCount--;
+            }else
+            {
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserDepositStatusComplete" object:nil userInfo:nil];
+            }
+        }];
+    }else
+    {
+        NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:@"repeatQueryFail"];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserDepositStatusComplete" object:nil userInfo:dict];
+    }
+    
+}
+
+//轮询租金状态
+- (void)repeatQueryUserPaidRentStatus: (NSString *)expectStatus
+{
+    WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
+    
+    if (self.queryCount > 0 && ![userInfo.model.data.zj isEqualToString:expectStatus])
+    {
+        [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+//            [self checkUserPaidStatus];
+            if (![userInfo.model.data.zj isEqualToString:expectStatus])
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self repeatQueryUserPaidRentStatus:expectStatus];
+                });
+                self.queryCount--;
+            }else
+            {
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserPaidRentStatus" object:nil userInfo:nil];
+            }
+        }];
+    }else
+    {
+        NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:@"repeatQueryFail"];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserPaidRentStatus" object:nil userInfo:dict];
+    }
+    
+}
+
 
 @end
