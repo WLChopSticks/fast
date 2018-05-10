@@ -61,9 +61,9 @@
 {
     UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(telephoneItemDidClicking)];
     [self.telephoneView addGestureRecognizer:tapGesture1];
-    
-    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cityItemDidClicking)];
-    [self.cityView addGestureRecognizer:tapGesture2];
+    //城市目前不支持更换
+//    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cityItemDidClicking)];
+//    [self.cityView addGestureRecognizer:tapGesture2];
 }
 
 - (void)queryProfileInfo

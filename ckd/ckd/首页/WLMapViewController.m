@@ -119,8 +119,12 @@
 {
     view.paopaoView.hidden = YES;
     WLPointAnnotation *myAnnotation = (WLPointAnnotation *)view.annotation;
-    [self showStationInfoPrompt:myAnnotation.tag];
-    self.showedPromptIndex = myAnnotation.tag;
+    //如果点击了定位点, 不响应
+    if (![myAnnotation.title isEqualToString:@"我的位置"])
+    {
+        [self showStationInfoPrompt:myAnnotation.tag];
+        self.showedPromptIndex = myAnnotation.tag;
+    }
 }
 
 //点击空白处, 将站点详情隐藏
