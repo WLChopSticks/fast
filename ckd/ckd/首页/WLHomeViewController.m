@@ -77,15 +77,15 @@ typedef enum : NSUInteger {
         {
             NSLog(@"获取个人信息失败");
             //查询失败, 退出登录
-            WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
-            for (UIViewController *vc in self.navigationController.viewControllers)
-            {
-                if ([vc isKindOfClass:[WLBootViewController class]])
-                {
-                    [self.navigationController popToViewController:vc animated:NO];
-                    [vc.navigationController pushViewController:loginVC animated:YES];
-                }
-            }
+//            WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
+//            for (UIViewController *vc in self.navigationController.viewControllers)
+//            {
+//                if ([vc isKindOfClass:[WLBootViewController class]])
+//                {
+//                    [self.navigationController popToViewController:vc animated:NO];
+//                    [vc.navigationController pushViewController:loginVC animated:YES];
+//                }
+//            }
         }
     }];
 }

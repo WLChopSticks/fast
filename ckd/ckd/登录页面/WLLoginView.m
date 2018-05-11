@@ -107,12 +107,6 @@
     [userAgreementBtn addTarget:self action:@selector(userAgreementBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
     [userAgreementView addSubview:userAgreementBtn];
     
-    UIButton *changHostBtn = [[UIButton alloc]init];
-    [changHostBtn setTitle:@"set" forState:UIControlStateNormal];
-    changHostBtn.backgroundColor = [UIColor redColor];
-    [changHostBtn addTarget:self action:@selector(changeHostBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:changHostBtn];
-    
     [logoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.mas_centerX);
         make.top.equalTo(self.mas_top).offset(50);
@@ -124,11 +118,6 @@
         make.left.equalTo(self.mas_left).offset(20);
         make.width.mas_equalTo(100);
         make.height.mas_equalTo(30);
-    }];
-    
-    [changHostBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(telephoneLabel.mas_centerY);
-        make.right.equalTo(self.mas_right).offset(-Margin);
     }];
     
     [telephoneField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -211,7 +200,26 @@
     //点击view使键盘消失
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapView)];
     [self addGestureRecognizer:gesture];
-
+    
+#ifdef DEBUG
+    //如果处于debug模式, 则创建更改host按钮
+    UIButton *changHostBtn = [[UIButton alloc]init];
+    [changHostBtn setTitle:@"更改host" forState:UIControlStateNormal];
+    [changHostBtn setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
+    [changHostBtn addTarget:self action:@selector(changeHostBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:changHostBtn];
+    
+    [changHostBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(telephoneLabel.mas_centerY);
+        make.right.equalTo(self.mas_right).offset(-Margin);
+        make.width.mas_equalTo(80);
+        make.height.mas_equalTo(30);
+    }];
+#else
+    
+#endif
+    
+    
 }
 
 - (void)tapView

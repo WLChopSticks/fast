@@ -121,39 +121,31 @@
         //如果扫到的是json则说明扫的是电池的码
         //dg18040001
         //{"code":"KTS000003","chk":"780e81f1650d63b7b646a66871d05e2d"}
-        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"扫码内容" message:obj.stringValue preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleCancel handler:nil];
-        [vc addAction:cancel];
-        [self presentViewController:vc animated:YES completion:^{
-            
-            if ([obj.stringValue hasPrefix:@"{"])
+        if ([obj.stringValue hasPrefix:@"{"])
+        {
+            //扫电池
+            self.action = Get_Charger;
+            NSData *jsonData =  [obj.stringValue dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+            self.code = [dict objectForKey:@"code"];
+        }else
+        {
+            if (self.action == Return_Charger)
             {
-                //扫电池
-                self.action = Get_Charger;
-                NSData *jsonData =  [obj.stringValue dataUsingEncoding:NSUTF8StringEncoding];
-                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-                self.code = [dict objectForKey:@"code"];
+                
             }else
             {
-                if (self.action == Return_Charger)
-                {
-                    
-                }else
-                {
-                    //扫柜子
-                    self.action = Scan_Canbin;
-                }
-                self.code = obj.stringValue;
+                //扫柜子
+                self.action = Scan_Canbin;
             }
-            if (self.code.length > 0)
-            {
-                [self queryAquireCharger];
-            }
-        }];
-        
-        
-       
-    } else {
+            self.code = obj.stringValue;
+        }
+        if (self.code.length > 0)
+        {
+            [self queryAquireCharger];
+        }
+    } else
+    {
         NSLog(@"暂未识别出扫描的二维码");
     }
 }
