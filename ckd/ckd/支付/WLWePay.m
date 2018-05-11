@@ -190,34 +190,6 @@ static WLWePay *_instance;
     }];
 }
 
-- (void)wePayFinishProcess: (NSNotification *)notice
-{
-    NSDictionary *dict = notice.userInfo;
-    PaidResult result = [dict[@"result"]integerValue];
-    switch (result) {
-        case Paid_Success:
-        {
-            //将支付订单号等上传服务器
-//            [self uploadWepayFinishStatus];
-            break;
-        }
-        case Paid_Fail:
-        {
-            [ProgressHUD showError:@"支付失败"];
-            break;
-        }
-        case Paid_Cancel:
-        {
-            [ProgressHUD showError:@"用户取消"];
-            break;
-        }
-            
-        default:
-            break;
-    }
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
-}
-
 - (void)uploadWepayOrder
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];

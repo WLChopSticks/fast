@@ -75,13 +75,13 @@
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
     NSString *URL = networkTool.queryAPIList[@"QingLogin"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        [ProgressHUD dismiss];
         NSDictionary *result = (NSDictionary *)responseObject;
         WLQingLoginModel *model = [WLQingLoginModel getQingLoginModel:result];
         self.qingLoginModel = model;
         if ([model.code integerValue] == 1)
         {
             NSLog(@"获取个人信息成功");
-            [ProgressHUD dismiss];
             [self showProfileInfoDetails:model];
         }else
         {

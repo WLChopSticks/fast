@@ -123,7 +123,7 @@
     NSString *URL = networkTool.queryAPIList[@"QuickLogin"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
-        [ProgressHUD showSuccess];
+        [ProgressHUD dismiss];
         WLQingLoginModel *quickLoginModel = [WLQingLoginModel mj_objectWithKeyValues:result];
         if ([quickLoginModel.code isEqualToString:@"1"])
         {

@@ -72,9 +72,7 @@
     //如果APP还没有请求过个人数据, 需要再请求一次
     if (userInfo.model == nil)
     {
-        [ProgressHUD show];
         [userInfo queryUserInfo:^(NSNumber *result) {
-            [ProgressHUD dismiss];
             [self checkUserPaidStatus];
         }];
         return;
@@ -204,7 +202,7 @@
         if ([result[@"code"] integerValue] == 1)
         {
             NSLog(@"退押金成功");
-//            [ProgressHUD showSuccess:result[@"message"]];
+            [ProgressHUD showSuccess:result[@"message"]];
             //轮询 未交押金为字符串0
             [WLWePay sharedWePay].queryCount = Repeat_Query_Count;
             [[WLWePay sharedWePay]repeatQueryUserDepositStatus:@"0"];
@@ -251,7 +249,7 @@
         [ProgressHUD showError:@"状态查询失败, 请稍后再试..."];
     }else
     {
-        [ProgressHUD showSuccess];
+        [ProgressHUD dismiss];
         [self checkUserPaidStatus];
     }
 }

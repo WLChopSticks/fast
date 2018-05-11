@@ -46,12 +46,12 @@
 - (IBAction)finishBtnDidClicking:(id)sender
 {
     NSLog(@"完成按钮点击了");
-    if (self.telephoneField.text.length < 11)
+    if (self.telephoneField.text.length != 11)
     {
         [ProgressHUD showError:@"请输入手机号码"];
         return;
     }
-    if (self.checkNumField.text.length < 6)
+    if (self.checkNumField.text.length != 6)
     {
         [ProgressHUD showError:@"请输入验证码"];
         return;
@@ -133,12 +133,10 @@
         }else
         {
             NSLog(@"查询手机号失败");
-            [ProgressHUD showError:result[@"message"]];
         }
     } failure:^(NSError *error) {
         NSLog(@"查询手机号失败");
         NSLog(@"%@",error);
-        [ProgressHUD showError:@"获取验证码失败"];
     }];
 }
 

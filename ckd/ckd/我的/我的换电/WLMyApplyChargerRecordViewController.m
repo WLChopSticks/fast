@@ -53,7 +53,6 @@
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
     NSString *URL = networkTool.queryAPIList[@"AquireExchangeChargerRecord"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
-        [ProgressHUD dismiss];
         NSDictionary *result = (NSDictionary *)responseObject;
         WLChargerRecord *chargerRecordModel = [[WLChargerRecord alloc]init];
         chargerRecordModel = [WLChargerRecord getChargerRecordModel:result];

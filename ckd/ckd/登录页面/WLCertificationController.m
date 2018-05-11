@@ -43,6 +43,7 @@
     NSLog(@"选择城市列表");
     [ProgressHUD show];
     [[WLCommonAPI sharedCommonAPIManager]aquireCityList:^(id result) {
+        [ProgressHUD dismiss];
         if ([result isKindOfClass:[NSDictionary class]])
         {
             NSDictionary *resultDict = (NSDictionary *)result;
@@ -52,7 +53,6 @@
             {
                 NSLog(@"查询城市信息成功");
                 self.cityList= chargerStationModel.data;
-                [ProgressHUD dismiss];
                 [self createCityListView];
             }else
             {

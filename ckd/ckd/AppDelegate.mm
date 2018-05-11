@@ -49,42 +49,6 @@ BMKMapManager* _mapManager;
     return YES;
 }
 
-//查询押金状态
-- (void)queryDepositStatus
-{
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *para_String = [NSString stringWithFormat:@"{user_id:c1aff8bcad6e4d1a97713e10f62a00b2}"];
-    [parameters setObject:para_String forKey:@"inputParameter"];
-    NSString *URL = @"http://47.104.85.148:18070/ckdhd/queryYjzt.action";
-    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
-        [ProgressHUD dismiss];
-        NSDictionary *result = (NSDictionary *)responseObject;
-        WLDepositStatusModel *depositStatusModel = [[WLDepositStatusModel alloc]init];
-        depositStatusModel = [WLDepositStatusModel getDepositStatusModel:result];
-        if ([depositStatusModel.code isEqualToString:@"1"])
-        {
-            NSLog(@"查询押金状态成功");
-            
-        }else
-        {
-            [ProgressHUD showError:@"查询押金状态失败"];
-            NSLog(@"查询押金状态失败");
-        }
-    } failure:^(NSError *error) {
-        [ProgressHUD showError:@"查询押金状态失败"];
-        NSLog(@"查询押金状态失败");
-        NSLog(@"%@",error);
-    }];
-}
-
-
-
-
-
-
-
-
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

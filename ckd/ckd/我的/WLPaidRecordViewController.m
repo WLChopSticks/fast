@@ -47,11 +47,10 @@
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
         WLPaidRecordModel *model = [WLPaidRecordModel getPaidRecordModel:result];
-        
+        [ProgressHUD dismiss];
         if ([model.code integerValue] == 1)
         {
             NSLog(@"获取缴费记录成功");
-            [ProgressHUD showSuccess:model.message];
             self.paidList = model.data;
             if (self.paidList.count > 0)
             {
