@@ -247,8 +247,8 @@
     {
         sender.selected = YES;
         [self.checkNumberField becomeFirstResponder];
+        [self createCountdown:sender];
     }
-    [self createCountdown:sender];
     if ([self.delegate respondsToSelector:@selector(LoginView:aquireCheckNumBtnDidclicking:)])
     {
         [self.delegate LoginView:self aquireCheckNumBtnDidclicking:sender];
