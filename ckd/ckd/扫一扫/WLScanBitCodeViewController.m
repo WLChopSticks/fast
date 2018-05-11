@@ -197,6 +197,8 @@
 //换电池流程
 - (void)queryAquireCharger
 {
+    //是否是第一次换电池, 如果用户信息下没有电池记录, 则是第一次, 扫开柜子后即返回首页
+    BOOL isFirstExchange = [WLUserInfoMaintainance sharedMaintain].model.data.dcdm.length > 0 ? NO : YES;
    
     NSString *actionType = [self getScanActionType];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -214,7 +216,8 @@
             NSLog(@"查询换电流程成功");
             [ProgressHUD showSuccess:aquireChargerModel.message];
             //退电池和换电池成功后 回首页
-            if (self.action == Return_Charger || self.action == Get_Charger)
+            if (self.action == Return_Charger || self.action == Get_Charger ||
+                (isFirstExchange && self.action == Scan_Canbin))
             {
                 for (UIViewController *vc in self.navigationController.viewControllers)
                 {
