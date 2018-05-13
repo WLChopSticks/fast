@@ -227,6 +227,8 @@
                     }
                 } 
             }
+            //换电流程完成后要更新用户信息
+            [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:nil];
         }else
         {
             [ProgressHUD showError:aquireChargerModel.message];

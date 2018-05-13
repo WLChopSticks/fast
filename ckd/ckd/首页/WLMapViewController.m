@@ -106,7 +106,7 @@
         newAnnotationView.userInteractionEnabled = YES;
 //        if (myAnnotation.tag == 1)
         {
-            newAnnotationView.image = [UIImage imageNamed:@"station_available"];
+            newAnnotationView.image = [UIImage imageNamed:@"recharge_available"];
         }
         
 
