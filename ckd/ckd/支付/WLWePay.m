@@ -13,8 +13,6 @@
 #import "WLDataMD5.h"
 #import "WLQueryPriceInfoModel.h"
 
-
-#define PartnerId @"1503148131"
 //轮询次数, 间隔为2s
 #define Repeat_Query_Count 5
 

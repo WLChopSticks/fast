@@ -41,7 +41,7 @@ BMKMapManager* _mapManager;
     //注册百度地图
     [self startBaiduMap];
     //向微信注册
-    [WXApi registerApp:@"wx7e0a8fc77aeaf595"];
+    [WXApi registerApp:@"wxbeb444ea61fe3901"];
     
     [UMConfigure initWithAppkey:@"5af19409b27b0a33a4000044" channel:@"App Store"];
 //    [self queryDepositStatus];
