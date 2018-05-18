@@ -21,7 +21,7 @@
 @property (nonatomic, strong) WLAquireChargerInfoModel *data;
 @property (nonatomic, strong) NSString *message;
 
-+ (instancetype)getAquireChargerModel: (NSDictionary *)dict;
+- (instancetype)getAquireChargerModel: (NSDictionary *)dict;
 @end
 
 

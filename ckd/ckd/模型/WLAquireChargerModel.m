@@ -15,7 +15,7 @@
 
 @implementation WLAquireChargerModel
 
-+(instancetype)getAquireChargerModel:(NSDictionary *)dict
+-(instancetype)getAquireChargerModel:(NSDictionary *)dict
 {
     WLAquireChargerModel *model = [[WLAquireChargerModel alloc]init];
     model = [WLAquireChargerModel mj_objectWithKeyValues:dict];

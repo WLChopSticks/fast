@@ -199,7 +199,6 @@
 {
     //是否是第一次换电池, 如果用户信息下没有电池记录, 则是第一次, 扫开柜子后即返回首页
     BOOL isFirstExchange = [WLUserInfoMaintainance sharedMaintain].model.data.dcdm.length > 0 ? NO : YES;
-   
     NSString *actionType = [self getScanActionType];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *para_String = [NSString stringWithFormat:@"{user_id:%@,zlbj:%@,hdcbj:%@}",[WLUtilities getUserID], self.code, actionType];
@@ -210,7 +209,7 @@
         [ProgressHUD dismiss];
         NSDictionary *result = (NSDictionary *)responseObject;
         WLAquireChargerModel *aquireChargerModel = [[WLAquireChargerModel alloc]init];
-        aquireChargerModel = [WLAquireChargerModel getAquireChargerModel:result];
+        aquireChargerModel = [aquireChargerModel getAquireChargerModel:result];
         if ([aquireChargerModel.code isEqualToString:@"1"])
         {
             NSLog(@"查询换电流程成功");
