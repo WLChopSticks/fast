@@ -135,7 +135,7 @@ BMKMapManager* _mapManager;
     } else {
         NSLog(@"经纬度类型设置失败");
     }
-    BOOL ret = [_mapManager start:@"od8frLbiZOnpGXqEhDFTvl75EUXamOtn" generalDelegate:self];
+    BOOL ret = [_mapManager start:@"yKoLnP7NBN4EBssm4kZnqkgvaGcwYNwT" generalDelegate:self];
     if (!ret) {
         NSLog(@"manager start failed!");
     }
