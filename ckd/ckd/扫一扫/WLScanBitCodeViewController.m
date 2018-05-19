@@ -17,6 +17,8 @@
 @property (nonatomic, strong) SGQRCodeScanningView *scanningView;
 @property (nonatomic, strong) UILabel *promptLabel;
 @property (nonatomic, strong) NSString *code;
+@property (nonatomic, strong) NSString *previousScanResult;
+@property (nonatomic, strong) NSDate *previousScanTime;
 
 @end
 
@@ -114,10 +116,19 @@
 - (void)QRCodeScanManager:(SGQRCodeScanManager *)scanManager didOutputMetadataObjects:(NSArray *)metadataObjects {
     NSLog(@"metadataObjects - - %@", metadataObjects);
     if (metadataObjects != nil && metadataObjects.count > 0) {
+        
+        AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
+        //如果扫描的二维码与上一次相同, 则五秒内不予响应
+        if ([obj.stringValue isEqualToString:self.previousScanResult] &&
+            [[NSDate date] timeIntervalSinceDate:self.previousScanTime] < 5 )
+            return;
+        
+        self.previousScanResult = obj.stringValue;
+        self.previousScanTime = [NSDate date];
+
         [scanManager playSoundName:@"SGQRCode.bundle/sound.caf"];
         [scanManager stopRunning];
         
-        AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
         //如果扫到的是json则说明扫的是电池的码
         //dg18040001
         //{"code":"KTS000003","chk":"780e81f1650d63b7b646a66871d05e2d"}
@@ -214,22 +225,23 @@
         {
             NSLog(@"查询换电流程成功");
             [ProgressHUD showSuccess:aquireChargerModel.message];
+            __weak WLScanBitCodeViewController *weakSelf = self;
             //换电流程完成后要更新用户信息
             [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
-                
-            }];
-            //退电池和换电池成功后 回首页
-            if (self.action == Return_Charger || self.action == Get_Charger ||
-                (isFirstExchange && self.action == Scan_Canbin))
-            {
-                for (UIViewController *vc in self.navigationController.viewControllers)
+
+                //退电池和换电池成功后 回首页
+                if (weakSelf.action == Return_Charger || weakSelf.action == Get_Charger ||
+                    (isFirstExchange && weakSelf.action == Scan_Canbin))
                 {
-                    if ([vc isKindOfClass:[WLHomeViewController class]])
+                    for (UIViewController *vc in weakSelf.navigationController.viewControllers)
                     {
-                        [self.navigationController popToViewController:vc animated:NO];
+                        if ([vc isKindOfClass:[WLHomeViewController class]])
+                        {
+                            [weakSelf.navigationController popToViewController:vc animated:NO];
+                        }
                     }
                 }
-            }
+            }];
         }else
         {
             [ProgressHUD showError:aquireChargerModel.message];
