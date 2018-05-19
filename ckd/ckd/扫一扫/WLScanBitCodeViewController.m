@@ -224,7 +224,13 @@
         if ([aquireChargerModel.code isEqualToString:@"1"])
         {
             NSLog(@"查询换电流程成功");
-            [ProgressHUD showSuccess:aquireChargerModel.message];
+            if (self.action == Return_Charger)
+            {
+                [ProgressHUD showSuccess:@"退电成功"];
+            }else
+            {
+                [ProgressHUD showSuccess:aquireChargerModel.message];
+            }
             __weak WLScanBitCodeViewController *weakSelf = self;
             //换电流程完成后要更新用户信息
             [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
@@ -244,7 +250,13 @@
             }];
         }else
         {
-            [ProgressHUD showError:aquireChargerModel.message];
+            if (self.action == Return_Charger)
+            {
+                [ProgressHUD showError:@"退电失败"];
+            }else
+            {
+                [ProgressHUD showError:aquireChargerModel.message];
+            }
             NSLog(@"查询换电流程失败");
         }
         __weak WLScanBitCodeViewController *weakSelf = self;

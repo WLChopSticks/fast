@@ -995,8 +995,8 @@
 			baseConfigurationReference = CEE767F063C76A7AE601455B /* Pods-ckd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SX6PFU3TZD;
 				ENABLE_BITCODE = NO;
@@ -1065,8 +1065,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qbkj.chdhd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0bd826b3-6761-4e52-8b59-276ce2ec9912";
-				PROVISIONING_PROFILE_SPECIFIER = "chdhd-adhoc03";
+				PROVISIONING_PROFILE = "4fc0a8bd-a700-46c3-8fcc-1b961106d1a6";
+				PROVISIONING_PROFILE_SPECIFIER = "chdhd-dev02";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1076,8 +1076,8 @@
 			baseConfigurationReference = 70750EA903547B5CF0F8D141 /* Pods-ckd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SX6PFU3TZD;
 				ENABLE_BITCODE = NO;
@@ -1146,8 +1146,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qbkj.chdhd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0bd826b3-6761-4e52-8b59-276ce2ec9912";
-				PROVISIONING_PROFILE_SPECIFIER = "chdhd-adhoc03";
+				PROVISIONING_PROFILE = "4fc0a8bd-a700-46c3-8fcc-1b961106d1a6";
+				PROVISIONING_PROFILE_SPECIFIER = "chdhd-dev02";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
