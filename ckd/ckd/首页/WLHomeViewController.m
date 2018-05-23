@@ -147,7 +147,7 @@ typedef enum : NSUInteger {
 
 - (void)decorateNavigationBar
 {
-    self.title = @"诚快达智能换电";
+    self.title = @"诚快达换电";
     
     UIImage *profileImage = [[UIImage imageNamed:@"nav_defaultavatar"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem *profileBtn = [[UIBarButtonItem alloc]initWithImage:profileImage style:UIBarButtonItemStylePlain target:self action:@selector(profileBtnDidClicking)];
