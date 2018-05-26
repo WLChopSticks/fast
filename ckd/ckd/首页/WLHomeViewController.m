@@ -98,7 +98,7 @@ typedef enum : NSUInteger {
     }
    
     WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
-    if (userInfo.model.data.user_realname.length <= 0)
+    if (userInfo.model.data.ztm.integerValue == 0)
     {
         return UnRegistRealName;
     }

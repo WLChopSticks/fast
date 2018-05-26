@@ -28,6 +28,12 @@
 
 @implementation WLCertificationController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -40,6 +46,7 @@
 
 - (void)chooseCityGestureDidClicking
 {
+    [self.IDNumberField resignFirstResponder];
     NSLog(@"选择城市列表");
     [ProgressHUD show];
     [[WLCommonAPI sharedCommonAPIManager]aquireCityList:^(id result) {
@@ -125,16 +132,20 @@
             [WLUtilities setUserNameRegist];
             [WLUtilities savuserName:self.nameField.text];
             [WLUtilities saveCurrentCityCode:self.currentCityModel.csdm andCityName:self.currentCityModel.csmc];
-            
-            WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
-            for (UIViewController *vc in self.navigationController.viewControllers)
-            {
-                if ([vc isKindOfClass:[WLBootViewController class]])
+            __weak WLCertificationController* weakSelf = self;
+            [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+                
+                WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
+                for (UIViewController *vc in weakSelf.navigationController.viewControllers)
                 {
-                    [self.navigationController popToViewController:vc animated:NO];
-                    [vc.navigationController pushViewController:homeVC animated:YES];
+                    if ([vc isKindOfClass:[WLBootViewController class]])
+                    {
+                        [weakSelf.navigationController popToViewController:vc animated:NO];
+                        [vc.navigationController pushViewController:homeVC animated:YES];
+                    }
                 }
-            }
+            }];
+            
             
         }
         else

@@ -644,6 +644,11 @@
 					9BB5BDBB209447200076DDB7 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.GameCenter.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					9BB5BDD3209447200076DDB7 = {
 						CreatedOnToolsVersion = 9.2;
@@ -995,8 +1000,8 @@
 			baseConfigurationReference = CEE767F063C76A7AE601455B /* Pods-ckd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SX6PFU3TZD;
 				ENABLE_BITCODE = NO;
@@ -1065,8 +1070,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qbkj.chdhd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "24f3c3c3-2429-49c2-b59a-f1db4a376c34";
-				PROVISIONING_PROFILE_SPECIFIER = "chdhd-store01";
+				PROVISIONING_PROFILE = "d220d7a5-f402-4c96-8bc9-ed43953fce13";
+				PROVISIONING_PROFILE_SPECIFIER = "chdhd-dev01";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1076,8 +1081,8 @@
 			baseConfigurationReference = 70750EA903547B5CF0F8D141 /* Pods-ckd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SX6PFU3TZD;
 				ENABLE_BITCODE = NO;

@@ -13,9 +13,9 @@
 #import "WLHomeViewController.h"
 #import "WLBaseNavigationViewController.h"
 #import "WLQuickLoginModel.h"
-#import "WLCertificationController.h"
 #import "WLWebViewController.h"
 #import "WLConfigHostViewController.h"
+#import "WLCertificationController.h"
 
 @interface WLLoginViewController ()<LoginviewDelegate>
 
@@ -134,9 +134,17 @@
             [WLUtilities saveUserID:user_id];
             [[WLUserInfoMaintainance sharedMaintain]setModel:quickLoginModel];
             NSLog(@"登录成功");
-            //登录成功跳转首页
-            WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
-            [self.navigationController pushViewController:homeVC animated:YES];
+            //登录成功跳转首页, 如果没有实名, 则先实名, 否则进首页
+            if (quickLoginModel.data.ztm.integerValue != 0)
+            {
+                NSLog(@"跳转首面");
+                WLHomeViewController *homeVC = [[WLHomeViewController alloc]init];
+                [self.navigationController pushViewController:homeVC animated:YES];
+            }else{
+                NSLog(@"跳转实名认证页面");
+                WLCertificationController *certificationVC = [[WLCertificationController alloc]init];
+                [self.navigationController pushViewController:certificationVC animated:YES];
+            }
 
         }else
         {

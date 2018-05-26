@@ -11,9 +11,6 @@
 #import "WLHomeViewController.h"
 #import "WLLoginViewController.h"
 
-
-#import "WLCertificationController.h"
-
 @interface WLBootViewController ()
 
 @end

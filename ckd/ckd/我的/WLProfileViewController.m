@@ -139,7 +139,7 @@
 {
     NSLog(@"我的信息点击了");
     WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
-    if (userInfo.model.data.user_realname.length > 0)
+    if (userInfo.model.data.ztm.integerValue != 0)
     {
         NSLog(@"跳转我的信息页面");
         WLProfileInformationViewController *vc = [[WLProfileInformationViewController alloc]init];
