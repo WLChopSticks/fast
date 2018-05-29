@@ -9,13 +9,10 @@
 #import "WLHomeViewController.h"
 #import "WLProfileViewController.h"
 #import "WLLoginViewController.h"
-#import "MapViewBaseDemoViewController.h"
 #import "WLMapViewController.h"
 #import "WLScanBitCodeViewController.h"
 #import "WLChargerStationModel.h"
-#import "WLNewsCenterViewController.h"
 #import "WLEachChargerStationModel.h"
-#import "WLPaidDepositViewController.h"
 #import "WLCustomerServiceViewController.h"
 #import "WLMyAccountController.h"
 #import "WLCertificationController.h"
@@ -152,10 +149,6 @@ typedef enum : NSUInteger {
     UIImage *profileImage = [[UIImage imageNamed:@"nav_defaultavatar"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem *profileBtn = [[UIBarButtonItem alloc]initWithImage:profileImage style:UIBarButtonItemStylePlain target:self action:@selector(profileBtnDidClicking)];
     self.navigationItem.leftBarButtonItem = profileBtn;
-    
-//    UIImage *newsImage = [[UIImage imageNamed:@"nav_message"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    UIBarButtonItem *newsCenterBtn = [[UIBarButtonItem alloc]initWithImage:newsImage style:UIBarButtonItemStylePlain target:self action:@selector(newsCenterBtnDidClicking)];
-//    self.navigationItem.rightBarButtonItem = newsCenterBtn;
 }
 
 - (void)decorateMapView
@@ -348,12 +341,6 @@ typedef enum : NSUInteger {
     }
     WLScanBitCodeViewController *scanBitCodeVC = [[WLScanBitCodeViewController alloc]init];
     [self.navigationController pushViewController:scanBitCodeVC animated:YES];
-}
-
-- (void)newsCenterBtnDidClicking
-{
-    WLNewsCenterViewController *newsCenterVC = [[WLNewsCenterViewController alloc]init];
-    [self.navigationController pushViewController:newsCenterVC animated:YES];
 }
 
 - (void)serviceBtnDidClicking

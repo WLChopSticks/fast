@@ -8,7 +8,6 @@
 
 #import "WLProfileViewController.h"
 #import "WLPlatform.h"
-#import "WLProfileView.h"
 #import "WLSettingDetailViewController.h"
 #import "WLMyAccountController.h"
 #import "WLMyApplyChargerRecordViewController.h"
@@ -16,7 +15,7 @@
 #import "WLProfileInformationViewController.h"
 #import "WLUserInfoMaintainance.h"
 
-@interface WLProfileViewController ()<ProfileviewDelegate>
+@interface WLProfileViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *profileInfoView;
 @property (weak, nonatomic) IBOutlet UIView *myExchangeView;
