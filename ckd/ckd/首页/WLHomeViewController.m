@@ -360,14 +360,7 @@ typedef enum : NSUInteger {
         NSLog(@"跳转交押金/租金页面");
         WLMyAccountController *myAccountVC = [[WLMyAccountController alloc]initWithNibName:@"WLMyAccountView" bundle:nil];
         [self.navigationController pushViewController:myAccountVC animated:YES];
-    }
-//    else if (sender.tag == UnPaidRent)
-//    {
-//        NSLog(@"跳转交租金页面");
-//        WLPaidDepositViewController *paidDepositVC = [[WLPaidDepositViewController alloc]init];
-//        [self.navigationController pushViewController:paidDepositVC animated:YES];
-//    }
-    else if (sender.tag == Unlogin)
+    }else if (sender.tag == Unlogin)
     {
         WLLoginViewController *loginVC = [[WLLoginViewController alloc]init];
         [self.navigationController pushViewController:loginVC animated:YES];
