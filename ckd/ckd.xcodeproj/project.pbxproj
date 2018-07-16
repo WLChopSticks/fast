@@ -23,6 +23,9 @@
 		9B021202209F1F0900282AF1 /* WLPaidRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B021200209F1F0900282AF1 /* WLPaidRecordCell.m */; };
 		9B021203209F1F0900282AF1 /* WLPaidRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B021201209F1F0900282AF1 /* WLPaidRecordCell.xib */; };
 		9B02AFBE20A332A900D95B9A /* UIButton+WLVerticalImageTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B02AFBD20A332A900D95B9A /* UIButton+WLVerticalImageTitle.m */; };
+		9B258EC520FC3A930011929E /* WLListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B258EC420FC3A930011929E /* WLListView.m */; };
+		9B258ECA20FC3DB30011929E /* WLDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B258EC820FC3DB30011929E /* WLDefaultCell.m */; };
+		9B258ECB20FC3DB30011929E /* WLDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B258EC920FC3DB30011929E /* WLDefaultCell.xib */; };
 		9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */; };
 		9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4553022096F3B000C6C447 /* WLUtilities.m */; };
 		9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */; };
@@ -124,6 +127,11 @@
 		9B021201209F1F0900282AF1 /* WLPaidRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLPaidRecordCell.xib; sourceTree = "<group>"; };
 		9B02AFBC20A332A900D95B9A /* UIButton+WLVerticalImageTitle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+WLVerticalImageTitle.h"; sourceTree = "<group>"; };
 		9B02AFBD20A332A900D95B9A /* UIButton+WLVerticalImageTitle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WLVerticalImageTitle.m"; sourceTree = "<group>"; };
+		9B258EC320FC3A930011929E /* WLListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLListView.h; sourceTree = "<group>"; };
+		9B258EC420FC3A930011929E /* WLListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLListView.m; sourceTree = "<group>"; };
+		9B258EC720FC3DB30011929E /* WLDefaultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLDefaultCell.h; sourceTree = "<group>"; };
+		9B258EC820FC3DB30011929E /* WLDefaultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLDefaultCell.m; sourceTree = "<group>"; };
+		9B258EC920FC3DB30011929E /* WLDefaultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLDefaultCell.xib; sourceTree = "<group>"; };
 		9B4552FE2096F31F00C6C447 /* WLNetworkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLNetworkTool.h; sourceTree = "<group>"; };
 		9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLNetworkTool.m; sourceTree = "<group>"; };
 		9B4553012096F3B000C6C447 /* WLUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLUtilities.h; sourceTree = "<group>"; };
@@ -303,6 +311,16 @@
 			path = "设置";
 			sourceTree = "<group>";
 		};
+		9B258EC620FC3D870011929E /* WLLIstView */ = {
+			isa = PBXGroup;
+			children = (
+				9B258EC720FC3DB30011929E /* WLDefaultCell.h */,
+				9B258EC820FC3DB30011929E /* WLDefaultCell.m */,
+				9B258EC920FC3DB30011929E /* WLDefaultCell.xib */,
+			);
+			path = WLLIstView;
+			sourceTree = "<group>";
+		};
 		9B720DBA209765AC00D88704 /* 扫一扫 */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +485,9 @@
 				9B02AFBD20A332A900D95B9A /* UIButton+WLVerticalImageTitle.m */,
 				9BF70F1620A49891001E4B7A /* WLConfigHostViewController.h */,
 				9BF70F1720A49891001E4B7A /* WLConfigHostViewController.m */,
+				9B258EC320FC3A930011929E /* WLListView.h */,
+				9B258EC420FC3A930011929E /* WLListView.m */,
+				9B258EC620FC3D870011929E /* WLLIstView */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -619,6 +640,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B258ECB20FC3DB30011929E /* WLDefaultCell.xib in Resources */,
 				9B634D2D209DAC4600A5CB31 /* WLProfileInformationViewController.xib in Resources */,
 				9B977731209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib in Resources */,
 				9B634D28209D978A00A5CB31 /* WLProfileViewController.xib in Resources */,
@@ -737,6 +759,7 @@
 				9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */,
 				9BB5BDF9209453C90076DDB7 /* WLBaseUIViewController.m in Sources */,
 				9BB5BDCF209447200076DDB7 /* main.m in Sources */,
+				9B258ECA20FC3DB30011929E /* WLDefaultCell.m in Sources */,
 				9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */,
 				9B634D21209D7CEB00A5CB31 /* WLCommonTool.m in Sources */,
 				9B006B302098BA6D00CDEFD0 /* WLMyAccountController.m in Sources */,
@@ -747,6 +770,7 @@
 				9B9776BF20995CD50068D5C1 /* WLInitPayModel.m in Sources */,
 				9B977724209ADCEF0068D5C1 /* WLDataMD5.m in Sources */,
 				9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */,
+				9B258EC520FC3A930011929E /* WLListView.m in Sources */,
 				9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */,
 				9B9776C82099A5400068D5C1 /* WLPointAnnotation.m in Sources */,
 				9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */,

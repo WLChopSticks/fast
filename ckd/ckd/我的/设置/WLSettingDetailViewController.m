@@ -13,13 +13,17 @@
 #import "WLChangeTelephoneNumberViewController.h"
 #import "WLWebViewController.h"
 
+#import "WLListView.h"
 
-@interface WLSettingDetailViewController ()
+
+@interface WLSettingDetailViewController ()<ListViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *exitBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIImageView *appIcon;
+
+@property (nonatomic, strong) NSArray *items;
 
 @end
 
@@ -47,7 +51,15 @@
     self.versionLabel.text = [NSString stringWithFormat:@"版本v%@",version];
     
     
-
+    WLListView *lists = [[WLListView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    lists.listItems = self.items;
+    lists.delegate = self;
+    [self.view addSubview:lists];
+    [lists mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.appIcon.mas_bottom).offset(50);
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(200);
+    }];
 }
 
 
@@ -59,30 +71,22 @@
 
 
 #pragma --mark 各个按钮点击事件, 此处cell都是通过盖一个btn实现点击的
-
-- (IBAction)aboutUsItemDidClicking:(id)sender
+- (void)ListView:(WLListView *)view selectListItem:(UITableViewCell *)sender andClickInfo:(NSString *)info
 {
-    NSLog(@"关于我们点击了");
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-    [self jumpToWebViewWithTitle:@"关于我们" andURL:networkTool.queryAPIList[@"AboutUs"]];
-}
-- (IBAction)UserAgreementItemDidClicking:(id)sender
-{
-    NSLog(@"用户协议点击了");
-    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-    [self jumpToWebViewWithTitle:@"用户协议" andURL:networkTool.queryAPIList[@"UserAgreement"]];
-}
-- (IBAction)PurchaseIntroducitonItemDidClicking:(id)sender
-{
-    NSLog(@"购买说明点击了");
-    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-    [self jumpToWebViewWithTitle:@"购买说明" andURL:networkTool.queryAPIList[@"PurchaseIntroduction"]];
-}
-- (IBAction)DepositIntroductionDidClicking:(id)sender
-{
-    NSLog(@"押金说明点击了");
-    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-    [self jumpToWebViewWithTitle:@"押金说明" andURL:networkTool.queryAPIList[@"DepositIntrduction"]];
+    if ([info isEqualToString:@"关于我们"])
+    {
+        [self jumpToWebViewWithTitle:@"关于我们" andURL:networkTool.queryAPIList[@"AboutUs"]];
+    }else if ([info isEqualToString:@"用户协议"])
+    {
+        [self jumpToWebViewWithTitle:@"用户协议" andURL:networkTool.queryAPIList[@"UserAgreement"]];
+    }else if ([info isEqualToString:@"购买说明"])
+    {
+        [self jumpToWebViewWithTitle:@"购买说明" andURL:networkTool.queryAPIList[@"PurchaseIntroduction"]];
+    }else if ([info isEqualToString:@"押金说明"])
+    {
+        [self jumpToWebViewWithTitle:@"押金说明" andURL:networkTool.queryAPIList[@"DepositIntrduction"]];
+    }
 }
 
 - (IBAction)logoutBtnDidClicking:(id)sender
@@ -107,6 +111,20 @@
     webVC.title = title;
     webVC.requestURL = urlString;
     [self.navigationController pushViewController:webVC animated:YES];
+}
+
+
+-(NSArray *)items
+{
+    if (_items == nil)
+    {
+        _items = [NSArray arrayWithObjects:
+                  @{@"icon":@"", @"title":@"关于我们", @"subTitle":@"", @"subImage":@"ic_more", @"rowHeight":@"50", @"click": @"关于我们"},
+                  @{@"icon":@"", @"title":@"用户协议", @"subTitle":@"", @"subImage":@"ic_more", @"rowHeight":@"50", @"click": @"用户协议"},
+                  @{@"icon":@"", @"title":@"购买说明", @"subTitle":@"", @"subImage":@"ic_more", @"rowHeight":@"50", @"click": @"购买说明"},
+                  @{@"icon":@"", @"title":@"押金说明", @"subTitle":@"", @"subImage":@"ic_more", @"rowHeight":@"50", @"click": @"押金说明"}, nil];
+    }
+    return _items;
 }
 
 /*
