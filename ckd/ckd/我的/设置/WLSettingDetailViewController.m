@@ -54,6 +54,7 @@
     WLListView *lists = [[WLListView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     lists.listItems = self.items;
     lists.delegate = self;
+    lists.notScroll = YES;
     [self.view addSubview:lists];
     [lists mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.appIcon.mas_bottom).offset(50);

@@ -8,10 +8,12 @@
 
 #import "WLListView.h"
 #import "WLDefaultCell.h"
+#import "WLPaidRecordCell.h"
 #import <Masonry.h>
 
 @interface WLListView()<UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, weak) UITableView *listView;
 
 @end
 
@@ -24,12 +26,10 @@
     if (self)
     {
         UITableView *listView = [[UITableView alloc]initWithFrame:self.bounds];
+        self.listView = listView;
         listView.delegate = self;
         listView.dataSource = self;
-        if (!self.scrollEnable)
-        {
-            listView.scrollEnabled = NO;
-        }
+        
         [self addSubview:listView];
         
         [listView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -59,9 +59,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellName];
     if (cell == nil)
     {
-        if ([self.cellName isEqualToString:@""])
+        if ([self.cellName isEqualToString:@"PaidRecordCell"])
         {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.cellName];
+            cell = [[[NSBundle mainBundle]loadNibNamed:@"WLPaidRecordCell" owner:nil options:nil]lastObject];
+        }else if ([self.cellName isEqualToString:@"ApplyChargerRecordCell"])
+        {
+            cell = [[[NSBundle mainBundle]loadNibNamed:@"WLApplyChargerRecordCellTableViewCell" owner:nil options:nil]lastObject];
         }else
         {
             cell = [[[NSBundle mainBundle]loadNibNamed:@"WLDefaultCell" owner:nil options:nil]lastObject];
@@ -93,6 +96,14 @@
             defCell.subImage.image = [UIImage imageNamed:item[@"subImage"]];
         }
         return defCell;
+    }else if ([self.cellName isEqualToString:@"PaidRecordCell"])
+    {
+        cell = [self.delegate ListView:self cellForEachListItem:cell atIndexPath:indexPath];
+        
+    }else if ([self.cellName isEqualToString:@"ApplyChargerRecordCell"])
+    {
+        cell = [self.delegate ListView:self cellForEachListItem:cell atIndexPath:indexPath];
+        
     }
     
     return cell;
@@ -113,8 +124,22 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *itemDict = self.listItems[indexPath.row];
-    NSString *rowHeight = itemDict[@"rowHeight"] == nil ? @"30": itemDict[@"rowHeight"];
-    return rowHeight.integerValue;
+    if ([itemDict isKindOfClass:[NSDictionary class]] && [itemDict.allKeys containsObject:@"rowHeight"])
+    {
+        return [itemDict[@"rowHeight"]integerValue];
+    }else if (self.rowHeight > 0)
+    {
+        return self.rowHeight;
+    }else
+    {
+        return 30;
+    }
+}
+
+-(void)setNotScroll:(BOOL)notScroll
+{
+    _notScroll = notScroll;
+    self.listView.scrollEnabled = !notScroll;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

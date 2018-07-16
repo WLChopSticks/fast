@@ -11,8 +11,9 @@
 #import "WLPlatform.h"
 #import "WLPaidRecordModel.h"
 #import "WLPaidRecordCell.h"
+#import "WLListView.h"
 
-@interface WLPaidRecordViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface WLPaidRecordViewController ()<ListViewDelegate>
 
 @property (nonatomic, strong) NSArray *paidList;
 
@@ -75,14 +76,12 @@
 
 - (void)showPaidRecordView
 {
-    UITableView *paidRecordView = [[UITableView alloc]init];
-    paidRecordView.dataSource = self;
-    paidRecordView.delegate = self;
-    [self.view addSubview:paidRecordView];
-    
-    [paidRecordView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.bottom.equalTo(self.view);
-    }];
+    WLListView *listView = [[WLListView alloc]initWithFrame:Screen_Bounds];
+    listView.listItems = self.paidList;
+    listView.cellName = @"PaidRecordCell";
+    listView.delegate = self;
+    listView.rowHeight = 150;
+    [self.view addSubview:listView];
 }
 
 - (void)showEmptyRecordView
@@ -92,18 +91,9 @@
 }
 
 #pragma --mark tableview delegate
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(UITableViewCell *)ListView:(WLListView *)view cellForEachListItem:(UITableViewCell *)originalCell atIndexPath:(NSIndexPath *)indexPath
 {
-    return self.paidList.count;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    WLPaidRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (cell == nil)
-    {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"WLPaidRecordCell" owner:nil options:nil]lastObject];
-    }
+    WLPaidRecordCell *cell = (WLPaidRecordCell *)originalCell;
     WLPaidRecordDetailModel *model = self.paidList[indexPath.row];
     cell.order_idLabel.text = model.orderid;
     cell.priceDetaiLabel.text = model.fxqmc;
@@ -111,11 +101,6 @@
     cell.paidTimeLabel.text = model.jfsj;
     
     return cell;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 150;
 }
 
 - (void)didReceiveMemoryWarning {

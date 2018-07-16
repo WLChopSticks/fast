@@ -11,8 +11,9 @@
 #import "WLChargerRecord.h"
 #import "WLApplyChargerRecordCellTableViewCell.h"
 #import "WLRecordEmptyView.h"
+#import "WLListView.h"
 
-@interface WLMyApplyChargerRecordViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface WLMyApplyChargerRecordViewController ()<ListViewDelegate,UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSArray *recordArr;
 
@@ -82,15 +83,13 @@
 {
     if (self.recordArr.count > 0)
     {
-        UITableView *recordListView = [[UITableView alloc]init];
+        WLListView *recordListView = [[WLListView alloc]initWithFrame:self.view.bounds];
         recordListView.delegate = self;
-        recordListView.dataSource = self;
+        recordListView.listItems = self.recordArr;
+        recordListView.cellName = @"ApplyChargerRecordCell";
+        recordListView.rowHeight = 170;
         [self.view addSubview:recordListView];
-        recordListView.backgroundColor = [UIColor whiteColor];
         
-        [recordListView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.right.bottom.equalTo(self.view);
-        }];
     }else
     {
         [self showEmptyRecordView];
@@ -105,22 +104,9 @@
 
 
 #pragma --mark tableView delegate
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+-(UITableViewCell *)ListView:(WLListView *)view cellForEachListItem:(UITableViewCell *)originalCell atIndexPath:(NSIndexPath *)indexPath
 {
-    return self.recordArr.count;
-}
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 1;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    WLApplyChargerRecordCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (cell == nil)
-    {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"WLApplyChargerRecordCellTableViewCell" owner:self options:nil]lastObject];
-    }
+    WLApplyChargerRecordCellTableViewCell *cell = (WLApplyChargerRecordCellTableViewCell *)originalCell;
     WLChargerRecordListModel *model = self.recordArr[indexPath.section];
     cell.chargerNumber.text = model.dcdm;
     cell.getStationName.text = model.qjgmc;
@@ -129,25 +115,7 @@
     cell.returnTime.text = model.ghsj;
     cell.lineView.backgroundColor = [UIColor colorWithRed:255/255.0 green:93/255.0 blue:67/255.0 alpha:1.0];
     
-    
     return cell;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    UIView *footerView = [[UIView alloc]init];
-    footerView.backgroundColor = LightGrayBackground;
-    return footerView;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 160;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 20;
 }
 
 - (void)didReceiveMemoryWarning {
