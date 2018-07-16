@@ -76,15 +76,19 @@
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
     if ([info isEqualToString:@"关于我们"])
     {
+        NSLog(@"关于我们点击了");
         [self jumpToWebViewWithTitle:@"关于我们" andURL:networkTool.queryAPIList[@"AboutUs"]];
     }else if ([info isEqualToString:@"用户协议"])
     {
+        NSLog(@"用户协议点击了");
         [self jumpToWebViewWithTitle:@"用户协议" andURL:networkTool.queryAPIList[@"UserAgreement"]];
     }else if ([info isEqualToString:@"购买说明"])
     {
+        NSLog(@"购买说明点击了");
         [self jumpToWebViewWithTitle:@"购买说明" andURL:networkTool.queryAPIList[@"PurchaseIntroduction"]];
     }else if ([info isEqualToString:@"押金说明"])
     {
+        NSLog(@"押金说明点击了");
         [self jumpToWebViewWithTitle:@"押金说明" andURL:networkTool.queryAPIList[@"DepositIntrduction"]];
     }
 }
