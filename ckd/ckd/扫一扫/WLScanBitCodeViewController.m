@@ -133,7 +133,15 @@
         //dg18040001 柜子
         //{"code":"KTS000003","chk":"780e81f1650d63b7b646a66871d05e2d"} 电池
         //{"carid":"ffa2d61a934a42919cc8efdedb5a2b14"}电动车
-        if ([obj.stringValue hasPrefix:@"{"])
+        if ([obj.stringValue containsString:@"carid"])
+        {
+            //扫电动车
+            self.action = Get_Motor;
+            NSData *jsonData =  [obj.stringValue dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+            self.code = [dict objectForKey:@"carid"];
+            
+        }else if ([obj.stringValue containsString:@"code"])
         {
             //扫电池
             self.action = Get_Charger;
@@ -286,6 +294,9 @@
             break;
         case Return_Charger:
             actionStr = @"1";
+            break;
+        case Get_Motor:
+            actionStr = @"3";
             break;
             
         default:

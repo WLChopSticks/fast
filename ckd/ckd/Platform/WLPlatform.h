@@ -57,8 +57,10 @@
 //扫码动作类型
 typedef enum : NSUInteger {
     Scan_Canbin,
-    Get_Charger,
     Return_Charger,
+    Get_Charger,
+    Get_Motor,
+    Return_Motor,
 } Scan_Code_Action;
 
 //到时候按钮时长
