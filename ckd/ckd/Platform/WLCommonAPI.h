@@ -14,5 +14,7 @@
 
 //获取城市列表
 - (void)aquireCityList:(void (^)(id result))completeQuery;
+//换电流程
+- (void)queryAquireChargerWithCode: (NSString *)code andActionType: (NSString *)actionType success:(void (^)(id _Nullable))success failure:(void (^)(NSError *))failure;
 
 @end

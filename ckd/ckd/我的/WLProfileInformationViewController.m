@@ -241,46 +241,24 @@
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        WLScanBitCodeViewController *scanBitCodeVC = [[WLScanBitCodeViewController alloc]init];
-        scanBitCodeVC.action = Return_Charger;
-        [self.navigationController pushViewController:scanBitCodeVC animated:YES];
+        NSString *motorCode = [WLUserInfoMaintainance sharedMaintain].model.data.ddcdm;
+        [[WLCommonAPI sharedCommonAPIManager]queryAquireChargerWithCode:motorCode andActionType:@"4" success:^(id _Nullable responseObject) {
+            NSDictionary *response = (NSDictionary *)responseObject;
+            if ([response[@"message"]isEqualToString:@"还车成功"])
+            {
+                [self queryProfileInfo];
+            }
+            [ProgressHUD show:response[@"message"]];
+        } failure:^(NSError *error) {
+            [ProgressHUD showError:@"还车失败"];
+        }];
     }];
     [alertVC addAction:cancelAction];
     [alertVC addAction:okAction];
     [self presentViewController:alertVC animated:YES completion:nil];
 }
 
-- (void)queryAquireCharger
-{
-    //是否是第一次换电池, 如果用户信息下没有电池记录, 则是第一次, 扫开柜子后即返回首页
-    WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
-//    BOOL isFirstExchange = [WLUserInfoMaintainance sharedMaintain].model.data.dcdm.length > 0 ? NO : YES;
-//    NSString *actionType = [self getScanActionType];
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *para_String = [NSString stringWithFormat:@"{user_id:%@,zlbj:%@,hdcbj:%@}",[WLUtilities getUserID],userInfo.model.data.ddcdm , @"4"];
-    [parameters setObject:para_String forKey:@"inputParameter"];
-    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-    NSString *URL = networkTool.queryAPIList[@"ExchangeChargerProgress"];
-    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
-        [ProgressHUD dismiss];
-        NSDictionary *result = (NSDictionary *)responseObject;
-        [ProgressHUD show:result[@"message"]];
-        if ([result[@"message"] isEqualToString:@"还车成功"])
-        {
-            [self queryProfileInfo];
-        }else
-        {
-            
-        }
-        
-    } failure:^(NSError *error) {
-        [ProgressHUD showError:@"还车失败"];
-        NSLog(@"还车失败");
-        NSLog(@"%@",error);
-//        [self.manager startRunning];
-    }];
-}
+
 
 /*
 #pragma mark - Navigation
