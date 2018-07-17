@@ -47,6 +47,14 @@
 @property (nonatomic, strong) NSString *dcdm;//电池代码
 @property (nonatomic, strong) NSString *csmc;//城市名称
 @property (nonatomic, strong) NSArray *list1;//费用金额list
+@property (nonatomic, strong) NSString *fyje;//电池费用金额
+@property (nonatomic, strong) NSString *ddc_lock_type;//是否锁车电动车车锁状态(1开 0锁)
+@property (nonatomic, strong) NSString *ddcdm;//电动车代码
+@property (nonatomic, strong) NSString *ddcFyje;//电动车押金金额
+@property (nonatomic, strong) NSString *sfddc;//这个城市是否有电动车业务（1有 0没有）
+
+
+
 /*
  费用金额  费用详情代码 费用类型代码，费用金额
  */

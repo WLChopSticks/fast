@@ -20,6 +20,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *depositPriceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *paidMonthCardBtn;
 @property (weak, nonatomic) IBOutlet UIButton *paidDepositBtn;
+@property (weak, nonatomic) IBOutlet UILabel *rentMotorTimeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *paidMotorDepositBtn;
+@property (weak, nonatomic) IBOutlet UIButton *paidMotorMonthcardBtn;
+@property (weak, nonatomic) IBOutlet UILabel *motorDepositPriceLabel;
 
 @property (nonatomic, assign) NSInteger queryCount;
 @property (nonatomic, assign) Paid_Type paidType;
@@ -43,6 +47,8 @@
     self.title = @"我的账户";
     [WLCommonTool makeViewShowingWithRoundCorner:self.paidDepositBtn andRadius:Btn_Radius];
     [WLCommonTool makeViewShowingWithRoundCorner:self.paidMonthCardBtn andRadius:Btn_Radius];
+    [WLCommonTool makeViewShowingWithRoundCorner:self.paidMotorDepositBtn andRadius:Btn_Radius];
+    [WLCommonTool makeViewShowingWithRoundCorner:self.paidMotorMonthcardBtn andRadius:Btn_Radius];
 
     
     [self decorateNavigationBar];
@@ -80,19 +86,12 @@
     //查看是否交押金
     if (userInfo.model.data.yj.integerValue)
     {
-        for (WLUserPaidListModel *model in userInfo.model.data.list1)
-        {
-            //押金
-            if ([model.fylxdm isEqualToString:@"1"])
-            {
-                self.depositPriceLabel.text = [NSString stringWithFormat:@"%@ 元",model.fyje];
-                [self.paidDepositBtn setTitle:@"退押金" forState:UIControlStateNormal];
-                break;
-            }
-        }
+        self.depositPriceLabel.text = [NSString stringWithFormat:@"%@ 元",userInfo.model.data.fyje];
+        [self.paidDepositBtn setTitle:@"退押金" forState:UIControlStateNormal];
+        
     }else
     {
-        [self changeCellStatusToUnpaidDeposit];
+        [self changeCellStatusToUnpaidDeposit:self.paidDepositBtn andLabel:self.depositPriceLabel];
     }
     
     //查看是否交租金
@@ -100,8 +99,8 @@
     {
         for (WLUserExpireTimeModel *model in userInfo.model.data.list)
         {
-            //押金
-            if ([model.fylxdm isEqualToString:@"2"])
+            //电池租金
+            if ([model.fylxdm isEqualToString:@"2"] && [model.fylb isEqualToString:@"1"])
             {
                 self.rentTimeLabel.text = model.jssj;
                 break;
@@ -111,7 +110,40 @@
     {
         self.rentTimeLabel.text = @"未缴纳租金";
     }
+    
+    //查看是否交电动车押金
+    if (userInfo.model.data.ddcyj.integerValue)
+    {
+        self.motorDepositPriceLabel.text = [NSString stringWithFormat:@"%@ 元",userInfo.model.data.ddcFyje];
+        [self.paidMotorDepositBtn setTitle:@"退押金" forState:UIControlStateNormal];
+    }else
+    {
+        [self changeCellStatusToUnpaidDeposit:self.paidMotorDepositBtn andLabel:self.motorDepositPriceLabel];
+    }
+    
+    //查看是否交电动车租金
+    if (userInfo.model.data.ddczj.integerValue)
+    {
+        for (WLUserExpireTimeModel *model in userInfo.model.data.list)
+        {
+            //押金
+            if ([model.fylxdm isEqualToString:@"2"] && [model.fylb isEqualToString:@"0"])
+            {
+                self.rentMotorTimeLabel.text = model.jssj;
+                break;
+            }
+        }
+    }else
+    {
+        self.rentTimeLabel.text = @"未缴纳租金";
+    }
+    
+    
 }
+
+
+
+
 
 - (void)paidRecordDidClicking
 {
@@ -127,7 +159,7 @@
 }
 - (IBAction)extendMonthTimeBtnDidClicking:(id)sender
 {
-    NSLog(@"立即续费按钮点击了");
+    NSLog(@"电池立即续费按钮点击了");
     //未缴纳押金需要先交押金
     WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
     if (!userInfo.model.data.yj.integerValue)
@@ -163,8 +195,51 @@
         
     }
     
-    NSLog(@"缴纳/退押金按钮点击了");
+    NSLog(@"电池缴纳/退押金按钮点击了");
 }
+
+//电动车缴纳押金和租金点击方法
+- (IBAction)extendMotorMonthTimeBtnDidClicking:(id)sender
+{
+    NSLog(@"电动车立即续费按钮点击了");
+    //未缴纳押金需要先交押金
+    WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
+    if (!userInfo.model.data.ddcyj.integerValue)
+    {
+        [ProgressHUD showError:@"请先缴纳押金"];
+    }else
+    {
+        self.paidType = Paid_Rent;
+        [[WLWePay sharedWePay]createWePayRequestWithPriceType:Charger andPriceTypeCode:RentPrice andPriceDetailCode:MotorRent];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wePayFinishProcess:) name:WePayResponseNotification object:nil];
+    }
+}
+- (IBAction)PaidMotorDepositBtnDidClicking:(id)sender
+{
+    if ([self.paidDepositBtn.titleLabel.text isEqualToString:@"退押金"])
+    {
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"退押金后您将不能租赁电池?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [self queryReturnDeposit];
+        }];
+        [alertVC addAction:cancelAction];
+        [alertVC addAction:okAction];
+        [self presentViewController:alertVC animated:YES completion:nil];
+    }else
+    {
+        //交押金
+        self.paidType = Paid_Deposit;
+        [[WLWePay sharedWePay]createWePayRequestWithPriceType:Charger andPriceTypeCode:DepositPrice andPriceDetailCode:MotorDeposit];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wePayFinishProcess:) name:WePayResponseNotification object:nil];
+        
+    }
+    
+    NSLog(@"电动车缴纳/退押金按钮点击了");
+}
+
 
 - (void)queryReturnDeposit
 {
@@ -298,15 +373,15 @@
 
 }
 
-- (void)changeCellStatusToUnpaidDeposit
+- (void)changeCellStatusToUnpaidDeposit: (UIButton *)btn andLabel: (UILabel *)label
 {
-    self.depositPriceLabel.text = @"未缴纳押金";
-    [self.paidDepositBtn setTitle:@"缴纳押金" forState:UIControlStateNormal];
+    label.text = @"未缴纳押金";
+    [btn setTitle:@"缴纳押金" forState:UIControlStateNormal];
 }
-- (void)changeCellStatusTopaidDeposit
+- (void)changeCellStatusTopaidDeposit: (UIButton *)btn andLabel: (UILabel *)label
 {
-    self.depositPriceLabel.text = [NSString stringWithFormat:@"%@ 元",[WLUtilities getPaidPrice]];
-    [self.paidDepositBtn setTitle:@"退押金" forState:UIControlStateNormal];
+    label.text = [NSString stringWithFormat:@"%@ 元",[WLUtilities getPaidPrice]];
+    [btn setTitle:@"退押金" forState:UIControlStateNormal];
 }
 
 

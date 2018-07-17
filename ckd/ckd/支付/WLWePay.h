@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef enum : NSUInteger {
-    Electrombile,
+    Motor,
     Charger,
 } PriceType;
 
@@ -21,8 +21,8 @@ typedef enum : NSUInteger {
 typedef enum : NSUInteger {
     ChargerDeposit = 1,
     ChargerRent,
-    ElectrombileDeposit,
-    ElectrmobileRent,
+    MotorDeposit,
+    MotorRent,
 } PriceDetailCode;
 
 @interface WLWePay : NSObject
