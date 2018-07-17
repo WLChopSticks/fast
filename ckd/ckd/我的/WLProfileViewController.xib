@@ -106,7 +106,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHV-fs-R9m">
                             <rect key="frame" x="0.0" y="91.5" width="335" height="45"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me_ic_01" translatesAutoresizingMaskIntoConstraints="NO" id="CY6-AB-08g">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WDZC" translatesAutoresizingMaskIntoConstraints="NO" id="CY6-AB-08g">
                                     <rect key="frame" x="10" y="7" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="SUQ-EE-lbM"/>
@@ -247,6 +247,7 @@
         </view>
     </objects>
     <resources>
+        <image name="WDZC" width="23" height="16"/>
         <image name="ic_more" width="23" height="23"/>
         <image name="logo" width="72" height="72"/>
         <image name="me_ic_01" width="31" height="31"/>

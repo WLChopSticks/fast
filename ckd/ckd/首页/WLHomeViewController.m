@@ -173,10 +173,10 @@ typedef enum : NSUInteger {
     [mapBtn addTarget:self action:@selector(mapBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:mapBtn];
     
-//    UIButton *collectBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
-//    [collectBtn setImage:[UIImage imageNamed:@"home_ic_collect"] forState:UIControlStateNormal];
-//    [collectBtn addTarget:self action:@selector(hehe) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:collectBtn];
+    UIButton *lock_unlockBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
+    [lock_unlockBtn setImage:[UIImage imageNamed:@"YS"] forState:UIControlStateNormal];
+    [lock_unlockBtn addTarget:self action:@selector(lockUnlockBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:lock_unlockBtn];
     
     UIButton *serviceBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
     [serviceBtn setImage:[UIImage imageNamed:@"home_ic_service"] forState:UIControlStateNormal];
@@ -190,7 +190,7 @@ typedef enum : NSUInteger {
     [self.view addSubview:iconBtn];
     
     UILabel *introductionLabel = [[UILabel alloc]init];
-    introductionLabel.text = @"扫码换电";
+    introductionLabel.text = @"换电/租车";
     introductionLabel.textColor = [UIColor whiteColor];
     [iconBtn addSubview:introductionLabel];
     
@@ -219,12 +219,12 @@ typedef enum : NSUInteger {
         make.height.mas_equalTo(Func_Btn_Height);
     }];
     
-//    [collectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.equalTo(iconBtn.mas_centerY).offset(-20);
-//        make.right.equalTo(self.view.mas_right).offset(-Margin);
-//        make.width.mas_equalTo(Func_Btn_Width);
-//        make.height.mas_equalTo(Func_Btn_Height);
-//    }];
+    [lock_unlockBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(iconBtn.mas_centerY).offset(-20);
+        make.right.equalTo(self.view.mas_right).offset(-Margin);
+        make.width.mas_equalTo(Func_Btn_Width + 10);
+        make.height.mas_equalTo(Func_Btn_Height);
+    }];
     
     [serviceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(iconBtn.mas_centerY).offset(+40);
@@ -314,6 +314,11 @@ typedef enum : NSUInteger {
 {
     WLProfileViewController *profileVC = [[WLProfileViewController alloc]initWithNibName:@"WLProfileViewController" bundle:nil];
     [self.navigationController pushViewController:profileVC animated:YES];
+}
+
+- (void)lockUnlockBtnDidClicking: (UIButton *)sender
+{
+    NSLog(@"123");
 }
 
 - (void)iconBtnDidClicking
