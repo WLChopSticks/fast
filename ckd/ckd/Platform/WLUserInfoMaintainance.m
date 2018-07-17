@@ -36,16 +36,25 @@ static WLUserInfoMaintainance *_instance;
         if ([model.code integerValue] == 1)
         {
             NSLog(@"获取个人信息成功");
-            complete([NSNumber numberWithBool:YES]);
+            if (complete != nil)
+            {
+                complete([NSNumber numberWithBool:YES]);
+            }
         }else
         {
             NSLog(@"获取个人信息失败");
-            complete([NSNumber numberWithBool:NO]);
+            if (complete != nil)
+            {
+                complete([NSNumber numberWithBool:NO]);
+            }
         }
     } failure:^(NSError *error) {
         NSLog(@"获取个人信息失败");
         NSLog(@"%@",error);
-        complete([NSNumber numberWithBool:NO]);
+        if (complete != nil)
+        {
+            complete([NSNumber numberWithBool:NO]);
+        }
     }];
 }
 

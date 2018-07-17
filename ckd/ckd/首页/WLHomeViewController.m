@@ -50,8 +50,6 @@ typedef enum : NSUInteger {
     //如果有别的页面的loading view先消除
     [ProgressHUD dismiss];
     
-    //确认电动车开锁, 锁车按钮状态
-    [self setLockUnlockMotorBtnStatus];
 }
 
 - (void)viewDidLoad {
@@ -74,6 +72,8 @@ typedef enum : NSUInteger {
             [self decorateUserStatusPromptBar:[self judegeAccountStatus]];
             //请求充电站的位置节点
             [self aquireChargerStations];
+            //确认电动车开锁, 锁车按钮状态
+            [self setLockUnlockMotorBtnStatus];
         }else
         {
             NSLog(@"获取个人信息失败");
