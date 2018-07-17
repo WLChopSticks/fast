@@ -29,6 +29,7 @@
 		9B258F4620FD6CD30011929E /* WLMyRentMotorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B258F4520FD6CD30011929E /* WLMyRentMotorViewController.m */; };
 		9B258F4920FD6D0D0011929E /* WLRentRecordViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B258F4820FD6D0D0011929E /* WLRentRecordViewCell.m */; };
 		9B258F4C20FD6E530011929E /* WLRentMotorRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B258F4B20FD6E530011929E /* WLRentMotorRecordModel.m */; };
+		9B258F5B20FDE2480011929E /* WLNetworkAPIs.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B258F5A20FDE2480011929E /* WLNetworkAPIs.m */; };
 		9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */; };
 		9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4553022096F3B000C6C447 /* WLUtilities.m */; };
 		9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */; };
@@ -141,6 +142,8 @@
 		9B258F4820FD6D0D0011929E /* WLRentRecordViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLRentRecordViewCell.m; sourceTree = "<group>"; };
 		9B258F4A20FD6E530011929E /* WLRentMotorRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLRentMotorRecordModel.h; sourceTree = "<group>"; };
 		9B258F4B20FD6E530011929E /* WLRentMotorRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLRentMotorRecordModel.m; sourceTree = "<group>"; };
+		9B258F5920FDE2480011929E /* WLNetworkAPIs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLNetworkAPIs.h; sourceTree = "<group>"; };
+		9B258F5A20FDE2480011929E /* WLNetworkAPIs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLNetworkAPIs.m; sourceTree = "<group>"; };
 		9B4552FE2096F31F00C6C447 /* WLNetworkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLNetworkTool.h; sourceTree = "<group>"; };
 		9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLNetworkTool.m; sourceTree = "<group>"; };
 		9B4553012096F3B000C6C447 /* WLUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLUtilities.h; sourceTree = "<group>"; };
@@ -494,6 +497,8 @@
 				9B0013CE209A03980081F65D /* WLBootViewController.m */,
 				9B4552FE2096F31F00C6C447 /* WLNetworkTool.h */,
 				9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */,
+				9B258F5920FDE2480011929E /* WLNetworkAPIs.h */,
+				9B258F5A20FDE2480011929E /* WLNetworkAPIs.m */,
 				9B4553012096F3B000C6C447 /* WLUtilities.h */,
 				9B4553022096F3B000C6C447 /* WLUtilities.m */,
 				9B0211FC209F0E9200282AF1 /* WLUserInfoMaintainance.h */,
@@ -772,6 +777,7 @@
 				9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */,
 				9B977730209BD8BA0068D5C1 /* WLCustomerServiceViewController.m in Sources */,
 				9B97771B209AB04F0068D5C1 /* WLAquireChargerModel.m in Sources */,
+				9B258F5B20FDE2480011929E /* WLNetworkAPIs.m in Sources */,
 				9BB5BE0420946E270076DDB7 /* WLLoginViewController.m in Sources */,
 				9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */,
 				9B0013CF209A03980081F65D /* WLBootViewController.m in Sources */,

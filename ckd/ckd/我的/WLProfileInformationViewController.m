@@ -29,6 +29,8 @@
 @property (nonatomic, strong) WLQingLoginModel *qingLoginModel;
 @property (weak, nonatomic) IBOutlet UILabel *borrowCharger;
 @property (weak, nonatomic) IBOutlet UIButton *returnChargerBtn;
+@property (weak, nonatomic) IBOutlet UILabel *rentMotor;
+@property (weak, nonatomic) IBOutlet UIButton *returnMotorBtn;
 
 
 @end
@@ -46,11 +48,14 @@
     
     self.title = @"我的信息";
     [WLCommonTool makeViewShowingWithRoundCorner:self.returnChargerBtn andRadius:Btn_Radius];
+    [WLCommonTool makeViewShowingWithRoundCorner:self.returnMotorBtn andRadius:Btn_Radius];
     
     //选项添加点击事件
     [self addViewGestures];
     //如果没有租电池, 则退电池按钮是隐藏的
     self.returnChargerBtn.hidden = YES;
+    //如果没有租电动车, 则还车按钮是隐藏的
+    self.returnMotorBtn.hidden = YES;
     
     //请求个人详细信息
     [self queryProfileInfo];
@@ -105,6 +110,11 @@
     if (self.borrowCharger.text.length > 0)
     {
         self.returnChargerBtn.hidden = NO;
+    }
+    self.rentMotor.text = model.data.ddcdm;
+    if (self.rentMotor.text.length > 0)
+    {
+        self.returnMotorBtn.hidden = NO;
     }
 }
 
@@ -223,6 +233,53 @@
     [alertVC addAction:cancelAction];
     [alertVC addAction:okAction];
     [self presentViewController:alertVC animated:YES completion:nil];
+}
+- (IBAction)returnMotorBtnDidClicking:(id)sender
+{
+    NSLog(@"还车点击了");
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定要还车了吗?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        WLScanBitCodeViewController *scanBitCodeVC = [[WLScanBitCodeViewController alloc]init];
+        scanBitCodeVC.action = Return_Charger;
+        [self.navigationController pushViewController:scanBitCodeVC animated:YES];
+    }];
+    [alertVC addAction:cancelAction];
+    [alertVC addAction:okAction];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
+- (void)queryAquireCharger
+{
+    //是否是第一次换电池, 如果用户信息下没有电池记录, 则是第一次, 扫开柜子后即返回首页
+    WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
+//    BOOL isFirstExchange = [WLUserInfoMaintainance sharedMaintain].model.data.dcdm.length > 0 ? NO : YES;
+//    NSString *actionType = [self getScanActionType];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *para_String = [NSString stringWithFormat:@"{user_id:%@,zlbj:%@,hdcbj:%@}",[WLUtilities getUserID],userInfo.model.data.ddcdm , @"4"];
+    [parameters setObject:para_String forKey:@"inputParameter"];
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"ExchangeChargerProgress"];
+    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        [ProgressHUD dismiss];
+        NSDictionary *result = (NSDictionary *)responseObject;
+        [ProgressHUD show:result[@"message"]];
+        if ([result[@"message"] isEqualToString:@"还车成功"])
+        {
+            [self queryProfileInfo];
+        }else
+        {
+            
+        }
+        
+    } failure:^(NSError *error) {
+        [ProgressHUD showError:@"还车失败"];
+        NSLog(@"还车失败");
+        NSLog(@"%@",error);
+//        [self.manager startRunning];
+    }];
 }
 
 /*
