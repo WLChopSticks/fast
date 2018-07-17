@@ -30,7 +30,7 @@
 @property (nonatomic, strong) NSString *order_id;
 
 
-
+@property (nonatomic, assign) PriceType type;
 @property (nonatomic, strong) NSString *priceType;// 类别 0 电动车 1电池
 @property (nonatomic, strong) NSString *priceTypeCode;// 费用类型代码1 押金 2租金
 @property (nonatomic, strong) NSString *priceDetailName;//fyxqmc
@@ -57,7 +57,7 @@ static WLWePay *_instance;
 
 - (void)createWePayRequestWithPriceType: (PriceType)type andPriceTypeCode: (PriceTypeCode)typeCode andPriceDetailCode: (PriceDetailCode)priceDetailCode
 {
-
+    self.type = type;
     self.priceType = [NSString stringWithFormat:@"%lu",(unsigned long)type];
     self.priceTypeCode = [NSString stringWithFormat:@"%lu",(unsigned long)typeCode];
     self.priceDetailCode = [NSString stringWithFormat:@"%02lu",(unsigned long)priceDetailCode];
@@ -214,58 +214,107 @@ static WLWePay *_instance;
 
 
 //轮询押金状态
-- (void)repeatQueryUserDepositStatus: (NSString *)expectStatus
+- (void)repeatQueryUserDepositType: (PriceType)priceType andStatus: (NSString *)expectStatus
 {
     WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
-    
-    if (self.queryCount > 0 && ![userInfo.model.data.yj isEqualToString:expectStatus])
-    {
-        [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
-//            [self checkUserPaidStatus];
-            if (![userInfo.model.data.yj isEqualToString:expectStatus])
+    [userInfo queryUserInfo:^(NSNumber *result) {
+        if (self.queryCount > 0)
+        {
+            if (priceType == Motor && ![userInfo.model.data.ddcyj isEqualToString:expectStatus])
             {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self repeatQueryUserDepositStatus:expectStatus];
-                });
-                self.queryCount--;
-            }else
+                [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+                    //            [self checkUserPaidStatus];
+                    if (![userInfo.model.data.ddcyj isEqualToString:expectStatus])
+                    {
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [self repeatQueryUserDepositType:priceType andStatus:expectStatus];
+                        });
+                        self.queryCount--;
+                    }else
+                    {
+                        [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserDepositStatusComplete" object:nil userInfo:nil];
+                    }
+                }];
+            }else if (priceType == Charger && ![userInfo.model.data.yj isEqualToString:expectStatus])
             {
-                [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserDepositStatusComplete" object:nil userInfo:nil];
+                [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+                    //            [self checkUserPaidStatus];
+                    if (![userInfo.model.data.yj isEqualToString:expectStatus])
+                    {
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [self repeatQueryUserDepositType:priceType andStatus:expectStatus];
+                        });
+                        self.queryCount--;
+                    }else
+                    {
+                        [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserDepositStatusComplete" object:nil userInfo:nil];
+                    }
+                }];
             }
-        }];
-    }else
-    {
-        NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:@"repeatQueryFail"];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserDepositStatusComplete" object:nil userInfo:dict];
-    }
+            
+        }else
+        {
+            NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:@"repeatQueryFail"];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserDepositStatusComplete" object:nil userInfo:dict];
+        }
+    }];
     
 }
 
 //轮询租金状态
-- (void)repeatQueryUserPaidRentStatus: (NSString *)expectStatus
+- (void)repeatQueryUserPaidRentStatus: (PriceType)priceType andStatus: (NSString *)expectStatus
 {
     WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
     
-    if (self.queryCount > 0 && ![userInfo.model.data.zj isEqualToString:expectStatus])
-    {
-        [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
-//            [self checkUserPaidStatus];
-            if (![userInfo.model.data.zj isEqualToString:expectStatus])
+    [userInfo queryUserInfo:^(NSNumber *result) {
+        if (self.queryCount > 0)
+        {
+            if (priceType == Motor && ![userInfo.model.data.ddczj isEqualToString:expectStatus])
             {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self repeatQueryUserPaidRentStatus:expectStatus];
-                });
-                self.queryCount--;
-            }else
+                [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+                    //            [self checkUserPaidStatus];
+                    if (![userInfo.model.data.ddczj isEqualToString:expectStatus])
+                    {
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [self repeatQueryUserDepositType:priceType andStatus:expectStatus];
+                        });
+                        self.queryCount--;
+                    }else
+                    {
+                        [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserPaidRentStatus" object:nil userInfo:nil];
+                    }
+                }];
+            }else if (priceType == Motor && [userInfo.model.data.ddczj isEqualToString:expectStatus])
+            {
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserPaidRentStatus" object:nil userInfo:nil];
+            }else if (priceType == Charger && ![userInfo.model.data.zj isEqualToString:expectStatus])
+            {
+                [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
+                    //            [self checkUserPaidStatus];
+                    if (![userInfo.model.data.zj isEqualToString:expectStatus])
+                    {
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [self repeatQueryUserPaidRentStatus:priceType andStatus:expectStatus];
+                        });
+                        self.queryCount--;
+                    }else
+                    {
+                        [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserPaidRentStatus" object:nil userInfo:nil];
+                    }
+                }];
+            }else if (priceType == Charger && ![userInfo.model.data.zj isEqualToString:expectStatus])
             {
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserPaidRentStatus" object:nil userInfo:nil];
             }
-        }];
-    }else
-    {
-        NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:@"repeatQueryFail"];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserPaidRentStatus" object:nil userInfo:dict];
-    }
+            
+        }else
+        {
+            NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:@"repeatQueryFail"];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserPaidRentStatus" object:nil userInfo:dict];
+        }
+    }];
+    
+    
     
 }
 

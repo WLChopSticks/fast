@@ -33,7 +33,7 @@ typedef enum : NSUInteger {
 + (instancetype)sharedWePay;
 - (void)createWePayRequestWithPriceType: (PriceType)type andPriceTypeCode: (PriceTypeCode)typeCode andPriceDetailCode: (PriceDetailCode)priceDetailCode;
 
-- (void)repeatQueryUserDepositStatus: (NSString *)expectStatus;
-- (void)repeatQueryUserPaidRentStatus: (NSString *)expectStatus;
+- (void)repeatQueryUserDepositType: (PriceType)priceType andStatus: (NSString *)expectStatus;
+- (void)repeatQueryUserPaidRentStatus: (PriceType)priceType andStatus: (NSString *)expectStatus;
 
 @end

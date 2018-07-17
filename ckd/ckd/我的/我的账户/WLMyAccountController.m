@@ -27,6 +27,7 @@
 
 @property (nonatomic, assign) NSInteger queryCount;
 @property (nonatomic, assign) Paid_Type paidType;
+@property (nonatomic, assign) PriceType priceType;
 
 @end
 
@@ -168,6 +169,7 @@
     }else
     {
         self.paidType = Paid_Rent;
+        self.priceType = Charger;
         [[WLWePay sharedWePay]createWePayRequestWithPriceType:Charger andPriceTypeCode:RentPrice andPriceDetailCode:ChargerRent];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wePayFinishProcess:) name:WePayResponseNotification object:nil];
     }
@@ -180,7 +182,7 @@
         
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
+            self.priceType = Charger;
             [self queryReturnDeposit];
         }];
         [alertVC addAction:cancelAction];
@@ -190,6 +192,7 @@
     {
         //交押金
         self.paidType = Paid_Deposit;
+        self.priceType = Charger;
         [[WLWePay sharedWePay]createWePayRequestWithPriceType:Charger andPriceTypeCode:DepositPrice andPriceDetailCode:ChargerDeposit];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wePayFinishProcess:) name:WePayResponseNotification object:nil];
         
@@ -210,7 +213,8 @@
     }else
     {
         self.paidType = Paid_Rent;
-        [[WLWePay sharedWePay]createWePayRequestWithPriceType:Charger andPriceTypeCode:RentPrice andPriceDetailCode:MotorRent];
+        self.priceType = Motor;
+        [[WLWePay sharedWePay]createWePayRequestWithPriceType:Motor andPriceTypeCode:RentPrice andPriceDetailCode:MotorRent];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wePayFinishProcess:) name:WePayResponseNotification object:nil];
     }
 }
@@ -218,11 +222,11 @@
 {
     if ([self.paidMotorDepositBtn.titleLabel.text isEqualToString:@"退押金"])
     {
-        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"退押金后您将不能租赁电池?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"退押金后您将不能租用电动车?" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
+            self.priceType = Motor;
             [self queryReturnDeposit];
         }];
         [alertVC addAction:cancelAction];
@@ -232,6 +236,7 @@
     {
         //交押金
         self.paidType = Paid_Deposit;
+        self.priceType = Motor;
         [[WLWePay sharedWePay]createWePayRequestWithPriceType:Motor andPriceTypeCode:DepositPrice andPriceDetailCode:MotorDeposit];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wePayFinishProcess:) name:WePayResponseNotification object:nil];
         
@@ -280,8 +285,9 @@
             [ProgressHUD showSuccess:result[@"message"]];
             //轮询 未交押金为字符串0
             [WLWePay sharedWePay].queryCount = Repeat_Query_Count;
-            [[WLWePay sharedWePay]repeatQueryUserDepositStatus:@"0"];
             [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(repeatQueryUserStatusComplete:) name:RepeatQueryUserDepositStatusComplete object:nil];
+            [NSThread sleepForTimeInterval:3];
+            [[WLWePay sharedWePay]repeatQueryUserDepositType:self.priceType andStatus:@"0"];
             
         }else
         {
@@ -341,14 +347,16 @@
             {
                 //轮询 交押金为字符串1
                 [WLWePay sharedWePay].queryCount = Repeat_Query_Count;
-                [[WLWePay sharedWePay]repeatQueryUserDepositStatus:@"1"];
                 [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(repeatQueryUserStatusComplete:) name:RepeatQueryUserDepositStatusComplete object:nil];
-            }else if (self.paidType == Paid_Deposit)
+                [NSThread sleepForTimeInterval:3];
+                [[WLWePay sharedWePay]repeatQueryUserDepositType:self.priceType andStatus:@"1"];
+            }else if (self.paidType == Paid_Rent)
             {
                 //轮询 交租金为字符串1
                 [WLWePay sharedWePay].queryCount = Repeat_Query_Count;
-                [[WLWePay sharedWePay]repeatQueryUserPaidRentStatus:@"1"];
                 [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(repeatQueryUserStatusComplete:) name:RepeatQueryUserPaidRentStatus object:nil];
+                [NSThread sleepForTimeInterval:3];
+                [[WLWePay sharedWePay]repeatQueryUserPaidRentStatus:self.priceType andStatus:@"1"];
             }
 //            [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
 //                [self checkUserPaidStatus];
