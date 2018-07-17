@@ -31,6 +31,7 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, weak)WLMapViewController *mapVC;
 @property (nonatomic, weak) UIView *promptStatusView;
+@property (nonatomic, weak) UIButton *lock_unlock_btn;
 
 @end
 
@@ -48,6 +49,9 @@ typedef enum : NSUInteger {
     }
     //如果有别的页面的loading view先消除
     [ProgressHUD dismiss];
+    
+    //确认电动车开锁, 锁车按钮状态
+    [self setLockUnlockMotorBtnStatus];
 }
 
 - (void)viewDidLoad {
@@ -108,6 +112,23 @@ typedef enum : NSUInteger {
         return UnPaidRent;
     }
     return Login;
+}
+
+- (void)setLockUnlockMotorBtnStatus
+{
+    WLUserInfoModel *model = [WLUserInfoMaintainance sharedMaintain].model.data;
+    if (model.sfddc.integerValue == 0 || model.ddcdm.length == 0)
+    {
+        self.lock_unlock_btn.hidden = YES;
+        return;
+    }
+    if (model.ddc_lock_type.integerValue == 1)
+    {
+        self.lock_unlock_btn.selected = YES;
+    }else
+    {
+        self.lock_unlock_btn.selected = NO;
+    }
 }
 
 - (void)aquireChargerStations
@@ -174,7 +195,9 @@ typedef enum : NSUInteger {
     [self.view addSubview:mapBtn];
     
     UIButton *lock_unlockBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
+    self.lock_unlock_btn = lock_unlockBtn;
     [lock_unlockBtn setImage:[UIImage imageNamed:@"YS"] forState:UIControlStateNormal];
+    [lock_unlockBtn setImage:[UIImage imageNamed:@"YK"] forState:UIControlStateSelected];
     [lock_unlockBtn addTarget:self action:@selector(lockUnlockBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:lock_unlockBtn];
     
@@ -319,6 +342,19 @@ typedef enum : NSUInteger {
 - (void)lockUnlockBtnDidClicking: (UIButton *)sender
 {
     NSLog(@"123");
+    NSString *motorCode = [WLUserInfoMaintainance sharedMaintain].model.data.ddcdm;
+    //换电池标记参数始终为3, 开锁, 关锁, 扫电动车都是3, 还车为4
+    [[WLCommonAPI sharedCommonAPIManager]queryAquireChargerWithCode:motorCode andActionType:@"3" success:^(id _Nullable responseObject) {
+        NSDictionary *response = (NSDictionary *)responseObject;
+        if ([response[@"message"]containsObject:@"成功"])
+        {
+            self.lock_unlock_btn.selected = !self.lock_unlock_btn.selected;
+        }
+        [ProgressHUD show:response[@"message"]];
+        
+    } failure:^(NSError *error) {
+        [ProgressHUD showError:@"请求失败"];
+    }];
 }
 
 - (void)iconBtnDidClicking
