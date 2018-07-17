@@ -49,5 +49,7 @@
 	<string>{host}/ckdhd/portal/pages/yjsm/yjsm.jsp</string>
 	<key>AboutUs</key>
 	<string>{host}/ckdhd/portal/pages/gywm/gywm.jsp</string>
+	<key>AquireExchangeRentMotorRecord</key>
+	<string>{host}/ckdhd/Hddcjl.action</string>
 </dict>
 </plist>

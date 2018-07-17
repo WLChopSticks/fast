@@ -26,6 +26,9 @@
 		9B258EC520FC3A930011929E /* WLListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B258EC420FC3A930011929E /* WLListView.m */; };
 		9B258ECA20FC3DB30011929E /* WLDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B258EC820FC3DB30011929E /* WLDefaultCell.m */; };
 		9B258ECB20FC3DB30011929E /* WLDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B258EC920FC3DB30011929E /* WLDefaultCell.xib */; };
+		9B258F4620FD6CD30011929E /* WLMyRentMotorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B258F4520FD6CD30011929E /* WLMyRentMotorViewController.m */; };
+		9B258F4920FD6D0D0011929E /* WLRentRecordViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B258F4820FD6D0D0011929E /* WLRentRecordViewCell.m */; };
+		9B258F4C20FD6E530011929E /* WLRentMotorRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B258F4B20FD6E530011929E /* WLRentMotorRecordModel.m */; };
 		9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */; };
 		9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4553022096F3B000C6C447 /* WLUtilities.m */; };
 		9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */; };
@@ -132,6 +135,12 @@
 		9B258EC720FC3DB30011929E /* WLDefaultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLDefaultCell.h; sourceTree = "<group>"; };
 		9B258EC820FC3DB30011929E /* WLDefaultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLDefaultCell.m; sourceTree = "<group>"; };
 		9B258EC920FC3DB30011929E /* WLDefaultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLDefaultCell.xib; sourceTree = "<group>"; };
+		9B258F4420FD6CD30011929E /* WLMyRentMotorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMyRentMotorViewController.h; sourceTree = "<group>"; };
+		9B258F4520FD6CD30011929E /* WLMyRentMotorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMyRentMotorViewController.m; sourceTree = "<group>"; };
+		9B258F4720FD6D0D0011929E /* WLRentRecordViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLRentRecordViewCell.h; sourceTree = "<group>"; };
+		9B258F4820FD6D0D0011929E /* WLRentRecordViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLRentRecordViewCell.m; sourceTree = "<group>"; };
+		9B258F4A20FD6E530011929E /* WLRentMotorRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLRentMotorRecordModel.h; sourceTree = "<group>"; };
+		9B258F4B20FD6E530011929E /* WLRentMotorRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLRentMotorRecordModel.m; sourceTree = "<group>"; };
 		9B4552FE2096F31F00C6C447 /* WLNetworkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLNetworkTool.h; sourceTree = "<group>"; };
 		9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLNetworkTool.m; sourceTree = "<group>"; };
 		9B4553012096F3B000C6C447 /* WLUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLUtilities.h; sourceTree = "<group>"; };
@@ -278,6 +287,8 @@
 				9B0211F5209EA23C00282AF1 /* WLPaidRecordModel.m */,
 				9B9E05AE20A06CC000F5F045 /* WLQueryPriceInfoModel.h */,
 				9B9E05AF20A06CC000F5F045 /* WLQueryPriceInfoModel.m */,
+				9B258F4A20FD6E530011929E /* WLRentMotorRecordModel.h */,
+				9B258F4B20FD6E530011929E /* WLRentMotorRecordModel.m */,
 			);
 			path = "模型";
 			sourceTree = "<group>";
@@ -319,6 +330,17 @@
 				9B258EC920FC3DB30011929E /* WLDefaultCell.xib */,
 			);
 			path = WLLIstView;
+			sourceTree = "<group>";
+		};
+		9B258F4320FD6C8D0011929E /* 我的租车 */ = {
+			isa = PBXGroup;
+			children = (
+				9B258F4420FD6CD30011929E /* WLMyRentMotorViewController.h */,
+				9B258F4520FD6CD30011929E /* WLMyRentMotorViewController.m */,
+				9B258F4720FD6D0D0011929E /* WLRentRecordViewCell.h */,
+				9B258F4820FD6D0D0011929E /* WLRentRecordViewCell.m */,
+			);
+			path = "我的租车";
 			sourceTree = "<group>";
 		};
 		9B720DBA209765AC00D88704 /* 扫一扫 */ = {
@@ -444,6 +466,7 @@
 		9BB5BDF2209453390076DDB7 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				9B258F4320FD6C8D0011929E /* 我的租车 */,
 				9B01A02A20960B0600365BB8 /* 设置 */,
 				9B977725209AF9140068D5C1 /* 我的换电 */,
 				9B006B2D2098B99A00CDEFD0 /* 我的账户 */,
@@ -759,6 +782,7 @@
 				9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */,
 				9BB5BDF9209453C90076DDB7 /* WLBaseUIViewController.m in Sources */,
 				9BB5BDCF209447200076DDB7 /* main.m in Sources */,
+				9B258F4C20FD6E530011929E /* WLRentMotorRecordModel.m in Sources */,
 				9B258ECA20FC3DB30011929E /* WLDefaultCell.m in Sources */,
 				9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */,
 				9B634D21209D7CEB00A5CB31 /* WLCommonTool.m in Sources */,
@@ -775,8 +799,10 @@
 				9B9776C82099A5400068D5C1 /* WLPointAnnotation.m in Sources */,
 				9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */,
 				9B021202209F1F0900282AF1 /* WLPaidRecordCell.m in Sources */,
+				9B258F4620FD6CD30011929E /* WLMyRentMotorViewController.m in Sources */,
 				9B977718209AAC300068D5C1 /* WLInquireCostDetailModel.m in Sources */,
 				9B9776CB2099AEEC0068D5C1 /* WLStationDetailPromptView.m in Sources */,
+				9B258F4920FD6D0D0011929E /* WLRentRecordViewCell.m in Sources */,
 				9B634D25209D830300A5CB31 /* WLCertificationController.m in Sources */,
 				9B0211F0209E9ECE00282AF1 /* WLPaidRecordViewController.m in Sources */,
 				9B0211FE209F0E9200282AF1 /* WLUserInfoMaintainance.m in Sources */,

@@ -14,6 +14,7 @@
 #import "WLCertificationController.h"
 #import "WLProfileInformationViewController.h"
 #import "WLUserInfoMaintainance.h"
+#import "WLMyRentMotorViewController.h"
 
 @interface WLProfileViewController ()
 
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIView *ProfileItemsView;
 @property (weak, nonatomic) IBOutlet UILabel *exchangeChargerTime;
 @property (weak, nonatomic) IBOutlet UILabel *expireTimeLabel;
+@property (weak, nonatomic) IBOutlet UIView *myRentMotorView;
 
 
 
@@ -132,6 +134,9 @@
     
     UITapGestureRecognizer *tapGesture4 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(settingsViewDidClicking:)];
     [self.SettingsView addGestureRecognizer:tapGesture4];
+    
+    UITapGestureRecognizer *tapGesture5 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(myRentMotorViewDidClicking:)];
+    [self.myRentMotorView addGestureRecognizer:tapGesture5];
 }
 
 - (void)profileInfoViewDidClicking:(id)sender
@@ -155,6 +160,13 @@
 {
     NSLog(@"我的换电点击了");
     WLMyApplyChargerRecordViewController *chargerRecordVC = [[WLMyApplyChargerRecordViewController alloc]init];
+    [self.navigationController pushViewController:chargerRecordVC animated:YES];
+}
+
+- (void)myRentMotorViewDidClicking:(id)sender
+{
+    NSLog(@"我的租车点击了");
+    WLMyRentMotorViewController *chargerRecordVC = [[WLMyRentMotorViewController alloc]init];
     [self.navigationController pushViewController:chargerRecordVC animated:YES];
 }
 
