@@ -14,7 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WLProfileViewController">
             <connections>
                 <outlet property="ProfileItemsView" destination="xuD-aJ-a1Q" id="b3D-Z3-FVC"/>
-                <outlet property="SettingsView" destination="bHV-fs-R9m" id="nII-He-x51"/>
+                <outlet property="SettingsView" destination="XEz-oz-s73" id="cXz-pF-6Rc"/>
                 <outlet property="exchangeChargerTime" destination="aIo-vF-Lte" id="jEO-0H-lME"/>
                 <outlet property="expireTimeLabel" destination="O1I-6F-YES" id="Hxe-eX-ObN"/>
                 <outlet property="myAccountView" destination="J66-zY-wM6" id="aNl-Ve-8Z3"/>
