@@ -216,7 +216,7 @@
 }
 - (IBAction)PaidMotorDepositBtnDidClicking:(id)sender
 {
-    if ([self.paidDepositBtn.titleLabel.text isEqualToString:@"退押金"])
+    if ([self.paidMotorDepositBtn.titleLabel.text isEqualToString:@"退押金"])
     {
         UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"退押金后您将不能租赁电池?" preferredStyle:UIAlertControllerStyleAlert];
         
@@ -232,7 +232,7 @@
     {
         //交押金
         self.paidType = Paid_Deposit;
-        [[WLWePay sharedWePay]createWePayRequestWithPriceType:Charger andPriceTypeCode:DepositPrice andPriceDetailCode:MotorDeposit];
+        [[WLWePay sharedWePay]createWePayRequestWithPriceType:Motor andPriceTypeCode:DepositPrice andPriceDetailCode:MotorDeposit];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wePayFinishProcess:) name:WePayResponseNotification object:nil];
         
     }
