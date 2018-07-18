@@ -256,7 +256,11 @@
     NSString *serialNumber;
     for (WLUserExpireTimeModel *model in expireTimeArr)
     {
-        if ([model.fylxdm isEqualToString:@"1"])
+        if (self.priceType == Charger && [model.fylxdm isEqualToString:@"1"] && model.fylb.integerValue == 1)
+        {
+            serialNumber = model.lsh;
+            break;
+        }else if (self.priceType == Motor && [model.fylxdm isEqualToString:@"1"] && model.fylb.integerValue == 0)
         {
             serialNumber = model.lsh;
             break;
@@ -264,14 +268,21 @@
     }
     //获取费用详情代码
     NSString *priceDetailCode;
-    for (WLUserPaidListModel *model in userInfo.model.data.list1)
+    if (self.priceType == Charger)
     {
-        if ([model.fylxdm isEqualToString:@"1"])
-        {
-            priceDetailCode = model.fyxqdm;
-            break;
-        }
+        priceDetailCode = @"01";
+    }else if (self.priceType == Motor)
+    {
+        priceDetailCode = @"03";
     }
+//    for (WLUserPaidListModel *model in userInfo.model.data.list1)
+//    {
+//        if ([model.fylxdm isEqualToString:@"1"])
+//        {
+//            priceDetailCode = model.fyxqdm;
+//            break;
+//        }
+//    }
     NSString *parametersStr = [NSString stringWithFormat:@"{bljl_lsh:%@,user_id:%@,fyxqdm:%@}",serialNumber, [WLUtilities getUserID], priceDetailCode];
     [parameters setObject:parametersStr forKey:@"inputParameter"];
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
@@ -286,7 +297,7 @@
             //轮询 未交押金为字符串0
             [WLWePay sharedWePay].queryCount = Repeat_Query_Count;
             [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(repeatQueryUserStatusComplete:) name:RepeatQueryUserDepositStatusComplete object:nil];
-            [NSThread sleepForTimeInterval:3];
+            [NSThread sleepForTimeInterval:2];
             [[WLWePay sharedWePay]repeatQueryUserDepositType:self.priceType andStatus:@"0"];
             
         }else
@@ -348,14 +359,14 @@
                 //轮询 交押金为字符串1
                 [WLWePay sharedWePay].queryCount = Repeat_Query_Count;
                 [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(repeatQueryUserStatusComplete:) name:RepeatQueryUserDepositStatusComplete object:nil];
-                [NSThread sleepForTimeInterval:3];
+                [NSThread sleepForTimeInterval:2];
                 [[WLWePay sharedWePay]repeatQueryUserDepositType:self.priceType andStatus:@"1"];
             }else if (self.paidType == Paid_Rent)
             {
                 //轮询 交租金为字符串1
                 [WLWePay sharedWePay].queryCount = Repeat_Query_Count;
                 [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(repeatQueryUserStatusComplete:) name:RepeatQueryUserPaidRentStatus object:nil];
-                [NSThread sleepForTimeInterval:3];
+                [NSThread sleepForTimeInterval:2];
                 [[WLWePay sharedWePay]repeatQueryUserPaidRentStatus:self.priceType andStatus:@"1"];
             }
 //            [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {

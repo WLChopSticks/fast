@@ -235,6 +235,9 @@ static WLWePay *_instance;
                         [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserDepositStatusComplete" object:nil userInfo:nil];
                     }
                 }];
+            }else if (priceType == Motor && [userInfo.model.data.ddcyj isEqualToString:expectStatus])
+            {
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserDepositStatusComplete" object:nil userInfo:nil];
             }else if (priceType == Charger && ![userInfo.model.data.yj isEqualToString:expectStatus])
             {
                 [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
@@ -250,6 +253,9 @@ static WLWePay *_instance;
                         [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserDepositStatusComplete" object:nil userInfo:nil];
                     }
                 }];
+            }else if (priceType == Charger && [userInfo.model.data.yj isEqualToString:expectStatus])
+            {
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserDepositStatusComplete" object:nil userInfo:nil];
             }
             
         }else
@@ -302,7 +308,7 @@ static WLWePay *_instance;
                         [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserPaidRentStatus" object:nil userInfo:nil];
                     }
                 }];
-            }else if (priceType == Charger && ![userInfo.model.data.zj isEqualToString:expectStatus])
+            }else if (priceType == Charger && [userInfo.model.data.zj isEqualToString:expectStatus])
             {
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"RepeatQueryUserPaidRentStatus" object:nil userInfo:nil];
             }
