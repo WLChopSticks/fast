@@ -38,7 +38,7 @@ static WLCommonAPI *_instance;
 - (void)queryAquireChargerWithCode:(NSString *)code andActionType:(NSString *)actionType success:(void (^)(id _Nullable))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *para_String = [NSString stringWithFormat:@"{user_id:%@,zlbj:%@,hdcbj:%@}",[WLUtilities getUserID], code, actionType];
+    NSString *para_String = [NSString stringWithFormat:@"{\"user_id\":\"%@\",\"zlbj\":\"%@\",\"hdcbj\":\"%@\"}",[WLUtilities getUserID], code, actionType];
     [parameters setObject:para_String forKey:@"inputParameter"];
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
     NSString *URL = networkTool.queryAPIList[@"ExchangeChargerProgress"];

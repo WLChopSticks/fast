@@ -74,6 +74,8 @@ typedef enum : NSUInteger {
             [self decorateUserStatusPromptBar:[self judegeAccountStatus]];
             //请求充电站的位置节点
             [self aquireChargerStations];
+            //确认电动车开锁, 锁车按钮状态
+            [self setLockUnlockMotorBtnStatus];
             
         }else
         {
@@ -125,9 +127,11 @@ typedef enum : NSUInteger {
     }
     if (model.ddc_lock_type.integerValue == 1)
     {
+        self.lock_unlock_btn.hidden = NO;
         self.lock_unlock_btn.selected = YES;
     }else
     {
+        self.lock_unlock_btn.hidden = NO;
         self.lock_unlock_btn.selected = NO;
     }
 }
@@ -200,6 +204,7 @@ typedef enum : NSUInteger {
     [lock_unlockBtn setImage:[UIImage imageNamed:@"YS"] forState:UIControlStateNormal];
     [lock_unlockBtn setImage:[UIImage imageNamed:@"YK"] forState:UIControlStateSelected];
     [lock_unlockBtn addTarget:self action:@selector(lockUnlockBtnDidClicking:) forControlEvents:UIControlEventTouchUpInside];
+    lock_unlockBtn.hidden = YES;
     [self.view addSubview:lock_unlockBtn];
     
     UIButton *serviceBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
@@ -342,15 +347,20 @@ typedef enum : NSUInteger {
 
 - (void)lockUnlockBtnDidClicking: (UIButton *)sender
 {
-    NSLog(@"123");
+    NSLog(@"开锁/关锁按钮点击了");
+    [ProgressHUD show];
     NSString *motorCode = [WLUserInfoMaintainance sharedMaintain].model.data.ddcdm;
     //换电池标记参数始终为3, 开锁, 关锁, 扫电动车都是3, 还车为4
-    [[WLCommonAPI sharedCommonAPIManager]queryAquireChargerWithCode:motorCode andActionType:@"3" success:^(id _Nullable responseObject) {
+    [[WLCommonAPI sharedCommonAPIManager]queryAquireChargerWithCode:@"" andActionType:@"3" success:^(id _Nullable responseObject) {
         NSDictionary *response = (NSDictionary *)responseObject;
         NSString *message = response[@"message"];
-        if ([message containsString:@"成功"])
+        if ([message containsString:@"开锁成功"])
         {
-            self.lock_unlock_btn.selected = !self.lock_unlock_btn.selected;
+            self.lock_unlock_btn.selected = YES;
+        }
+        if ([message containsString:@"锁车成功"])
+        {
+            self.lock_unlock_btn.selected = NO;
         }
         [ProgressHUD show:response[@"message"]];
         //此方法默认不会消失, 此处延迟2秒后消失

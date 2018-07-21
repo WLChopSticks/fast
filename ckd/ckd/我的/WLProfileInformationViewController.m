@@ -110,11 +110,17 @@
     if (self.borrowCharger.text.length > 0)
     {
         self.returnChargerBtn.hidden = NO;
+    }else
+    {
+        self.returnChargerBtn.hidden = YES;
     }
     self.rentMotor.text = model.data.ddcdm;
     if (self.rentMotor.text.length > 0)
     {
         self.returnMotorBtn.hidden = NO;
+    }else
+    {
+        self.returnMotorBtn.hidden = YES;
     }
 }
 
