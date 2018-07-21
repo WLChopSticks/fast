@@ -11,6 +11,8 @@
 @interface WLConfigHostViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSArray *hosts;
+@property (nonatomic, strong) NSString *filePath;
+@property (nonatomic, strong) NSMutableDictionary *queryListData;
 
 @end
 
@@ -33,8 +35,10 @@
     [self.view addSubview:tableView];
     
     NSString *filePath = [[NSBundle mainBundle]pathForResource:@"QueryApiList.plist" ofType:nil];
-    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:filePath];
-    NSArray *hosts = dict[@"hosts"];
+    self.filePath = filePath;
+    NSMutableDictionary *queryListData = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+    self.queryListData = queryListData;
+    NSArray *hosts = queryListData[@"hosts"];
     self.hosts = hosts;
 
 }
@@ -56,6 +60,8 @@
     NSString *host = self.hosts[indexPath.row];
     NSString *selectHost = [[host componentsSeparatedByString:@","]lastObject];
     [WLNetworkTool sharedNetworkToolManager].currentHost = selectHost;
+    self.queryListData[@"host"] = selectHost;
+    [self.queryListData writeToFile:self.filePath atomically:YES];
     [WLNetworkTool refreshQueryAPIList];
 }
 

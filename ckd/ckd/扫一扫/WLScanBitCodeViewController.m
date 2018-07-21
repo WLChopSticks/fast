@@ -220,12 +220,8 @@
     //是否是第一次换电池, 如果用户信息下没有电池记录, 则是第一次, 扫开柜子后即返回首页
     BOOL isFirstExchange = [WLUserInfoMaintainance sharedMaintain].model.data.dcdm.length > 0 ? NO : YES;
     NSString *actionType = [self getScanActionType];
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *para_String = [NSString stringWithFormat:@"{user_id:%@,zlbj:%@,hdcbj:%@}",[WLUtilities getUserID], self.code, actionType];
-    [parameters setObject:para_String forKey:@"inputParameter"];
-    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
-    NSString *URL = networkTool.queryAPIList[@"ExchangeChargerProgress"];
-    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+    
+    [[WLCommonAPI sharedCommonAPIManager]queryAquireChargerWithCode:self.code andActionType:actionType success:^(id _Nullable responseObject) {
         [ProgressHUD dismiss];
         NSDictionary *result = (NSDictionary *)responseObject;
         WLAquireChargerModel *aquireChargerModel = [[WLAquireChargerModel alloc]init];
@@ -243,7 +239,7 @@
             __weak WLScanBitCodeViewController *weakSelf = self;
             //换电流程完成后要更新用户信息
             [[WLUserInfoMaintainance sharedMaintain]queryUserInfo:^(NSNumber *result) {
-
+                
                 //退电池和换电池成功后 回首页
                 if (weakSelf.action == Return_Charger || weakSelf.action == Get_Charger ||
                     (isFirstExchange && weakSelf.action == Scan_Canbin))

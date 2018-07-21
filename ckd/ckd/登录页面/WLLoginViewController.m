@@ -123,10 +123,11 @@
     NSString *URL = networkTool.queryAPIList[@"QuickLogin"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
-        [ProgressHUD dismiss];
         WLQingLoginModel *quickLoginModel = [WLQingLoginModel mj_objectWithKeyValues:result];
         if ([quickLoginModel.code isEqualToString:@"1"])
         {
+            //如果先调用了dismiss 在调用show error会让error的弹窗闪一下就消失了
+            [ProgressHUD dismiss];
             //存储登录状态
             [WLUtilities setUserLogin];
             
