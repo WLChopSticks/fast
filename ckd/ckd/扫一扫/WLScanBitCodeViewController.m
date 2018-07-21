@@ -221,6 +221,16 @@
     BOOL isFirstExchange = [WLUserInfoMaintainance sharedMaintain].model.data.dcdm.length > 0 ? NO : YES;
     NSString *actionType = [self getScanActionType];
     
+#if DEBUG
+    NSString *str = [[NSString alloc]initWithFormat:@"type:%@ \ncode:%@",actionType, self.code];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"扫码结果" message:str preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
+#endif
+    
     [[WLCommonAPI sharedCommonAPIManager]queryAquireChargerWithCode:self.code andActionType:actionType success:^(id _Nullable responseObject) {
         [ProgressHUD dismiss];
         NSDictionary *result = (NSDictionary *)responseObject;
@@ -242,7 +252,8 @@
                 
                 //退电池和换电池成功后 回首页
                 if (weakSelf.action == Return_Charger || weakSelf.action == Get_Charger ||
-                    (isFirstExchange && weakSelf.action == Scan_Canbin))
+                    (isFirstExchange && weakSelf.action == Scan_Canbin) ||
+                    weakSelf.action == Get_Motor)
                 {
                     for (UIViewController *vc in weakSelf.navigationController.viewControllers)
                     {

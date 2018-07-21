@@ -212,7 +212,6 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="returnChargerBtnDidClicking:" destination="-1" eventType="touchUpInside" id="PNX-ec-cka"/>
                                 <action selector="returnMotorBtnDidClicking:" destination="-1" eventType="touchUpInside" id="dLc-mL-xn4"/>
                             </connections>
                         </button>

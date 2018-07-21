@@ -46,6 +46,8 @@ typedef enum : NSUInteger {
     if ([[WLUserInfoMaintainance sharedMaintain]model] != nil)
     {
         [self decorateUserStatusPromptBar:[self judegeAccountStatus]];
+        //确认电动车开锁, 锁车按钮状态
+        [self setLockUnlockMotorBtnStatus];
     }
     //如果有别的页面的loading view先消除
     [ProgressHUD dismiss];
@@ -72,8 +74,7 @@ typedef enum : NSUInteger {
             [self decorateUserStatusPromptBar:[self judegeAccountStatus]];
             //请求充电站的位置节点
             [self aquireChargerStations];
-            //确认电动车开锁, 锁车按钮状态
-            [self setLockUnlockMotorBtnStatus];
+            
         }else
         {
             NSLog(@"获取个人信息失败");
@@ -346,12 +347,16 @@ typedef enum : NSUInteger {
     //换电池标记参数始终为3, 开锁, 关锁, 扫电动车都是3, 还车为4
     [[WLCommonAPI sharedCommonAPIManager]queryAquireChargerWithCode:motorCode andActionType:@"3" success:^(id _Nullable responseObject) {
         NSDictionary *response = (NSDictionary *)responseObject;
-        if ([response[@"message"]containsObject:@"成功"])
+        NSString *message = response[@"message"];
+        if ([message containsString:@"成功"])
         {
             self.lock_unlock_btn.selected = !self.lock_unlock_btn.selected;
         }
         [ProgressHUD show:response[@"message"]];
-        
+        //此方法默认不会消失, 此处延迟2秒后消失
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [ProgressHUD dismiss];
+        });
     } failure:^(NSError *error) {
         [ProgressHUD showError:@"请求失败"];
     }];

@@ -244,11 +244,16 @@
         NSString *motorCode = [WLUserInfoMaintainance sharedMaintain].model.data.ddcdm;
         [[WLCommonAPI sharedCommonAPIManager]queryAquireChargerWithCode:motorCode andActionType:@"4" success:^(id _Nullable responseObject) {
             NSDictionary *response = (NSDictionary *)responseObject;
-            if ([response[@"message"]isEqualToString:@"还车成功"])
+            NSString *message = response[@"message"];
+            if ([message containsString:@"还车成功"])
             {
                 [self queryProfileInfo];
             }
             [ProgressHUD show:response[@"message"]];
+            //此方法默认不会消失, 此处延迟2秒后消失
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [ProgressHUD dismiss];
+            });
         } failure:^(NSError *error) {
             [ProgressHUD showError:@"还车失败"];
         }];
