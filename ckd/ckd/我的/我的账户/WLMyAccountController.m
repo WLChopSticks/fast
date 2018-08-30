@@ -136,7 +136,7 @@
         }
     }else
     {
-        self.rentTimeLabel.text = @"未缴纳租金";
+        self.rentMotorTimeLabel.text = @"未缴纳租金";
     }
     
     

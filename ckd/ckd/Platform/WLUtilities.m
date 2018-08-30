@@ -80,7 +80,7 @@
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     return [def objectForKey:@"user_id"];
-//    return @"80a66d8a8cc44d36b0cf54ca01708aae";
+//    return @"2c457661dee14969902491698ac186cf";
 }
 
 + (void)savuserName:(NSString *)user_name
