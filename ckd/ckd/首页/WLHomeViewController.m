@@ -219,7 +219,14 @@ typedef enum : NSUInteger {
     [self.view addSubview:iconBtn];
     
     UILabel *introductionLabel = [[UILabel alloc]init];
-    introductionLabel.text = @"换电/租车";
+    //如果不支持租车, 则不显示租车文字
+    if ([WLUtilities isSupportMotor])
+    {
+        introductionLabel.text = @"换电/租车";
+    }else
+    {
+        introductionLabel.text = @"换电";
+    }
     introductionLabel.textColor = [UIColor whiteColor];
     [iconBtn addSubview:introductionLabel];
     

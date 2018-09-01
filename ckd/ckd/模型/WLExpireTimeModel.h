@@ -23,7 +23,7 @@
 @property (nonatomic, strong) NSArray *data;
 @property (nonatomic, strong) NSString *message;
 
-+ (instancetype)getExpireTimeModel: (NSDictionary *)dict;
+//+ (instancetype)getExpireTimeModel: (NSDictionary *)dict;
 @end
 
 

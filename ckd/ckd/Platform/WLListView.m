@@ -13,7 +13,7 @@
 
 @interface WLListView()<UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, weak) UITableView *listView;
+
 
 @end
 
@@ -29,6 +29,8 @@
         self.listView = listView;
         listView.delegate = self;
         listView.dataSource = self;
+        //分割线顶格
+        listView.separatorInset = UIEdgeInsetsZero;
         
         [self addSubview:listView];
         
@@ -140,6 +142,20 @@
 {
     _notScroll = notScroll;
     self.listView.scrollEnabled = !notScroll;
+}
+
+-(void)setIsRadious:(BOOL)isRadious
+{
+    _isRadious = isRadious;
+    if (isRadious)
+    {
+        self.listView.layer.cornerRadius = 8;
+        if (self.radiousNumber >0)
+        {
+            self.listView.layer.cornerRadius = self.radiousNumber;
+        }
+        self.listView.layer.masksToBounds = YES;
+    }
 }
 /*
 // Only override drawRect: if you perform custom drawing.

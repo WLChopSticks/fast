@@ -8,6 +8,8 @@
 
 #import "WLUtilities.h"
 #import <sys/sysctl.h>
+#import "WLUserInfoMaintainance.h"
+#import "WLQingLoginModel.h"
 
 @implementation WLUtilities
 
@@ -154,6 +156,12 @@
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     [def removeObjectForKey:@"paid_Price"];
+}
+
++ (BOOL)isSupportMotor
+{
+    WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
+    return userInfo.model.data.sfddc.integerValue == 1;
 }
 
 @end

@@ -28,6 +28,8 @@
 @property (nonatomic, assign) NSInteger queryCount;
 @property (nonatomic, assign) Paid_Type paidType;
 @property (nonatomic, assign) PriceType priceType;
+@property (weak, nonatomic) IBOutlet UIView *motorDepositView;
+@property (weak, nonatomic) IBOutlet UIView *motorRentView;
 
 @end
 
@@ -40,6 +42,17 @@
     
     //每次都要检查用户是否缴纳了押金与租金
     [self checkUserPaidStatus];
+    
+    //查看是否支持电动车业务
+    if ([WLUtilities isSupportMotor])
+    {
+        self.motorDepositView.hidden = NO;
+        self.motorRentView.hidden = NO;
+    }else
+    {
+        self.motorDepositView.hidden = YES;
+        self.motorRentView.hidden = YES;
+    }
 }
 
 - (void)viewDidLoad {

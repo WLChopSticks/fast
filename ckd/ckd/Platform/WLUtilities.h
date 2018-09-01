@@ -42,4 +42,7 @@
 + (NSString *)getPaidPrice;
 + (void)deletePaidPrice;//每次请求新的金额前都需要删除存储的金额
 
+//是否支持电动车
++ (BOOL)isSupportMotor;
+
 @end
