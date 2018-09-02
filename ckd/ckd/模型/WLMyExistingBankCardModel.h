@@ -18,10 +18,6 @@
 @property (nonatomic, strong) NSString *ckrxm;//持卡人姓名
 @end
 
-//@interface WLBankCardListModel : NSObject
-//@property (nonatomic, strong) NSArray *list;//银行卡列表
-//@end
-
 @interface WLMyExistingBankCardModel : NSObject
 
 @property (nonatomic, strong) NSString *code;

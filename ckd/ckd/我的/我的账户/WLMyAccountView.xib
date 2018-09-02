@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WLMyAccountController">
             <connections>
+                <outlet property="checkRefundProgressBtn" destination="9V5-bI-r5V" id="c6k-rl-V5S"/>
                 <outlet property="depositPriceLabel" destination="cFX-PI-RQk" id="AI3-xK-rbT"/>
                 <outlet property="motorDepositPriceLabel" destination="69F-LF-bzq" id="Qnd-bs-Tbr"/>
                 <outlet property="motorDepositView" destination="uVc-OG-gkV" id="v9j-3T-xTL"/>
@@ -114,16 +115,28 @@
                                 <constraint firstAttribute="height" constant="50" id="rXf-DV-yPi"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9V5-bI-r5V">
+                            <rect key="frame" x="173" y="78" width="80" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="查看退款进度">
+                                <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="checkRefundProgressBtnDidClicking:" destination="-1" eventType="touchUpInside" id="8w9-xi-yRY"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="iuq-9c-OxP" firstAttribute="leading" secondItem="zHf-bH-6mP" secondAttribute="leading" constant="8" id="3cT-kq-Wf4"/>
+                        <constraint firstItem="9V5-bI-r5V" firstAttribute="bottom" secondItem="cFX-PI-RQk" secondAttribute="bottom" constant="5" id="6kg-Ud-3Yy"/>
                         <constraint firstItem="iuq-9c-OxP" firstAttribute="centerY" secondItem="zHf-bH-6mP" secondAttribute="centerY" id="LqN-Sa-xOK"/>
                         <constraint firstItem="mMx-45-Zmr" firstAttribute="centerY" secondItem="neu-it-gIp" secondAttribute="centerY" id="PBU-6z-gJh"/>
                         <constraint firstItem="neu-it-gIp" firstAttribute="centerY" secondItem="iuq-9c-OxP" secondAttribute="centerY" id="UXo-t6-lMN"/>
                         <constraint firstItem="neu-it-gIp" firstAttribute="leading" secondItem="iuq-9c-OxP" secondAttribute="trailing" constant="20" id="f1i-em-s45"/>
                         <constraint firstAttribute="height" constant="120" id="gM1-fg-44W"/>
                         <constraint firstItem="cFX-PI-RQk" firstAttribute="leading" secondItem="neu-it-gIp" secondAttribute="leading" id="r7D-JQ-bqu"/>
+                        <constraint firstItem="9V5-bI-r5V" firstAttribute="leading" secondItem="cFX-PI-RQk" secondAttribute="trailing" constant="8" id="u0L-wu-clu"/>
                         <constraint firstItem="cFX-PI-RQk" firstAttribute="top" secondItem="neu-it-gIp" secondAttribute="bottom" constant="10" id="vTU-kC-ylb"/>
                         <constraint firstAttribute="trailing" secondItem="mMx-45-Zmr" secondAttribute="trailing" constant="10" id="yWx-XE-0Sk"/>
                     </constraints>
@@ -243,7 +256,7 @@
                 <constraint firstItem="5r6-p1-RUp" firstAttribute="leading" secondItem="zB3-jJ-fFG" secondAttribute="leading" id="zUB-7S-46M"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="zB3-jJ-fFG"/>
-            <point key="canvasLocation" x="-61" y="-38"/>
+            <point key="canvasLocation" x="-61.5" y="-38.5"/>
         </view>
     </objects>
     <resources>

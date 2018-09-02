@@ -38,6 +38,10 @@
 		9B56BDDC213BBB0C00836161 /* WLMyBankCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B56BDDA213BBB0C00836161 /* WLMyBankCardCell.xib */; };
 		9B56BDE0213BBF1900836161 /* WLAddBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B56BDDE213BBF1900836161 /* WLAddBankCardViewController.m */; };
 		9B56BDE1213BBF1900836161 /* WLAddBankCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B56BDDF213BBF1900836161 /* WLAddBankCardViewController.xib */; };
+		9B56BDE4213BD2F200836161 /* WLRefundProgressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B56BDE3213BD2F200836161 /* WLRefundProgressModel.m */; };
+		9B56BDE7213BD3E800836161 /* WLRefundProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B56BDE6213BD3E800836161 /* WLRefundProgressViewController.m */; };
+		9B56BDEB213BD9BE00836161 /* WLRefundProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B56BDE9213BD9BE00836161 /* WLRefundProgressCell.m */; };
+		9B56BDEC213BD9BE00836161 /* WLRefundProgressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B56BDEA213BD9BE00836161 /* WLRefundProgressCell.xib */; };
 		9B634D21209D7CEB00A5CB31 /* WLCommonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B634D20209D7CEB00A5CB31 /* WLCommonTool.m */; };
 		9B634D25209D830300A5CB31 /* WLCertificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B634D23209D830300A5CB31 /* WLCertificationController.m */; };
 		9B634D26209D830300A5CB31 /* WLCertificationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B634D24209D830300A5CB31 /* WLCertificationController.xib */; };
@@ -163,6 +167,13 @@
 		9B56BDDD213BBF1900836161 /* WLAddBankCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLAddBankCardViewController.h; sourceTree = "<group>"; };
 		9B56BDDE213BBF1900836161 /* WLAddBankCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLAddBankCardViewController.m; sourceTree = "<group>"; };
 		9B56BDDF213BBF1900836161 /* WLAddBankCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLAddBankCardViewController.xib; sourceTree = "<group>"; };
+		9B56BDE2213BD2F200836161 /* WLRefundProgressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLRefundProgressModel.h; sourceTree = "<group>"; };
+		9B56BDE3213BD2F200836161 /* WLRefundProgressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLRefundProgressModel.m; sourceTree = "<group>"; };
+		9B56BDE5213BD3E800836161 /* WLRefundProgressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLRefundProgressViewController.h; sourceTree = "<group>"; };
+		9B56BDE6213BD3E800836161 /* WLRefundProgressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLRefundProgressViewController.m; sourceTree = "<group>"; };
+		9B56BDE8213BD9BE00836161 /* WLRefundProgressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLRefundProgressCell.h; sourceTree = "<group>"; };
+		9B56BDE9213BD9BE00836161 /* WLRefundProgressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLRefundProgressCell.m; sourceTree = "<group>"; };
+		9B56BDEA213BD9BE00836161 /* WLRefundProgressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLRefundProgressCell.xib; sourceTree = "<group>"; };
 		9B634D1F209D7CEB00A5CB31 /* WLCommonTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLCommonTool.h; sourceTree = "<group>"; };
 		9B634D20209D7CEB00A5CB31 /* WLCommonTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLCommonTool.m; sourceTree = "<group>"; };
 		9B634D22209D830300A5CB31 /* WLCertificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLCertificationController.h; sourceTree = "<group>"; };
@@ -307,6 +318,8 @@
 				9B258F4B20FD6E530011929E /* WLRentMotorRecordModel.m */,
 				9B56BDD5213BB7E500836161 /* WLMyExistingBankCardModel.h */,
 				9B56BDD6213BB7E500836161 /* WLMyExistingBankCardModel.m */,
+				9B56BDE2213BD2F200836161 /* WLRefundProgressModel.h */,
+				9B56BDE3213BD2F200836161 /* WLRefundProgressModel.m */,
 			);
 			path = "模型";
 			sourceTree = "<group>";
@@ -323,6 +336,11 @@
 				9B006B2E2098BA6D00CDEFD0 /* WLMyAccountController.h */,
 				9B006B2F2098BA6D00CDEFD0 /* WLMyAccountController.m */,
 				9B97772A209B02530068D5C1 /* WLMyAccountView.xib */,
+				9B56BDE5213BD3E800836161 /* WLRefundProgressViewController.h */,
+				9B56BDE6213BD3E800836161 /* WLRefundProgressViewController.m */,
+				9B56BDE8213BD9BE00836161 /* WLRefundProgressCell.h */,
+				9B56BDE9213BD9BE00836161 /* WLRefundProgressCell.m */,
+				9B56BDEA213BD9BE00836161 /* WLRefundProgressCell.xib */,
 			);
 			path = "我的账户";
 			sourceTree = "<group>";
@@ -706,6 +724,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B258ECB20FC3DB30011929E /* WLDefaultCell.xib in Resources */,
+				9B56BDEC213BD9BE00836161 /* WLRefundProgressCell.xib in Resources */,
 				9B56BDE1213BBF1900836161 /* WLAddBankCardViewController.xib in Resources */,
 				9B634D2D209DAC4600A5CB31 /* WLProfileInformationViewController.xib in Resources */,
 				9B977731209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib in Resources */,
@@ -827,12 +846,14 @@
 				9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */,
 				9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */,
 				9BB5BDF9209453C90076DDB7 /* WLBaseUIViewController.m in Sources */,
+				9B56BDE7213BD3E800836161 /* WLRefundProgressViewController.m in Sources */,
 				9BB5BDCF209447200076DDB7 /* main.m in Sources */,
 				9B258F4C20FD6E530011929E /* WLRentMotorRecordModel.m in Sources */,
 				9B258ECA20FC3DB30011929E /* WLDefaultCell.m in Sources */,
 				9BB5BDFC209453DF0076DDB7 /* WLHomeViewController.m in Sources */,
 				9B634D21209D7CEB00A5CB31 /* WLCommonTool.m in Sources */,
 				9B006B302098BA6D00CDEFD0 /* WLMyAccountController.m in Sources */,
+				9B56BDE4213BD2F200836161 /* WLRefundProgressModel.m in Sources */,
 				9B634D33209DAF6F00A5CB31 /* WLQingLoginModel.m in Sources */,
 				9B0211F3209E9F4C00282AF1 /* WLRecordEmptyView.m in Sources */,
 				9B0211FB209EB16400282AF1 /* WLWebViewController.m in Sources */,
@@ -841,6 +862,7 @@
 				9B977724209ADCEF0068D5C1 /* WLDataMD5.m in Sources */,
 				9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */,
 				9B258EC520FC3A930011929E /* WLListView.m in Sources */,
+				9B56BDEB213BD9BE00836161 /* WLRefundProgressCell.m in Sources */,
 				9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */,
 				9B9776C82099A5400068D5C1 /* WLPointAnnotation.m in Sources */,
 				9B56BDD4213BB53800836161 /* WLBankCardListViewController.m in Sources */,

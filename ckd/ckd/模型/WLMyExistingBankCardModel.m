@@ -12,9 +12,6 @@
 @implementation WLBankCardModel
 @end
 
-//@implementation WLBankCardListModel
-//@end
-
 @implementation WLMyExistingBankCardModel
 
 +(instancetype)getMyExistingBankCardModel:(NSDictionary *)dict

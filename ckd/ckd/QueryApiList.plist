@@ -57,5 +57,7 @@
 	<string>{host}/ckdhd/insertyhk.action</string>
 	<key>UpdateBankCardInfo</key>
 	<string>{host}/ckdhd/updateyhk.action</string>
+	<key>AquireRefundProgress</key>
+	<string>{host}/ckdhd/queryTklcjl.action</string>
 </dict>
 </plist>

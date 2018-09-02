@@ -10,6 +10,8 @@
 #import "WLWePay.h"
 #import "WLPaidRecordViewController.h"
 #import "WLUserInfoMaintainance.h"
+#import "WLRefundProgressModel.h"
+#import "WLRefundProgressViewController.h"
 
 //轮询次数, 间隔为2s
 #define Repeat_Query_Count 5
@@ -30,6 +32,9 @@
 @property (nonatomic, assign) PriceType priceType;
 @property (weak, nonatomic) IBOutlet UIView *motorDepositView;
 @property (weak, nonatomic) IBOutlet UIView *motorRentView;
+@property (weak, nonatomic) IBOutlet UIButton *checkRefundProgressBtn;
+
+@property (nonatomic, strong) NSArray *refundProgressList;
 
 @end
 
@@ -40,6 +45,8 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [super viewWillAppear:animated];
     
+    //每次都先将退款进度按钮隐藏
+    self.checkRefundProgressBtn.hidden = YES;
     //每次都要检查用户是否缴纳了押金与租金
     [self checkUserPaidStatus];
     
@@ -66,6 +73,8 @@
 
     
     [self decorateNavigationBar];
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -105,7 +114,9 @@
         
     }else
     {
-        [self changeCellStatusToUnpaidDeposit:self.paidDepositBtn andLabel:self.depositPriceLabel];
+        //如果用户没有交押金, 则查看用户是否申请了退押金
+        [self queryRefundProgress];
+        
     }
     
     //查看是否交租金
@@ -322,6 +333,47 @@
         NSLog(@"退押金失败");
         NSLog(@"%@",error);
         [ProgressHUD showError:@"退押金失败"];
+    }];
+}
+- (IBAction)checkRefundProgressBtnDidClicking:(id)sender
+{
+    NSLog(@"查看退款进度按钮点击了");
+    WLRefundProgressViewController *vc = [[WLRefundProgressViewController alloc]init];
+    vc.progressList = self.refundProgressList;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)queryRefundProgress
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *parametersStr = [NSString stringWithFormat:@"{user_id:%@}", [WLUtilities getUserID]];
+    [parameters setObject:parametersStr forKey:@"inputParameter"];
+    WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
+    NSString *URL = networkTool.queryAPIList[@"AquireRefundProgress"];
+    [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
+        NSDictionary *result = (NSDictionary *)responseObject;
+        WLRefundProgressModel *model = [WLRefundProgressModel getRefundProgressModel:result];
+
+        if ([model.code integerValue] == 1)
+        {
+            NSLog(@"查询退款进度成功");
+            WLRefundProgressDetailModel *detailModel = model.data.firstObject;
+            NSString *deposit = detailModel.thje;
+            self.depositPriceLabel.text = [NSString stringWithFormat:@"%@ 元",deposit];
+            [self.paidDepositBtn setTitle:@"退押金" forState:UIControlStateNormal];
+            self.paidDepositBtn.enabled = NO;
+            self.checkRefundProgressBtn.hidden = NO;
+            self.refundProgressList = model.data;
+            
+        }else
+        {
+            NSLog(@"查询退款进度失败");
+            [self changeCellStatusToUnpaidDeposit:self.paidDepositBtn andLabel:self.depositPriceLabel];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"查询退款进度失败");
+        NSLog(@"%@",error);
+        [self changeCellStatusToUnpaidDeposit:self.paidDepositBtn andLabel:self.depositPriceLabel];
     }];
 }
 
