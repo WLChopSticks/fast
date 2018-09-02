@@ -48,18 +48,22 @@
     NSString *URL = networkTool.queryAPIList[@"AquireExchangeRentMotorRecord"];
     [networkTool POST_queryWithURL:URL andParameters:parameters success:^(id  _Nullable responseObject) {
         NSDictionary *result = (NSDictionary *)responseObject;
-//        WLRentMotorRecordDetailModel *model = [[WLRentMotorRecordDetailModel alloc]init];
         WLRentMotorRecordModel *model = [WLRentMotorRecordModel getRentModelRecordModel:result];
         if ([model.code isEqualToString:@"1"])
         {
-            NSLog(@"查询换电记录成功");
+            NSLog(@"查询租车记录成功");
             self.recordArr = model.data;
+        }else
+        {
+            [ProgressHUD showError:model.message];
+            NSLog(@"查询换电记录失败");
+            self.recordArr = nil;
+        }
+        if (self.recordArr.count > 0)
+        {
             [self showApplyChargerRecordList];
         }else
         {
-            [ProgressHUD showError:@"查询换电记录失败"];
-            NSLog(@"查询换电记录失败");
-            self.recordArr = nil;
             [self showEmptyRecordView];
         }
     } failure:^(NSError *error) {

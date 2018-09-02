@@ -162,13 +162,7 @@
     {
         self.rentMotorTimeLabel.text = @"未缴纳租金";
     }
-    
-    
 }
-
-
-
-
 
 - (void)paidRecordDidClicking
 {
@@ -357,13 +351,27 @@
         if ([model.code integerValue] == 1)
         {
             NSLog(@"查询退款进度成功");
-            WLRefundProgressDetailModel *detailModel = model.data.firstObject;
-            NSString *deposit = detailModel.thje;
-            self.depositPriceLabel.text = [NSString stringWithFormat:@"%@ 元",deposit];
-            [self.paidDepositBtn setTitle:@"退押金" forState:UIControlStateNormal];
-            self.paidDepositBtn.enabled = NO;
-            self.checkRefundProgressBtn.hidden = NO;
-            self.refundProgressList = model.data;
+            WLRefundProgressDetailModel *detailModel = model.data.lastObject;
+            //状态为1, 则退款成功
+            if ([detailModel.thzt isEqualToString:@"1"])
+            {
+                self.depositPriceLabel.text = @"已退款";
+                [self.paidDepositBtn setTitle:@"缴纳押金" forState:UIControlStateNormal];
+                self.checkRefundProgressBtn.hidden = NO;
+                self.refundProgressList = model.data;
+            }else if (detailModel == nil)
+            {
+                [self changeCellStatusToUnpaidDeposit:self.paidDepositBtn andLabel:self.depositPriceLabel];
+                self.checkRefundProgressBtn.hidden = YES;
+            }else
+            {
+                NSString *deposit = detailModel.thje;
+                self.depositPriceLabel.text = [NSString stringWithFormat:@"%@ 元",deposit];
+                [self.paidDepositBtn setTitle:@"退押金" forState:UIControlStateNormal];
+                self.paidDepositBtn.enabled = NO;
+                self.checkRefundProgressBtn.hidden = NO;
+                self.refundProgressList = model.data;
+            }
             
         }else
         {

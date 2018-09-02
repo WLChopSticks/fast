@@ -41,7 +41,8 @@
     progressList.delegate = self;
     progressList.estimatedRowHeight = 40;
     progressList.rowHeight = UITableViewAutomaticDimension;
-    progressList.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    progressList.separatorStyle = UITableViewCellSeparatorStyleNone;
+    progressList.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:progressList];
     
     [progressList mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -66,8 +67,20 @@
     {
         cell.date.text = model.thsj;
     }
-    
+    cell.backgroundColor = [UIColor clearColor];
+    //最后一个cell需要隐藏竖线的图片
+    if (indexPath.row == self.progressList.count -1 )
+    {
+        cell.progressLine.hidden = YES;
+    }
     return cell;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, 20)];
+    header.backgroundColor = [UIColor whiteColor];
+    return header;
 }
 
 - (NSString *)changeStateCodeToWord: (NSString *)stateCode andrefundMoney: (NSString *)money

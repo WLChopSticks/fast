@@ -11,5 +11,6 @@
 @interface WLRefundProgressCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *progressState;
 @property (weak, nonatomic) IBOutlet UILabel *date;
+@property (weak, nonatomic) IBOutlet UIImageView *progressLine;
 
 @end
