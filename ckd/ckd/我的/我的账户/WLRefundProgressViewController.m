@@ -43,6 +43,7 @@
     progressList.rowHeight = UITableViewAutomaticDimension;
     progressList.separatorStyle = UITableViewCellSeparatorStyleNone;
     progressList.backgroundColor = [UIColor whiteColor];
+    progressList.scrollEnabled = NO;
     [self.view addSubview:progressList];
     
     [progressList mas_makeConstraints:^(MASConstraintMaker *make) {

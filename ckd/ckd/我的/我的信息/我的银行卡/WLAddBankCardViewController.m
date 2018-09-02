@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *bankCardHolder;
 @property (weak, nonatomic) IBOutlet UITextField *bankCardNumber;
 @property (weak, nonatomic) IBOutlet UITextField *bankName;
+@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
 
 
 
@@ -34,6 +35,7 @@
         self.bankCardNumber.text = self.bankCardInfo.yhkh;
         self.bankName.text = self.bankCardInfo.yhmc;
     }
+    [WLCommonTool makeViewShowingWithRoundCorner:self.saveBtn andRadius:8];
 }
 
 - (void)didReceiveMemoryWarning {

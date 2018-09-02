@@ -15,6 +15,7 @@
                 <outlet property="bankCardHolder" destination="c2w-aM-otb" id="xvD-Jf-Ia3"/>
                 <outlet property="bankCardNumber" destination="P2Z-PV-Vby" id="mho-0K-p6a"/>
                 <outlet property="bankName" destination="4oD-QK-vWy" id="W70-hu-ASS"/>
+                <outlet property="saveBtn" destination="Pp3-o3-4Qe" id="Rej-kc-Aol"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -107,9 +108,9 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pp3-o3-4Qe">
-                    <rect key="frame" x="10" y="617" width="355" height="40"/>
+                    <rect key="frame" x="10" y="612" width="355" height="45"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="nlM-M1-f8p"/>
+                        <constraint firstAttribute="height" constant="45" id="nlM-M1-f8p"/>
                     </constraints>
                     <state key="normal" title="保存" backgroundImage="btn_orange">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

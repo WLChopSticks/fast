@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *telephoneField;
 @property (weak, nonatomic) IBOutlet UITextField *checkNumField;
 @property (weak, nonatomic) IBOutlet UIButton *finishBtn;
+@property (weak, nonatomic) IBOutlet UIButton *aquireCaptchaBtn;
 
 
 @end
@@ -24,6 +25,8 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"更换手机号码";
     
+    [WLCommonTool makeViewShowingWithRoundCorner:self.finishBtn andRadius:8];
+    [WLCommonTool makeViewShowingWithRoundCorner:self.aquireCaptchaBtn andRadius:8];
 }
 
 - (void)didReceiveMemoryWarning {
