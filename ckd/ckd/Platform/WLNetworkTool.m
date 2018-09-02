@@ -64,7 +64,9 @@ static WLNetworkTool *_instance;
     NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
     if (self.currentHost.length <= 0)
     {
-        self.currentHost = dict[@"host"];
+        self.currentHost = [[NSUserDefaults standardUserDefaults]objectForKey:@"currentHost"];
+        if (self.currentHost == nil)
+            self.currentHost = dict[@"host"];
 //        self.currentHost = [[host componentsSeparatedByString:@","]lastObject];
         
     }

@@ -60,8 +60,7 @@
     NSString *host = self.hosts[indexPath.row];
     NSString *selectHost = [[host componentsSeparatedByString:@","]lastObject];
     [WLNetworkTool sharedNetworkToolManager].currentHost = selectHost;
-    self.queryListData[@"host"] = selectHost;
-    [self.queryListData writeToFile:self.filePath atomically:YES];
+    [[NSUserDefaults standardUserDefaults]setObject:selectHost forKey:@"currentHost"];
     [WLNetworkTool refreshQueryAPIList];
 }
 
