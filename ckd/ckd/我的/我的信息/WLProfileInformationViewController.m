@@ -14,6 +14,7 @@
 #import "WLChosenItemsView.h"
 #import "WLCertificationController.h"
 #import "WLScanBitCodeViewController.h"
+#import "WLBankCardListViewController.h"
 
 @interface WLProfileInformationViewController ()<chosenViewDelegate>
 
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ID_numberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *telephoneLabel;
 @property (weak, nonatomic) IBOutlet UIView *telephoneView;
+@property (weak, nonatomic) IBOutlet UIView *bankCardView;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 @property (weak, nonatomic) IBOutlet UIView *cityView;
 
@@ -66,6 +68,8 @@
 {
     UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(telephoneItemDidClicking)];
     [self.telephoneView addGestureRecognizer:tapGesture1];
+    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bankCardItemDidClicking)];
+    [self.bankCardView addGestureRecognizer:tapGesture2];
     //城市目前不支持更换
 //    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cityItemDidClicking)];
 //    [self.cityView addGestureRecognizer:tapGesture2];
@@ -129,6 +133,13 @@
     NSLog(@"电话号码点击了");
     WLChangeTelephoneNumberViewController *changeTelNumberVC = [[WLChangeTelephoneNumberViewController alloc]init];
     [self.navigationController pushViewController:changeTelNumberVC animated:YES];
+}
+
+- (void)bankCardItemDidClicking
+{
+    NSLog(@"我的银行卡点击了");
+    WLBankCardListViewController *myBankCardVC = [[WLBankCardListViewController alloc]init];
+    [self.navigationController pushViewController:myBankCardVC animated:YES];
 }
 
 - (void)cityItemDidClicking

@@ -220,10 +220,10 @@ typedef enum : NSUInteger {
     
     UILabel *introductionLabel = [[UILabel alloc]init];
     //如果不支持租车, 则不显示租车文字
-    if ([WLUtilities isSupportMotor])
-    {
-        introductionLabel.text = @"换电/租车";
-    }else
+//    if ([WLUtilities isSupportMotor])
+//    {
+//        introductionLabel.text = @"换电/租车";
+//    }else
     {
         introductionLabel.text = @"换电";
     }

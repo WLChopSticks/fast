@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>host</key>
-	<string>http://47.104.85.148:18070</string>
+	<string>http://47.104.107.196:18070</string>
 	<key>hosts</key>
 	<array>
 		<string>formal,http://47.104.107.196:18070</string>
@@ -51,5 +51,11 @@
 	<string>{host}/ckdhd/portal/pages/gywm/gywm.jsp</string>
 	<key>AquireExchangeRentMotorRecord</key>
 	<string>{host}/ckdhd/Hddcjl.action</string>
+	<key>AquireExistingBankCard</key>
+	<string>{host}/ckdhd/queryyhk.action</string>
+	<key>AddBankCardInfo</key>
+	<string>{host}/ckdhd/insertyhk.action</string>
+	<key>UpdateBankCardInfo</key>
+	<string>{host}/ckdhd/updateyhk.action</string>
 </dict>
 </plist>

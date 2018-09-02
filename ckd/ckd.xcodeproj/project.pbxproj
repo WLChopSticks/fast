@@ -32,6 +32,12 @@
 		9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4552FF2096F31F00C6C447 /* WLNetworkTool.m */; };
 		9B4553032096F3B000C6C447 /* WLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4553022096F3B000C6C447 /* WLUtilities.m */; };
 		9B4CEDBB20974E9D00F20FB5 /* WLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */; };
+		9B56BDD4213BB53800836161 /* WLBankCardListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B56BDD3213BB53800836161 /* WLBankCardListViewController.m */; };
+		9B56BDD7213BB7E500836161 /* WLMyExistingBankCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B56BDD6213BB7E500836161 /* WLMyExistingBankCardModel.m */; };
+		9B56BDDB213BBB0C00836161 /* WLMyBankCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B56BDD9213BBB0C00836161 /* WLMyBankCardCell.m */; };
+		9B56BDDC213BBB0C00836161 /* WLMyBankCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B56BDDA213BBB0C00836161 /* WLMyBankCardCell.xib */; };
+		9B56BDE0213BBF1900836161 /* WLAddBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B56BDDE213BBF1900836161 /* WLAddBankCardViewController.m */; };
+		9B56BDE1213BBF1900836161 /* WLAddBankCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B56BDDF213BBF1900836161 /* WLAddBankCardViewController.xib */; };
 		9B634D21209D7CEB00A5CB31 /* WLCommonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B634D20209D7CEB00A5CB31 /* WLCommonTool.m */; };
 		9B634D25209D830300A5CB31 /* WLCertificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B634D23209D830300A5CB31 /* WLCertificationController.m */; };
 		9B634D26209D830300A5CB31 /* WLCertificationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B634D24209D830300A5CB31 /* WLCertificationController.xib */; };
@@ -147,6 +153,16 @@
 		9B4553022096F3B000C6C447 /* WLUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLUtilities.m; sourceTree = "<group>"; };
 		9B4CEDB920974E9D00F20FB5 /* WLMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMapViewController.h; sourceTree = "<group>"; };
 		9B4CEDBA20974E9D00F20FB5 /* WLMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMapViewController.m; sourceTree = "<group>"; };
+		9B56BDD2213BB53800836161 /* WLBankCardListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLBankCardListViewController.h; sourceTree = "<group>"; };
+		9B56BDD3213BB53800836161 /* WLBankCardListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLBankCardListViewController.m; sourceTree = "<group>"; };
+		9B56BDD5213BB7E500836161 /* WLMyExistingBankCardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMyExistingBankCardModel.h; sourceTree = "<group>"; };
+		9B56BDD6213BB7E500836161 /* WLMyExistingBankCardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMyExistingBankCardModel.m; sourceTree = "<group>"; };
+		9B56BDD8213BBB0C00836161 /* WLMyBankCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMyBankCardCell.h; sourceTree = "<group>"; };
+		9B56BDD9213BBB0C00836161 /* WLMyBankCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMyBankCardCell.m; sourceTree = "<group>"; };
+		9B56BDDA213BBB0C00836161 /* WLMyBankCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLMyBankCardCell.xib; sourceTree = "<group>"; };
+		9B56BDDD213BBF1900836161 /* WLAddBankCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLAddBankCardViewController.h; sourceTree = "<group>"; };
+		9B56BDDE213BBF1900836161 /* WLAddBankCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLAddBankCardViewController.m; sourceTree = "<group>"; };
+		9B56BDDF213BBF1900836161 /* WLAddBankCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WLAddBankCardViewController.xib; sourceTree = "<group>"; };
 		9B634D1F209D7CEB00A5CB31 /* WLCommonTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLCommonTool.h; sourceTree = "<group>"; };
 		9B634D20209D7CEB00A5CB31 /* WLCommonTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLCommonTool.m; sourceTree = "<group>"; };
 		9B634D22209D830300A5CB31 /* WLCertificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLCertificationController.h; sourceTree = "<group>"; };
@@ -289,6 +305,8 @@
 				9B9E05AF20A06CC000F5F045 /* WLQueryPriceInfoModel.m */,
 				9B258F4A20FD6E530011929E /* WLRentMotorRecordModel.h */,
 				9B258F4B20FD6E530011929E /* WLRentMotorRecordModel.m */,
+				9B56BDD5213BB7E500836161 /* WLMyExistingBankCardModel.h */,
+				9B56BDD6213BB7E500836161 /* WLMyExistingBankCardModel.m */,
 			);
 			path = "模型";
 			sourceTree = "<group>";
@@ -341,6 +359,32 @@
 				9B258F4820FD6D0D0011929E /* WLRentRecordViewCell.m */,
 			);
 			path = "我的租车";
+			sourceTree = "<group>";
+		};
+		9B56BDD0213BB4BB00836161 /* 我的信息 */ = {
+			isa = PBXGroup;
+			children = (
+				9B56BDD1213BB4F300836161 /* 我的银行卡 */,
+				9B634D29209DAC4600A5CB31 /* WLProfileInformationViewController.h */,
+				9B634D2A209DAC4600A5CB31 /* WLProfileInformationViewController.m */,
+				9B634D2B209DAC4600A5CB31 /* WLProfileInformationViewController.xib */,
+			);
+			path = "我的信息";
+			sourceTree = "<group>";
+		};
+		9B56BDD1213BB4F300836161 /* 我的银行卡 */ = {
+			isa = PBXGroup;
+			children = (
+				9B56BDD2213BB53800836161 /* WLBankCardListViewController.h */,
+				9B56BDD3213BB53800836161 /* WLBankCardListViewController.m */,
+				9B56BDD8213BBB0C00836161 /* WLMyBankCardCell.h */,
+				9B56BDD9213BBB0C00836161 /* WLMyBankCardCell.m */,
+				9B56BDDA213BBB0C00836161 /* WLMyBankCardCell.xib */,
+				9B56BDDD213BBF1900836161 /* WLAddBankCardViewController.h */,
+				9B56BDDE213BBF1900836161 /* WLAddBankCardViewController.m */,
+				9B56BDDF213BBF1900836161 /* WLAddBankCardViewController.xib */,
+			);
+			path = "我的银行卡";
 			sourceTree = "<group>";
 		};
 		9B720DBA209765AC00D88704 /* 扫一扫 */ = {
@@ -470,12 +514,10 @@
 				9B01A02A20960B0600365BB8 /* 设置 */,
 				9B977725209AF9140068D5C1 /* 我的换电 */,
 				9B006B2D2098B99A00CDEFD0 /* 我的账户 */,
+				9B56BDD0213BB4BB00836161 /* 我的信息 */,
 				9BB5BDFE20946AE90076DDB7 /* WLProfileViewController.h */,
 				9BB5BDFF20946AE90076DDB7 /* WLProfileViewController.m */,
 				9B634D27209D978A00A5CB31 /* WLProfileViewController.xib */,
-				9B634D29209DAC4600A5CB31 /* WLProfileInformationViewController.h */,
-				9B634D2A209DAC4600A5CB31 /* WLProfileInformationViewController.m */,
-				9B634D2B209DAC4600A5CB31 /* WLProfileInformationViewController.xib */,
 				9B0211F1209E9F4C00282AF1 /* WLRecordEmptyView.h */,
 				9B0211F2209E9F4C00282AF1 /* WLRecordEmptyView.m */,
 			);
@@ -664,9 +706,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B258ECB20FC3DB30011929E /* WLDefaultCell.xib in Resources */,
+				9B56BDE1213BBF1900836161 /* WLAddBankCardViewController.xib in Resources */,
 				9B634D2D209DAC4600A5CB31 /* WLProfileInformationViewController.xib in Resources */,
 				9B977731209BD8BA0068D5C1 /* WLCustomerServiceViewController.xib in Resources */,
 				9B634D28209D978A00A5CB31 /* WLProfileViewController.xib in Resources */,
+				9B56BDDC213BBB0C00836161 /* WLMyBankCardCell.xib in Resources */,
 				9B97773F209FF1FA0068D5C1 /* QueryApiList.plist in Resources */,
 				9BB5BDCC209447200076DDB7 /* LaunchScreen.storyboard in Resources */,
 				9B97772B209B02530068D5C1 /* WLMyAccountView.xib in Resources */,
@@ -768,8 +812,10 @@
 				9BB5BDF6209453850076DDB7 /* WLBaseNavigationViewController.m in Sources */,
 				9B97771E209AB49F0068D5C1 /* WLDepositStatusModel.m in Sources */,
 				9B02AFBE20A332A900D95B9A /* UIButton+WLVerticalImageTitle.m in Sources */,
+				9B56BDE0213BBF1900836161 /* WLAddBankCardViewController.m in Sources */,
 				9BFF6D8D209B307D003457D4 /* WLSettingDetailViewController.m in Sources */,
 				9BB5BE0020946AE90076DDB7 /* WLProfileViewController.m in Sources */,
+				9B56BDDB213BBB0C00836161 /* WLMyBankCardCell.m in Sources */,
 				9B977730209BD8BA0068D5C1 /* WLCustomerServiceViewController.m in Sources */,
 				9B97771B209AB04F0068D5C1 /* WLAquireChargerModel.m in Sources */,
 				9BB5BE0420946E270076DDB7 /* WLLoginViewController.m in Sources */,
@@ -797,10 +843,12 @@
 				9B258EC520FC3A930011929E /* WLListView.m in Sources */,
 				9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */,
 				9B9776C82099A5400068D5C1 /* WLPointAnnotation.m in Sources */,
+				9B56BDD4213BB53800836161 /* WLBankCardListViewController.m in Sources */,
 				9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */,
 				9B021202209F1F0900282AF1 /* WLPaidRecordCell.m in Sources */,
 				9B258F4620FD6CD30011929E /* WLMyRentMotorViewController.m in Sources */,
 				9B977718209AAC300068D5C1 /* WLInquireCostDetailModel.m in Sources */,
+				9B56BDD7213BB7E500836161 /* WLMyExistingBankCardModel.m in Sources */,
 				9B9776CB2099AEEC0068D5C1 /* WLStationDetailPromptView.m in Sources */,
 				9B258F4920FD6D0D0011929E /* WLRentRecordViewCell.m in Sources */,
 				9B634D25209D830300A5CB31 /* WLCertificationController.m in Sources */,
