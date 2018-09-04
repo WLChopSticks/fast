@@ -12,5 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *progressState;
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UIImageView *progressLine;
+@property (weak, nonatomic) IBOutlet UIImageView *flagImage;
+@property (nonatomic, assign) BOOL isTickSymbol;
 
 @end

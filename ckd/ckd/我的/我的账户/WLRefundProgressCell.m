@@ -15,6 +15,18 @@
     // Initialization code
 }
 
+-(void)setIsTickSymbol:(BOOL)isTickSymbol
+{
+    _isTickSymbol = isTickSymbol;
+    if (isTickSymbol)
+    {
+        self.flagImage.image = [UIImage imageNamed:@"wancheng"];
+    }else
+    {
+        self.flagImage.image = [UIImage imageNamed:@"shibai"];
+    }
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

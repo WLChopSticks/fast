@@ -68,6 +68,13 @@
     {
         cell.date.text = model.thsj;
     }
+    if ([cell.progressState.text containsString:@"未通过"])
+    {
+        cell.isTickSymbol = NO;
+    }else
+    {
+        cell.isTickSymbol = YES;
+    }
     cell.backgroundColor = [UIColor clearColor];
     //最后一个cell需要隐藏竖线的图片
     if (indexPath.row == self.progressList.count -1 )
