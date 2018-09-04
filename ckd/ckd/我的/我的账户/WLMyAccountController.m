@@ -111,7 +111,7 @@
     {
         self.depositPriceLabel.text = [NSString stringWithFormat:@"%@ 元",userInfo.model.data.fyje];
         [self.paidDepositBtn setTitle:@"退押金" forState:UIControlStateNormal];
-        
+        self.checkRefundProgressBtn.hidden = YES;
     }else
     {
         //如果用户没有交押金, 则查看用户是否申请了退押金
