@@ -50,6 +50,8 @@
 		9B634D2D209DAC4600A5CB31 /* WLProfileInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B634D2B209DAC4600A5CB31 /* WLProfileInformationViewController.xib */; };
 		9B634D33209DAF6F00A5CB31 /* WLQingLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B634D32209DAF6F00A5CB31 /* WLQingLoginModel.m */; };
 		9B6FCE7C21C6510C00187585 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6FCE7B21C6510C00187585 /* UserNotifications.framework */; };
+		9B6FCE8921C67B5E00187585 /* WLNetworkAPIs.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6FCE8821C67B5E00187585 /* WLNetworkAPIs.m */; };
+		9B6FCE8C21C67E0400187585 /* WLAddPushClientEquipmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6FCE8B21C67E0400187585 /* WLAddPushClientEquipmentModel.m */; };
 		9B720DB9209759E400D88704 /* WLMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DB8209759E400D88704 /* WLMapAnnotationView.m */; };
 		9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B720DBC209765D400D88704 /* WLScanBitCodeViewController.m */; };
 		9B9776BC20995C1D0068D5C1 /* WLWePay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9776BB20995C1D0068D5C1 /* WLWePay.m */; };
@@ -188,6 +190,10 @@
 		9B634D32209DAF6F00A5CB31 /* WLQingLoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLQingLoginModel.m; sourceTree = "<group>"; };
 		9B6FCE7B21C6510C00187585 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		9B6FCE8521C6551F00187585 /* ckd.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ckd.entitlements; sourceTree = "<group>"; };
+		9B6FCE8721C67B5E00187585 /* WLNetworkAPIs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLNetworkAPIs.h; sourceTree = "<group>"; };
+		9B6FCE8821C67B5E00187585 /* WLNetworkAPIs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLNetworkAPIs.m; sourceTree = "<group>"; };
+		9B6FCE8A21C67E0400187585 /* WLAddPushClientEquipmentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLAddPushClientEquipmentModel.h; sourceTree = "<group>"; };
+		9B6FCE8B21C67E0400187585 /* WLAddPushClientEquipmentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLAddPushClientEquipmentModel.m; sourceTree = "<group>"; };
 		9B720DB7209759E400D88704 /* WLMapAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMapAnnotationView.h; sourceTree = "<group>"; };
 		9B720DB8209759E400D88704 /* WLMapAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLMapAnnotationView.m; sourceTree = "<group>"; };
 		9B720DBB209765D400D88704 /* WLScanBitCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLScanBitCodeViewController.h; sourceTree = "<group>"; };
@@ -324,6 +330,8 @@
 				9B56BDD6213BB7E500836161 /* WLMyExistingBankCardModel.m */,
 				9B56BDE2213BD2F200836161 /* WLRefundProgressModel.h */,
 				9B56BDE3213BD2F200836161 /* WLRefundProgressModel.m */,
+				9B6FCE8A21C67E0400187585 /* WLAddPushClientEquipmentModel.h */,
+				9B6FCE8B21C67E0400187585 /* WLAddPushClientEquipmentModel.m */,
 			);
 			path = "模型";
 			sourceTree = "<group>";
@@ -409,6 +417,15 @@
 			path = "我的银行卡";
 			sourceTree = "<group>";
 		};
+		9B6FCE8621C67B3500187585 /* 网络接口 */ = {
+			isa = PBXGroup;
+			children = (
+				9B6FCE8721C67B5E00187585 /* WLNetworkAPIs.h */,
+				9B6FCE8821C67B5E00187585 /* WLNetworkAPIs.m */,
+			);
+			path = "网络接口";
+			sourceTree = "<group>";
+		};
 		9B720DBA209765AC00D88704 /* 扫一扫 */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +500,7 @@
 				9BB5BDF1209453240076DDB7 /* 首页 */,
 				9B006B0F2097F66800CDEFD0 /* 模型 */,
 				9B9776B920995BFE0068D5C1 /* 支付 */,
+				9B6FCE8621C67B3500187585 /* 网络接口 */,
 				9BB5BDBF209447200076DDB7 /* AppDelegate.h */,
 				9BB5BDC0209447200076DDB7 /* AppDelegate.mm */,
 				9BB5BDC8209447200076DDB7 /* Assets.xcassets */,
@@ -850,6 +868,8 @@
 				9B4553002096F31F00C6C447 /* WLNetworkTool.m in Sources */,
 				9B0013CF209A03980081F65D /* WLBootViewController.m in Sources */,
 				9B006B152097FC3200CDEFD0 /* WLChargerStationModel.m in Sources */,
+				9B6FCE8C21C67E0400187585 /* WLAddPushClientEquipmentModel.m in Sources */,
+				9B6FCE8921C67B5E00187585 /* WLNetworkAPIs.m in Sources */,
 				9B9776C2209989720068D5C1 /* WLEachChargerStationModel.m in Sources */,
 				9B977721209AB6400068D5C1 /* WLExpireTimeModel.m in Sources */,
 				9B720DBD209765D400D88704 /* WLScanBitCodeViewController.m in Sources */,

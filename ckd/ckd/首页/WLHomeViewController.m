@@ -18,6 +18,7 @@
 #import "WLCertificationController.h"
 #import "WLUserInfoMaintainance.h"
 #import "WLBootViewController.h"
+#import "WLNetworkAPIs.h"
 
 typedef enum : NSUInteger {
     UnRegistRealName,//未实名
@@ -71,6 +72,8 @@ typedef enum : NSUInteger {
         if (result.boolValue)
         {
             NSLog(@"获取个人信息成功");
+            
+            [WLNetworkAPIs AddPushClientEquipment];
             [self decorateUserStatusPromptBar:[self judegeAccountStatus]];
             //请求充电站的位置节点
             [self aquireChargerStations];
