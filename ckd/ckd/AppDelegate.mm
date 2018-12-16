@@ -25,9 +25,9 @@
 
 BMKMapManager* _mapManager;
 
-#define kGtAppId           @"GueNHU6BMH6YIAX4OdPNu6"
-#define kGtAppKey          @"T1Utkm5Z896NHSDiunNBO5"
-#define kGtAppSecret       @"geeYDSHLBDA9amH9IGGqH6"
+#define kGtAppId           @"1SeNQMqGS596eHnDB1z5i2"
+#define kGtAppKey          @"88K3NCmkPv7VkNpm8dVct3"
+#define kGtAppSecret       @"cIudRNqkhN6IU8GNT5Ff11"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate, GeTuiSdkDelegate>
 
