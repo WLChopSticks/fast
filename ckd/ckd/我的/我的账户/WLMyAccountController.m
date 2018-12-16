@@ -365,8 +365,7 @@
                 self.checkRefundProgressBtn.hidden = YES;
             }else
             {
-                NSString *deposit = detailModel.thje;
-                self.depositPriceLabel.text = [NSString stringWithFormat:@"%@ 元",deposit];
+                self.depositPriceLabel.text = @"退款中";
                 [self.paidDepositBtn setTitle:@"退押金" forState:UIControlStateNormal];
                 self.paidDepositBtn.enabled = NO;
                 self.checkRefundProgressBtn.hidden = NO;
