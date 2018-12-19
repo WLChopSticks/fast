@@ -34,6 +34,10 @@
 +(void)savuserName: (NSString *)user_name;
 + (NSString *)getUserName;
 
+//个推ClientId
++ (void)savePushNotificationClientId:(NSString *)clientId;
++ (NSString *)getPushNotificationClientId;
+
 //判断是否为iPhone X
 + (BOOL)isIphoneX;
 

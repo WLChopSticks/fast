@@ -116,6 +116,18 @@
     return [def objectForKey:@"city_name"];
 }
 
++ (void)savePushNotificationClientId:(NSString *)clientId
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def setObject:clientId forKey:@"push_notification_clientId"];
+}
+
++ (NSString *)getPushNotificationClientId
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    return [def objectForKey:@"push_notification_clientId"];
+}
+
 + (BOOL)isIphoneX
 {
     NSString *platform = [WLUtilities getCurrentDeviceModelDescription];

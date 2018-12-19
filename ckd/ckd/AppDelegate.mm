@@ -25,9 +25,31 @@
 
 BMKMapManager* _mapManager;
 
+#ifdef DEBUG
 #define kGtAppId           @"TF7jpF2vrB9w8CjvNcvxj"
 #define kGtAppKey          @"jnmXZrpU5s8AXTmGgKNsD"
 #define kGtAppSecret       @"0veK1vJS3D8GiHO2JVFRy9"
+#else
+#define kGtAppId           @"yZ3xODxDMcA43JhXaOqXc1"
+#define kGtAppKey          @"tahKvs6fDZ5nJUIuIM6VJA"
+#define kGtAppSecret       @"M9XjcwCpgt71y1u39Ke0L6"
+#endif
+
+
+
+/*
+ //开发
+ AppID： TF7jpF2vrB9w8CjvNcvxj
+ AppSecret： 0veK1vJS3D8GiHO2JVFRy9
+ AppKey： jnmXZrpU5s8AXTmGgKNsD
+ MasterSecret： JPRz7VNOEd6eXbgWIftA69
+ 
+ //生产
+ AppID： yZ3xODxDMcA43JhXaOqXc1
+ AppSecret： M9XjcwCpgt71y1u39Ke0L6
+ AppKey： tahKvs6fDZ5nJUIuIM6VJA
+ MasterSecret： qHuBxdhlxY6O11zLG38dc2
+ */
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate, GeTuiSdkDelegate>
 
@@ -267,6 +289,92 @@ BMKMapManager* _mapManager;
 }
 #endif
 
+/** SDK启动成功返回cid */
+- (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
+    //个推SDK已注册，返回clientId
+    NSLog(@"\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
+    [WLUtilities savePushNotificationClientId:clientId];
+}
+
+/** SDK收到透传消息回调 */
+- (void)GeTuiSdkDidReceivePayloadData:(NSData *)payloadData andTaskId:(NSString *)taskId andMsgId:(NSString *)msgId andOffLine:(BOOL)offLine fromGtAppId:(NSString *)appId {
+    //收到个推消息
+    NSString *payloadMsg = nil;
+    if (payloadData) {
+        payloadMsg = [[NSString alloc] initWithBytes:payloadData.bytes length:payloadData.length encoding:NSUTF8StringEncoding];
+        
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0)
+        {
+            [self registerNotification:1 andMessage:payloadMsg];
+        }else
+        {
+            [self registerLocalNotificationInOldWay:1 andMessage:payloadMsg];
+        }
+    }
+
+    NSString *msg = [NSString stringWithFormat:@"taskId=%@,messageId:%@,payloadMsg:%@%@",taskId,msgId, payloadMsg,offLine ? @"<离线消息>" : @""];
+    NSLog(@"\n>>>[GexinSdk ReceivePayload]:%@\n\n", msg);
+}
+
+//使用 UNNotification 本地通知
+- (void)registerNotification:(NSInteger )alerTime andMessage: (NSString *)msg
+{
+    // 使用 UNUserNotificationCenter 来管理通知
+    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+    
+    //需创建一个包含待通知内容的 UNMutableNotificationContent 对象，注意不是 UNNotificationContent ,此对象为不可变对象。
+    UNMutableNotificationContent* content = [[UNMutableNotificationContent alloc] init];
+//    content.title = [NSString localizedUserNotificationStringForKey:@"Hello!" arguments:nil];
+    content.body = [NSString localizedUserNotificationStringForKey:msg
+                                                         arguments:nil];
+    content.sound = [UNNotificationSound defaultSound];
+    
+    // 在 alertTime 后推送本地推送
+    UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger
+                                                  triggerWithTimeInterval:alerTime repeats:NO];
+    
+    UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"FiveSecond"
+                                                                          content:content trigger:trigger];
+    
+    //添加推送成功后的处理！
+    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+    }];
+}
+
+- (void)registerLocalNotificationInOldWay:(NSInteger)alertTime andMessage: (NSString *)msg
+{
+    
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    // 设置触发通知的时间
+    NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:alertTime];
+    NSLog(@"fireDate=%@",fireDate);
+    
+    notification.fireDate = fireDate;
+    // 时区
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    // 设置重复的间隔
+    notification.repeatInterval = kCFCalendarUnitSecond;
+    
+    // 通知内容
+    notification.alertBody =  msg;
+    // 通知被触发时播放的声音
+    notification.soundName = UILocalNotificationDefaultSoundName;
+//    // ios8后，需要添加这个注册，才能得到授权
+//    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+//        UIUserNotificationType type =  UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:type
+//                                                                                 categories:nil];
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+//        // 通知重复提示的单位，可以是天、周、月
+//        notification.repeatInterval = NSCalendarUnitDay;
+//    } else {
+//        // 通知重复提示的单位，可以是天、周、月
+//        notification.repeatInterval = NSDayCalendarUnit;
+//    }
+    
+    // 执行通知注册
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+}
 
 
 @end

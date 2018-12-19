@@ -20,7 +20,7 @@
 
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     WLUserInfoMaintainance *userInfo = [WLUserInfoMaintainance sharedMaintain];
-    NSString *para_String = [NSString stringWithFormat:@"{m_user_phone:%@,m_client_id:%@,m_app_id:1,m_equipment_flag:2}",userInfo.model.data.user_phone,userInfo.model.data.user_id];
+    NSString *para_String = [NSString stringWithFormat:@"{m_user_phone:%@,m_client_id:%@,m_app_id:1,m_equipment_flag:2}",userInfo.model.data.user_phone,[WLUtilities getPushNotificationClientId]];
     [parameters setObject:para_String forKey:@"inputParameter"];
     WLNetworkTool *networkTool = [WLNetworkTool sharedNetworkToolManager];
     NSString *URL = networkTool.queryAPIList[@"AddPushClientEquipment"];
